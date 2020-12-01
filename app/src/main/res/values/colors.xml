@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <color name="primaryColor">#7c9a47</color>
+  <color name="primaryLightColor">#adcb75</color>
+  <color name="primaryDarkColor">#4e6c1a</color>
+  <color name="secondaryColor">#ffcc00</color>
+  <color name="secondaryLightColor">#ffff50</color>
+  <color name="secondaryDarkColor">#c79c00</color>
+  <color name="titleTextColor">#ffffff</color>
+  <color name="primaryTextColor">#111</color>
+  <color name="secondaryTextColor">#666</color>
+  <color name="colorIconsText">#FFFFFF</color>
+  <color name="colorDivider">#bdbdbd</color>
+  <color name="material_gray_200">#EEEEEE</color>
+  <color name="dark_grey">#333</color>
+
+  <color name="colorButton">#635c5c</color>
+
+  <color name="white">#FFFFFF</color>
+  <color name="black">#000000</color>
+  <color name="red">#ff0000</color>
+  <color name="cyan">#00F</color>
+  <color name="green">#00c853</color>
+  <color name="bluesky">#627ea5</color>
+
+  <color name="green_sample">#4bad00</color>
+  <color name="green_sample_light">#7ec549</color>
+  <color name="blue_map">#0082ad</color>
+  <color name="fuxia_find">#b80087</color>
+  <color name="fuxia_find_light">#cf4cac</color>
+  <color name="yellow_send">#b8b100</color>
+
+  <color name="green_sample_transparent">#774bad00</color>
+  <color name="blue_map_transparent">#770082ad</color>
+  <color name="fuxia_find_transparent">#77b80087</color>
+  <color name="yellow_send_transparent">#77b8b100</color>
+
+  <color name="green_sample_transparent_appbar">#4bad00</color>
+  <color name="blue_map_transparent_appbar">#0082ad</color>
+  <color name="fuxia_find_transparent_appbar">#b80087</color>
+  <color name="yellow_send_transparent_appbar">#b8b100</color>
+
+  <color name="marker_red">#da3b3b</color>
+  <color name="marker_ligthblue">#3891b7</color>
+  <color name="marker_fuxia">#da3bc9</color>
+  <color name="marker_blue">#533bda</color>
+  <color name="marker_orange">#da833b</color>
+</resources>
