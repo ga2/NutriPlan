@@ -7,23 +7,26 @@
     tools:context=".ActivityMenu">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="200dp"
-        android:layout_height="200dp"
+        android:id="@+id/activitymanu_constraintLayout_card_calc"
+        style="@style/style_mainactivity_card"
+        android:layout_marginTop="68dp"
+        android:background="@drawable/layout_activitymenu_card"
+        android:elevation="4dp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
-            android:id="@+id/activitymenu_imageView_calc"
-            android:layout_width="128dp"
-            android:layout_height="128dp"
-            app:layout_constraintBottom_toTopOf="@+id/textView"
+            android:id="@+id/activitymenu_card_imageView_calc"
+            style="@style/style_mainactivity_card_imageView"
+            app:layout_constraintBottom_toTopOf="@+id/activitymenu_card_textView_calc"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/menu_image_calc" />
 
         <TextView
-            android:id="@+id/textView"
+            android:id="@+id/activitymenu_card_textView_calc"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
@@ -34,19 +37,64 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <ImageView
-        android:id="@+id/activitymenu_imageView_patient"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:srcCompat="@drawable/menu_image_patient"
-        tools:layout_editor_absoluteX="409dp"
-        tools:layout_editor_absoluteY="50dp" />
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/activitymanu_constraintLayout_card_patient"
+        style="@style/style_mainactivity_card_lower"
+        android:background="@drawable/layout_activitymenu_card"
+        android:elevation="4dp"
+        app:layout_constraintEnd_toStartOf="@+id/activitymanu_constraintLayout_card_calc"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/activitymanu_constraintLayout_card_calc">
 
-    <ImageView
-        android:id="@+id/actvivitymenu_imageView_appointment"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:srcCompat="@drawable/menu_image_appointment"
-        tools:layout_editor_absoluteX="655dp"
-        tools:layout_editor_absoluteY="224dp" />
+        <ImageView
+            android:id="@+id/activitymenu_card_imageView_patient"
+            style="@style/style_mainactivity_card_imageView"
+            app:layout_constraintBottom_toTopOf="@+id/activitymenu_card_textView_patient"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/menu_image_patient" />
+
+        <TextView
+            android:id="@+id/activitymenu_card_textView_patient"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:text="Pazienti"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/activitymanu_constraintLayout_card_appointment"
+        style="@style/style_mainactivity_card_lower"
+        android:background="@drawable/layout_activitymenu_card"
+        android:elevation="4dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/activitymanu_constraintLayout_card_calc"
+        app:layout_constraintTop_toBottomOf="@+id/activitymanu_constraintLayout_card_calc">
+
+        <ImageView
+            android:id="@+id/actvivitymenu_imageView_appointment"
+            style="@style/style_mainactivity_card_imageView"
+            app:layout_constraintBottom_toTopOf="@+id/activitymenu_card_textView_appointment"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/menu_image_appointment" />
+
+        <TextView
+            android:id="@+id/activitymenu_card_textView_appointment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:text="Appuntamenti"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

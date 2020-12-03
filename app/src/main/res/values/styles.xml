@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="style_mainactivity_card" parent="CardView">
+        <item name="android:layout_width">200dp</item>
+        <item name="android:layout_height">200dp</item>
+        <item name="elevation">4dp</item>
+    </style>
+
+    <style name="style_mainactivity_card_lower" parent="style_mainactivity_card">
+        <item name="android:layout_marginTop">24dp</item>
+        <item name="elevation">4dp</item>
+    </style>
+
+    <style name="style_mainactivity_card_imageView">
+        <item name="android:layout_width">128dp</item>
+        <item name="android:layout_height">128dp</item>
+    </style>
+
+    <style name="style_activitycalc_tabs">
+        <item name="color">@color/white</item>
+        <item name="background">@color/primaryLightColor</item>
+    </style>
+</resources>
