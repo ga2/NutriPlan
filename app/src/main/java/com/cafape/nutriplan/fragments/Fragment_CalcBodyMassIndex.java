@@ -37,6 +37,7 @@ public class Fragment_CalcBodyMassIndex extends Fragment
 
     private EditText fragment_calc_bmi_form_editText_height;
     private TextView fragment_calc_bmi_framelayout_textView_result;
+    private final String LONG_HYPHENE = "—";
 
     public Fragment_CalcBodyMassIndex() {
         // Required empty public constructor
@@ -105,13 +106,14 @@ public class Fragment_CalcBodyMassIndex extends Fragment
                 String height_string = editable.toString();
                 if(height_string != null && height_string.length() > 0) {
                     if(isPositiveNumeric(height_string)) {
-                        fragment_calc_bmi_framelayout_textView_result.setText(String.valueOf(calculateIdealWeigth(height_string)));
+                        String weightValue = calculateIdealWeigth(height_string);
+                        fragment_calc_bmi_framelayout_textView_result.setText(weightValue);
                     }
                     else {
-                        fragment_calc_bmi_framelayout_textView_result.setText("-");
+                        setNullResult();
                     }
                 } else {
-                    fragment_calc_bmi_framelayout_textView_result.setText("-");
+                    setNullResult();
                 }
             }
         });
@@ -126,8 +128,17 @@ public class Fragment_CalcBodyMassIndex extends Fragment
         return pattern.matcher(strNum).matches();
     }
 
-    public Float calculateIdealWeigth(String height) {
+    public String calculateIdealWeigth(String height) {
         float height_float = Float.parseFloat(height);
-        return (height_float - 100 - (height_float - 150) / 2);
+        float result = height_float - 100 - (height_float - 150) / 2;
+        if(result > 0 && result < 1000) {
+            return String.valueOf(result) + " kg";
+        } else {
+            return LONG_HYPHENE;
+        }
+    }
+
+    public void setNullResult() {
+        fragment_calc_bmi_framelayout_textView_result.setText(LONG_HYPHENE);
     }
 }

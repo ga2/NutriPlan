@@ -22,8 +22,9 @@
                 android:id="@+id/fragment_calc_bmi_form_textView_label_sex"
                 style="@style/style_activitycalc_form_label"
                 android:text="Selezionare sesso paziente"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:layout_editor_absoluteX="64dp" />
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <RadioGroup
                 android:id="@+id/radioGroup"
@@ -101,11 +102,11 @@
                 android:id="@+id/fragment_calc_bmi_framelayout_textView_result"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="136dp"
-                android:text="-"
+                android:layout_marginTop="150dp"
+                android:text="—"
                 android:textAlignment="center"
                 android:textColor="#EFEFEF"
-                android:textSize="72dp"
+                android:textSize="52dp"
                 android:textStyle="bold" />
         </FrameLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
