@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragments.Fragment_CalcBodyMassIndex">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/fragment_calc_bmi_framelayout_scale"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/fragment_calc_bmi_form_textView_label_sex"
+                style="@style/style_activitycalc_form_label"
+                android:text="Selezionare sesso paziente"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:layout_editor_absoluteX="64dp" />
+
+            <RadioGroup
+                android:id="@+id/radioGroup"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:orientation="horizontal"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/fragment_calc_bmi_form_textView_label_sex"
+                tools:ignore="MissingConstraints">
+
+                <RadioButton
+                    android:id="@+id/fragment_calc_bmi_radio_female"
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:checked="true"
+                    android:text="Donna ♀" />
+
+                <RadioButton
+                    android:id="@+id/fragment_calc_bmi_radio_male"
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:text="Uomo ♂" />
+            </RadioGroup>
+
+            <TextView
+                android:id="@+id/fragment_calc_bmi_form_textView_label_height"
+                style="@style/style_activitycalc_form_label"
+                android:layout_marginTop="24dp"
+                android:text="Altezza (cm)"
+                app:layout_constraintEnd_toEndOf="@+id/radioGroup"
+                app:layout_constraintStart_toStartOf="@+id/radioGroup"
+                app:layout_constraintTop_toBottomOf="@+id/radioGroup" />
+
+            <EditText
+                android:id="@+id/fragment_calc_bmi_form_editText_height"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:ems="10"
+                android:inputType="numberSigned"
+                android:text="0"
+                app:layout_constraintEnd_toEndOf="@+id/fragment_calc_bmi_form_textView_label_height"
+                app:layout_constraintStart_toStartOf="@+id/fragment_calc_bmi_form_textView_label_height"
+                app:layout_constraintTop_toBottomOf="@+id/fragment_calc_bmi_form_textView_label_height" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        <FrameLayout
+            android:id="@+id/fragment_calc_bmi_framelayout_scale"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="96dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/fragment_calc_bmi_framelayout_imageView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/balance" />
+
+            <TextView
+                android:id="@+id/fragment_calc_bmi_framelayout_textView_label"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="52dp"
+                android:gravity="center"
+                android:text="PI"
+                android:textColor="@color/dark_grey"
+                android:textSize="36sp" />
+
+            <TextView
+                android:id="@+id/fragment_calc_bmi_framelayout_textView_result"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="136dp"
+                android:text="-"
+                android:textAlignment="center"
+                android:textColor="#EFEFEF"
+                android:textSize="72dp"
+                android:textStyle="bold" />
+        </FrameLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</FrameLayout>

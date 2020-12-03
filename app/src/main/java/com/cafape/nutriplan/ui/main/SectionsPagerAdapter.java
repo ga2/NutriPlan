@@ -9,6 +9,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
 import com.cafape.nutriplan.R;
+import com.cafape.nutriplan.fragments.Fragment_CalcBodyMassIndex;
 
 /**
  * A [FragmentPagerAdapter] that returns a fragment corresponding to
@@ -16,7 +17,7 @@ import com.cafape.nutriplan.R;
  */
 public class SectionsPagerAdapter extends FragmentPagerAdapter
 {
-    static int NUMBER_PAGES = 3;
+    final int NUMBER_PAGES = 3;
 
     @StringRes
     private static final int[] TAB_TITLES = new int[]{R.string.activitycalc_string_tab_pi, R.string.activitycalc_string_tab_bai, R.string.activitycalc_string_tab_bmi};
@@ -31,6 +32,12 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter
     public Fragment getItem(int position) {
         // getItem is called to instantiate the fragment for the given page.
         // Return a PlaceholderFragment (defined as a static inner class below).
+        switch (position) {
+            case 0: { return PlaceholderFragment.newInstance(position + 1);}
+            case 1: {return Fragment_CalcBodyMassIndex.newInstance("1", "page 2");
+            }
+            case 3: { return PlaceholderFragment.newInstance(position + 1);}
+        }
         return PlaceholderFragment.newInstance(position + 1);
     }
 
