@@ -137,27 +137,30 @@ public class Fragment_CalcBodyMassIndex extends Fragment
 
         float result = height_float - 100 - (height_float - 150) / divisor;
         if(result > 0 && result < 1000) {
-            return String.valueOf(result) + " kg";
+            return String.valueOf(result) + "\nkg";
         } else {
             return LONG_DASH;
         }
     }
 
     public void setNullResult() {
+        fragment_calc_bmi_framelayout_textView_result.setLines(1);
         fragment_calc_bmi_framelayout_textView_result.setText(LONG_DASH);
     }
 
     public void setIdealWeightResult(String height_string) {
-    if(height_string != null && height_string.length() > 0) {
-        if(isPositiveNumeric(height_string)) {
-            String weightValue = calculateIdealWeigth(height_string);
-            fragment_calc_bmi_framelayout_textView_result.setText(weightValue);
-        }
-        else {
+        if(height_string != null && height_string.length() > 0) {
+            if(isPositiveNumeric(height_string)) {
+                String weightValue = calculateIdealWeigth(height_string);
+                fragment_calc_bmi_framelayout_textView_result.setLines(2);
+                fragment_calc_bmi_framelayout_textView_result.setText(weightValue);
+                //todo dash centered
+            }
+            else {
+                setNullResult();
+            }
+        } else {
             setNullResult();
         }
-    } else {
-        setNullResult();
     }
-}
 }
