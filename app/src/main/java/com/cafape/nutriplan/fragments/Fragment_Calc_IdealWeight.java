@@ -18,12 +18,14 @@ import com.cafape.nutriplan.R;
 
 import java.util.regex.Pattern;
 
+import static com.cafape.nutriplan.Globals.LONG_DASH;
+
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link Fragment_CalcBodyMassIndex#newInstance} factory method to
+ * Use the {@link Fragment_Calc_IdealWeight#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class Fragment_CalcBodyMassIndex extends Fragment
+public class Fragment_Calc_IdealWeight extends Fragment
 {
 
     // TODO: Rename parameter arguments, choose names that match
@@ -35,12 +37,11 @@ public class Fragment_CalcBodyMassIndex extends Fragment
     private String mParam1;
     private String mParam2;
 
-    private EditText fragment_calc_bmi_form_editText_height;
-    private TextView fragment_calc_bmi_constraintLayout_textView_result;
-    private RadioGroup fragment_calc_bmi_radioGroup_sex;
-    private final String LONG_DASH = "—";
+    private EditText fragment_calc_pi_form_editText_height;
+    private TextView fragment_calc_pi_constraintLayout_textView_result;
+    private RadioGroup fragment_calc_pi_radioGroup_sex;
 
-    public Fragment_CalcBodyMassIndex() {
+    public Fragment_Calc_IdealWeight() {
         // Required empty public constructor
     }
 
@@ -50,11 +51,11 @@ public class Fragment_CalcBodyMassIndex extends Fragment
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment CalcBodyMassIndex.
+     * @return A new instance of fragment CalcIdealWeight.
      */
     // TODO: Rename and change types and number of parameters
-    public static Fragment_CalcBodyMassIndex newInstance(String param1, String param2) {
-        Fragment_CalcBodyMassIndex fragment = new Fragment_CalcBodyMassIndex();
+    public static Fragment_Calc_IdealWeight newInstance(String param1, String param2) {
+        Fragment_Calc_IdealWeight fragment = new Fragment_Calc_IdealWeight();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -74,21 +75,20 @@ public class Fragment_CalcBodyMassIndex extends Fragment
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        //return inflater.inflate(R.layout.fragment_calc_body_mass_index, container, false);
-        View layout = inflater.inflate(R.layout.fragment_calc_body_mass_index, container, false);
+        View layout = inflater.inflate(R.layout.fragment_calc_ideal_weight, container, false);
         setUiComponent(layout);
         setListeners();
         return layout;
     }
 
     public void setUiComponent(View layout) {
-        fragment_calc_bmi_form_editText_height = layout.findViewById(R.id.fragment_calc_bmi_form_editText_height);
-        fragment_calc_bmi_constraintLayout_textView_result = layout.findViewById(R.id.fragment_calc_bmi_constraintLayout_textView_result);
-        fragment_calc_bmi_radioGroup_sex = layout.findViewById(R.id.fragment_calc_bmi_radioGroup_sex);
+        fragment_calc_pi_form_editText_height = layout.findViewById(R.id.fragment_calc_pi_form_editText_height);
+        fragment_calc_pi_constraintLayout_textView_result = layout.findViewById(R.id.fragment_calc_pi_constraintLayout_textView_result);
+        fragment_calc_pi_radioGroup_sex = layout.findViewById(R.id.fragment_calc_pi_radioGroup_sex);
     }
 
     public void setListeners() {
-        fragment_calc_bmi_form_editText_height.addTextChangedListener(new TextWatcher()
+        fragment_calc_pi_form_editText_height.addTextChangedListener(new TextWatcher()
         {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -107,11 +107,11 @@ public class Fragment_CalcBodyMassIndex extends Fragment
             }
         });
 
-        fragment_calc_bmi_radioGroup_sex.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener()
+        fragment_calc_pi_radioGroup_sex.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener()
         {
             public void onCheckedChanged(RadioGroup group, int checkedId)
             {
-                    setIdealWeightResult(fragment_calc_bmi_form_editText_height.getText().toString());
+                setIdealWeightResult(fragment_calc_pi_form_editText_height.getText().toString());
             }
         });
     }
@@ -129,7 +129,7 @@ public class Fragment_CalcBodyMassIndex extends Fragment
         float height_float = Float.parseFloat(height);
         float divisor = 2;
         //LORENZ FORMULA
-        RadioButton checkedRadioButton = (RadioButton)fragment_calc_bmi_radioGroup_sex.findViewById(fragment_calc_bmi_radioGroup_sex.getCheckedRadioButtonId());
+        RadioButton checkedRadioButton = (RadioButton)fragment_calc_pi_radioGroup_sex.findViewById(fragment_calc_pi_radioGroup_sex.getCheckedRadioButtonId());
         String sex = checkedRadioButton.getTag().toString();
         if(sex.equals(getString(R.string.male_short))) {
             divisor = 4;
@@ -137,17 +137,17 @@ public class Fragment_CalcBodyMassIndex extends Fragment
 
         float result = height_float - 100 - (height_float - 150) / divisor;
         if(result > 0 && result < 1000) {
-            fragment_calc_bmi_constraintLayout_textView_result.setLines(2);
+            fragment_calc_pi_constraintLayout_textView_result.setLines(2);
             return String.valueOf(result) + "\nkg";
         } else {
-            fragment_calc_bmi_constraintLayout_textView_result.setLines(1);
+            fragment_calc_pi_constraintLayout_textView_result.setLines(1);
             return LONG_DASH;
         }
     }
 
     public void setNullResult() {
-        fragment_calc_bmi_constraintLayout_textView_result.setLines(1);
-        fragment_calc_bmi_constraintLayout_textView_result.setText(LONG_DASH);
+        fragment_calc_pi_constraintLayout_textView_result.setLines(1);
+        fragment_calc_pi_constraintLayout_textView_result.setText(LONG_DASH);
     }
 
     public void setIdealWeightResult(String height_string) {
@@ -155,8 +155,7 @@ public class Fragment_CalcBodyMassIndex extends Fragment
             if(isPositiveNumeric(height_string)) {
                 String weightValue = calculateIdealWeigth(height_string);
 
-                fragment_calc_bmi_constraintLayout_textView_result.setText(weightValue);
-                //todo dash centered
+                fragment_calc_pi_constraintLayout_textView_result.setText(weightValue);
             }
             else {
                 setNullResult();

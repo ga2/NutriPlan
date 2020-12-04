@@ -1,25 +1,42 @@
 <resources>
     <string name="app_name">NutriPlan</string>
-    <string name="build_number">20201203</string>
+    <string name="build_number">20201204</string>
     <string name="title_activity_main_menu">MainMenu</string>
+
+    <string name="height">Altezza (cm)</string>
+    <string name="hip_circ">Circonferenza dei fianchi (cm)</string>
+    <string name="weight">Peso (kg)</string>
+    <string name="sex">Sesso paziente</string>
 
     <string name="male_short">M</string>
     <string name="female_short">F</string>
+    <string name="male_long">Uomo ♂</string>
+    <string name="female_long">Donna ♀</string>
     <!--
     This string is used for square devices and overridden by hello_world in
     values-round/strings.xml for round devices.
     -->
     <string name="hello_world">Hello Square World!</string>
-    <string name="title_activity_menu">Activity_menu</string>
-    <string name="title_activity_calc">ActivityCalc</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
+    <!-- START Activity titles -->
+
+    <string name="title_activity_menu">NutriPlan</string>
+    <string name="title_activity_calc">Calcolatore indici di salute</string>
+
+    <!-- END Activity titles -->
 
     <!-- START Activity_calc -->
 
     <string name="activitycalc_string_tab_pi">Peso Ideale</string>
+    <string name="activitycalc_string_pi_short">PI</string>
     <string name="activitycalc_string_tab_bai">Body Adiposity Index</string>
+    <string name="activitycalc_string_bai_short">BAI</string>
     <string name="activitycalc_string_tab_bmi">Body Mass Index</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="activitycalc_string_bmi_short">BMI</string>
+
+
+
     <!-- END Activity_calc -->
 </resources>
