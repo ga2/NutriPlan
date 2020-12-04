@@ -6,12 +6,12 @@ import androidx.fragment.app.Fragment;
 
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
-import android.widget.FrameLayout;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import com.cafape.nutriplan.R;
@@ -37,7 +37,8 @@ public class Fragment_CalcBodyMassIndex extends Fragment
 
     private EditText fragment_calc_bmi_form_editText_height;
     private TextView fragment_calc_bmi_framelayout_textView_result;
-    private final String LONG_HYPHENE = "—";
+    private RadioGroup fragment_calc_bmi_radioGroup_sex;
+    private final String LONG_DASH = "—";
 
     public Fragment_CalcBodyMassIndex() {
         // Required empty public constructor
@@ -75,18 +76,16 @@ public class Fragment_CalcBodyMassIndex extends Fragment
         // Inflate the layout for this fragment
         //return inflater.inflate(R.layout.fragment_calc_body_mass_index, container, false);
         View layout = inflater.inflate(R.layout.fragment_calc_body_mass_index, container, false);
-        fragment_calc_bmi_form_editText_height = layout.findViewById(R.id.fragment_calc_bmi_form_editText_height);
-        fragment_calc_bmi_framelayout_textView_result = layout.findViewById(R.id.fragment_calc_bmi_framelayout_textView_result);
+        setUiComponent(layout);
         setListeners();
         return layout;
     }
 
-    /*
-    public void setUiComponent() {
-        fragment_calc_bmi_form_editText_height = getView().findViewById()
+    public void setUiComponent(View layout) {
+        fragment_calc_bmi_form_editText_height = layout.findViewById(R.id.fragment_calc_bmi_form_editText_height);
+        fragment_calc_bmi_framelayout_textView_result = layout.findViewById(R.id.fragment_calc_bmi_framelayout_textView_result);
+        fragment_calc_bmi_radioGroup_sex = layout.findViewById(R.id.fragment_calc_bmi_radioGroup_sex);
     }
-
-     */
 
     public void setListeners() {
         fragment_calc_bmi_form_editText_height.addTextChangedListener(new TextWatcher()
@@ -104,17 +103,15 @@ public class Fragment_CalcBodyMassIndex extends Fragment
             @Override
             public void afterTextChanged(Editable editable) {
                 String height_string = editable.toString();
-                if(height_string != null && height_string.length() > 0) {
-                    if(isPositiveNumeric(height_string)) {
-                        String weightValue = calculateIdealWeigth(height_string);
-                        fragment_calc_bmi_framelayout_textView_result.setText(weightValue);
-                    }
-                    else {
-                        setNullResult();
-                    }
-                } else {
-                    setNullResult();
-                }
+                setIdealWeightResult(height_string);
+            }
+        });
+
+        fragment_calc_bmi_radioGroup_sex.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener()
+        {
+            public void onCheckedChanged(RadioGroup group, int checkedId)
+            {
+                    setIdealWeightResult(fragment_calc_bmi_form_editText_height.getText().toString());
             }
         });
     }
@@ -130,15 +127,37 @@ public class Fragment_CalcBodyMassIndex extends Fragment
 
     public String calculateIdealWeigth(String height) {
         float height_float = Float.parseFloat(height);
-        float result = height_float - 100 - (height_float - 150) / 2;
+        float divisor = 2;
+        //LORENZ FORMULA
+        RadioButton checkedRadioButton = (RadioButton)fragment_calc_bmi_radioGroup_sex.findViewById(fragment_calc_bmi_radioGroup_sex.getCheckedRadioButtonId());
+        String sex = checkedRadioButton.getTag().toString();
+        if(sex.equals(getString(R.string.male_short))) {
+            divisor = 4;
+        }
+
+        float result = height_float - 100 - (height_float - 150) / divisor;
         if(result > 0 && result < 1000) {
             return String.valueOf(result) + " kg";
         } else {
-            return LONG_HYPHENE;
+            return LONG_DASH;
         }
     }
 
     public void setNullResult() {
-        fragment_calc_bmi_framelayout_textView_result.setText(LONG_HYPHENE);
+        fragment_calc_bmi_framelayout_textView_result.setText(LONG_DASH);
     }
+
+    public void setIdealWeightResult(String height_string) {
+    if(height_string != null && height_string.length() > 0) {
+        if(isPositiveNumeric(height_string)) {
+            String weightValue = calculateIdealWeigth(height_string);
+            fragment_calc_bmi_framelayout_textView_result.setText(weightValue);
+        }
+        else {
+            setNullResult();
+        }
+    } else {
+        setNullResult();
+    }
+}
 }
