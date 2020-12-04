@@ -21,10 +21,10 @@ import static com.cafape.nutriplan.Globals.LONG_DASH;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link Fragment_Calc_BodyMassIndex#newInstance} factory method to
+ * Use the {@link Fragment_Calc_BodyAdiposityIndex#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class Fragment_Calc_BodyMassIndex extends Fragment
+public class Fragment_Calc_BodyAdiposityIndex extends Fragment
 {
 
     // TODO: Rename parameter arguments, choose names that match
@@ -36,11 +36,11 @@ public class Fragment_Calc_BodyMassIndex extends Fragment
     private String mParam1;
     private String mParam2;
 
-    private EditText fragment_calc_bmi_form_editText_height;
-    private EditText fragment_calc_bmi_form_editText_weight;
-    private TextView fragment_calc_bmi_constraintLayout_textView_result;
+    private EditText fragment_calc_bai_form_editText_height;
+    private EditText fragment_calc_bai_form_editText_hipscirc;
+    private TextView fragment_calc_bai_constraintLayout_textView_result;
 
-    public Fragment_Calc_BodyMassIndex() {
+    public Fragment_Calc_BodyAdiposityIndex() {
         // Required empty public constructor
     }
 
@@ -50,11 +50,11 @@ public class Fragment_Calc_BodyMassIndex extends Fragment
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment CalcBodyMassIndex.
+     * @return A new instance of fragment CalcBodyAdiposityIndex.
      */
     // TODO: Rename and change types and number of parameters
-    public static Fragment_Calc_BodyMassIndex newInstance(String param1, String param2) {
-        Fragment_Calc_BodyMassIndex fragment = new Fragment_Calc_BodyMassIndex();
+    public static Fragment_Calc_BodyAdiposityIndex newInstance(String param1, String param2) {
+        Fragment_Calc_BodyAdiposityIndex fragment = new Fragment_Calc_BodyAdiposityIndex();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -74,20 +74,20 @@ public class Fragment_Calc_BodyMassIndex extends Fragment
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View layout = inflater.inflate(R.layout.fragment_calc_body_mass_index, container, false);
+        View layout = inflater.inflate(R.layout.fragment_calc_body_adiposity_index, container, false);
         setUiComponent(layout);
         setListeners();
         return layout;
     }
 
     public void setUiComponent(View layout) {
-        fragment_calc_bmi_form_editText_height = layout.findViewById(R.id.fragment_calc_bmi_form_editText_height);
-        fragment_calc_bmi_form_editText_weight = layout.findViewById(R.id.fragment_calc_bmi_form_editText_weight);
-        fragment_calc_bmi_constraintLayout_textView_result = layout.findViewById(R.id.fragment_calc_bmi_constraintLayout_textView_result);
+        fragment_calc_bai_form_editText_height = layout.findViewById(R.id.fragment_calc_bai_form_editText_height);
+        fragment_calc_bai_form_editText_hipscirc = layout.findViewById(R.id.fragment_calc_bai_form_editText_hipscirc);
+        fragment_calc_bai_constraintLayout_textView_result = layout.findViewById(R.id.fragment_calc_bai_constraintLayout_textView_result);
     }
 
     public void setListeners() {
-        fragment_calc_bmi_form_editText_height.addTextChangedListener(new TextWatcher()
+        fragment_calc_bai_form_editText_height.addTextChangedListener(new TextWatcher()
         {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -102,11 +102,11 @@ public class Fragment_Calc_BodyMassIndex extends Fragment
             @Override
             public void afterTextChanged(Editable editable) {
                 String height_string = editable.toString();
-                setBMIResult(height_string, fragment_calc_bmi_form_editText_weight.getText().toString());
+                setBAIResult(height_string, fragment_calc_bai_form_editText_hipscirc.getText().toString());
             }
         });
 
-        fragment_calc_bmi_form_editText_weight.addTextChangedListener(new TextWatcher()
+        fragment_calc_bai_form_editText_hipscirc.addTextChangedListener(new TextWatcher()
         {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -121,7 +121,7 @@ public class Fragment_Calc_BodyMassIndex extends Fragment
             @Override
             public void afterTextChanged(Editable editable) {
                 String weight_string = editable.toString();
-                setBMIResult(fragment_calc_bmi_form_editText_height.getText().toString(), weight_string);
+                setBAIResult(fragment_calc_bai_form_editText_height.getText().toString(), weight_string);
             }
         });
     }
@@ -135,30 +135,29 @@ public class Fragment_Calc_BodyMassIndex extends Fragment
         return pattern.matcher(strNum).matches();
     }
 
-    public String calculateBMI(String height, String weight) {
+    public String calculateBAI(String height, String hipscirc) {
         float height_float = Float.parseFloat(height);
-        float weight_float = Float.parseFloat(weight);
+        float hipscirc_float = Float.parseFloat(hipscirc);
 
-        float result = (1.3f * weight_float) / (float)Math.pow(height_float / 100, 2.5f);
+        float result = (hipscirc_float / (float)Math.pow(height_float / 100, 1.5f)) - 18;
 
         if(result > 0 && result < 100) {
             DecimalFormat df = new DecimalFormat("###.##");
-            return df.format(result);
-        } else {
+            return df.format(result);} else {
             return LONG_DASH;
         }
     }
 
     public void setNullResult() {
-        fragment_calc_bmi_constraintLayout_textView_result.setText(LONG_DASH);
+        fragment_calc_bai_constraintLayout_textView_result.setText(LONG_DASH);
     }
 
-    public void setBMIResult(String height_string, String weight_string) {
-        if((height_string != null && height_string.length() > 0) && (weight_string != null && weight_string.length() > 0)) {
-            if(isPositiveNumeric(height_string) && isPositiveNumeric(weight_string)) {
-                String bmiValue = calculateBMI(height_string, weight_string);
+    public void setBAIResult(String height_string, String hipscirc_string) {
+        if((height_string != null && height_string.length() > 0) && (hipscirc_string != null && hipscirc_string.length() > 0)) {
+            if(isPositiveNumeric(height_string) && isPositiveNumeric(hipscirc_string)) {
+                String bmiValue = calculateBAI(height_string, hipscirc_string);
 
-                fragment_calc_bmi_constraintLayout_textView_result.setText(bmiValue);
+                fragment_calc_bai_constraintLayout_textView_result.setText(bmiValue);
             }
             else {
                 setNullResult();

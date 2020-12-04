@@ -9,6 +9,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
 import com.cafape.nutriplan.R;
+import com.cafape.nutriplan.fragments.Fragment_Calc_BodyAdiposityIndex;
 import com.cafape.nutriplan.fragments.Fragment_Calc_BodyMassIndex;
 import com.cafape.nutriplan.fragments.Fragment_Calc_IdealWeight;
 
@@ -35,9 +36,8 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter
         // Return a PlaceholderFragment (defined as a static inner class below).
         switch (position) {
             case 0: { return Fragment_Calc_IdealWeight.newInstance("0", "page 1");}
-            case 1: {return Fragment_Calc_BodyMassIndex.newInstance("1", "page 2");
-            }
-            case 3: { return PlaceholderFragment.newInstance(position + 1);}
+            case 1: {return Fragment_Calc_BodyMassIndex.newInstance("1", "page 2");}
+            case 2: {return Fragment_Calc_BodyAdiposityIndex.newInstance("2", "page 3");}
         }
         return PlaceholderFragment.newInstance(position + 1);
     }

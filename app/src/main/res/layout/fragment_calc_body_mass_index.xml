@@ -33,7 +33,6 @@
                 android:layout_marginTop="16dp"
                 android:ems="10"
                 android:inputType="numberSigned"
-                android:text="0"
                 app:layout_constraintEnd_toEndOf="@+id/fragment_calc_bmi_form_textView_label_height"
                 app:layout_constraintStart_toStartOf="@+id/fragment_calc_bmi_form_textView_label_height"
                 app:layout_constraintTop_toBottomOf="@+id/fragment_calc_bmi_form_textView_label_weight" />
@@ -54,7 +53,6 @@
                 android:layout_marginTop="16dp"
                 android:ems="10"
                 android:inputType="numberSigned"
-                android:text="0"
                 app:layout_constraintEnd_toEndOf="@+id/fragment_calc_bmi_form_textView_label_height"
                 app:layout_constraintStart_toStartOf="@+id/fragment_calc_bmi_form_textView_label_height"
                 app:layout_constraintTop_toBottomOf="@+id/fragment_calc_bmi_form_textView_label_height" />
