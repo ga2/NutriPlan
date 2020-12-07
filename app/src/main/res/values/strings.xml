@@ -3,22 +3,19 @@
     <string name="build_number">20201206</string>
     <string name="title_activity_main_menu">MainMenu</string>
 
+    <string name="yes">Sì</string>
+    <string name="no">No</string>
+    <string name="save">Salva</string>
+    <string name="saved">Salvato</string>
     <string name="height">Altezza (cm)</string>
     <string name="hip_circ">Circonferenza dei fianchi (cm)</string>
     <string name="weight">Peso (kg)</string>
-    <string name="sex">Sesso paziente</string>
+    <string name="sex">Sesso</string>
 
     <string name="male_short">M</string>
     <string name="female_short">F</string>
     <string name="male_long">Uomo ♂</string>
     <string name="female_long">Donna ♀</string>
-    <!--
-    This string is used for square devices and overridden by hello_world in
-    values-round/strings.xml for round devices.
-    -->
-    <string name="hello_world">Hello Square World!</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
 
     <!-- START Activity titles -->
 
@@ -47,4 +44,31 @@
     <string name="activitypatients_string_patient_lastVisit">Ultima visita:</string>
 
     <!-- END Activity_patients -->
+
+    <!-- START Activity_add_patient -->
+
+    <string name="activityaddpatient_string_details">Aggiungi dettagli</string>
+    <string name="activityaddpatient_string_survey">1. Questionario</string>
+
+    <string name="activityaddpatient_string_name">Nome</string>
+    <string name="activityaddpatient_string_surname">Cognome</string>
+    <string name="activityaddpatient_string_bdate">Data di nascita</string>
+    <string name="activityaddpatient_string_age">Età</string>
+    <!--sex-->
+    <string name="activityaddpatient_string_phone">Telefono</string>
+    <string name="activityaddpatient_string_visitreason">Motivo della visita</string>
+
+    <string name="activityaddpatient_string_previousdiets">Storia ponderale</string>
+    <string name="activityaddpatient_string_weighthistory">Ha seguito altre diete in precedenza\?</string>
+    <string name="activityaddpatient_string_previouspathologies">Patologie pregresse o in atto\?</string>
+    <string name="activityaddpatient_string_hereditarypathologies">Patologie ereditarie in famiglia\?</string>
+    <string name="activityaddpatient_string_allergies">Allergie\?</string>
+    <string name="activityaddpatient_string_productsassumption">Assunzione farmaci, integratori o prodotti erboristici\?</string>
+    <string name="activityaddpatient_string_intestine">Alvo</string>
+    <string name="activityaddpatient_string_menstrualcycle">Ciclo mestruale</string>
+    <string name="activityaddpatient_string_physicalactivity">Attività fisica\?</string>
+    <string name="activityaddpatient_string_workingactivity">Attività lavorativa\?</string>
+
+
+    <!-- END Activity_add_patient -->
 </resources>

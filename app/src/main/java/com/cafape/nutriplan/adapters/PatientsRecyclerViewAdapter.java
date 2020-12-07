@@ -70,6 +70,10 @@ public class PatientsRecyclerViewAdapter extends RecyclerView.Adapter<PatientsRe
         return retrievedData.get(id);
     }
 
+    public List<PatientEntity> getRetrievedData() {
+        return retrievedData;
+    }
+
     // allows clicks events to be caught
     void setClickListener(ItemClickListener itemClickListener) {
         this.mClickListener = itemClickListener;

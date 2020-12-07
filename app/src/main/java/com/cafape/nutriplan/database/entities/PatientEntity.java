@@ -2,6 +2,9 @@ package com.cafape.nutriplan.database.entities;
 
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
+import androidx.room.TypeConverters;
+
+import com.cafape.nutriplan.database.converters.TimestampConverter;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -13,49 +16,56 @@ public class PatientEntity implements Serializable
     private int patiendID;
     private String surname;
     private String name;
-    private String telefono;
+    @TypeConverters({TimestampConverter.class})
     private Date birthDate;
     private char sex;
+    private String phone;
     private String visitReason;
-    private String weightHistory;
     private boolean previousDiets_status;
     private String previousDiets_details;
+    private String weightHistory;
     private boolean previousPathologies_status;
     private String previousPathologies_details;
     private boolean hereditaryPathologies_status;
     private String herditaryPathologies_details;
     private boolean allergies_status;
     private String allergies_details;
+    private boolean productsAssumption_status;
+    private String productsAssumption_details;
     private int instestine;
     private int menstrualCycle;
     private boolean physicalActivity_status;
     private String physicalActivity_details;
+    private boolean workingActivity_status;
+    private String workinglActivity_details;
 
-    public PatientEntity(){
+    public PatientEntity() {}
 
-    }
-
-    public PatientEntity(int patiendID, String surname, String name, String telefono, Date birthDate, char sex, String visitReason, String weightHistory, boolean previousDiets_status, String previousDiets_details, boolean previousPathologies_status, String previousPathologies_details, boolean hereditaryPathologies_status, String herditaryPathologies_details, boolean allergies_status, String allergies_details, int instestine, int menstrualCycle, boolean physicalActivity_status, String physicalActivity_details) {
+    public PatientEntity(int patiendID, String surname, String name, Date birthDate, char sex, String phone, String visitReason, boolean previousDiets_status, String previousDiets_details, String weightHistory, boolean previousPathologies_status, String previousPathologies_details, boolean hereditaryPathologies_status, String herditaryPathologies_details, boolean allergies_status, String allergies_details, boolean productsAssumption_status, String productsAssumption_details, int instestine, int menstrualCycle, boolean physicalActivity_status, String physicalActivity_details, boolean workingActivity_status, String workinglActivity_details) {
         this.patiendID = patiendID;
         this.surname = surname;
         this.name = name;
-        this.telefono = telefono;
         this.birthDate = birthDate;
         this.sex = sex;
+        this.phone = phone;
         this.visitReason = visitReason;
-        this.weightHistory = weightHistory;
         this.previousDiets_status = previousDiets_status;
         this.previousDiets_details = previousDiets_details;
+        this.weightHistory = weightHistory;
         this.previousPathologies_status = previousPathologies_status;
         this.previousPathologies_details = previousPathologies_details;
         this.hereditaryPathologies_status = hereditaryPathologies_status;
         this.herditaryPathologies_details = herditaryPathologies_details;
         this.allergies_status = allergies_status;
         this.allergies_details = allergies_details;
+        this.productsAssumption_status = productsAssumption_status;
+        this.productsAssumption_details = productsAssumption_details;
         this.instestine = instestine;
         this.menstrualCycle = menstrualCycle;
         this.physicalActivity_status = physicalActivity_status;
         this.physicalActivity_details = physicalActivity_details;
+        this.workingActivity_status = workingActivity_status;
+        this.workinglActivity_details = workinglActivity_details;
     }
 
     public int getPatiendID() {
@@ -82,14 +92,6 @@ public class PatientEntity implements Serializable
         this.name = name;
     }
 
-    public String getTelefono() {
-        return telefono;
-    }
-
-    public void setTelefono(String telefono) {
-        this.telefono = telefono;
-    }
-
     public Date getBirthDate() {
         return birthDate;
     }
@@ -106,20 +108,20 @@ public class PatientEntity implements Serializable
         this.sex = sex;
     }
 
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
     public String getVisitReason() {
         return visitReason;
     }
 
     public void setVisitReason(String visitReason) {
         this.visitReason = visitReason;
-    }
-
-    public String getWeightHistory() {
-        return weightHistory;
-    }
-
-    public void setWeightHistory(String weightHistory) {
-        this.weightHistory = weightHistory;
     }
 
     public boolean isPreviousDiets_status() {
@@ -136,6 +138,14 @@ public class PatientEntity implements Serializable
 
     public void setPreviousDiets_details(String previousDiets_details) {
         this.previousDiets_details = previousDiets_details;
+    }
+
+    public String getWeightHistory() {
+        return weightHistory;
+    }
+
+    public void setWeightHistory(String weightHistory) {
+        this.weightHistory = weightHistory;
     }
 
     public boolean isPreviousPathologies_status() {
@@ -186,6 +196,22 @@ public class PatientEntity implements Serializable
         this.allergies_details = allergies_details;
     }
 
+    public boolean isProductsAssumption_status() {
+        return productsAssumption_status;
+    }
+
+    public void setProductsAssumption_status(boolean productsAssumption_status) {
+        this.productsAssumption_status = productsAssumption_status;
+    }
+
+    public String getProductsAssumption_details() {
+        return productsAssumption_details;
+    }
+
+    public void setProductsAssumption_details(String productsAssumption_details) {
+        this.productsAssumption_details = productsAssumption_details;
+    }
+
     public int getInstestine() {
         return instestine;
     }
@@ -216,5 +242,21 @@ public class PatientEntity implements Serializable
 
     public void setPhysicalActivity_details(String physicalActivity_details) {
         this.physicalActivity_details = physicalActivity_details;
+    }
+
+    public boolean isWorkingActivity_status() {
+        return workingActivity_status;
+    }
+
+    public void setWorkingActivity_status(boolean workingActivity_status) {
+        this.workingActivity_status = workingActivity_status;
+    }
+
+    public String getWorkinglActivity_details() {
+        return workinglActivity_details;
+    }
+
+    public void setWorkinglActivity_details(String workinglActivity_details) {
+        this.workinglActivity_details = workinglActivity_details;
     }
 }

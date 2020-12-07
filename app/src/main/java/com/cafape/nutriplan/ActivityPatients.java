@@ -5,6 +5,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
@@ -17,6 +18,8 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import static com.cafape.nutriplan.Globals.REQCODE_NEWPATIENT_ADDED;
 
 public class ActivityPatients extends AppCompatActivity
 {
@@ -37,12 +40,21 @@ public class ActivityPatients extends AppCompatActivity
         getPatients();
     }
 
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == REQCODE_NEWPATIENT_ADDED) {
+            if (resultCode == RESULT_OK) {
+                PatientEntity patientEntity_new = (PatientEntity)data.getSerializableExtra("newPatientEntity");
+                patientsRecyclerViewAdapter.getRetrievedData().add(patientEntity_new);
+                patientsRecyclerViewAdapter.notifyDataSetChanged();
+            }
+        }
+    }
+
     public void setUIComponents() {
         activitParents_fab_patient_add = findViewById(R.id.activityPatients_fab_patient_add);
         activityPatients_recycleView_patients = findViewById(R.id.activityPatients_recycleView_patients);
-        //List<PatientEntity> patientsList = new ArrayList<>();
-        //patientsRecyclerViewAdapter = new PatientsRecyclerViewAdapter(context, patientsList);
-        //activityPatients_recycleView_patients.setAdapter(patientsRecyclerViewAdapter);
     }
 
     public void setListeners() {
@@ -50,7 +62,8 @@ public class ActivityPatients extends AppCompatActivity
         {
             @Override
             public void onClick(View view) {
-                savePatient();
+                Intent intent_goToActivity = new Intent(context, ActivityAddPatient.class);
+                startActivityForResult(intent_goToActivity, REQCODE_NEWPATIENT_ADDED);
             }
         });
     }
@@ -128,13 +141,10 @@ public class ActivityPatients extends AppCompatActivity
                 for (PatientEntity patient : patients) {
                     System.out.println(patient.getName());
                 }
-                //PatientsRecyclerViewAdapter patientsRecyclerViewAdapter = new PatientsRecyclerViewAdapter(context, patients);
                 patientsRecyclerViewAdapter = new PatientsRecyclerViewAdapter(context, patients);
                 activityPatients_recycleView_patients.setLayoutManager(new LinearLayoutManager(context));
                 activityPatients_recycleView_patients.setAdapter(patientsRecyclerViewAdapter);
                 patientsRecyclerViewAdapter.notifyDataSetChanged();
-                //TasksAdapter adapter = new TasksAdapter(MainActivity.this, tasks);
-                //recyclerView.setAdapter(adapter);
             }
         }
 
