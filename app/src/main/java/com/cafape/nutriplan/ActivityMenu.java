@@ -46,8 +46,8 @@ public class ActivityMenu extends AppCompatActivity
         {
             @Override
             public void onClick(View view) {
-                /*Intent intent_goToActivity = new Intent(context, ActivityCalc.class);
-                startActivity(intent_goToActivity);*/
+                Intent intent_goToActivity = new Intent(context, ActivityPatients.class);
+                startActivity(intent_goToActivity);
             }
         });
 

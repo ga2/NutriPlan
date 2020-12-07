@@ -4,6 +4,7 @@ xmlns:app="http://schemas.android.com/apk/res-auto"
 xmlns:tools="http://schemas.android.com/tools"
 android:layout_width="match_parent"
 android:layout_height="match_parent"
+    android:background="@color/material_gray_200"
 tools:context=".fragments.Fragment_Calc_IdealWeight">
 
 <androidx.constraintlayout.widget.ConstraintLayout
@@ -21,7 +22,7 @@ tools:context=".fragments.Fragment_Calc_IdealWeight">
 
         <TextView
             android:id="@+id/fragment_calc_pi_form_textView_label_sex"
-            style="@style/style_activitycalc_form_label"
+            style="@style/style_form_label"
             android:text="@string/sex"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -57,7 +58,7 @@ tools:context=".fragments.Fragment_Calc_IdealWeight">
 
         <TextView
             android:id="@+id/fragment_calc_pi_form_textView_label_height"
-            style="@style/style_activitycalc_form_label"
+            style="@style/style_form_label"
             android:layout_marginTop="24dp"
             android:text="@string/height"
             app:layout_constraintEnd_toEndOf="@+id/fragment_calc_pi_radioGroup_sex"

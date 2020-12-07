@@ -11,7 +11,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.NutriPlan">
-
+        <activity android:name=".ActivityPatients"
+            android:label="@string/title_activity_patients"></activity>
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -19,11 +20,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".ActivityCalc"
             android:label="@string/title_activity_calc"
-            android:theme="@style/Theme.NutriPlan.NoActionBar"></activity>
+            android:theme="@style/Theme.NutriPlan.NoActionBar" />
         <!--
                Set to true if your app is Standalone, that is, it does not require the handheld
                app to run.
@@ -34,10 +34,7 @@
 
         <activity
             android:name=".ActivityMenu"
-            android:label="@string/title_activity_menu">
-
-        </activity>
-
+            android:label="@string/title_activity_menu"></activity>
     </application>
 
 </manifest>

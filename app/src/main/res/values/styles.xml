@@ -21,7 +21,7 @@
         <item name="background">@color/primaryLightColor</item>
     </style>
 
-    <style name="style_activitycalc_form_label">
+    <style name="style_form_label">
         <item name="android:textSize">22sp</item>
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
