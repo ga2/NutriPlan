@@ -129,7 +129,7 @@ public class Fragment_Calc_IdealWeight extends Fragment
         float height_float = Float.parseFloat(height);
         float divisor = 2;
         //LORENZ FORMULA
-        RadioButton checkedRadioButton = (RadioButton)fragment_calc_pi_radioGroup_sex.findViewById(fragment_calc_pi_radioGroup_sex.getCheckedRadioButtonId());
+        RadioButton checkedRadioButton = fragment_calc_pi_radioGroup_sex.findViewById(fragment_calc_pi_radioGroup_sex.getCheckedRadioButtonId());
         String sex = checkedRadioButton.getTag().toString();
         if(sex.equals(getString(R.string.male_short))) {
             divisor = 4;

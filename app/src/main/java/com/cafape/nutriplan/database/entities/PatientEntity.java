@@ -14,11 +14,11 @@ public class PatientEntity implements Serializable
 {
     @PrimaryKey(autoGenerate = true)
     private int patiendID;
-    private String surname;
     private String name;
+    private String surname;
     @TypeConverters({TimestampConverter.class})
     private Date birthDate;
-    private char sex;
+    private String sex;
     private String phone;
     private String visitReason;
     private boolean previousDiets_status;
@@ -41,10 +41,9 @@ public class PatientEntity implements Serializable
 
     public PatientEntity() {}
 
-    public PatientEntity(int patiendID, String surname, String name, Date birthDate, char sex, String phone, String visitReason, boolean previousDiets_status, String previousDiets_details, String weightHistory, boolean previousPathologies_status, String previousPathologies_details, boolean hereditaryPathologies_status, String herditaryPathologies_details, boolean allergies_status, String allergies_details, boolean productsAssumption_status, String productsAssumption_details, int instestine, int menstrualCycle, boolean physicalActivity_status, String physicalActivity_details, boolean workingActivity_status, String workinglActivity_details) {
-        this.patiendID = patiendID;
-        this.surname = surname;
+    public PatientEntity(String name, String surname, Date birthDate, String sex, String phone, String visitReason, boolean previousDiets_status, String previousDiets_details, String weightHistory, boolean previousPathologies_status, String previousPathologies_details, boolean hereditaryPathologies_status, String hereditaryPathologies_details, boolean allergies_status, String allergies_details, boolean productsAssumption_status, String productsAssumption_details, int instestine, int menstrualCycle, boolean physicalActivity_status, String physicalActivity_details, boolean workingActivity_status, String workinglActivity_details) {
         this.name = name;
+        this.surname = surname;
         this.birthDate = birthDate;
         this.sex = sex;
         this.phone = phone;
@@ -55,7 +54,7 @@ public class PatientEntity implements Serializable
         this.previousPathologies_status = previousPathologies_status;
         this.previousPathologies_details = previousPathologies_details;
         this.hereditaryPathologies_status = hereditaryPathologies_status;
-        this.herditaryPathologies_details = herditaryPathologies_details;
+        this.herditaryPathologies_details = hereditaryPathologies_details;
         this.allergies_status = allergies_status;
         this.allergies_details = allergies_details;
         this.productsAssumption_status = productsAssumption_status;
@@ -76,20 +75,20 @@ public class PatientEntity implements Serializable
         this.patiendID = patiendID;
     }
 
-    public String getSurname() {
-        return surname;
-    }
-
-    public void setSurname(String surname) {
-        this.surname = surname;
-    }
-
     public String getName() {
         return name;
     }
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getSurname() {
+        return surname;
+    }
+
+    public void setSurname(String surname) {
+        this.surname = surname;
     }
 
     public Date getBirthDate() {
@@ -100,11 +99,11 @@ public class PatientEntity implements Serializable
         this.birthDate = birthDate;
     }
 
-    public char getSex() {
+    public String getSex() {
         return sex;
     }
 
-    public void setSex(char sex) {
+    public void setSex(String sex) {
         this.sex = sex;
     }
 

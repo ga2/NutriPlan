@@ -40,7 +40,7 @@ tools:context=".fragments.Fragment_Calc_IdealWeight">
 
             <RadioButton
                 android:id="@+id/fragment_calc_pi_radio_female"
-                style="@style/style_activitycalc_form_options"
+                style="@style/style_textView_form_options"
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
                 android:checked="true"
@@ -49,7 +49,7 @@ tools:context=".fragments.Fragment_Calc_IdealWeight">
 
             <RadioButton
                 android:id="@+id/fragment_calc_pi_radio_male"
-                style="@style/style_activitycalc_form_options"
+                style="@style/style_textView_form_options"
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
                 android:tag="@string/male_short"

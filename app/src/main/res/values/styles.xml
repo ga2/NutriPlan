@@ -34,9 +34,18 @@
         <item name="android:layout_height">wrap_content</item>
     </style>
 
-    <style name="style_activitycalc_form_options">
+    <style name="style_form_multiline" parent="android:Widget.EditText">
+        <item name="android:lines">4</item>
+    </style>
+
+    <style name="style_textView_form_options">
         <item name="android:textSize">18sp</item>
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="style_activityaddpatient_textView_surveysectiontitle">
+        <item name="android:textSize">20sp</item>
+        <item name="android:color">@color/primaryDarkColor</item>
     </style>
 </resources>
