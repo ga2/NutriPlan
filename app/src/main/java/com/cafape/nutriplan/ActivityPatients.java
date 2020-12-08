@@ -50,7 +50,7 @@ public class ActivityPatients extends AppCompatActivity
         if (requestCode == REQCODE_NEWPATIENT_ADDED) {
             if (resultCode == RESULT_OK) {
                 PatientEntity patientEntity_new = (PatientEntity)data.getSerializableExtra("newPatientEntity");
-                patientsRecyclerViewAdapter.getRetrievedData().add(patientEntity_new);
+                patientsRecyclerViewAdapter.addToRetrievedData(patientEntity_new);
                 patientsRecyclerViewAdapter.notifyDataSetChanged();
             }
         }
@@ -67,6 +67,7 @@ public class ActivityPatients extends AppCompatActivity
         {
             @Override
             public void onClick(View view) {
+                activityPatients_editText_patient_search.setText("");
                 Intent intent_goToActivity = new Intent(context, ActivityAddPatient.class);
                 startActivityForResult(intent_goToActivity, REQCODE_NEWPATIENT_ADDED);
             }

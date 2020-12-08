@@ -80,6 +80,11 @@ public class PatientsRecyclerViewAdapter extends RecyclerView.Adapter<PatientsRe
         return retrievedData;
     }
 
+    public void addToRetrievedData(PatientEntity patientEntity) {
+        retrievedData.add(patientEntity);
+        retrievedData_copy.add(patientEntity);
+    }
+
     // allows clicks events to be caught
     void setClickListener(ItemClickListener itemClickListener) {
         this.mClickListener = itemClickListener;
