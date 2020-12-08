@@ -11,8 +11,11 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.SearchView;
 import android.widget.TextView;
 
 import com.cafape.nutriplan.adapters.PatientsRecyclerViewAdapter;
@@ -27,8 +30,8 @@ import static com.cafape.nutriplan.Globals.REQCODE_NEWPATIENT_ADDED;
 public class ActivityPatients extends AppCompatActivity
 {
     private Context context;
+    private MenuItem searchMenuItem;
     private FloatingActionButton activitParents_fab_patient_add;
-    private EditText activityPatients_editText_patient_search;
     private RecyclerView activityPatients_recycleView_patients;
     private PatientsRecyclerViewAdapter patientsRecyclerViewAdapter;
 
@@ -56,10 +59,43 @@ public class ActivityPatients extends AppCompatActivity
         }
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_activitypatients, menu);
+
+        searchMenuItem = menu.findItem(R.id.action_search);
+        final SearchView searchView = (SearchView) searchMenuItem.getActionView();
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String textToSearch) {
+                patientsRecyclerViewAdapter.filterPatients(textToSearch);
+                return false;
+            }
+        });
+        return true;
+    }
+
+    @Override
+    public boolean onPrepareOptionsMenu(Menu menu) {
+        searchMenuItem.collapseActionView();
+
+        return super.onPrepareOptionsMenu(menu);
+    }
+
+    @Override
+    protected void onResume() {
+        invalidateOptionsMenu();
+        super.onResume();
+    }
+
     public void setUIComponents() {
         activitParents_fab_patient_add = findViewById(R.id.activityPatients_fab_patient_add);
         activityPatients_recycleView_patients = findViewById(R.id.activityPatients_recycleView_patients);
-        activityPatients_editText_patient_search = findViewById(R.id.activityPatients_editText_patient_search);
     }
 
     public void setListeners() {
@@ -67,28 +103,9 @@ public class ActivityPatients extends AppCompatActivity
         {
             @Override
             public void onClick(View view) {
-                activityPatients_editText_patient_search.setText("");
+                ((SearchView)searchMenuItem.getActionView()).setQuery("",true);
                 Intent intent_goToActivity = new Intent(context, ActivityAddPatient.class);
                 startActivityForResult(intent_goToActivity, REQCODE_NEWPATIENT_ADDED);
-            }
-        });
-
-        activityPatients_editText_patient_search.addTextChangedListener(new TextWatcher()
-        {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable editable) {
-                String textToSearch = editable.toString();
-                patientsRecyclerViewAdapter.filterPatients(textToSearch);
             }
         });
     }
