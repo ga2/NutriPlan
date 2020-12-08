@@ -9,14 +9,12 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Toast;
 
 import com.cafape.nutriplan.adapters.PatientsRecyclerViewAdapter;
 import com.cafape.nutriplan.database.DatabaseRepository;
 import com.cafape.nutriplan.database.entities.PatientEntity;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import static com.cafape.nutriplan.Globals.REQCODE_NEWPATIENT_ADDED;
@@ -66,60 +64,6 @@ public class ActivityPatients extends AppCompatActivity
                 startActivityForResult(intent_goToActivity, REQCODE_NEWPATIENT_ADDED);
             }
         });
-    }
-
-    private void savePatient() {
-        /*
-        final String sTask = editTextTask.getText().toString().trim();
-        final String sDesc = editTextDesc.getText().toString().trim();
-        final String sFinishBy = editTextFinishBy.getText().toString().trim();
-
-        if (sTask.isEmpty()) {
-            editTextTask.setError("Task required");
-            editTextTask.requestFocus();
-            return;
-        }
-
-        if (sDesc.isEmpty()) {
-            editTextDesc.setError("Desc required");
-            editTextDesc.requestFocus();
-            return;
-        }
-
-        if (sFinishBy.isEmpty()) {
-            editTextFinishBy.setError("Finish by required");
-            editTextFinishBy.requestFocus();
-            return;
-        }
-        */
-
-        class SavePatient extends AsyncTask<Void, Void, Void>
-        {
-            @Override
-            protected Void doInBackground(Void... voids) {
-
-                //creating a patient
-                PatientEntity patient = new PatientEntity();
-                patient.setName("MARCO");
-
-                //adding to database
-                DatabaseRepository.getInstance(getApplicationContext()).getAppDatabase()
-                        .patientDao()
-                        .insertPatient(patient);
-                return null;
-            }
-
-            @Override
-            protected void onPostExecute(Void aVoid) {
-                super.onPostExecute(aVoid);
-                finish();
-                //startActivity(new Intent(getApplicationContext(), MainActivity.class));
-                Toast.makeText(getApplicationContext(), "Saved", Toast.LENGTH_LONG).show();
-            }
-        }
-
-        SavePatient savePatient = new SavePatient();
-        savePatient.execute();
     }
 
     private void getPatients() {
