@@ -8,15 +8,19 @@ import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.cafape.nutriplan.Globals;
 import com.cafape.nutriplan.R;
 import com.cafape.nutriplan.database.converters.TimestampConverter;
 import com.cafape.nutriplan.database.entities.PatientEntity;
+import com.cafape.nutriplan.support.Utils;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class PatientsRecyclerViewAdapter extends RecyclerView.Adapter<PatientsRecyclerViewAdapter.ViewHolder>
 {
     private List<PatientEntity> retrievedData;
+    private List<PatientEntity> retrievedData_copy; //needed for filtering
     private LayoutInflater layoutInflater;
     private ItemClickListener mClickListener;
 
@@ -24,6 +28,8 @@ public class PatientsRecyclerViewAdapter extends RecyclerView.Adapter<PatientsRe
     public PatientsRecyclerViewAdapter(Context context, List<PatientEntity> retrievedData) {
         this.layoutInflater = LayoutInflater.from(context);
         this.retrievedData = retrievedData;
+        this.retrievedData_copy = new ArrayList<PatientEntity>();
+        this.retrievedData_copy.addAll(retrievedData);
     }
 
     // inflates the row layout from xml when needed
@@ -38,7 +44,7 @@ public class PatientsRecyclerViewAdapter extends RecyclerView.Adapter<PatientsRe
     public void onBindViewHolder(ViewHolder holder, int position) {
         PatientEntity dataGot = retrievedData.get(position);
         holder.rowPatients_textView_name.setText(dataGot.getName() + " " + dataGot.getSurname());
-        holder.rowPatients_textView_bdate.setText(TimestampConverter.dateToTimestamp(dataGot.getBirthDate()));
+        holder.rowPatients_textView_bdate.setText(Utils.convertDateFormat(dataGot.getBirthDate(), Globals.DATEFORMAT_DISPLAY));
     }
 
     // total number of rows
@@ -82,5 +88,22 @@ public class PatientsRecyclerViewAdapter extends RecyclerView.Adapter<PatientsRe
     // parent activity will implement this method to respond to click events
     public interface ItemClickListener {
         void onItemClick(View view, int position);
+    }
+
+    public void filterPatients(String text) {
+        //todo doesn work with patient just added
+        //todo implement the widget in the bar
+        retrievedData.clear();
+        if(text.isEmpty()){
+            retrievedData.addAll(retrievedData_copy);
+        } else{
+            text = text.toLowerCase();
+            for(PatientEntity item: retrievedData_copy){
+                if(item.getName().toLowerCase().contains(text) || item.getSurname().toLowerCase().contains(text)){
+                    retrievedData.add(item);
+                }
+            }
+        }
+        notifyDataSetChanged();
     }
 }

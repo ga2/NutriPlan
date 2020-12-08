@@ -7,6 +7,19 @@
         <item name="android:background">@color/primaryDarkColor</item>
     </style>
 
+    <style name="style_nodata" parent="android:Widget.TextView">
+        <item name="android:gravity">center</item>
+        <item name="android:padding">@dimen/dim_margin_normal</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:textColor">@color/colorIconsText</item>
+        <item name="android:textSize">@dimen/dim_textView_nodata_textSize</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="style_nodata_details" parent="style_nodata">
+        <item name="android:textSize">@dimen/dim_textView_nodatadetails_textSize</item>
+    </style>
+
     <style name="style_mainactivity_card" parent="CardView">
         <item name="android:layout_width">200dp</item>
         <item name="android:layout_height">200dp</item>

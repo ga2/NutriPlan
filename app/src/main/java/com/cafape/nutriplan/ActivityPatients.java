@@ -1,6 +1,7 @@
 package com.cafape.nutriplan;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -8,7 +9,11 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
+import android.widget.EditText;
+import android.widget.TextView;
 
 import com.cafape.nutriplan.adapters.PatientsRecyclerViewAdapter;
 import com.cafape.nutriplan.database.DatabaseRepository;
@@ -23,6 +28,7 @@ public class ActivityPatients extends AppCompatActivity
 {
     private Context context;
     private FloatingActionButton activitParents_fab_patient_add;
+    private EditText activityPatients_editText_patient_search;
     private RecyclerView activityPatients_recycleView_patients;
     private PatientsRecyclerViewAdapter patientsRecyclerViewAdapter;
 
@@ -53,6 +59,7 @@ public class ActivityPatients extends AppCompatActivity
     public void setUIComponents() {
         activitParents_fab_patient_add = findViewById(R.id.activityPatients_fab_patient_add);
         activityPatients_recycleView_patients = findViewById(R.id.activityPatients_recycleView_patients);
+        activityPatients_editText_patient_search = findViewById(R.id.activityPatients_editText_patient_search);
     }
 
     public void setListeners() {
@@ -62,6 +69,25 @@ public class ActivityPatients extends AppCompatActivity
             public void onClick(View view) {
                 Intent intent_goToActivity = new Intent(context, ActivityAddPatient.class);
                 startActivityForResult(intent_goToActivity, REQCODE_NEWPATIENT_ADDED);
+            }
+        });
+
+        activityPatients_editText_patient_search.addTextChangedListener(new TextWatcher()
+        {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                String textToSearch = editable.toString();
+                patientsRecyclerViewAdapter.filterPatients(textToSearch);
             }
         });
     }
@@ -89,6 +115,16 @@ public class ActivityPatients extends AppCompatActivity
                 activityPatients_recycleView_patients.setLayoutManager(new LinearLayoutManager(context));
                 activityPatients_recycleView_patients.setAdapter(patientsRecyclerViewAdapter);
                 patientsRecyclerViewAdapter.notifyDataSetChanged();
+                TextView activityPatients_textView_nodata_details = findViewById(R.id.textView_nodata_details);
+                ConstraintLayout activityPatients_constraintLayout_nodata = findViewById(R.id.constraintLayout_nodata);
+                if(patientsRecyclerViewAdapter.getItemCount() == 0) {
+                    activityPatients_textView_nodata_details.setText(getString(R.string.activityaddpatient_string_nodata_details));
+                    activityPatients_textView_nodata_details.setVisibility(View.VISIBLE);
+                    activityPatients_constraintLayout_nodata.setVisibility(View.VISIBLE);
+                } else {
+                    activityPatients_textView_nodata_details.setText("");
+                    activityPatients_constraintLayout_nodata.setVisibility(View.GONE);
+                }
             }
         }
 

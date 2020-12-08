@@ -16,17 +16,22 @@ import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import com.cafape.nutriplan.database.DatabaseRepository;
+import com.cafape.nutriplan.database.converters.TimestampConverter;
 import com.cafape.nutriplan.database.entities.PatientEntity;
 import com.cafape.nutriplan.support.AlertBuilderUtils;
 import com.cafape.nutriplan.support.Utils;
 
+import java.util.Calendar;
 import java.util.Date;
 
 public class ActivityAddPatient extends AppCompatActivity
 {
-    Context context;
-    Button activityaddpatient_button_save;
-    PatientEntity patientEntity;
+    private Context context;
+
+    private DatePicker activityaddpatient_datepicker_bdate;
+    private EditText activityaddpatient_editText_age;
+    private Button activityaddpatient_button_save;
+    private PatientEntity patientEntity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,10 +44,28 @@ public class ActivityAddPatient extends AppCompatActivity
     }
 
     public void setUIComponents() {
+        activityaddpatient_editText_age = findViewById(R.id.activityaddpatient_editText_age);
+        activityaddpatient_datepicker_bdate = findViewById(R.id.activityaddpatient_datepicker_bdate);
         activityaddpatient_button_save = findViewById(R.id.activityaddpatient_button_save);
     }
 
     public void setListeners() {
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTimeInMillis(System.currentTimeMillis());
+        activityaddpatient_datepicker_bdate.init(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH), new DatePicker.OnDateChangedListener() {
+
+            @Override
+            public void onDateChanged(DatePicker datePicker, int year, int month, int dayOfMonth) {
+                Date bdayDate = TimestampConverter.fromTimestamp(year + "-" + (month + 1) + "-" + dayOfMonth);
+                int age_int = Utils.calculateAge(bdayDate);
+                String age_string = getString(R.string.error).toUpperCase();
+                if(age_int > -1) {
+                    age_string = String.valueOf(age_int);
+                }
+                activityaddpatient_editText_age.setText(age_string);
+            }
+        });
+
         activityaddpatient_button_save.setOnClickListener(new View.OnClickListener()
         {
             SavePatient savePatient = new SavePatient();
@@ -51,7 +74,7 @@ public class ActivityAddPatient extends AppCompatActivity
             public void onClick(View view) {
                 String patientEntity_name = ((EditText)findViewById(R.id.activityaddpatient_editText_name)).getText().toString();
                 String patientEntity_surname = ((EditText)findViewById(R.id.activityaddpatient_editText_surname)).getText().toString();
-                DatePicker activityaddpatient_datepicker_bdate = findViewById(R.id.activityaddpatient_datepicker_bdate);
+
                 Date patientEntity_bdate = Utils.getDateFromDatePicker(activityaddpatient_datepicker_bdate);
                 String patientEntity_phone = ((EditText)findViewById(R.id.activityaddpatient_editText_phone)).getText().toString();
                 if(!patientEntity_name.isEmpty() && !patientEntity_surname.isEmpty() && !patientEntity_phone.isEmpty()) {

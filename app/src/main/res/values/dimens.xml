@@ -6,6 +6,9 @@
     -->
     <dimen name="box_inset_layout_padding">0dp</dimen>
 
+    <dimen name="dim_textView_nodata_textSize">64sp</dimen>
+    <dimen name="dim_textView_nodatadetails_textSize">32sp</dimen>
+
     <!--
     This padding applies to both square and round screens. The total padding between the buttons
     and the window insets is box_inset_layout_padding (above variable) on square screens and
