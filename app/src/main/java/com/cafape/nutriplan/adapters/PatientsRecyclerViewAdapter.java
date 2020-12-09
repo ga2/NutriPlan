@@ -4,13 +4,13 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.cafape.nutriplan.Globals;
 import com.cafape.nutriplan.R;
-import com.cafape.nutriplan.database.converters.TimestampConverter;
 import com.cafape.nutriplan.database.entities.PatientEntity;
 import com.cafape.nutriplan.support.Utils;
 
@@ -19,10 +19,10 @@ import java.util.List;
 
 public class PatientsRecyclerViewAdapter extends RecyclerView.Adapter<PatientsRecyclerViewAdapter.ViewHolder>
 {
+    private Context context;
     private List<PatientEntity> retrievedData;
     private List<PatientEntity> retrievedData_copy; //needed for filtering
     private LayoutInflater layoutInflater;
-    private ItemClickListener mClickListener;
 
     // data is passed into the constructor
     public PatientsRecyclerViewAdapter(Context context, List<PatientEntity> retrievedData) {
@@ -45,6 +45,18 @@ public class PatientsRecyclerViewAdapter extends RecyclerView.Adapter<PatientsRe
         PatientEntity dataGot = retrievedData.get(position);
         holder.rowPatients_textView_name.setText(dataGot.getName() + " " + dataGot.getSurname());
         holder.rowPatients_textView_bdate.setText(Utils.convertDateFormat(dataGot.getBirthDate(), Globals.DATEFORMAT_DISPLAY));
+        holder.rowPatients_imageView_call.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                phoneClickListener.onItemClick(dataGot.getPhone());
+            }
+        });
+        holder.rowPatients_imageView_whatsapp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                whatsapClickListener.onItemClick(dataGot.getName());
+            }
+        });
     }
 
     // total number of rows
@@ -54,20 +66,18 @@ public class PatientsRecyclerViewAdapter extends RecyclerView.Adapter<PatientsRe
     }
 
     // stores and recycles views as they are scrolled off screen
-    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+    public class ViewHolder extends RecyclerView.ViewHolder{
         TextView rowPatients_textView_name;
         TextView rowPatients_textView_bdate;
+        ImageView rowPatients_imageView_whatsapp;
+        ImageView rowPatients_imageView_call;
 
         ViewHolder(View itemView) {
             super(itemView);
             rowPatients_textView_name = itemView.findViewById(R.id.rowPatients_textView_name);
             rowPatients_textView_bdate = itemView.findViewById(R.id.rowPatients_textView_bdate);
-            itemView.setOnClickListener(this);
-        }
-
-        @Override
-        public void onClick(View view) {
-            if (mClickListener != null) mClickListener.onItemClick(view, getAdapterPosition());
+            rowPatients_imageView_whatsapp = itemView.findViewById(R.id.rowPatients_imageView_whatsapp);
+            rowPatients_imageView_call = itemView.findViewById(R.id.rowPatients_imageView_call);
         }
     }
 
@@ -82,22 +92,12 @@ public class PatientsRecyclerViewAdapter extends RecyclerView.Adapter<PatientsRe
 
     public void addToRetrievedData(PatientEntity patientEntity) {
         retrievedData.add(patientEntity);
-        retrievedData_copy.add(patientEntity);
-    }
-
-    // allows clicks events to be caught
-    void setClickListener(ItemClickListener itemClickListener) {
-        this.mClickListener = itemClickListener;
-    }
-
-    // parent activity will implement this method to respond to click events
-    public interface ItemClickListener {
-        void onItemClick(View view, int position);
+        if(retrievedData_copy != null) {
+            retrievedData_copy.add(patientEntity);
+        }
     }
 
     public void filterPatients(String text) {
-        //todo doesn work with patient just added
-        //todo implement the widget in the bar
         retrievedData.clear();
         if(text.isEmpty()){
             retrievedData.addAll(retrievedData_copy);
@@ -110,5 +110,34 @@ public class PatientsRecyclerViewAdapter extends RecyclerView.Adapter<PatientsRe
             }
         }
         notifyDataSetChanged();
+    }
+
+    public void setContext(Context context) {
+        this.context = context;
+    }
+
+    //Declarative interface
+    private WhatsapClickListener whatsapClickListener;
+    //set method
+    public void setWhatsapClickListener(WhatsapClickListener whatsapClickListener) {
+        this.whatsapClickListener = whatsapClickListener;
+    }
+    //Defining interface
+    public interface WhatsapClickListener {
+        //Achieve the click method, passing the subscript.
+        void onItemClick(String name);
+    }
+
+    //Declarative interface
+    private PhoneClickListener phoneClickListener;
+    //set method
+    public void setPhoneClickListener(PhoneClickListener phoneClickListener) {
+        this.phoneClickListener = phoneClickListener;
+    }
+    //Defining interface
+    public interface PhoneClickListener
+    {
+        //Achieve the click method, passing the subscript.
+        void onItemClick(String stringPhoneNumber);
     }
 }

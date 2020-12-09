@@ -69,23 +69,6 @@ public class ActivityAddPatient extends AppCompatActivity
             }
         });
 
-        /*
-        activityaddpatient_datepicker_bdate.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event)
-            {
-                if (event.getAction() == MotionEvent.ACTION_DOWN) {
-                    //  Disallow the touch request for parent scroll on touch of datepicker view
-                    requestDisallowParentInterceptTouchEvent(v, true);
-                }
-                else if (event.getAction() == MotionEvent.ACTION_UP || event.getAction() == MotionEvent.ACTION_CANCEL) {
-                    // Re-allows parent events
-                    requestDisallowParentInterceptTouchEvent(v, false);
-                }
-                return false;
-            }
-        });
-*/
         activityaddpatient_button_save.setOnClickListener(new View.OnClickListener()
         {
             SavePatient savePatient = new SavePatient();

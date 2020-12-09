@@ -7,9 +7,13 @@
     <string name="no">No</string>
     <string name="back">Indietro</string>
     <string name="error">Errore</string>
+    <string name="dear">Gentile %1$s,\n</string>
     <string name="nodata">Nessun dato da mostrare</string>
     <string name="save">Salva</string>
     <string name="saved">Salvato</string>
+
+    <string name="share_with">Apri con...</string>
+    <string name="no_whatsapp">Whatsapp non installato</string>
 
     <string name="height">Altezza (cm)</string>
     <string name="hip_circ">Circonferenza dei fianchi (cm)</string>

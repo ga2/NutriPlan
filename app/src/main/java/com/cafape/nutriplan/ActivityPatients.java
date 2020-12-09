@@ -5,18 +5,20 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.EditText;
 import android.widget.SearchView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.cafape.nutriplan.adapters.PatientsRecyclerViewAdapter;
 import com.cafape.nutriplan.database.DatabaseRepository;
@@ -99,8 +101,7 @@ public class ActivityPatients extends AppCompatActivity
     }
 
     public void setListeners() {
-        activitParents_fab_patient_add.setOnClickListener(new View.OnClickListener()
-        {
+        activitParents_fab_patient_add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 ((SearchView)searchMenuItem.getActionView()).setQuery("",true);
@@ -130,6 +131,7 @@ public class ActivityPatients extends AppCompatActivity
                     System.out.println(patient.getName());
                 }
                 patientsRecyclerViewAdapter = new PatientsRecyclerViewAdapter(context, patients);
+                patientsRecyclerViewAdapter.setContext(context);
                 activityPatients_recycleView_patients.setLayoutManager(new LinearLayoutManager(context));
                 activityPatients_recycleView_patients.setAdapter(patientsRecyclerViewAdapter);
                 patientsRecyclerViewAdapter.notifyDataSetChanged();
@@ -143,10 +145,50 @@ public class ActivityPatients extends AppCompatActivity
                     activityPatients_textView_nodata_details.setText("");
                     activityPatients_constraintLayout_nodata.setVisibility(View.GONE);
                 }
+                //Call click method
+                patientsRecyclerViewAdapter.setWhatsapClickListener(new PatientsRecyclerViewAdapter.WhatsapClickListener() {
+                    @Override
+                    public void onItemClick(String name) {
+                        openWhatsapp(name);
+                    }
+                });
+
+                patientsRecyclerViewAdapter.setPhoneClickListener(new PatientsRecyclerViewAdapter.PhoneClickListener() {
+                    @Override
+                    public void onItemClick(String stringPhoneNumber) {
+                        openCall(stringPhoneNumber);
+                    }
+                });
             }
         }
 
         GetPatients getPatients = new GetPatients();
         getPatients.execute();
+    }
+
+    public void openCall(String stringPhoneNumber) {
+        Intent intent = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:" + stringPhoneNumber));
+        startActivity(intent);
+    }
+
+    public void openWhatsapp(String name) {
+        PackageManager pm = context.getPackageManager();
+        try {
+
+            Intent intent_openWhatsapp = new Intent(Intent.ACTION_SEND);
+            intent_openWhatsapp.setType("text/plain");
+            @SuppressLint("StringFormatMatches") String text = context.getString(R.string.dear, name);
+
+            PackageInfo info = pm.getPackageInfo("com.whatsapp", PackageManager.GET_META_DATA);
+            //Check if package exists or not. If not then code
+            //in catch block will be called
+            intent_openWhatsapp.setPackage("com.whatsapp");
+
+            intent_openWhatsapp.putExtra(Intent.EXTRA_TEXT, text);
+            startActivity(Intent.createChooser(intent_openWhatsapp, context.getString(R.string.share_with)));
+
+        } catch (PackageManager.NameNotFoundException e) {
+            Toast.makeText(context, R.string.no_whatsapp, Toast.LENGTH_SHORT).show();
+        }
     }
 }
