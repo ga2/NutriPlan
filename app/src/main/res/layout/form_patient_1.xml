@@ -122,20 +122,12 @@
 
 
 
-            <DatePicker
+            <com.cafape.nutriplan.ui.CustomDatePicker
                 android:id="@+id/activityaddpatient_datepicker_bdate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:datePickerMode="calendar"/>
 
-            <!--
-            <EditText
-                android:id="@+id/activityaddpatient_editText_bdate"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:inputType="date|textPersonName" />
-                -->
         </LinearLayout>
 
         <Space

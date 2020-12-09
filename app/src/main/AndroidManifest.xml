@@ -11,7 +11,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.NutriPlan">
-        <activity android:name=".ActivityAddPatient"></activity>
+        <activity android:name=".ActivityAddPatient"
+            android:label="@string/title_activity_addpatient"
+            ></activity>
         <activity
             android:name=".ActivityPatients"
             android:label="@string/title_activity_patients" />

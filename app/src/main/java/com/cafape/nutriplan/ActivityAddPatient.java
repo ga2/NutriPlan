@@ -7,12 +7,14 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.ScrollView;
 import android.widget.Toast;
 
 import com.cafape.nutriplan.database.DatabaseRepository;
@@ -20,6 +22,7 @@ import com.cafape.nutriplan.database.converters.TimestampConverter;
 import com.cafape.nutriplan.database.entities.PatientEntity;
 import com.cafape.nutriplan.support.AlertBuilderUtils;
 import com.cafape.nutriplan.support.Utils;
+import com.cafape.nutriplan.ui.CustomDatePicker;
 
 import java.util.Calendar;
 import java.util.Date;
@@ -28,7 +31,7 @@ public class ActivityAddPatient extends AppCompatActivity
 {
     private Context context;
 
-    private DatePicker activityaddpatient_datepicker_bdate;
+    private CustomDatePicker activityaddpatient_datepicker_bdate;
     private EditText activityaddpatient_editText_age;
     private Button activityaddpatient_button_save;
     private PatientEntity patientEntity;
@@ -66,6 +69,23 @@ public class ActivityAddPatient extends AppCompatActivity
             }
         });
 
+        /*
+        activityaddpatient_datepicker_bdate.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event)
+            {
+                if (event.getAction() == MotionEvent.ACTION_DOWN) {
+                    //  Disallow the touch request for parent scroll on touch of datepicker view
+                    requestDisallowParentInterceptTouchEvent(v, true);
+                }
+                else if (event.getAction() == MotionEvent.ACTION_UP || event.getAction() == MotionEvent.ACTION_CANCEL) {
+                    // Re-allows parent events
+                    requestDisallowParentInterceptTouchEvent(v, false);
+                }
+                return false;
+            }
+        });
+*/
         activityaddpatient_button_save.setOnClickListener(new View.OnClickListener()
         {
             SavePatient savePatient = new SavePatient();
@@ -154,6 +174,15 @@ public class ActivityAddPatient extends AppCompatActivity
             setResult(RESULT_OK, data);
             finish();
             Toast.makeText(getApplicationContext(), getString(R.string.saved), Toast.LENGTH_LONG).show();
+        }
+    }
+
+    private void requestDisallowParentInterceptTouchEvent(View v, Boolean disallowIntercept) {
+        while (v.getParent() != null && v.getParent() instanceof View) {
+            if (v.getParent() instanceof ScrollView) {
+                v.getParent().requestDisallowInterceptTouchEvent(disallowIntercept);
+            }
+            v = (View) v.getParent();
         }
     }
 }
