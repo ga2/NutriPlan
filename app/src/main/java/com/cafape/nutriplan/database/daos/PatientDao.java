@@ -14,8 +14,6 @@ import java.util.List;
 @Dao
 public interface PatientDao
 {
-
-
     @Query("SELECT * FROM PatientEntity ORDER BY surname ASC")
     List<PatientEntity> getAllPatients();
 

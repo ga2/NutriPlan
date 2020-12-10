@@ -61,4 +61,14 @@
         <item name="android:textSize">20sp</item>
         <item name="android:color">@color/primaryDarkColor</item>
     </style>
+
+    <style name="style_activityaddpatient_recyclerView_textView_time">
+        <item name="android:color">@color/primaryColor</item>
+    </style>
+
+    <style name="style_activityaddappointment_textView_day">
+        <item name="android:textSize">24sp</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
 </resources>
