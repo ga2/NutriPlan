@@ -27,9 +27,9 @@ public class ActivityMenu extends AppCompatActivity
     }
 
     public void setUiComponents() {
-        activitymanu_constraintLayout_card_calc = (ConstraintLayout) findViewById(R.id.activitymanu_constraintLayout_card_calc);
-        activitymanu_constraintLayout_card_patient = (ConstraintLayout) findViewById(R.id.activitymanu_constraintLayout_card_patient);
-        activitymanu_constraintLayout_card_appointment = (ConstraintLayout) findViewById(R.id.activitymanu_constraintLayout_card_appointment);
+        activitymanu_constraintLayout_card_calc = findViewById(R.id.activitymanu_constraintLayout_card_calc);
+        activitymanu_constraintLayout_card_patient = findViewById(R.id.activitymanu_constraintLayout_card_patient);
+        activitymanu_constraintLayout_card_appointment = findViewById(R.id.activitymanu_constraintLayout_card_appointment);
     }
 
     public void setListeners() {
@@ -56,6 +56,7 @@ public class ActivityMenu extends AppCompatActivity
             @Override
             public void onClick(View view) {
                 Intent intent_goToActivity = new Intent(context, ActivityAppointments.class);
+                //Intent intent_goToActivity = new Intent(context, Provacalendar.class);
                 startActivity(intent_goToActivity);
             }
         });

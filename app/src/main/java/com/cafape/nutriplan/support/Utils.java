@@ -2,6 +2,8 @@ package com.cafape.nutriplan.support;
 
 import android.widget.DatePicker;
 
+import com.prolificinteractive.materialcalendarview.CalendarDay;
+
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -31,6 +33,11 @@ public class Utils
             e.printStackTrace();
             return null;
         }
+    }
+
+    public static String getMonthName(Calendar calendar) {
+        SimpleDateFormat dateFormat_month = new SimpleDateFormat( "LLLL", Locale.getDefault());
+        return dateFormat_month.format(calendar.getTime());
     }
 
     public static int calculateAge(Date bdate) {

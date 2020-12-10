@@ -66,9 +66,15 @@
         <item name="android:color">@color/primaryColor</item>
     </style>
 
-    <style name="style_activityaddappointment_textView_day">
+    <style name="style_activityappointments_textView_day">
         <item name="android:textSize">24sp</item>
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
     </style>
+
+    <style name="style_activityappointments_calendarView_daySelected">
+        <item name="android:textColor">@color/mcv_text_date_light</item>
+    </style>
+
+
 </resources>

@@ -6,27 +6,34 @@
     android:layout_height="match_parent"
     tools:context=".ActivityAppointments">
 
-    <com.cafape.nutriplan.ui.CustomDatePicker
-        android:id="@+id/activityappointments_datePicker"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+
+    <com.prolificinteractive.materialcalendarview.MaterialCalendarView
+        android:id="@+id/activityappointments_calendarView"
+        android:layout_width="0dp"
+        android:layout_height="350dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:mcv_selectionColor="@color/secondaryColor"
+        app:mcv_dateTextAppearance="@style/style_activityappointments_calendarView_daySelected"
+        app:mcv_showOtherDates="all"
+        app:mcv_tileSize="50dp" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="234dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="16dp"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/activityappointments_datePicker">
+        app:layout_constraintTop_toBottomOf="@+id/activityappointments_calendarView">
 
         <LinearLayout
             android:id="@+id/linearLayout"
@@ -42,7 +49,7 @@
 
             <TextView
                 android:id="@+id/activityappointments_textView_day"
-                style="@style/style_activityaddappointment_textView_day"
+                style="@style/style_activityappointments_textView_day"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@drawable/circle_background"

@@ -1,21 +1,34 @@
 package com.cafape.nutriplan;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.graphics.Color;
 import android.os.Bundle;
+import android.text.style.ForegroundColorSpan;
 import android.widget.DatePicker;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.cafape.nutriplan.support.Utils;
 import com.cafape.nutriplan.ui.CustomDatePicker;
+import com.prolificinteractive.materialcalendarview.CalendarDay;
+import com.prolificinteractive.materialcalendarview.DayViewDecorator;
+import com.prolificinteractive.materialcalendarview.DayViewFacade;
+import com.prolificinteractive.materialcalendarview.MaterialCalendarView;
+import com.prolificinteractive.materialcalendarview.OnDateSelectedListener;
+import com.prolificinteractive.materialcalendarview.OnMonthChangedListener;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.Locale;
+
+import org.threeten.bp.LocalDate;
+import org.threeten.bp.format.TextStyle;
 
 public class ActivityAppointments extends AppCompatActivity
 {
-    CustomDatePicker activityappointments_datePicker;
+    MaterialCalendarView activityappointments_calendarView;
     TextView activityappointments_textView_day;
     TextView activityappointments_textView_monthYear;
     @Override
@@ -28,7 +41,7 @@ public class ActivityAppointments extends AppCompatActivity
     }
 
     public void setUiComponents() {
-        activityappointments_datePicker = findViewById(R.id.activityappointments_datePicker);
+        activityappointments_calendarView = findViewById(R.id.activityappointments_calendarView);
         activityappointments_textView_day = findViewById(R.id.activityappointments_textView_day);
         activityappointments_textView_monthYear = findViewById(R.id.activityappointments_textView_monthYear);
     }
@@ -36,22 +49,51 @@ public class ActivityAppointments extends AppCompatActivity
     public void setListeners() {
         Calendar calendar = Calendar.getInstance();
         calendar.setTimeInMillis(System.currentTimeMillis());
-        SimpleDateFormat dateFormat_month = new SimpleDateFormat( "LLLL", Locale.getDefault());
-        String month_name = dateFormat_month.format(calendar.getTime());
+
         int year_int = calendar.get(Calendar.YEAR);
-        int month_int = calendar.get(Calendar.MONTH);
+        int month_int = calendar.get(Calendar.MONTH) + 1;
         int day_int = calendar.get(Calendar.DAY_OF_MONTH);
-        setDate(String.valueOf(day_int), month_name, String.valueOf(year_int));
-        activityappointments_datePicker.init(year_int, month_int, day_int, new DatePicker.OnDateChangedListener() {
+
+        LocalDate localDate = LocalDate.of(year_int, month_int, day_int);
+        setDate(String.valueOf(day_int), Utils.getMonthName(calendar), String.valueOf(year_int));
+
+        activityappointments_calendarView.setSelectedDate(localDate);
+        activityappointments_calendarView.setCurrentDate(localDate);
+
+        activityappointments_calendarView.setOnDateChangedListener(new OnDateSelectedListener()
+        {
             @Override
-            public void onDateChanged(DatePicker datePicker, int year, int month, int dayOfMonth) {
-                Calendar calendar = Calendar.getInstance();
-                calendar.set(year, month, dayOfMonth);
-                SimpleDateFormat dateFormat = new SimpleDateFormat("LLLL", Locale.getDefault());
-                dateFormat.format(calendar.getTime());
-                setDate(String.valueOf(dayOfMonth), month_name, String.valueOf(year));
+            public void onDateSelected(@NonNull MaterialCalendarView widget, @NonNull CalendarDay date, boolean selected) {
+                setDate(String.valueOf(date.getDay()), date.getDate().getMonth().getDisplayName(TextStyle.FULL, Locale.getDefault()), String.valueOf(date.getYear()));
             }
         });
+
+        activityappointments_calendarView.setOnMonthChangedListener(new OnMonthChangedListener()
+        {
+            @Override
+            public void onMonthChanged(MaterialCalendarView widget, CalendarDay date) {
+                Toast.makeText(getApplicationContext(), date.getDate().getMonth().getDisplayName(TextStyle.FULL, Locale.getDefault()), Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        DayViewDecorator dayViewDecorator = new DayViewDecorator() {
+            @Override
+            public boolean shouldDecorate(CalendarDay day) {
+                return day.equals(CalendarDay.from(2021, 1, 25));
+            }
+
+            @Override
+            public void decorate(DayViewFacade view) {
+                view.setBackgroundDrawable(getDrawable(R.drawable.ic_baseline_brightness_8));
+                view.addSpan(new ForegroundColorSpan(Color.WHITE));
+            }
+        };
+
+        dayViewDecorator.shouldDecorate(CalendarDay.from(2021, 1, 25)); //1=gennaio
+
+        activityappointments_calendarView.addDecorator(dayViewDecorator);
+
+        //todo add no data message
     }
 
     public void setDate(String day, String month, String year) {
