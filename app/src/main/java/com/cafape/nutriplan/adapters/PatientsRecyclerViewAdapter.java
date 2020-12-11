@@ -86,10 +86,10 @@ public class PatientsRecyclerViewAdapter extends RecyclerView.Adapter<PatientsRe
     }
 
     public void addToRetrievedData(PatientEntity patientEntity) {
+        retrievedData.clear();
         retrievedData.add(patientEntity);
-        if(retrievedData_copy != null) {
-            retrievedData_copy.add(patientEntity);
-        }
+        retrievedData_copy.add(patientEntity);
+        retrievedData.addAll(retrievedData_copy);
     }
 
     public void filterPatients(String text) {

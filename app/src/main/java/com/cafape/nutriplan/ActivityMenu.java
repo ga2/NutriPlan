@@ -56,7 +56,6 @@ public class ActivityMenu extends AppCompatActivity
             @Override
             public void onClick(View view) {
                 Intent intent_goToActivity = new Intent(context, ActivityAppointments.class);
-                //Intent intent_goToActivity = new Intent(context, Provacalendar.class);
                 startActivity(intent_goToActivity);
             }
         });

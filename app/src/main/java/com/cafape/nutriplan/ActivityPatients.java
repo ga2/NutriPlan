@@ -57,6 +57,8 @@ public class ActivityPatients extends AppCompatActivity
                 PatientEntity patientEntity_new = (PatientEntity)data.getSerializableExtra("newPatientEntity");
                 patientsRecyclerViewAdapter.addToRetrievedData(patientEntity_new);
                 patientsRecyclerViewAdapter.notifyDataSetChanged();
+
+                eventuallyHideNoDataMessage();
             }
         }
     }
@@ -132,17 +134,11 @@ public class ActivityPatients extends AppCompatActivity
                 patientsRecyclerViewAdapter = new PatientsRecyclerViewAdapter(context, patients);
                 activityPatients_recycleView_patients.setLayoutManager(new LinearLayoutManager(context));
                 activityPatients_recycleView_patients.setAdapter(patientsRecyclerViewAdapter);
+
+                eventuallyHideNoDataMessage();
+
                 patientsRecyclerViewAdapter.notifyDataSetChanged();
-                TextView activityPatients_textView_nodata_details = findViewById(R.id.textView_nodata_details);
-                ConstraintLayout activityPatients_constraintLayout_nodata = findViewById(R.id.constraintLayout_nodata);
-                if(patientsRecyclerViewAdapter.getItemCount() == 0) {
-                    activityPatients_textView_nodata_details.setText(getString(R.string.activityaddpatient_string_nodata_details));
-                    activityPatients_textView_nodata_details.setVisibility(View.VISIBLE);
-                    activityPatients_constraintLayout_nodata.setVisibility(View.VISIBLE);
-                } else {
-                    activityPatients_textView_nodata_details.setText("");
-                    activityPatients_constraintLayout_nodata.setVisibility(View.GONE);
-                }
+
                 //Call click method
                 patientsRecyclerViewAdapter.setWhatsapClickListener(new PatientsRecyclerViewAdapter.WhatsapClickListener() {
                     @Override
@@ -162,6 +158,19 @@ public class ActivityPatients extends AppCompatActivity
 
         GetPatients getPatients = new GetPatients();
         getPatients.execute();
+    }
+
+    public void eventuallyHideNoDataMessage() {
+        TextView activityPatients_textView_nodata_details = findViewById(R.id.textView_nodata_details);
+        ConstraintLayout activityPatients_constraintLayout_nodata = findViewById(R.id.constraintLayout_nodata);
+        if(patientsRecyclerViewAdapter.getItemCount() == 0) {
+            activityPatients_textView_nodata_details.setText(getString(R.string.activityaddpatient_string_nodata_details));
+            activityPatients_textView_nodata_details.setVisibility(View.VISIBLE);
+            activityPatients_constraintLayout_nodata.setVisibility(View.VISIBLE);
+        } else {
+            activityPatients_textView_nodata_details.setText("");
+            activityPatients_constraintLayout_nodata.setVisibility(View.GONE);
+        }
     }
 
     public void openCall(String stringPhoneNumber) {

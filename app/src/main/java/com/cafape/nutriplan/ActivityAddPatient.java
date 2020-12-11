@@ -132,6 +132,8 @@ public class ActivityAddPatient extends AppCompatActivity
         });
     }
 
+
+    //todo bug add patient not displayed in activityreceive on galaxy tab
     public String getTagFromRadioGroup(int radioGroupReference) {
         RadioGroup radioGroup = findViewById(radioGroupReference);
         RadioButton radioButton = findViewById(radioGroup.getCheckedRadioButtonId());
@@ -157,15 +159,6 @@ public class ActivityAddPatient extends AppCompatActivity
             setResult(RESULT_OK, data);
             finish();
             Toast.makeText(getApplicationContext(), getString(R.string.saved), Toast.LENGTH_LONG).show();
-        }
-    }
-
-    private void requestDisallowParentInterceptTouchEvent(View v, Boolean disallowIntercept) {
-        while (v.getParent() != null && v.getParent() instanceof View) {
-            if (v.getParent() instanceof ScrollView) {
-                v.getParent().requestDisallowInterceptTouchEvent(disallowIntercept);
-            }
-            v = (View) v.getParent();
         }
     }
 }
