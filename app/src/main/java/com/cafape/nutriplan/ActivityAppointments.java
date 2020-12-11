@@ -28,6 +28,8 @@ import com.prolificinteractive.materialcalendarview.MaterialCalendarView;
 import com.prolificinteractive.materialcalendarview.OnDateSelectedListener;
 import com.prolificinteractive.materialcalendarview.OnMonthChangedListener;
 
+import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 import java.util.Locale;
@@ -47,6 +49,7 @@ public class ActivityAppointments extends AppCompatActivity
     private TextView activityappointments_textView_monthYear;
     private RecyclerView activityappointments_recyclerView;
     private AppointmentsRecyclerViewAdapter appointmentsRecyclerViewAdapter;
+    private ArrayList<AppointmentEntity> arrayList_appointmentEntity_ofTheDay;
     private TextView activityPatients_textView_nodata_details;
     private ConstraintLayout activityPatients_constraintLayout_nodata;
     private FloatingActionButton activitappointments_fab_appointment_add;
@@ -56,6 +59,7 @@ public class ActivityAppointments extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_appointments);
         context = getApplicationContext();
+        arrayList_appointmentEntity_ofTheDay = new ArrayList<AppointmentEntity>();
 
         setUiComponents();
 
@@ -118,11 +122,15 @@ public class ActivityAppointments extends AppCompatActivity
 
         activityappointments_calendarView.addDecorator(dayViewDecorator);
 
-        //todo add no data message
         activitappointments_fab_appointment_add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent_goToActivity = new Intent(context, ActivityAddPatient.class);
+                //todo update on activityresult arrayList_appointmentEntity_ofTheDay
+                Bundle args = new Bundle();
+                args.putSerializable("arrayList", (Serializable)arrayList_appointmentEntity_ofTheDay);
+
+                Intent intent_goToActivity = new Intent(context, ActivityAddAppointment.class);
+                intent_goToActivity.putExtra("appointmentsOfTheDay", args);
                 startActivityForResult(intent_goToActivity, REQCODE_NEWAPPOINTMENT_ADDED);
             }
         });
