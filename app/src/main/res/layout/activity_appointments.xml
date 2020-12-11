@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/material_gray_200"
     tools:context=".ActivityAppointments">
-
 
     <com.prolificinteractive.materialcalendarview.MaterialCalendarView
         android:id="@+id/activityappointments_calendarView"
@@ -82,6 +82,8 @@
             app:layout_constraintStart_toEndOf="@+id/linearLayout"
             app:layout_constraintTop_toTopOf="parent">
 
+            <include layout="@layout/layout_nodata" />
+
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/activityappointments_recyclerView"
                 android:layout_width="match_parent"
@@ -120,7 +122,7 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <com.google.android.material.floatingactionbutton.FloatingActionButton
-                    android:id="@+id/activityappointments_fab_addAppointment"
+                    android:id="@+id/activitappointments_fab_appointment_add"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"

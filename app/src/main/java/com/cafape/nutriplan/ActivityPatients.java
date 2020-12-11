@@ -113,7 +113,6 @@ public class ActivityPatients extends AppCompatActivity
 
     private void getPatients() {
         class GetPatients extends AsyncTask<Void, Void, List<PatientEntity>> {
-
             @Override
             protected List<PatientEntity> doInBackground(Void... voids) {
                 List<PatientEntity> patientsList = DatabaseRepository
@@ -131,7 +130,6 @@ public class ActivityPatients extends AppCompatActivity
                     System.out.println(patient.getName());
                 }
                 patientsRecyclerViewAdapter = new PatientsRecyclerViewAdapter(context, patients);
-                patientsRecyclerViewAdapter.setContext(context);
                 activityPatients_recycleView_patients.setLayoutManager(new LinearLayoutManager(context));
                 activityPatients_recycleView_patients.setAdapter(patientsRecyclerViewAdapter);
                 patientsRecyclerViewAdapter.notifyDataSetChanged();
@@ -174,7 +172,6 @@ public class ActivityPatients extends AppCompatActivity
     public void openWhatsapp(String name) {
         PackageManager pm = context.getPackageManager();
         try {
-
             Intent intent_openWhatsapp = new Intent(Intent.ACTION_SEND);
             intent_openWhatsapp.setType("text/plain");
             @SuppressLint("StringFormatMatches") String text = context.getString(R.string.dear, name);

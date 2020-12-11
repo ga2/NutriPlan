@@ -19,7 +19,6 @@ import java.util.List;
 
 public class PatientsRecyclerViewAdapter extends RecyclerView.Adapter<PatientsRecyclerViewAdapter.ViewHolder>
 {
-    private Context context;
     private List<PatientEntity> retrievedData;
     private List<PatientEntity> retrievedData_copy; //needed for filtering
     private LayoutInflater layoutInflater;
@@ -86,10 +85,6 @@ public class PatientsRecyclerViewAdapter extends RecyclerView.Adapter<PatientsRe
         return retrievedData.get(id);
     }
 
-    public List<PatientEntity> getRetrievedData() {
-        return retrievedData;
-    }
-
     public void addToRetrievedData(PatientEntity patientEntity) {
         retrievedData.add(patientEntity);
         if(retrievedData_copy != null) {
@@ -110,10 +105,6 @@ public class PatientsRecyclerViewAdapter extends RecyclerView.Adapter<PatientsRe
             }
         }
         notifyDataSetChanged();
-    }
-
-    public void setContext(Context context) {
-        this.context = context;
     }
 
     //Declarative interface

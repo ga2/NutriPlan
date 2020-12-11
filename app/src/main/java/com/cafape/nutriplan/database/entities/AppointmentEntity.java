@@ -61,11 +61,11 @@ public class AppointmentEntity implements Serializable
         this.visitReason = visitReason;
     }
 
-    public int getpatientID_ref() {
+    public int getPatientID_ref() {
         return patientID_ref;
     }
 
-    public void setpatientID_ref(int patientID_ref) {
+    public void setPatientID_ref(int patientID_ref) {
         this.patientID_ref = patientID_ref;
     }
 }

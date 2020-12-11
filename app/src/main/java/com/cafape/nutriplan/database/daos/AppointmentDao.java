@@ -16,8 +16,8 @@ import java.util.List;
 @Dao
 public interface AppointmentDao
 {
-    @Query("SELECT * FROM AppointmentEntity WHERE appointmentTime BETWEEN :from AND :to ORDER BY appointmentTime ASC")
-    List<PatientEntity> getAppointmentsForMonth(Date from, Date to);
+    @Query("SELECT * FROM AppointmentEntity WHERE strftime('%m', appointmentTime) = :monthNumber ORDER BY appointmentTime ASC")
+    List<AppointmentEntity> getAppointmentsForMonth(String monthNumber);
 
     @Query("SELECT * FROM AppointmentEntity WHERE appointmentTime =:day")
     LiveData<AppointmentEntity> getAppointmentOfDay(Date day);
