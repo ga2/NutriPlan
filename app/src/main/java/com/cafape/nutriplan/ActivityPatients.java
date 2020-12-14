@@ -20,9 +20,10 @@ import android.widget.SearchView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.cafape.nutriplan.adapters.PatientsRecyclerViewAdapter;
+import com.cafape.nutriplan.adapters.PatientWithAppointmentsRecyclerViewAdapter;
 import com.cafape.nutriplan.database.DatabaseRepository;
 import com.cafape.nutriplan.database.entities.PatientEntity;
+import com.cafape.nutriplan.database.entities.PatientWithAppointments;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.List;
@@ -35,7 +36,8 @@ public class ActivityPatients extends AppCompatActivity
     private MenuItem searchMenuItem;
     private FloatingActionButton activitParents_fab_patient_add;
     private RecyclerView activityPatients_recycleView_patients;
-    private PatientsRecyclerViewAdapter patientsRecyclerViewAdapter;
+    //private PatientsRecyclerViewAdapter patientsRecyclerViewAdapter;
+    private PatientWithAppointmentsRecyclerViewAdapter patientsRecyclerViewAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,8 +57,15 @@ public class ActivityPatients extends AppCompatActivity
         if (requestCode == REQCODE_NEWPATIENT_ADDED) {
             if (resultCode == RESULT_OK) {
                 PatientEntity patientEntity_new = (PatientEntity)data.getSerializableExtra("newPatientEntity");
+                PatientWithAppointments patientWithAppointments_new = new PatientWithAppointments();
+                patientWithAppointments_new.patientEntity = patientEntity_new;
+                patientsRecyclerViewAdapter.addToRetrievedData(patientWithAppointments_new);
+                patientsRecyclerViewAdapter.notifyDataSetChanged();
+                /*
+                PatientEntity patientEntity_new = (PatientEntity)data.getSerializableExtra("newPatientEntity");
                 patientsRecyclerViewAdapter.addToRetrievedData(patientEntity_new);
                 patientsRecyclerViewAdapter.notifyDataSetChanged();
+                 */
 
                 eventuallyHideNoDataMessage();
             }
@@ -114,24 +123,22 @@ public class ActivityPatients extends AppCompatActivity
     }
 
     private void getPatients() {
-        class GetPatients extends AsyncTask<Void, Void, List<PatientEntity>> {
+        class GetPatients extends AsyncTask<Void, Void, List<PatientWithAppointments>> {
             @Override
-            protected List<PatientEntity> doInBackground(Void... voids) {
-                List<PatientEntity> patientsList = DatabaseRepository
+            protected List<PatientWithAppointments> doInBackground(Void... voids) {
+                List<PatientWithAppointments> patientsList = DatabaseRepository
                         .getInstance(getApplicationContext())
                         .getAppDatabase()
-                        .patientDao()
-                        .getAllPatients();
+                        .patientWithAppointmentsDao()
+                        .getAllPatientWithLastAppointments();
                 return patientsList;
             }
 
             @Override
-            protected void onPostExecute(List<PatientEntity> patients) {
+            protected void onPostExecute(List<PatientWithAppointments> patients) {
                 super.onPostExecute(patients);
-                for (PatientEntity patient : patients) {
-                    System.out.println(patient.getName());
-                }
-                patientsRecyclerViewAdapter = new PatientsRecyclerViewAdapter(context, patients);
+                patientsRecyclerViewAdapter = new PatientWithAppointmentsRecyclerViewAdapter(context, patients);
+
                 activityPatients_recycleView_patients.setLayoutManager(new LinearLayoutManager(context));
                 activityPatients_recycleView_patients.setAdapter(patientsRecyclerViewAdapter);
 
@@ -139,20 +146,22 @@ public class ActivityPatients extends AppCompatActivity
 
                 patientsRecyclerViewAdapter.notifyDataSetChanged();
 
+
                 //Call click method
-                patientsRecyclerViewAdapter.setWhatsapClickListener(new PatientsRecyclerViewAdapter.WhatsapClickListener() {
+                patientsRecyclerViewAdapter.setWhatsapClickListener(new PatientWithAppointmentsRecyclerViewAdapter.WhatsapClickListener() {
                     @Override
                     public void onItemClick(String name) {
                         openWhatsapp(name);
                     }
                 });
 
-                patientsRecyclerViewAdapter.setPhoneClickListener(new PatientsRecyclerViewAdapter.PhoneClickListener() {
+                patientsRecyclerViewAdapter.setPhoneClickListener(new PatientWithAppointmentsRecyclerViewAdapter.PhoneClickListener() {
                     @Override
                     public void onItemClick(String stringPhoneNumber) {
                         openCall(stringPhoneNumber);
                     }
                 });
+
             }
         }
 

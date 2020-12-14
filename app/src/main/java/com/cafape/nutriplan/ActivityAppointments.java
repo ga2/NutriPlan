@@ -39,6 +39,7 @@ import org.threeten.bp.format.TextStyle;
 
 import static com.cafape.nutriplan.Globals.REQCODE_NEWAPPOINTMENT_ADDED;
 import static com.cafape.nutriplan.Globals.REQCODE_NEWPATIENT_ADDED;
+import static com.cafape.nutriplan.support.Utils.myprint;
 
 public class ActivityAppointments extends AppCompatActivity
 {
@@ -101,6 +102,7 @@ public class ActivityAppointments extends AppCompatActivity
         {
             @Override
             public void onMonthChanged(MaterialCalendarView widget, CalendarDay date) {
+                getAppointments();
                 Toast.makeText(getApplicationContext(), date.getDate().getMonth().getDisplayName(TextStyle.FULL, Locale.getDefault()), Toast.LENGTH_SHORT).show();
             }
         });
@@ -128,6 +130,8 @@ public class ActivityAppointments extends AppCompatActivity
                 //todo update on activityresult arrayList_appointmentEntity_ofTheDay
                 Bundle args = new Bundle();
                 args.putSerializable("arrayList", (Serializable)arrayList_appointmentEntity_ofTheDay);
+                LocalDate dateSelected = activityappointments_calendarView.getSelectedDate().getDate();
+                args.putSerializable("dateSelected", (Serializable)dateSelected);
 
                 Intent intent_goToActivity = new Intent(context, ActivityAddAppointment.class);
                 intent_goToActivity.putExtra("appointmentsOfTheDay", args);
@@ -156,7 +160,7 @@ public class ActivityAppointments extends AppCompatActivity
         activityappointments_textView_monthYear.setText(month + " " + year);
     }
 
-    private void getAppointments() {
+    public void getAppointments() {
         class GetAppointments extends AsyncTask<Void, Void, List<AppointmentEntity>>
         {
             @Override
@@ -166,6 +170,8 @@ public class ActivityAppointments extends AppCompatActivity
                         .getAppDatabase()
                         .appointmentDao()
                         .getAppointmentsForMonth(String.valueOf(activityappointments_calendarView.getSelectedDate().getMonth()));
+                //todo doesn't update
+                //.getAppointments();
                 return appointmentList;
             }
 
@@ -173,7 +179,7 @@ public class ActivityAppointments extends AppCompatActivity
             protected void onPostExecute(List<AppointmentEntity> appointments) {
                 super.onPostExecute(appointments);
                 for (AppointmentEntity appointment : appointments) {
-                    System.out.println(appointment.getPatientID_ref());
+                    myprint(appointment.getPatientID_ref());
                 }
                 appointmentsRecyclerViewAdapter = new AppointmentsRecyclerViewAdapter(context, appointments);
                 activityappointments_recyclerView.setLayoutManager(new LinearLayoutManager(context));

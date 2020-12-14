@@ -1,12 +1,13 @@
 <resources>
     <string name="app_name">NutriPlan</string>
-    <string name="build_number">20201211</string>
+    <string name="build_number">20201214</string>
     <string name="title_activity_main_menu">MainMenu</string>
 
     <string name="yes">Sì</string>
     <string name="no">No</string>
     <string name="back">Indietro</string>
     <string name="error">Errore</string>
+    <string name="add">Aggiungi</string>
     <string name="dear">Gentile %1$s,\n</string>
     <string name="nodata">Nessun dato da mostrare</string>
     <string name="save">Salva</string>
@@ -31,6 +32,7 @@
     <string name="title_activity_calc">Calcolatore indici di salute</string>
     <string name="title_activity_patients">Pazienti</string>
     <string name="title_activity_addpatient">Nuovo paziente</string>
+    <string name="title_activity_appointments">Appuntamenti</string>
 
     <!-- END Activity titles -->
 
@@ -102,7 +104,13 @@
     <!-- START Activity_appointments -->
 
     <string name="activityappointments_string_addAppointment">Aggiungi appuntamento</string>
-    <string name="activityappointments_string_nodata_details">Aggiungere un appuntamento usando il tasto "+"</string>
+    <string name="activityappointments_string_nodata_details">Aggiungere un appuntamento</string>
 
     <!-- END Activity_appointments -->
+
+    <!-- START Activity_addappointment -->
+
+    <string name="activityaddappointment_string_addPatient">Nome paziente</string>
+    <string name="activityaddappointment_string_alertMessage_formCheck_name">\n• Selezionare il paziente dalla lista</string>
+    <!-- END Activity_addappointment -->
 </resources>

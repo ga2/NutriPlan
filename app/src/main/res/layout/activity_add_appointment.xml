@@ -7,42 +7,105 @@
     android:background="@color/material_gray_200"
     tools:context=".ActivityAddAppointment">
 
-    <TimePicker
-        android:id="@+id/activityaddappointment_timePicker"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/activityaddappointmetn_constraintLayout_top"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
         android:layout_marginTop="24dp"
-        android:layout_marginBottom="8dp"
-        app:layout_constraintBottom_toTopOf="@+id/constraintLayout5"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"></TimePicker>
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TimePicker
+            android:id="@+id/activityaddappointment_timePicker"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"></TimePicker>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            app:layout_constraintBottom_toBottomOf="@+id/activityaddappointment_timePicker"
+            app:layout_constraintStart_toEndOf="@+id/activityaddappointment_timePicker"
+            app:layout_constraintTop_toTopOf="@+id/activityaddappointment_timePicker">
+
+            <LinearLayout
+                android:id="@+id/linearLayout2"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:orientation="vertical"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <TextView
+                    android:id="@+id/textView"
+                    style="@style/style_textView_form_options"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/activityaddappointment_string_addPatient" />
+
+                <AutoCompleteTextView
+                    android:id="@+id/activityaddappointment_autocompleteTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:minWidth="320dp" />
+
+                <TextView
+                    android:id="@+id/textView2"
+                    style="@style/style_textView_form_options"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/activityaddpatient_string_visitreason" />
+
+                <EditText
+                    android:id="@+id/activityaddappointment_editText_visitReason"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:inputType="textPersonName" />
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/activityaddappointment_button_add"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="@string/add"
+                app:layout_constraintEnd_toEndOf="@+id/linearLayout2"
+                app:layout_constraintStart_toStartOf="@+id/linearLayout2"
+                app:layout_constraintTop_toBottomOf="@+id/linearLayout2" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/constraintLayout5"
+        android:id="@+id/activityaddappointmetn_constraintLayout_bottom"
         android:layout_width="match_parent"
-        android:layout_height="234dp"
+        android:layout_height="0dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="3dp"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="16dp"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/activityaddappointment_timePicker">
+        app:layout_constraintTop_toBottomOf="@+id/activityaddappointmetn_constraintLayout_top"
+        app:layout_constraintVertical_bias="0.0">
 
         <LinearLayout
             android:id="@+id/linearLayout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp"
             android:orientation="horizontal"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toBottomOf="@+id/linearLayout3"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toTopOf="@+id/linearLayout3">
 
             <TextView
                 android:id="@+id/activityaddappointment_textView_day"
@@ -51,7 +114,6 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/circle_background"
                 android:gravity="center"
-                android:text="22"
                 android:textColor="@color/colorIconsText" />
 
             <TextView
@@ -67,6 +129,7 @@
 
 
         <LinearLayout
+            android:id="@+id/linearLayout3"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_marginStart="16dp"
@@ -78,7 +141,10 @@
             app:layout_constraintStart_toEndOf="@+id/linearLayout"
             app:layout_constraintTop_toTopOf="parent">
 
-            <include layout="@layout/layout_nodata" />
+            <include
+                layout="@layout/layout_nodata"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/activityaddappointment_recyclerView"

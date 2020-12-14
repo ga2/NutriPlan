@@ -22,12 +22,15 @@ public interface AppointmentDao
     @Query("SELECT * FROM AppointmentEntity WHERE appointmentTime =:day")
     LiveData<AppointmentEntity> getAppointmentOfDay(Date day);
 
+    @Query("SELECT * FROM AppointmentEntity")
+    List<AppointmentEntity> getAppointments();
+
     @Insert
-    void insertPatient(AppointmentEntity appointmentEntity);
+    void insert(AppointmentEntity appointmentEntity);
 
     @Update
-    void updatePatient(AppointmentEntity appointmentEntity);
+    void update(AppointmentEntity appointmentEntity);
 
     @Delete
-    void deletePatient(AppointmentEntity appointmentEntity);
+    void delete(AppointmentEntity appointmentEntity);
 }

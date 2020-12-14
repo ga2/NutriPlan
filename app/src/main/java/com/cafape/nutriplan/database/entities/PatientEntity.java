@@ -5,9 +5,12 @@ import androidx.room.PrimaryKey;
 import androidx.room.TypeConverters;
 
 import com.cafape.nutriplan.database.converters.TimestampConverter;
+import com.cafape.nutriplan.support.Utils;
 
 import java.io.Serializable;
 import java.util.Date;
+
+import static com.cafape.nutriplan.Globals.DATEFORMAT_DISPLAY;
 
 @Entity
 public class PatientEntity implements Serializable
@@ -27,7 +30,7 @@ public class PatientEntity implements Serializable
     private boolean previousPathologies_status;
     private String previousPathologies_details;
     private boolean hereditaryPathologies_status;
-    private String herditaryPathologies_details;
+    private String hereditaryPathologies_details;
     private boolean allergies_status;
     private String allergies_details;
     private boolean productsAssumption_status;
@@ -54,7 +57,7 @@ public class PatientEntity implements Serializable
         this.previousPathologies_status = previousPathologies_status;
         this.previousPathologies_details = previousPathologies_details;
         this.hereditaryPathologies_status = hereditaryPathologies_status;
-        this.herditaryPathologies_details = hereditaryPathologies_details;
+        this.hereditaryPathologies_details = hereditaryPathologies_details;
         this.allergies_status = allergies_status;
         this.allergies_details = allergies_details;
         this.productsAssumption_status = productsAssumption_status;
@@ -171,12 +174,12 @@ public class PatientEntity implements Serializable
         this.hereditaryPathologies_status = hereditaryPathologies_status;
     }
 
-    public String getHerditaryPathologies_details() {
-        return herditaryPathologies_details;
+    public String getHereditaryPathologies_details() {
+        return hereditaryPathologies_details;
     }
 
-    public void setHerditaryPathologies_details(String herditaryPathologies_details) {
-        this.herditaryPathologies_details = herditaryPathologies_details;
+    public void setHereditaryPathologies_details(String hereditaryPathologies_details) {
+        this.hereditaryPathologies_details = hereditaryPathologies_details;
     }
 
     public boolean isAllergies_status() {
@@ -257,5 +260,9 @@ public class PatientEntity implements Serializable
 
     public void setWorkinglActivity_details(String workinglActivity_details) {
         this.workinglActivity_details = workinglActivity_details;
+    }
+
+    public String getNameSurnammBday() {
+        return name + " " + surname + " - " + Utils.convertDateFormat(birthDate, DATEFORMAT_DISPLAY);
     }
 }

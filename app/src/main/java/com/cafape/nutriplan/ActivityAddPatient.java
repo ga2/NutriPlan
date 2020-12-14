@@ -7,14 +7,12 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
-import android.widget.ScrollView;
 import android.widget.Toast;
 
 import com.cafape.nutriplan.database.DatabaseRepository;
@@ -56,7 +54,6 @@ public class ActivityAddPatient extends AppCompatActivity
         Calendar calendar = Calendar.getInstance();
         calendar.setTimeInMillis(System.currentTimeMillis());
         activityaddpatient_datepicker_bdate.init(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH), new DatePicker.OnDateChangedListener() {
-
             @Override
             public void onDateChanged(DatePicker datePicker, int year, int month, int dayOfMonth) {
                 Date bdayDate = TimestampConverter.fromTimestamp(year + "-" + (month + 1) + "-" + dayOfMonth);
@@ -132,8 +129,6 @@ public class ActivityAddPatient extends AppCompatActivity
         });
     }
 
-
-    //todo bug add patient not displayed in activityreceive on galaxy tab
     public String getTagFromRadioGroup(int radioGroupReference) {
         RadioGroup radioGroup = findViewById(radioGroupReference);
         RadioButton radioButton = findViewById(radioGroup.getCheckedRadioButtonId());
@@ -147,7 +142,7 @@ public class ActivityAddPatient extends AppCompatActivity
             //adding to database
             DatabaseRepository.getInstance(getApplicationContext()).getAppDatabase()
                     .patientDao()
-                    .insertPatient(patientEntity);
+                    .insert(patientEntity);
             return null;
         }
 

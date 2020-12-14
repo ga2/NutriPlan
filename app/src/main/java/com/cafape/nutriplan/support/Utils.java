@@ -1,5 +1,6 @@
 package com.cafape.nutriplan.support;
 
+import android.util.Log;
 import android.widget.DatePicker;
 
 import com.prolificinteractive.materialcalendarview.CalendarDay;
@@ -12,6 +13,11 @@ import java.util.Locale;
 
 public class Utils
 {
+    public static void myprint(Object object)
+    {
+        Log.d("myprint", object.toString());
+    }
+
     public static java.util.Date getDateFromDatePicker(DatePicker datePicker){
         int day = datePicker.getDayOfMonth();
         int month = datePicker.getMonth();

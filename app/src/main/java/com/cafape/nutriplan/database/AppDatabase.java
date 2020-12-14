@@ -7,6 +7,7 @@ import androidx.room.TypeConverters;
 import com.cafape.nutriplan.database.converters.TimestampConverter;
 import com.cafape.nutriplan.database.daos.AppointmentDao;
 import com.cafape.nutriplan.database.daos.PatientDao;
+import com.cafape.nutriplan.database.daos.PatientWithAppointmentsDao;
 import com.cafape.nutriplan.database.entities.AppointmentEntity;
 import com.cafape.nutriplan.database.entities.PatientEntity;
 
@@ -15,4 +16,5 @@ import com.cafape.nutriplan.database.entities.PatientEntity;
 public abstract class AppDatabase extends RoomDatabase {
     public abstract PatientDao patientDao();
     public abstract AppointmentDao appointmentDao();
+    public abstract PatientWithAppointmentsDao patientWithAppointmentsDao();
 }

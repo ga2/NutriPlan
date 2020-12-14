@@ -21,11 +21,11 @@ public interface PatientDao
     LiveData<PatientEntity> getPatient(int patientID_target);
 
     @Insert
-    void insertPatient(PatientEntity patientEntity);
+    void insert(PatientEntity patientEntity);
 
     @Update
-    void updatePatient(PatientEntity patientEntity);
+    void update(PatientEntity patientEntity);
 
     @Delete
-    void deletePatient(PatientEntity patientEntity);
+    void delete(PatientEntity patientEntity);
 }
