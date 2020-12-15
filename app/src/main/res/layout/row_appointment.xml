@@ -30,34 +30,44 @@
 
 
             <TextView
-                android:id="@+id/rowAppointment_textView_time"
+                android:id="@+id/rowAppointment_textView_datetime"
                 style="@style/style_activityaddpatient_recyclerView_textView_time"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ellipsize="end"
                 android:gravity="center_vertical"
                 android:maxLength="32"
-                android:text="TextView"
+                android:text="@string/hour"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/rowAppointment_textView_bdate"
+                android:id="@+id/rowAppointment_textView_infouser"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
+                android:layout_marginStart="8dp"
                 android:gravity="center_vertical"
                 android:text="TextView"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/rowAppointment_textView_time"
+                app:layout_constraintStart_toEndOf="@+id/rowAppointment_textView_datetime"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <ImageView
                 android:id="@+id/rowAppointment_imageView_edit"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
                 android:src="@drawable/ic_baseline_edit_24"
+                android:visibility="invisible"
+                app:layout_constraintEnd_toStartOf="@+id/rowAppointment_imageView_delete"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/rowAppointment_imageView_delete"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_baseline_delete_24"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 

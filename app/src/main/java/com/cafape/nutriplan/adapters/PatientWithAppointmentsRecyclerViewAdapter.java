@@ -170,8 +170,7 @@ public class PatientWithAppointmentsRecyclerViewAdapter extends RecyclerView.Ada
         this.phoneClickListener = phoneClickListener;
     }
     //Defining interface
-    public interface PhoneClickListener
-    {
+    public interface PhoneClickListener {
         //Achieve the click method, passing the subscript.
         void onItemClick(String stringPhoneNumber);
     }

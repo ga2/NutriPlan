@@ -25,6 +25,9 @@ public interface AppointmentDao
     @Query("SELECT * FROM AppointmentEntity")
     List<AppointmentEntity> getAppointments();
 
+    @Query("DELETE FROM Appointmententity WHERE appointmentID =:appointmentID")
+    int deleteByID(int appointmentID);
+
     @Insert
     void insert(AppointmentEntity appointmentEntity);
 

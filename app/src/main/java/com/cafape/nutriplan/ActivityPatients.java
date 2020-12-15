@@ -61,11 +61,6 @@ public class ActivityPatients extends AppCompatActivity
                 patientWithAppointments_new.patientEntity = patientEntity_new;
                 patientsRecyclerViewAdapter.addToRetrievedData(patientWithAppointments_new);
                 patientsRecyclerViewAdapter.notifyDataSetChanged();
-                /*
-                PatientEntity patientEntity_new = (PatientEntity)data.getSerializableExtra("newPatientEntity");
-                patientsRecyclerViewAdapter.addToRetrievedData(patientEntity_new);
-                patientsRecyclerViewAdapter.notifyDataSetChanged();
-                 */
 
                 eventuallyHideNoDataMessage();
             }
