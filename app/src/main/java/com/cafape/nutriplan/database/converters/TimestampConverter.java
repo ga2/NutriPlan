@@ -8,11 +8,11 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.TimeZone;
 
-import static com.cafape.nutriplan.Globals.DATEFORMAT;
+import static com.cafape.nutriplan.Globals.DATETIMEFORMAT;
 
 public class TimestampConverter
 {
-    private static DateFormat df = new SimpleDateFormat(DATEFORMAT);
+    private static DateFormat df = new SimpleDateFormat(DATETIMEFORMAT);
 
     @TypeConverter
     public static Date fromTimestamp(String value) {

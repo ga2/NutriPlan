@@ -262,7 +262,7 @@ public class PatientEntity implements Serializable
         this.workinglActivity_details = workinglActivity_details;
     }
 
-    public String getNameSurnammBday() {
-        return name + " " + surname + " - " + Utils.convertDateFormat(birthDate, DATEFORMAT_DISPLAY);
+    public String getNameSurnameBday(String separator) {
+        return name + " " + surname + " " + separator + " " + Utils.convertDateFormat(birthDate, DATEFORMAT_DISPLAY);
     }
 }

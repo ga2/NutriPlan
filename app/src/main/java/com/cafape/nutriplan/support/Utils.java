@@ -15,7 +15,11 @@ public class Utils
 {
     public static void myprint(Object object)
     {
-        Log.d("myprint", object.toString());
+        if(object == null) {
+            Log.d("myprint", "null");
+        } else {
+            Log.d("myprint", object.toString());
+        }
     }
 
     public static java.util.Date getDateFromDatePicker(DatePicker datePicker){

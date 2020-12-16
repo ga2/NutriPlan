@@ -161,7 +161,7 @@ public class ActivityAddAppointment extends AppCompatActivity
             protected void onPostExecute(List<PatientEntity> patients) {
                 super.onPostExecute(patients);
                 for (PatientEntity patient : patients) {
-                    activityaddappontment_hashMap_patients.put(patient.getNameSurnammBday(), patient);
+                    activityaddappontment_hashMap_patients.put(patient.getNameSurnameBday(getString(R.string.of_the)), patient);
                     list.add(patient.getName() + " " + patient.getSurname() + " - " + Utils.convertDateFormat(patient.getBirthDate(), DATEFORMAT_DISPLAY));
                 }
                 initAutocomplete(list);

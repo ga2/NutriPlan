@@ -1,10 +1,11 @@
 <resources>
     <string name="app_name">NutriPlan</string>
-    <string name="build_number">20201215</string>
+    <string name="build_number">20201216</string>
     <string name="title_activity_main_menu">MainMenu</string>
 
     <string name="yes">Sì</string>
     <string name="no">No</string>
+    <string name="of_the">del</string>
     <string name="back">Indietro</string>
     <string name="error">Errore</string>
     <string name="warning">Attenzione</string>
@@ -24,6 +25,7 @@
     <string name="hip_circ">Circonferenza dei fianchi (cm)</string>
     <string name="weight">Peso (kg)</string>
     <string name="sex">Sesso</string>
+    <string name="born">nascita</string>
 
     <string name="male_short">M</string>
     <string name="female_short">F</string>

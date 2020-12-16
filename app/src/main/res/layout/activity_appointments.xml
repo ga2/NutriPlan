@@ -10,15 +10,15 @@
     <com.prolificinteractive.materialcalendarview.MaterialCalendarView
         android:id="@+id/activityappointments_calendarView"
         android:layout_width="0dp"
-        android:layout_height="350dp"
+        android:layout_height="400dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:mcv_selectionColor="@color/secondaryColor"
         app:mcv_dateTextAppearance="@style/style_activityappointments_calendarView_daySelected"
+        app:mcv_selectionColor="@color/secondaryColor"
         app:mcv_showOtherDates="all"
         app:mcv_tileSize="50dp" />
 

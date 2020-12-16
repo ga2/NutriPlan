@@ -19,7 +19,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.cafape.nutriplan.adapters.AppointmentsAndPatientsRecyclerViewAdapter;
-import com.cafape.nutriplan.adapters.AppointmentsRecyclerViewAdapter;
 import com.cafape.nutriplan.database.DatabaseRepository;
 import com.cafape.nutriplan.database.entities.AppointmentEntity;
 import com.cafape.nutriplan.database.entities.PatientWithAppointments;
@@ -35,16 +34,21 @@ import com.prolificinteractive.materialcalendarview.OnDateSelectedListener;
 import com.prolificinteractive.materialcalendarview.OnMonthChangedListener;
 
 import java.io.Serializable;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
 import org.threeten.bp.LocalDate;
+import org.threeten.bp.format.DateTimeFormatter;
 import org.threeten.bp.format.TextStyle;
 
 import static com.cafape.nutriplan.Globals.REQCODE_NEWAPPOINTMENT_ADDED;
 import static com.cafape.nutriplan.Globals.REQCODE_NEWPATIENT_ADDED;
+import static com.cafape.nutriplan.Globals.TIMEFORMAT;
+import static com.cafape.nutriplan.support.Utils.myprint;
 
 public class ActivityAppointments extends AppCompatActivity
 {
@@ -71,7 +75,7 @@ public class ActivityAppointments extends AppCompatActivity
 
         initCalendar();
         setListeners();
-        getAppointments();
+        getAppointmentsOfTheDay();
     }
 
     @Override
@@ -100,6 +104,7 @@ public class ActivityAppointments extends AppCompatActivity
         {
             @Override
             public void onDateSelected(@NonNull MaterialCalendarView widget, @NonNull CalendarDay date, boolean selected) {
+                getAppointmentsOfTheDay();
                 setDate(String.valueOf(date.getDay()), date.getDate().getMonth().getDisplayName(TextStyle.FULL, Locale.getDefault()), String.valueOf(date.getYear()));
             }
         });
@@ -108,7 +113,7 @@ public class ActivityAppointments extends AppCompatActivity
         {
             @Override
             public void onMonthChanged(MaterialCalendarView widget, CalendarDay date) {
-                getAppointments();
+                getAppointmentForCalendar(date.getYear(), date.getMonth());
                 Toast.makeText(getApplicationContext(), date.getDate().getMonth().getDisplayName(TextStyle.FULL, Locale.getDefault()), Toast.LENGTH_SHORT).show();
             }
         });
@@ -142,6 +147,8 @@ public class ActivityAppointments extends AppCompatActivity
 
         activityappointments_calendarView.setSelectedDate(localDate);
         activityappointments_calendarView.setCurrentDate(localDate);
+
+        getAppointmentForCalendar(year_int, month_int);
     }
 
     public void setDate(String day, String month, String year) {
@@ -207,8 +214,8 @@ public class ActivityAppointments extends AppCompatActivity
 
      */
 
-    public void getAppointments() {
-        class GetAppointments extends AsyncTask<Void, Void, List<SimpleAppointment>>
+    public void getAppointmentsOfTheDay() {
+        class GetAppointmentsOfTheDay extends AsyncTask<Void, Void, List<SimpleAppointment>>
         {
             @Override
             protected List<SimpleAppointment> doInBackground(Void... voids) {
@@ -220,13 +227,16 @@ public class ActivityAppointments extends AppCompatActivity
                         .getInstance(context)
                         .getAppDatabase()
                         .patientWithAppointmentsDao()
-                        .getAllAppointmentsOfTheMonth(String.valueOf(req_year), String.valueOf(req_month));
+                        .getAllAppointmentsOfTheDay(String.valueOf(req_year), String.valueOf(req_month), String.valueOf(req_day));
 
                 ArrayList<SimpleAppointment> arrayList_appointments = new ArrayList<>();
                 for (PatientWithAppointments patientWithAppointments: appointmentList) {
                     for (AppointmentEntity appointmentEntity : patientWithAppointments.appointments) {
-                    arrayList_appointments.add(new SimpleAppointment(req_year, req_month, req_day,"10:34", patientWithAppointments.patientEntity.getNameSurnammBday(),
-                            appointmentEntity.getVisitReason(), appointmentEntity.getAppointmentID() , patientWithAppointments.patientEntity.getPatiendID()));
+                        myprint(appointmentEntity.getAppointmentTime());
+                        String req_time = Utils.convertDateFormat(appointmentEntity.getAppointmentTime(), TIMEFORMAT);
+
+                        arrayList_appointments.add(new SimpleAppointment(req_year, req_month, req_day, req_time, patientWithAppointments.patientEntity.getNameSurnameBday(getString(R.string.of_the)),
+                        appointmentEntity.getVisitReason(), appointmentEntity.getAppointmentID() , patientWithAppointments.patientEntity.getPatiendID()));
                             //todo time is missing
                     }
                 }
@@ -267,26 +277,6 @@ public class ActivityAppointments extends AppCompatActivity
                     }
                 });
 
-                /*
-                appointmentsRecyclerViewAdapter.setDeleteAppointmentClickListener(new AppointmentsAndPatientsRecyclerViewAdapter.DeleteAppointmentClickListener() {
-                    @Override
-                    public void onItemClick(int appointmentID_toDelete) {
-                        AlertDialog.Builder builder = AlertBuilderUtils.BuildAlert(ActivityAppointments.this, R.string.error, R.string.activityappointments_string_alertMessage_deleteappointment);
-                        builder.setPositiveButton(R.string.yes, new DialogInterface.OnClickListener()
-                        {
-                            @Override
-                            public void onClick(DialogInterface dialogInterface, int i) {
-                                deleteAppointment(appointments.get());
-                            }
-                        });
-                        builder.setNegativeButton(R.string.back, null);
-                        AlertDialog alertDialog = builder.create();
-                        alertDialog.show();
-
-                        deleteAppointment(appointmentID_toDelete);
-                    }
-                });*/
-
                 appointmentsRecyclerViewAdapter.setDeleteAppointmentClickListener(new AppointmentsAndPatientsRecyclerViewAdapter.DeleteAppointmentClickListener() {
                     @Override
                     public void onItemClick(SimpleAppointment appointmentID_toDelete) {
@@ -303,35 +293,11 @@ public class ActivityAppointments extends AppCompatActivity
                         alertDialog.show();
                     }
                 });
-
-                for(SimpleAppointment simpleAppointment : appointments) {
-                    //dayViewDecorator.shouldDecorate(CalendarDay.from(simpleAppointment.getYear(), simpleAppointment.getMonth(), simpleAppointment.getDay()));
-                    activityappointments_calendarView.addDecorator(new EventDecoratorMonth(CalendarDay.from(simpleAppointment.getYear(), simpleAppointment.getMonth(), simpleAppointment.getDay())));
-                }
             }
         }
 
-        GetAppointments getPatients = new GetAppointments();
+        GetAppointmentsOfTheDay getPatients = new GetAppointmentsOfTheDay();
         getPatients.execute();
-    }
-
-    public class EventDecoratorMonth implements DayViewDecorator {
-        private CalendarDay date;
-
-        public EventDecoratorMonth(CalendarDay date) {
-            this.date = date;
-        }
-
-        @Override
-        public boolean shouldDecorate(CalendarDay day) {
-            return day.equals(date);
-        }
-
-        @Override
-        public void decorate(DayViewFacade view) {
-            view.setBackgroundDrawable(getDrawable(R.drawable.ic_baseline_brightness_8));
-            view.addSpan(new ForegroundColorSpan(Color.WHITE));
-        }
     }
 
     public void deleteAppointment(SimpleAppointment simpleAppointment) {
@@ -360,5 +326,63 @@ public class ActivityAppointments extends AppCompatActivity
 
         DeleteAppointment getDelete = new DeleteAppointment();
         getDelete.execute();
+    }
+
+    public void getAppointmentForCalendar(int req_year, int req_month) {
+        class GetAppointmentsForCalendar extends AsyncTask<Void, Void, List<AppointmentEntity>>
+        {
+            @Override
+            protected List<AppointmentEntity> doInBackground(Void... voids) {
+
+
+                List<AppointmentEntity> appointmentList = DatabaseRepository
+                        .getInstance(context)
+                        .getAppDatabase()
+                        .appointmentDao()
+                        .getAppointmentsForMonth(String.valueOf(req_year), String.valueOf(req_month));
+
+                //todo doesn't update
+                //.getAppointments();
+                return appointmentList;
+            }
+
+            @Override
+            protected void onPostExecute(List<AppointmentEntity> appointments) {
+                super.onPostExecute(appointments);
+
+                for(AppointmentEntity appointmentEntity : appointments) {
+                    //todo add decorator only if not present
+                    Date appointmentDate = appointmentEntity.getAppointmentTime();
+                    Calendar calendar = Calendar.getInstance();
+                    calendar.setTime(appointmentDate);
+
+                    activityappointments_calendarView.addDecorator(new EventDecoratorMonth(CalendarDay.from(
+                            calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH) + 1, calendar.get(Calendar.DAY_OF_MONTH))));
+                }
+            }
+        }
+
+        GetAppointmentsForCalendar getPatients = new GetAppointmentsForCalendar();
+        getPatients.execute();
+    }
+
+    public class EventDecoratorMonth implements DayViewDecorator {
+        private CalendarDay date = null;
+
+        //todo bug when changing page
+        public EventDecoratorMonth(CalendarDay date) {
+            this.date = date;
+        }
+
+        @Override
+        public boolean shouldDecorate(CalendarDay day) {
+            return day.equals(date);
+        }
+
+        @Override
+        public void decorate(DayViewFacade view) {
+            view.setBackgroundDrawable(getDrawable(R.drawable.ic_baseline_brightness_8));
+            view.addSpan(new ForegroundColorSpan(Color.WHITE));
+        }
     }
 }

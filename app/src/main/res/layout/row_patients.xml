@@ -53,7 +53,7 @@
                     android:layout_marginStart="@dimen/dim_margin_normal"
                     android:layout_marginEnd="@dimen/dim_margin_normal"
                     android:gravity="center"
-                    android:text="–" />
+                    android:text="@string/of_the" />
 
                 <TextView
                     android:id="@+id/rowPatients_textView_bdate"
