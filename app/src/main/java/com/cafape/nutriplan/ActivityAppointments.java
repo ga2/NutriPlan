@@ -99,7 +99,6 @@ public class ActivityAppointments extends AppCompatActivity
 
     public void setUiComponents() {
         activityappointments_calendarView = findViewById(R.id.activityappointments_calendarView);
-        //activityappointments_calendarView.setAllowClickDaysOutsideCurrentMonth(false);
         activityappointments_textView_day = findViewById(R.id.activityappointments_textView_day);
         activityappointments_textView_monthYear = findViewById(R.id.activityappointments_textView_monthYear);
         activityappointments_recyclerView = findViewById(R.id.activityappointments_recyclerView);
@@ -254,6 +253,20 @@ public class ActivityAppointments extends AppCompatActivity
                     appointmentsRecyclerViewAdapter.deleteFromRetrievedData(simpleAppointment);
                     appointmentsRecyclerViewAdapter.notifyDataSetChanged();
                     //todo no nodatashown if the last one and circle still present
+                    if(appointmentsRecyclerViewAdapter.getItemCount() == 0) {
+                        activityPatients_textView_nodata_details = findViewById(R.id.textView_nodata_details);
+                        activityPatients_constraintLayout_nodata = findViewById(R.id.constraintLayout_nodata);
+                        activityPatients_textView_nodata_details.setText(getString(R.string.activityappointments_string_nodata_details));
+                        activityPatients_textView_nodata_details.setVisibility(View.VISIBLE);
+                        activityPatients_constraintLayout_nodata.setVisibility(View.VISIBLE);
+                    } else {
+                        if(activityPatients_textView_nodata_details == null) {
+                            activityPatients_textView_nodata_details = findViewById(R.id.textView_nodata_details);
+                            activityPatients_constraintLayout_nodata = findViewById(R.id.constraintLayout_nodata);
+                        }
+                        activityPatients_textView_nodata_details.setText("");
+                        activityPatients_constraintLayout_nodata.setVisibility(View.GONE);
+                    }
                 }
             }
         }
