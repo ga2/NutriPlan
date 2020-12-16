@@ -17,8 +17,8 @@ public interface PatientDao
     @Query("SELECT * FROM PatientEntity ORDER BY surname ASC")
     List<PatientEntity> getAllPatients();
 
-    @Query("SELECT * FROM PatientEntity WHERE patiendID =:patientID_target LIMIT 1")
-    LiveData<PatientEntity> getPatient(int patientID_target);
+    @Query("SELECT * FROM PatientEntity WHERE patiendID = :patientID_target LIMIT 1")
+    PatientEntity getPatient(int patientID_target);
 
     @Insert
     void insert(PatientEntity patientEntity);

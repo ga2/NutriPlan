@@ -22,6 +22,7 @@ import android.widget.Toast;
 import com.cafape.nutriplan.adapters.AppointmentsAndPatientsRecyclerViewAdapter;
 import com.cafape.nutriplan.database.DatabaseRepository;
 import com.cafape.nutriplan.database.entities.AppointmentEntity;
+import com.cafape.nutriplan.database.entities.PatientEntity;
 import com.cafape.nutriplan.database.entities.PatientWithAppointments;
 import com.cafape.nutriplan.objects.SimpleAppointment;
 import com.cafape.nutriplan.support.AlertBuilderUtils;
@@ -60,7 +61,7 @@ public class ActivityAppointments extends AppCompatActivity
     private TextView activityappointments_textView_monthYear;
     private RecyclerView activityappointments_recyclerView;
     private AppointmentsAndPatientsRecyclerViewAdapter appointmentsRecyclerViewAdapter;
-    private ArrayList<AppointmentEntity> arrayList_appointmentEntity_ofTheDay;
+    private ArrayList<SimpleAppointment> arrayList_appointmentEntity_ofTheDay;
     private TextView activityPatients_textView_nodata_details;
     private ConstraintLayout activityPatients_constraintLayout_nodata;
     private FloatingActionButton activitappointments_fab_appointment_add;
@@ -70,7 +71,7 @@ public class ActivityAppointments extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_appointments);
         context = getApplicationContext();
-        arrayList_appointmentEntity_ofTheDay = new ArrayList<AppointmentEntity>();
+        arrayList_appointmentEntity_ofTheDay = new ArrayList<SimpleAppointment>();
 
         setUiComponents();
 
@@ -82,29 +83,23 @@ public class ActivityAppointments extends AppCompatActivity
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == REQCODE_NEWPATIENT_ADDED) {
-            if (resultCode == RESULT_OK) {
-                //todo no update of the drawable cirle and view
-                /*
+        if (requestCode == REQCODE_NEWAPPOINTMENT_ADDED) {
                 AppointmentEntity appointmentEntity = (AppointmentEntity)data.getSerializableExtra("newAppointmentEntity");
                 String patient_info = (String)data.getSerializableExtra("patient_info");
                 appointmentsRecyclerViewAdapter.addToRetrievedData(new SimpleAppointment(appointmentEntity, patient_info));
                 appointmentsRecyclerViewAdapter.notifyDataSetChanged();
                 Calendar calendar = Calendar.getInstance();
                 calendar.setTime(appointmentEntity.getAppointmentTime());
+                arrayList_appointmentEntity_ofTheDay.add(new SimpleAppointment(appointmentEntity, patient_info));
                 activityappointments_calendarView.addDecorator(new EventDecoratorMonth(CalendarDay.from(
                         calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH) + 1, calendar.get(Calendar.DAY_OF_MONTH))));
-
-                 */
                 getAppointmentsOfTheDay();
-                getAppointmentForCalendar(activityappointments_calendarView.getCurrentDate().getYear(), activityappointments_calendarView.getCurrentDate().getMonth());
-
-            }
         }
     }
 
     public void setUiComponents() {
         activityappointments_calendarView = findViewById(R.id.activityappointments_calendarView);
+        //activityappointments_calendarView.setAllowClickDaysOutsideCurrentMonth(false);
         activityappointments_textView_day = findViewById(R.id.activityappointments_textView_day);
         activityappointments_textView_monthYear = findViewById(R.id.activityappointments_textView_monthYear);
         activityappointments_recyclerView = findViewById(R.id.activityappointments_recyclerView);
@@ -133,7 +128,6 @@ public class ActivityAppointments extends AppCompatActivity
         activitappointments_fab_appointment_add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //todo update on activityresult arrayList_appointmentEntity_ofTheDay
                 Bundle args = new Bundle();
                 args.putSerializable("arrayList", (Serializable)arrayList_appointmentEntity_ofTheDay);
                 LocalDate dateSelected = activityappointments_calendarView.getSelectedDate().getDate();
@@ -173,30 +167,16 @@ public class ActivityAppointments extends AppCompatActivity
         {
             @Override
             protected List<SimpleAppointment> doInBackground(Void... voids) {
+
+                ArrayList<SimpleAppointment> arrayList_AppointmentstoDisplay = new ArrayList<>();
                 int req_day = activityappointments_calendarView.getSelectedDate().getDay();
-                int req_month = activityappointments_calendarView.getSelectedDate().getMonth();
-                int req_year = activityappointments_calendarView.getSelectedDate().getYear();
 
-                List<PatientWithAppointments> appointmentList = DatabaseRepository
-                        .getInstance(context)
-                        .getAppDatabase()
-                        .patientWithAppointmentsDao()
-                        .getAllAppointmentsOfTheDay(String.valueOf(req_year), String.valueOf(req_month), String.valueOf(req_day));
-
-                ArrayList<SimpleAppointment> arrayList_appointments = new ArrayList<>();
-                for (PatientWithAppointments patientWithAppointments: appointmentList) {
-                    for (AppointmentEntity appointmentEntity : patientWithAppointments.appointments) {
-                        myprint(appointmentEntity.getAppointmentTime());
-                        String req_time = Utils.convertDateFormat(appointmentEntity.getAppointmentTime(), TIMEFORMAT);
-
-                        arrayList_appointments.add(new SimpleAppointment(req_year, req_month, req_day, req_time, patientWithAppointments.patientEntity.getNameSurnameBday(getString(R.string.of_the)),
-                        appointmentEntity.getVisitReason(), appointmentEntity.getAppointmentID() , patientWithAppointments.patientEntity.getPatiendID()));
+                for(SimpleAppointment simpleAppointment : arrayList_appointmentEntity_ofTheDay) {
+                    if(simpleAppointment.getDay() == req_day) {
+                        arrayList_AppointmentstoDisplay.add(simpleAppointment);
                     }
                 }
-
-                //todo doesn't update
-                //.getAppointments();
-                return arrayList_appointments;
+                return arrayList_AppointmentstoDisplay;
             }
 
             @Override
@@ -249,8 +229,8 @@ public class ActivityAppointments extends AppCompatActivity
             }
         }
 
-        GetAppointmentsOfTheDay getPatients = new GetAppointmentsOfTheDay();
-        getPatients.execute();
+        GetAppointmentsOfTheDay getAppointmentsOfTheDay = new GetAppointmentsOfTheDay();
+        getAppointmentsOfTheDay.execute();
     }
 
     public void deleteAppointment(SimpleAppointment simpleAppointment) {
@@ -287,15 +267,22 @@ public class ActivityAppointments extends AppCompatActivity
         {
             @Override
             protected List<AppointmentEntity> doInBackground(Void... voids) {
-
                 List<AppointmentEntity> appointmentList = DatabaseRepository
                         .getInstance(context)
                         .getAppDatabase()
                         .appointmentDao()
                         .getAppointmentsForMonth(String.valueOf(req_year), String.valueOf(req_month));
 
+                arrayList_appointmentEntity_ofTheDay = new ArrayList<>();
+                for(AppointmentEntity appointmentEntity : appointmentList) {
+                    PatientEntity patientEntity = DatabaseRepository
+                            .getInstance(context)
+                            .getAppDatabase()
+                            .patientDao()
+                            .getPatient(appointmentEntity.getPatientID_ref());
+                    arrayList_appointmentEntity_ofTheDay.add(new SimpleAppointment(appointmentEntity, patientEntity.getNameSurnameBday(context.getString(R.string.of_the))));
+                }
                 //todo doesn't update
-                //.getAppointments();
                 return appointmentList;
             }
 

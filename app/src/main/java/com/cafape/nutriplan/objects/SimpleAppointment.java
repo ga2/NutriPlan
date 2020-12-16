@@ -4,9 +4,11 @@ import com.cafape.nutriplan.Globals;
 import com.cafape.nutriplan.database.entities.AppointmentEntity;
 import com.cafape.nutriplan.support.Utils;
 
+import java.io.Serializable;
+
 import static com.cafape.nutriplan.Globals.TIMEFORMAT;
 
-public class SimpleAppointment
+public class SimpleAppointment implements Serializable
 {
     private int year;
     private int month;
@@ -25,9 +27,9 @@ public class SimpleAppointment
         this.displayText = time + " " + Globals.LONG_DASH + " " + name_surname + visitReason;
         this.appointmentID = appointmentEntity.getAppointmentID();
         this.patientID = appointmentEntity.getPatientID_ref();
-        this.day = Integer.parseInt(Utils.convertDateFormat(appointmentEntity.getAppointmentTime(), "yyyy"));
+        this.year = Integer.parseInt(Utils.convertDateFormat(appointmentEntity.getAppointmentTime(), "yyyy"));
         this.month = Integer.parseInt(Utils.convertDateFormat(appointmentEntity.getAppointmentTime(), "MM"));
-        this.year = Integer.parseInt(Utils.convertDateFormat(appointmentEntity.getAppointmentTime(), "dd"));
+        this.day = Integer.parseInt(Utils.convertDateFormat(appointmentEntity.getAppointmentTime(), "dd"));
     }
 
     public SimpleAppointment(int year, int month, int day,String time, String name_surname, String visitReason, int appointmentID, int patientID) {

@@ -12,15 +12,6 @@ import java.util.List;
 @Dao
 public interface PatientWithAppointmentsDao
 {
-  /*  @Transaction
-    @Query("SELECT * FROM AppointmentEntity AS ae INNER JOIN PatientEntity AS pe ON ae.appointmentID = pe.patiendID WHERE pe.patiendID =:patientID")
-    public List<PatientWithAppointmentsDao> getPatientWithAppointments(int patientID);
-*/
-  /*
-    @Transaction
-    @Query("SELECT * FROM AppointmentEntity AS ae INNER JOIN PatientEntity AS pe ON ae.appointmentID = pe.patiendID WHERE pe.patiendID =:patientID ORDER BY ae.appointmentTime DESC LIMIT 1")
-    public List<PatientWithAppointmentsDao> getPatientWithLastAppointments(int patientID);
-*/
     @Transaction
     @Query("SELECT pe.patiendID, pe.birthDate, pe.name, pe.surname, ae.visitReason, ae.appointmentTime, ae.appointmentID FROM PatientEntity AS pe INNER JOIN AppointmentEntity AS ae ON ae.patientID_ref = pe.patiendID WHERE (strftime('%Y',ae.appointmentTime) IN (:req_year)) AND (strftime('%m', ae.appointmentTime) IN (:req_month)) ORDER BY ae.appointmentTime ASC")
     public List<PatientWithAppointments> getAllAppointmentsOfTheMonth(String req_year, String req_month);
@@ -30,7 +21,10 @@ public interface PatientWithAppointmentsDao
   public List<PatientWithAppointments> getAllAppointmentsOfTheDay(String req_year, String req_month, String req_day);
 
   @Transaction
-  @Query("SELECT pe.patiendID, pe.birthDate, pe.name, pe.surname, ae.visitReason, ae.appointmentTime, ae.appointmentID FROM PatientEntity AS pe INNER JOIN AppointmentEntity AS ae ON ae.patientID_ref = pe.patiendID WHERE ae.appointmentTime = :req_date ORDER BY ae.appointmentTime ASC")
+  @Query("SELECT pe.patiendID, pe.birthDate, pe.name, pe.surname, ae.visitReason, ae.appointmentTime, ae.appointmentID FROM PatientEntity AS pe JOIN AppointmentEntity AS ae ON ae.patientID_ref = pe.patiendID WHERE strftime('%Y-%m-%d', ae.appointmentTime) = :req_date ORDER BY ae.appointmentTime ASC")
+  //@Query("SELECT pe.patiendID, pe.birthDate, pe.name, pe.surname, ae.visitReason, ae.appointmentTime, ae.appointmentID FROM PatientEntity AS pe JOIN AppointmentEntity AS ae ON ae.patientID_ref = pe.patiendID WHERE strftime('%d', ae.appointmentTime) = :req_date ORDER BY ae.appointmentTime ASC")
+  //@Query("SELECT pe.patiendID, pe.birthDate, pe.name, pe.surname, ae.visitReason, ae.appointmentTime, ae.appointmentID FROM PatientEntity AS pe JOIN AppointmentEntity AS ae ON ae.patientID_ref = pe.patiendID WHERE ae.appointmentTime = :req_date ORDER BY ae.appointmentTime ASC")
+  //public List<PatientWithAppointments> getAllAppointmentsOfTheDay(String req_date);
   public List<PatientWithAppointments> getAllAppointmentsOfTheDay(String req_date);
 
     @Transaction
