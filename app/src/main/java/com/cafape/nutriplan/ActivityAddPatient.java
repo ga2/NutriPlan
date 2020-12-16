@@ -57,7 +57,7 @@ public class ActivityAddPatient extends AppCompatActivity
             @Override
             public void onDateChanged(DatePicker datePicker, int year, int month, int dayOfMonth) {
                 Date bdayDate = TimestampConverter.fromTimestamp(year + "-" + (month + 1) + "-" + dayOfMonth);
-                int age_int = Utils.calculateAge(bdayDate);
+                int age_int = Utils.calculateAge(bdayDate); //todo crash with old years
                 String age_string = getString(R.string.error).toUpperCase();
                 if(age_int > -1) {
                     age_string = String.valueOf(age_int);

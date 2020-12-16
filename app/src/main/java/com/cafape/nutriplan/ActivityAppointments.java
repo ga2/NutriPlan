@@ -13,6 +13,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.provider.CalendarContract;
 import android.text.style.ForegroundColorSpan;
 import android.view.View;
 import android.widget.TextView;
@@ -83,10 +84,21 @@ public class ActivityAppointments extends AppCompatActivity
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == REQCODE_NEWPATIENT_ADDED) {
             if (resultCode == RESULT_OK) {
-                //todo
-               /* AppointmentEntity appointmentEntity = (AppointmentEntity)data.getSerializableExtra("newAppointmentEntity");
-                appointmentsRecyclerViewAdapter.addToRetrievedData(appointmentEntity);
-                appointmentsRecyclerViewAdapter.notifyDataSetChanged();*/
+                //todo no update of the drawable cirle and view
+                /*
+                AppointmentEntity appointmentEntity = (AppointmentEntity)data.getSerializableExtra("newAppointmentEntity");
+                String patient_info = (String)data.getSerializableExtra("patient_info");
+                appointmentsRecyclerViewAdapter.addToRetrievedData(new SimpleAppointment(appointmentEntity, patient_info));
+                appointmentsRecyclerViewAdapter.notifyDataSetChanged();
+                Calendar calendar = Calendar.getInstance();
+                calendar.setTime(appointmentEntity.getAppointmentTime());
+                activityappointments_calendarView.addDecorator(new EventDecoratorMonth(CalendarDay.from(
+                        calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH) + 1, calendar.get(Calendar.DAY_OF_MONTH))));
+
+                 */
+                getAppointmentsOfTheDay();
+                getAppointmentForCalendar(activityappointments_calendarView.getCurrentDate().getYear(), activityappointments_calendarView.getCurrentDate().getMonth());
+
             }
         }
     }
@@ -156,64 +168,6 @@ public class ActivityAppointments extends AppCompatActivity
         activityappointments_textView_monthYear.setText(month + " " + year);
     }
 
-    /*
-
-    public void getAppointments() {
-        class GetAppointments extends AsyncTask<Void, Void, List<AppointmentEntity>>
-        {
-            @Override
-            protected List<AppointmentEntity> doInBackground(Void... voids) {
-                List<AppointmentEntity> appointmentList = DatabaseRepository
-                        .getInstance(context)
-                        .getAppDatabase()
-                        .appointmentDao()
-                        .getAppointmentsForMonth(String.valueOf(activityappointments_calendarView.getSelectedDate().getMonth()));
-                //todo doesn't update
-                //.getAppointments();
-                return appointmentList;
-            }
-
-            @Override
-            protected void onPostExecute(List<AppointmentEntity> appointments) {
-                super.onPostExecute(appointments);
-                for (AppointmentEntity appointment : appointments) {
-                    myprint(appointment.getPatientID_ref());
-                }
-                appointmentsRecyclerViewAdapter = new AppointmentsRecyclerViewAdapter(context, appointments);
-                activityappointments_recyclerView.setLayoutManager(new LinearLayoutManager(context));
-                activityappointments_recyclerView.setAdapter(appointmentsRecyclerViewAdapter);
-                appointmentsRecyclerViewAdapter.notifyDataSetChanged();
-
-                if(appointmentsRecyclerViewAdapter.getItemCount() == 0) {
-                    activityPatients_textView_nodata_details = findViewById(R.id.textView_nodata_details);
-                    activityPatients_constraintLayout_nodata = findViewById(R.id.constraintLayout_nodata);
-                    activityPatients_textView_nodata_details.setText(getString(R.string.activityappointments_string_nodata_details));
-                    activityPatients_textView_nodata_details.setVisibility(View.VISIBLE);
-                    activityPatients_constraintLayout_nodata.setVisibility(View.VISIBLE);
-                } else {
-                    if(activityPatients_textView_nodata_details == null) {
-                        activityPatients_textView_nodata_details = findViewById(R.id.textView_nodata_details);
-                        activityPatients_constraintLayout_nodata = findViewById(R.id.constraintLayout_nodata);
-                    }
-                    activityPatients_textView_nodata_details.setText("");
-                    activityPatients_constraintLayout_nodata.setVisibility(View.GONE);
-                }
-                //Call click method
-                appointmentsRecyclerViewAdapter.setEditAppointmentClickListener(new AppointmentsRecyclerViewAdapter.EditAppointmentClickListener() {
-                    @Override
-                    public void onItemClick(String name) {
-                        //openWhatsapp(name);
-                    }
-                });
-            }
-        }
-
-        GetAppointments getPatients = new GetAppointments();
-        getPatients.execute();
-    }
-
-     */
-
     public void getAppointmentsOfTheDay() {
         class GetAppointmentsOfTheDay extends AsyncTask<Void, Void, List<SimpleAppointment>>
         {
@@ -237,7 +191,6 @@ public class ActivityAppointments extends AppCompatActivity
 
                         arrayList_appointments.add(new SimpleAppointment(req_year, req_month, req_day, req_time, patientWithAppointments.patientEntity.getNameSurnameBday(getString(R.string.of_the)),
                         appointmentEntity.getVisitReason(), appointmentEntity.getAppointmentID() , patientWithAppointments.patientEntity.getPatiendID()));
-                            //todo time is missing
                     }
                 }
 
@@ -320,6 +273,7 @@ public class ActivityAppointments extends AppCompatActivity
                     Toast.makeText(context, R.string.deleted, Toast.LENGTH_SHORT).show();
                     appointmentsRecyclerViewAdapter.deleteFromRetrievedData(simpleAppointment);
                     appointmentsRecyclerViewAdapter.notifyDataSetChanged();
+                    //todo no nodatashown if the last one and circle still present
                 }
             }
         }
@@ -333,7 +287,6 @@ public class ActivityAppointments extends AppCompatActivity
         {
             @Override
             protected List<AppointmentEntity> doInBackground(Void... voids) {
-
 
                 List<AppointmentEntity> appointmentList = DatabaseRepository
                         .getInstance(context)

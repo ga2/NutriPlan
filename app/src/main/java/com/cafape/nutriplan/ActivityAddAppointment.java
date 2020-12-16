@@ -77,6 +77,7 @@ public class ActivityAddAppointment extends AppCompatActivity
 
     public void setUiComponents() {
         activityaddappointment_timePicker = findViewById(R.id.activityaddappointment_timePicker);
+        activityaddappointment_timePicker.setIs24HourView(true);
         activityaddappointment_autocompleteTextView = findViewById(R.id.activityaddappointment_autocompleteTextView);
         activityaddappointment_editText_visitReason = findViewById(R.id.activityaddappointment_editText_visitReason);
         activityaddappointment_recyclerView = findViewById(R.id.activityaddappointment_recyclerView);
@@ -91,7 +92,7 @@ public class ActivityAddAppointment extends AppCompatActivity
                 int patientPosition = activityaddappointment_adapter_patients.getPosition(patientString);
                 if(patientPosition > - 1) {
                     patientEntity_toInsert = activityaddappontment_hashMap_patients.get(patientString);
-                    saveAppointment(activityaddappointment_timePicker.getHour(), activityaddappointment_timePicker.getMinute(), activityaddappointment_localDate, activityaddappointment_editText_visitReason.getText().toString(), patientEntity_toInsert.getPatiendID());
+                    saveAppointment(activityaddappointment_timePicker.getHour(), activityaddappointment_timePicker.getMinute(), activityaddappointment_localDate, activityaddappointment_editText_visitReason.getText().toString(), patientEntity_toInsert.getPatiendID(), patientString);
                 } else {
                     String message = getString(R.string.activityaddpatient_string_alertTitle_formCheck);
                     message += getString(R.string.activityaddappointment_string_alertMessage_formCheck_name);
@@ -162,7 +163,7 @@ public class ActivityAddAppointment extends AppCompatActivity
                 super.onPostExecute(patients);
                 for (PatientEntity patient : patients) {
                     activityaddappontment_hashMap_patients.put(patient.getNameSurnameBday(getString(R.string.of_the)), patient);
-                    list.add(patient.getName() + " " + patient.getSurname() + " - " + Utils.convertDateFormat(patient.getBirthDate(), DATEFORMAT_DISPLAY));
+                    list.add(patient.getNameSurnameBday(getString(R.string.of_the)));
                 }
                 initAutocomplete(list);
             }
@@ -238,7 +239,7 @@ public class ActivityAddAppointment extends AppCompatActivity
         getPatients.execute();
     }
     */
-    public void saveAppointment(int hour, int minutes, LocalDate localDate, String visitReason, int patient_id) {
+    public void saveAppointment(int hour, int minutes, LocalDate localDate, String visitReason, int patient_id, String patient_info) {
         class SaveAppointment extends AsyncTask<Void, Void, Void>
         {
             private AppointmentEntity appointmentEntity;
@@ -260,6 +261,7 @@ public class ActivityAddAppointment extends AppCompatActivity
                 super.onPostExecute(aVoid);
                 Intent data = new Intent();
                 data.putExtra("newAppointmentEntity", appointmentEntity);
+                data.putExtra("patient_info", patient_info);
                 setResult(RESULT_OK, data);
                 finish();
                 Toast.makeText(getApplicationContext(), getString(R.string.saved), Toast.LENGTH_LONG).show();

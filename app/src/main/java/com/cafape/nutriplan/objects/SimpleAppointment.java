@@ -1,6 +1,10 @@
 package com.cafape.nutriplan.objects;
 
 import com.cafape.nutriplan.Globals;
+import com.cafape.nutriplan.database.entities.AppointmentEntity;
+import com.cafape.nutriplan.support.Utils;
+
+import static com.cafape.nutriplan.Globals.TIMEFORMAT;
 
 public class SimpleAppointment
 {
@@ -10,6 +14,21 @@ public class SimpleAppointment
     private String displayText;
     private int appointmentID;
     private int patientID;
+
+    public SimpleAppointment(AppointmentEntity appointmentEntity, String patient_info) {
+        String visitReason = appointmentEntity.getVisitReason();
+        if(!visitReason.isEmpty()) {
+            visitReason = ": " + visitReason;
+        }
+        String time = Utils.convertDateFormat(appointmentEntity.getAppointmentTime(), TIMEFORMAT);
+        String name_surname = patient_info;
+        this.displayText = time + " " + Globals.LONG_DASH + " " + name_surname + visitReason;
+        this.appointmentID = appointmentEntity.getAppointmentID();
+        this.patientID = appointmentEntity.getPatientID_ref();
+        this.day = Integer.parseInt(Utils.convertDateFormat(appointmentEntity.getAppointmentTime(), "yyyy"));
+        this.month = Integer.parseInt(Utils.convertDateFormat(appointmentEntity.getAppointmentTime(), "MM"));
+        this.year = Integer.parseInt(Utils.convertDateFormat(appointmentEntity.getAppointmentTime(), "dd"));
+    }
 
     public SimpleAppointment(int year, int month, int day,String time, String name_surname, String visitReason, int appointmentID, int patientID) {
         if(!visitReason.isEmpty()) {
