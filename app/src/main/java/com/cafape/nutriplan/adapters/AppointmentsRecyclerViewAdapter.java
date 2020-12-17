@@ -52,7 +52,6 @@ public class AppointmentsRecyclerViewAdapter  extends RecyclerView.Adapter<Appoi
         ImageView rowAppointment_imageView_edit;
         ImageView rowAppointment_imageView_delete;
 
-
         ViewHolder(View itemView) {
             super(itemView);
             rowAppointment_textView_infouser = itemView.findViewById(R.id.rowAppointment_textView_infouser);

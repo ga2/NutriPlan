@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.cafape.nutriplan.R;
 import com.cafape.nutriplan.database.entities.AppointmentEntity;
 import com.cafape.nutriplan.database.entities.PatientWithAppointments;
+import com.cafape.nutriplan.objects.SimplePatientWithAppointment;
 import com.cafape.nutriplan.support.Utils;
 
 import java.util.ArrayList;
@@ -28,17 +29,18 @@ import static com.cafape.nutriplan.Globals.LONG_DASH;
 public class PatientWithAppointmentsRecyclerViewAdapter extends RecyclerView.Adapter<PatientWithAppointmentsRecyclerViewAdapter.ViewHolder>
 {
     private Context context;
+    private Date date_now;
 
-    private List<PatientWithAppointments> retrievedData;
-    private List<PatientWithAppointments> retrievedData_copy; //needed for filtering
+    private List<SimplePatientWithAppointment> retrievedData;
+    private List<SimplePatientWithAppointment> retrievedData_copy; //needed for filtering
     private LayoutInflater layoutInflater;
 
     // data is passed into the constructor
-    public PatientWithAppointmentsRecyclerViewAdapter(Context context, List<PatientWithAppointments> retrievedData) {
+    public PatientWithAppointmentsRecyclerViewAdapter(Context context, List<SimplePatientWithAppointment> retrievedData) {
         this.context = context;
         this.layoutInflater = LayoutInflater.from(context);
         this.retrievedData = retrievedData;
-        this.retrievedData_copy = new ArrayList<PatientWithAppointments>();
+        this.retrievedData_copy = new ArrayList<SimplePatientWithAppointment>();
         this.retrievedData_copy.addAll(retrievedData);
     }
 
@@ -52,50 +54,41 @@ public class PatientWithAppointmentsRecyclerViewAdapter extends RecyclerView.Ada
     // binds the data to the TextView in each row
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        PatientWithAppointments dataGot = retrievedData.get(position);
-        holder.rowPatients_textView_name.setText(dataGot.patientEntity.getName() + " " + dataGot.patientEntity.getSurname());
-        holder.rowPatients_textView_bdate.setText(Utils.convertDateFormat(dataGot.patientEntity.getBirthDate(), DATEFORMAT_DISPLAY));
-        List<AppointmentEntity> appointments = dataGot.appointments;
-        if(appointments != null && !appointments.isEmpty()) {
-            Calendar calendar = Calendar.getInstance();
-            Date now = calendar.getTime();
-            Collections.sort(appointments, Collections.reverseOrder()); //get the highest
+        SimplePatientWithAppointment dataGot = retrievedData.get(position);
+        holder.rowPatients_textView_name.setText(dataGot.getPatientEntity().getName() + " " + dataGot.getPatientEntity().getSurname());
+        holder.rowPatients_textView_bdate.setText(Utils.convertDateFormat(dataGot.getPatientEntity().getBirthDate(), DATEFORMAT_DISPLAY));
 
-            Date nearestVisit = null;
-            if(appointments.get(0).getAppointmentTime().before(now)) { //If the last visit has passed is sure is part of "last visits"
-                nearestVisit = appointments.get(0).getAppointmentTime();
+        Date dateVisit = dataGot.getVisit();
+
+        if(dateVisit != null) {
+            if(dateVisit.before(date_now)) { //If the last visit has passed is sure is part of "last visits"
                 holder.rowPatients_textView_visitStatus_label.setText(context.getString(R.string.activitypatients_string_patient_lastVisit));
-                holder.rowPatients_textView_visitStatus.setTextColor(Color.BLACK);
+                holder.rowPatients_textView_visitStatus.setTextColor(Color.parseColor("#666666"));
             } else {
                 holder.rowPatients_textView_visitStatus_label.setText(context.getString(R.string.activitypatients_string_patient_nextVisit));
-                int size = appointments.size();
-
-                for (ListIterator iterator = appointments.listIterator(); iterator.hasNext();) {
-                    AppointmentEntity appointmentEntity = (AppointmentEntity)iterator.next();
-                    if(appointmentEntity.getAppointmentTime().after(now)) {
-                        nearestVisit = appointmentEntity.getAppointmentTime();
-                    } else {
-                        break;
-                    }
-                }
             }
-            holder.rowPatients_textView_visitStatus.setText(Utils.convertDateFormat(nearestVisit, DATEFORMAT_DISPLAY));
+            holder.rowPatients_textView_visitStatus.setText(Utils.convertDateFormat(dateVisit, DATEFORMAT_DISPLAY));
         } else {
             holder.rowPatients_textView_visitStatus.setText(LONG_DASH);
-            holder.rowPatients_textView_visitStatus.setTextColor(Color.BLACK);
+            holder.rowPatients_textView_visitStatus.setTextColor(Color.parseColor("#666666"));
         }
+
         holder.rowPatients_imageView_call.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                phoneClickListener.onItemClick(dataGot.patientEntity.getPhone());
+                phoneClickListener.onItemClick(dataGot.getPatientEntity().getPhone());
             }
         });
         holder.rowPatients_imageView_whatsapp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                whatsapClickListener.onItemClick(dataGot.patientEntity.getName());
+                whatsapClickListener.onItemClick(dataGot.getPatientEntity().getName());
             }
         });
+    }
+
+    public void setNow(Date date) {
+        date_now = date;
     }
 
     // total number of rows
@@ -125,11 +118,11 @@ public class PatientWithAppointmentsRecyclerViewAdapter extends RecyclerView.Ada
     }
 
     // convenience method for getting data at click position
-    PatientWithAppointments getItem(int id) {
+    SimplePatientWithAppointment getItem(int id) {
         return retrievedData.get(id);
     }
 
-    public void addToRetrievedData(PatientWithAppointments patientEntity) {
+    public void addToRetrievedData(SimplePatientWithAppointment patientEntity) {
         retrievedData.clear();
         retrievedData.add(patientEntity);
         retrievedData_copy.add(patientEntity);
@@ -142,8 +135,8 @@ public class PatientWithAppointmentsRecyclerViewAdapter extends RecyclerView.Ada
             retrievedData.addAll(retrievedData_copy);
         } else{
             text = text.toLowerCase();
-            for(PatientWithAppointments item: retrievedData_copy){
-                if(item.patientEntity.getName().toLowerCase().contains(text) || item.patientEntity.getSurname().toLowerCase().contains(text)){
+            for(SimplePatientWithAppointment item: retrievedData_copy){
+                if(item.getPatientEntity().getName().toLowerCase().contains(text) || item.getPatientEntity().getSurname().toLowerCase().contains(text)){
                     retrievedData.add(item);
                 }
             }

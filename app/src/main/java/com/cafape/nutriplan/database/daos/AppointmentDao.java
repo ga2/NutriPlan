@@ -28,6 +28,9 @@ public interface AppointmentDao
     @Query("SELECT * FROM AppointmentEntity WHERE appointmentID =:appointmentID")
     AppointmentEntity getAppointmentByID(int appointmentID);
 
+    @Query("SELECT * FROM AppointmentEntity WHERE patientID_ref =:patientID ORDER BY appointmentTime DESC LIMIT 1")
+    AppointmentEntity getLastAppointmentByPatientID(int patientID);
+
     @Query("DELETE FROM Appointmententity WHERE appointmentID =:appointmentID")
     int deleteByID(int appointmentID);
 

@@ -72,8 +72,8 @@ public class ActivityAddPatient extends AppCompatActivity
 
             @Override
             public void onClick(View view) {
-                String patientEntity_name = ((EditText)findViewById(R.id.activityaddpatient_editText_name)).getText().toString();
-                String patientEntity_surname = ((EditText)findViewById(R.id.activityaddpatient_editText_surname)).getText().toString();
+                String patientEntity_name = Utils.upperCaseAllFirst(((EditText)findViewById(R.id.activityaddpatient_editText_name)).getText().toString());
+                String patientEntity_surname = Utils.upperCaseAllFirst(((EditText)findViewById(R.id.activityaddpatient_editText_surname)).getText().toString());
 
                 Date patientEntity_bdate = Utils.getDateFromDatePicker(activityaddpatient_datepicker_bdate);
                 String patientEntity_phone = ((EditText)findViewById(R.id.activityaddpatient_editText_phone)).getText().toString();

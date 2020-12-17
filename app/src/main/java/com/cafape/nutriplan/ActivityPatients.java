@@ -22,10 +22,16 @@ import android.widget.Toast;
 
 import com.cafape.nutriplan.adapters.PatientWithAppointmentsRecyclerViewAdapter;
 import com.cafape.nutriplan.database.DatabaseRepository;
+import com.cafape.nutriplan.database.entities.AppointmentEntity;
 import com.cafape.nutriplan.database.entities.PatientEntity;
 import com.cafape.nutriplan.database.entities.PatientWithAppointments;
+import com.cafape.nutriplan.objects.SimplePatientWithAppointment;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 
 import static com.cafape.nutriplan.Globals.REQCODE_NEWPATIENT_ADDED;
@@ -37,8 +43,6 @@ public class ActivityPatients extends AppCompatActivity
     private FloatingActionButton activitParents_fab_patient_add;
     private RecyclerView activityPatients_recycleView_patients;
     private PatientWithAppointmentsRecyclerViewAdapter patientsRecyclerViewAdapter;
-
-    //todo replication following the appointments
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,9 +62,7 @@ public class ActivityPatients extends AppCompatActivity
         if (requestCode == REQCODE_NEWPATIENT_ADDED) {
             if (resultCode == RESULT_OK) {
                 PatientEntity patientEntity_new = (PatientEntity)data.getSerializableExtra("newPatientEntity");
-                PatientWithAppointments patientWithAppointments_new = new PatientWithAppointments();
-                patientWithAppointments_new.patientEntity = patientEntity_new;
-                patientsRecyclerViewAdapter.addToRetrievedData(patientWithAppointments_new);
+                patientsRecyclerViewAdapter.addToRetrievedData(new SimplePatientWithAppointment(patientEntity_new, null));
                 patientsRecyclerViewAdapter.notifyDataSetChanged();
 
                 eventuallyHideNoDataMessage();
@@ -119,21 +121,37 @@ public class ActivityPatients extends AppCompatActivity
     }
 
     private void getPatients() {
-        class GetPatients extends AsyncTask<Void, Void, List<PatientWithAppointments>> {
+        class GetPatients extends AsyncTask<Void, Void, List<SimplePatientWithAppointment>> {
             @Override
-            protected List<PatientWithAppointments> doInBackground(Void... voids) {
-                List<PatientWithAppointments> patientsList = DatabaseRepository
+            protected List<SimplePatientWithAppointment> doInBackground(Void... voids) {
+                ArrayList<SimplePatientWithAppointment> arrayList_simplePatientWithAppointment = new ArrayList<>();
+
+                List<PatientEntity> patientsList = DatabaseRepository
                         .getInstance(getApplicationContext())
                         .getAppDatabase()
-                        .patientWithAppointmentsDao()
-                        .getAllPatientWithLastAppointments();
-                return patientsList;
+                        .patientDao()
+                        .getAllPatients();
+
+                for(PatientEntity patientEntity : patientsList) {
+                    AppointmentEntity appointmentEntity = DatabaseRepository
+                            .getInstance(getApplicationContext())
+                            .getAppDatabase()
+                            .appointmentDao()
+                            .getLastAppointmentByPatientID(patientEntity.getPatiendID());
+                    SimplePatientWithAppointment simplePatientWithAppointment = new SimplePatientWithAppointment(patientEntity, appointmentEntity);
+                    arrayList_simplePatientWithAppointment.add(simplePatientWithAppointment);
+                }
+
+                return arrayList_simplePatientWithAppointment;
             }
 
             @Override
-            protected void onPostExecute(List<PatientWithAppointments> patients) {
+            protected void onPostExecute(List<SimplePatientWithAppointment> patients) {
                 super.onPostExecute(patients);
                 patientsRecyclerViewAdapter = new PatientWithAppointmentsRecyclerViewAdapter(context, patients);
+                Calendar calendar = Calendar.getInstance();
+                Date now = calendar.getTime();
+                patientsRecyclerViewAdapter.setNow(now);
 
                 activityPatients_recycleView_patients.setLayoutManager(new LinearLayoutManager(context));
                 activityPatients_recycleView_patients.setAdapter(patientsRecyclerViewAdapter);
