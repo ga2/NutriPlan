@@ -20,11 +20,13 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.cafape.nutriplan.adapters.AppointmentsAndPatientsRecyclerViewAdapter;
+import com.cafape.nutriplan.adapters.PatientWithAppointmentsRecyclerViewAdapter;
 import com.cafape.nutriplan.database.DatabaseRepository;
 import com.cafape.nutriplan.database.entities.AppointmentEntity;
 import com.cafape.nutriplan.database.entities.PatientEntity;
 import com.cafape.nutriplan.database.entities.PatientWithAppointments;
 import com.cafape.nutriplan.objects.SimpleAppointment;
+import com.cafape.nutriplan.objects.SimplePatientWithAppointment;
 import com.cafape.nutriplan.support.AlertBuilderUtils;
 import com.cafape.nutriplan.support.Utils;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -142,15 +144,7 @@ public class ActivityAppointments extends AppCompatActivity
         activitappointments_fab_appointment_add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Bundle args = new Bundle();
-                args.putSerializable("arrayList", (Serializable)getAppointmentsOfToday());
-                LocalDate dateSelected = activityappointments_calendarView.getSelectedDate().getDate();
-                args.putSerializable("dateSelected", (Serializable)dateSelected);
-                args.putSerializable("editMode", false);
-
-                Intent intent_goToActivity = new Intent(context, ActivityAddAppointment.class);
-                intent_goToActivity.putExtra("appointmentsOfTheDay", args);
-                startActivityForResult(intent_goToActivity, REQCODE_NEWAPPOINTMENT_ADDED);
+                getPatientsNumber();
             }
         });
     }
@@ -380,5 +374,45 @@ public class ActivityAppointments extends AppCompatActivity
             view.setBackgroundDrawable(getDrawable(R.drawable.ic_baseline_brightness_8));
             view.addSpan(new ForegroundColorSpan(Color.WHITE));
         }
+    }
+
+    private void getPatientsNumber() {
+        class GetPatientsNumber extends AsyncTask<Void, Void, Integer> {
+            @Override
+            protected Integer doInBackground(Void... voids) {
+                int numberPatients = DatabaseRepository
+                        .getInstance(context)
+                        .getAppDatabase()
+                        .patientDao()
+                        .getPatientsNumber();
+
+                return numberPatients;
+            }
+
+            @Override
+            protected void onPostExecute(Integer patientNumber) {
+                super.onPostExecute(patientNumber);
+                if(patientNumber > 0) {
+                    Bundle args = new Bundle();
+                    args.putSerializable("arrayList", (Serializable) getAppointmentsOfToday());
+                    LocalDate dateSelected = activityappointments_calendarView.getSelectedDate().getDate();
+                    args.putSerializable("dateSelected", (Serializable) dateSelected);
+                    args.putSerializable("editMode", false);
+
+                    Intent intent_goToActivity = new Intent(context, ActivityAddAppointment.class);
+                    intent_goToActivity.putExtra("appointmentsOfTheDay", args);
+                    startActivityForResult(intent_goToActivity, REQCODE_NEWAPPOINTMENT_ADDED);
+                } else {
+                    String message = context.getString(R.string.activityappointments_string_alertMessage_blockopening);
+                    AlertDialog.Builder builder = AlertBuilderUtils.BuildAlert(ActivityAppointments.this, R.string.error, message);
+                    builder.setPositiveButton(R.string.back, null);
+                    AlertDialog alertDialog = builder.create();
+                    alertDialog.show();
+                }
+            }
+        }
+
+        GetPatientsNumber getPatientsNumber = new GetPatientsNumber();
+        getPatientsNumber.execute();
     }
 }

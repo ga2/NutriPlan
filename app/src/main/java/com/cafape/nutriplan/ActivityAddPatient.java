@@ -56,8 +56,12 @@ public class ActivityAddPatient extends AppCompatActivity
         activityaddpatient_datepicker_bdate.init(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH), new DatePicker.OnDateChangedListener() {
             @Override
             public void onDateChanged(DatePicker datePicker, int year, int month, int dayOfMonth) {
-                Date bdayDate = TimestampConverter.fromTimestamp(year + "-" + (month + 1) + "-" + dayOfMonth);
-                int age_int = Utils.calculateAge(bdayDate); //todo crash with old years
+                Calendar calendar_bday = Calendar.getInstance();
+                calendar_bday.set(Calendar.YEAR, year);
+                calendar_bday.set(Calendar.MONTH, month);
+                calendar_bday.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+                Date bdayDate = calendar_bday.getTime();
+                int age_int = Utils.calculateAge(bdayDate);
                 String age_string = getString(R.string.error).toUpperCase();
                 if(age_int > -1) {
                     age_string = String.valueOf(age_int);

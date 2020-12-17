@@ -113,6 +113,7 @@
     <string name="activityappointments_string_addAppointment">Aggiungi appuntamento</string>
     <string name="activityappointments_string_nodata_details">Aggiungere un appuntamento</string>
     <string name="activityappointments_string_alertMessage_deleteappointment">Confermare l\'eliminazione dell\'appuntamento?</string>
+    <string name="activityappointments_string_alertMessage_blockopening">Non è possibile aggiungere un appuntamento senza pazienti.</string>
 
     <!-- END Activity_appointments -->
 

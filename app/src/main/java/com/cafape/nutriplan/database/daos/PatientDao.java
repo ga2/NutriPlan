@@ -20,6 +20,9 @@ public interface PatientDao
     @Query("SELECT * FROM PatientEntity WHERE patiendID = :patientID_target LIMIT 1")
     PatientEntity getPatient(int patientID_target);
 
+    @Query("SELECT COUNT(*) FROM PatientEntity")
+    int getPatientsNumber();
+
     @Insert
     void insert(PatientEntity patientEntity);
 
