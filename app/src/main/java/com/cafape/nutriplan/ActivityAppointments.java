@@ -40,6 +40,7 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 
@@ -47,6 +48,7 @@ import org.threeten.bp.LocalDate;
 import org.threeten.bp.format.DateTimeFormatter;
 import org.threeten.bp.format.TextStyle;
 
+import static com.cafape.nutriplan.Globals.DATEFORMAT;
 import static com.cafape.nutriplan.Globals.REQCODE_EDITAPPOINTMENT;
 import static com.cafape.nutriplan.Globals.REQCODE_NEWAPPOINTMENT_ADDED;
 import static com.cafape.nutriplan.Globals.REQCODE_NEWPATIENT_ADDED;
@@ -66,6 +68,7 @@ public class ActivityAppointments extends AppCompatActivity
     private TextView activityPatients_textView_nodata_details;
     private ConstraintLayout activityPatients_constraintLayout_nodata;
     private FloatingActionButton activitappointments_fab_appointment_add;
+    private HashMap<String, EventDecoratorMonth> hashMap_calendarDecordatorReference;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,6 +76,7 @@ public class ActivityAppointments extends AppCompatActivity
         setContentView(R.layout.activity_appointments);
         context = getApplicationContext();
         arrayList_appointmentEntity_ofTheDay = new ArrayList<SimpleAppointment>();
+        hashMap_calendarDecordatorReference = new HashMap<>();
 
         setUiComponents();
 
@@ -276,13 +280,14 @@ public class ActivityAppointments extends AppCompatActivity
                     Toast.makeText(context, R.string.deleted, Toast.LENGTH_SHORT).show();
                     appointmentsRecyclerViewAdapter.deleteFromRetrievedData(simpleAppointment);
                     appointmentsRecyclerViewAdapter.notifyDataSetChanged();
-                    //todo no nodatashown if the last one and circle still present
                     if(appointmentsRecyclerViewAdapter.getItemCount() == 0) {
                         activityPatients_textView_nodata_details = findViewById(R.id.textView_nodata_details);
                         activityPatients_constraintLayout_nodata = findViewById(R.id.constraintLayout_nodata);
                         activityPatients_textView_nodata_details.setText(getString(R.string.activityappointments_string_nodata_details));
                         activityPatients_textView_nodata_details.setVisibility(View.VISIBLE);
                         activityPatients_constraintLayout_nodata.setVisibility(View.VISIBLE);
+                        String decoratorKey = Utils.convertDateFormat(simpleAppointment.getDate(), DATEFORMAT);
+                        activityappointments_calendarView.removeDecorator(hashMap_calendarDecordatorReference.get(decoratorKey));
                     } else {
                         if(activityPatients_textView_nodata_details == null) {
                             activityPatients_textView_nodata_details = findViewById(R.id.textView_nodata_details);
@@ -307,7 +312,6 @@ public class ActivityAppointments extends AppCompatActivity
                 arrayList_appointmentEntity_ofTheDay.get(pos).setVisitReason(simpleAppointment_in.getVisitReason());
                 arrayList_appointmentEntity_ofTheDay.get(pos).setDate(simpleAppointment_in.getDate());
                 arrayList_appointmentEntity_ofTheDay.get(pos).generateDisplayText(patient_info);
-
 
                 break;
             }
@@ -346,9 +350,11 @@ public class ActivityAppointments extends AppCompatActivity
                     Date appointmentDate = appointmentEntity.getAppointmentTime();
                     Calendar calendar = Calendar.getInstance();
                     calendar.setTime(appointmentDate);
+                    EventDecoratorMonth eventDecoratorMonth = new EventDecoratorMonth(CalendarDay.from(
+                            calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH) + 1, calendar.get(Calendar.DAY_OF_MONTH)));
 
-                    activityappointments_calendarView.addDecorator(new EventDecoratorMonth(CalendarDay.from(
-                            calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH) + 1, calendar.get(Calendar.DAY_OF_MONTH))));
+                    hashMap_calendarDecordatorReference.put(Utils.convertDateFormat(appointmentDate, DATEFORMAT), eventDecoratorMonth);
+                    activityappointments_calendarView.addDecorator(eventDecoratorMonth);
                 }
             }
         }
@@ -360,7 +366,6 @@ public class ActivityAppointments extends AppCompatActivity
     public class EventDecoratorMonth implements DayViewDecorator {
         private CalendarDay date = null;
 
-        //todo bug when changing page
         public EventDecoratorMonth(CalendarDay date) {
             this.date = date;
         }
