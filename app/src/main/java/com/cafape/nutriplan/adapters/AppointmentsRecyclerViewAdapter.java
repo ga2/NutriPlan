@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -11,15 +12,16 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.cafape.nutriplan.R;
 import com.cafape.nutriplan.database.entities.AppointmentEntity;
+import com.cafape.nutriplan.objects.SimpleAppointment;
 
 import java.util.List;
 
 public class AppointmentsRecyclerViewAdapter  extends RecyclerView.Adapter<AppointmentsRecyclerViewAdapter.ViewHolder>
 {
-    private List<AppointmentEntity> retrievedData;
+    private List<SimpleAppointment> retrievedData;
     private LayoutInflater layoutInflater;
 
-    public AppointmentsRecyclerViewAdapter(Context context, List<AppointmentEntity> retrievedData) {
+    public AppointmentsRecyclerViewAdapter(Context context, List<SimpleAppointment> retrievedData) {
         this.layoutInflater = LayoutInflater.from(context);
         this.retrievedData = retrievedData;
     }
@@ -33,7 +35,10 @@ public class AppointmentsRecyclerViewAdapter  extends RecyclerView.Adapter<Appoi
 
     @Override
     public void onBindViewHolder(@NonNull AppointmentsRecyclerViewAdapter.ViewHolder holder, int position) {
-
+        SimpleAppointment dataGot = retrievedData.get(position);
+        holder.rowAppointment_textView_infouser.setText(dataGot.getDisplayText());
+        holder.rowAppointment_imageView_edit.setVisibility(View.GONE);
+        holder.rowAppointment_imageView_delete.setVisibility(View.GONE);
     }
 
     @Override
@@ -43,28 +48,16 @@ public class AppointmentsRecyclerViewAdapter  extends RecyclerView.Adapter<Appoi
 
     // stores and recycles views as they are scrolled off screen
     public class ViewHolder extends RecyclerView.ViewHolder{
-        TextView rowPatients_textView_name;
+        TextView rowAppointment_textView_infouser;
+        ImageView rowAppointment_imageView_edit;
+        ImageView rowAppointment_imageView_delete;
 
 
         ViewHolder(View itemView) {
             super(itemView);
-            rowPatients_textView_name = itemView.findViewById(R.id.rowPatients_textView_name);
+            rowAppointment_textView_infouser = itemView.findViewById(R.id.rowAppointment_textView_infouser);
+            rowAppointment_imageView_edit = itemView.findViewById(R.id.rowAppointment_imageView_edit);
+            rowAppointment_imageView_delete = itemView.findViewById(R.id.rowAppointment_imageView_delete);
         }
-    }
-
-    public void addToRetrievedData(AppointmentEntity appointmentEntity) {
-        retrievedData.add(appointmentEntity);
-    }
-
-    //Declarative interface
-    private EditAppointmentClickListener editAppointmentClickListener;
-    //set method
-    public void setEditAppointmentClickListener(AppointmentsRecyclerViewAdapter.EditAppointmentClickListener editAppointmentClickListener) {
-        this.editAppointmentClickListener = editAppointmentClickListener;
-    }
-    //Defining interface
-    public interface EditAppointmentClickListener {
-        //Achieve the click method, passing the subscript.
-        void onItemClick(String appointmentID);
     }
 }

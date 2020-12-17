@@ -139,7 +139,7 @@ public class ActivityAppointments extends AppCompatActivity
             @Override
             public void onClick(View view) {
                 Bundle args = new Bundle();
-                args.putSerializable("arrayList", (Serializable)arrayList_appointmentEntity_ofTheDay);
+                args.putSerializable("arrayList", (Serializable)getAppointmentsOfToday());
                 LocalDate dateSelected = activityappointments_calendarView.getSelectedDate().getDate();
                 args.putSerializable("dateSelected", (Serializable)dateSelected);
                 args.putSerializable("editMode", false);
@@ -173,21 +173,24 @@ public class ActivityAppointments extends AppCompatActivity
         activityappointments_textView_monthYear.setText(month + " " + year);
     }
 
+    public ArrayList<SimpleAppointment> getAppointmentsOfToday() {
+        ArrayList<SimpleAppointment> arrayList_AppointmentstoDisplay = new ArrayList<>();
+        int req_day = activityappointments_calendarView.getSelectedDate().getDay();
+
+        for(SimpleAppointment simpleAppointment : arrayList_appointmentEntity_ofTheDay) {
+            if(simpleAppointment.getDay() == req_day) {
+                arrayList_AppointmentstoDisplay.add(simpleAppointment);
+            }
+        }
+        return arrayList_AppointmentstoDisplay;
+    }
+
     public void getAppointmentsOfTheDay() {
         class GetAppointmentsOfTheDay extends AsyncTask<Void, Void, List<SimpleAppointment>>
         {
             @Override
             protected List<SimpleAppointment> doInBackground(Void... voids) {
-
-                ArrayList<SimpleAppointment> arrayList_AppointmentstoDisplay = new ArrayList<>();
-                int req_day = activityappointments_calendarView.getSelectedDate().getDay();
-
-                for(SimpleAppointment simpleAppointment : arrayList_appointmentEntity_ofTheDay) {
-                    if(simpleAppointment.getDay() == req_day) {
-                        arrayList_AppointmentstoDisplay.add(simpleAppointment);
-                    }
-                }
-                return arrayList_AppointmentstoDisplay;
+                return getAppointmentsOfToday();
             }
 
             @Override

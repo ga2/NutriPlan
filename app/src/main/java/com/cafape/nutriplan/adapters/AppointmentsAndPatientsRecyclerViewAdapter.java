@@ -102,7 +102,6 @@ public class AppointmentsAndPatientsRecyclerViewAdapter extends RecyclerView.Ada
         for(SimpleAppointment appointmentEntity : retrievedData) {
             if(appointmentEntity.getAppointmentID() == id) {
                 retrievedData_copy.get(pos).setDate(appointmentEntity_in.getAppointmentTime());
-               // retrievedData_copy.get(pos).getDisplayText(patient_info);
                 retrievedData_copy.get(pos).setVisitReason(appointmentEntity_in.getVisitReason());
 
                 retrievedData.clear();

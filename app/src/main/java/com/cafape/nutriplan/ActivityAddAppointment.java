@@ -48,7 +48,7 @@ public class ActivityAddAppointment extends AppCompatActivity
     private EditText activityaddappointment_editText_visitReason;
     private RecyclerView activityaddappointment_recyclerView;
     private AppointmentsRecyclerViewAdapter appointmentAddRecyclerViewAdapter;
-    private ArrayList<AppointmentEntity> arrayList_appointmentEntity_ofTheDay;
+    private ArrayList<SimpleAppointment> arrayList_appointmentEntity_ofTheDay;
     private TextView activityaddappointment_textView_nodata_details;
     private ConstraintLayout activityaddappointment_constraintLayout_nodata;
     private HashMap<String, PatientEntity> activityaddappontment_hashMap_patients;
@@ -128,7 +128,7 @@ public class ActivityAddAppointment extends AppCompatActivity
     }
 
     public void initAppointmentoOfTheDay(Bundle args) {
-        arrayList_appointmentEntity_ofTheDay = (ArrayList<AppointmentEntity>) args.getSerializable("appointmentsOfTheDay");
+        arrayList_appointmentEntity_ofTheDay = (ArrayList<SimpleAppointment>) args.getSerializable("arrayList");
 
         if(arrayList_appointmentEntity_ofTheDay != null && arrayList_appointmentEntity_ofTheDay.size() > 0) {
             appointmentAddRecyclerViewAdapter = new AppointmentsRecyclerViewAdapter(context, arrayList_appointmentEntity_ofTheDay);
