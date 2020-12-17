@@ -36,8 +36,9 @@ public class ActivityPatients extends AppCompatActivity
     private MenuItem searchMenuItem;
     private FloatingActionButton activitParents_fab_patient_add;
     private RecyclerView activityPatients_recycleView_patients;
-    //private PatientsRecyclerViewAdapter patientsRecyclerViewAdapter;
     private PatientWithAppointmentsRecyclerViewAdapter patientsRecyclerViewAdapter;
+
+    //todo replication following the appointments
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

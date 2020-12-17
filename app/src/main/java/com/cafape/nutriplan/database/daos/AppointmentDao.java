@@ -25,8 +25,14 @@ public interface AppointmentDao
     @Query("SELECT * FROM AppointmentEntity")
     List<AppointmentEntity> getAppointments();
 
+    @Query("SELECT * FROM AppointmentEntity WHERE appointmentID =:appointmentID")
+    AppointmentEntity getAppointmentByID(int appointmentID);
+
     @Query("DELETE FROM Appointmententity WHERE appointmentID =:appointmentID")
     int deleteByID(int appointmentID);
+
+    @Query("UPDATE AppointmentEntity SET visitReason = :visit_reason, appointmentTime = :appointment_time WHERE appointmentID =:appointmentID")
+    void updateAppointmentByID(int appointmentID, String visit_reason, Date appointment_time);
 
     @Insert
     void insert(AppointmentEntity appointmentEntity);

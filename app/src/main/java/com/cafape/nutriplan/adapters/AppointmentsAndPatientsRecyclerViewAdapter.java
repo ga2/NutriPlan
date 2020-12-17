@@ -10,6 +10,7 @@ import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.cafape.nutriplan.R;
+import com.cafape.nutriplan.database.entities.AppointmentEntity;
 import com.cafape.nutriplan.objects.SimpleAppointment;
 
 import java.util.ArrayList;
@@ -45,6 +46,13 @@ public class AppointmentsAndPatientsRecyclerViewAdapter extends RecyclerView.Ada
     public void onBindViewHolder(ViewHolder holder, int position) {
         SimpleAppointment dataGot = retrievedData.get(position);
         holder.rowAppointment_textView_infouser.setText(dataGot.getDisplayText());
+
+        holder.rowAppointment_imageView_edit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                editAppointmentClickListener.onItemClick(retrievedData.get(position));
+            }
+        });
         holder.rowAppointment_imageView_delete.setOnClickListener(new View.OnClickListener()
         {
             @Override
@@ -52,19 +60,6 @@ public class AppointmentsAndPatientsRecyclerViewAdapter extends RecyclerView.Ada
                 deleteAppointmentClickListener.onItemClick(retrievedData.get(position));
             }
         });
-        //holder.rowAppointment_textView_datetime.setText(Utils.convertDateFormat(dataGot.patientEntity.getBirthDate(), DATEFORMAT_DISPLAY));
-        //holder.rowAppointment_textView_datetime.setText(Utils.convertDateFormat(dataGot.get, DATEFORMAT_DISPLAY));
-
-
-        /*
-        holder.rowPatients_imageView_call.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                phoneClickListener.onItemClick(dataGot.patientEntity.getPhone());
-            }
-        });
-        */
-
     }
 
     // total number of rows
@@ -77,12 +72,14 @@ public class AppointmentsAndPatientsRecyclerViewAdapter extends RecyclerView.Ada
     public class ViewHolder extends RecyclerView.ViewHolder{
         TextView rowAppointment_textView_infouser;
         TextView rowAppointment_textView_datetime;
+        ImageView rowAppointment_imageView_edit;
         ImageView rowAppointment_imageView_delete;
 
         ViewHolder(View itemView) {
             super(itemView);
             rowAppointment_textView_infouser = itemView.findViewById(R.id.rowAppointment_textView_infouser);
             rowAppointment_textView_datetime = itemView.findViewById(R.id.rowAppointment_textView_datetime);
+            rowAppointment_imageView_edit = itemView.findViewById(R.id.rowAppointment_imageView_edit);
             rowAppointment_imageView_delete = itemView.findViewById(R.id.rowAppointment_imageView_delete);
         }
     }
@@ -97,6 +94,23 @@ public class AppointmentsAndPatientsRecyclerViewAdapter extends RecyclerView.Ada
         retrievedData.add(patientEntity);
         retrievedData_copy.add(patientEntity);
         retrievedData.addAll(retrievedData_copy);
+    }
+
+    public void editRetievedDataByID(AppointmentEntity appointmentEntity_in, String patient_info) {
+        int id = appointmentEntity_in.getAppointmentID();
+        int pos = 0;
+        for(SimpleAppointment appointmentEntity : retrievedData) {
+            if(appointmentEntity.getAppointmentID() == id) {
+                retrievedData_copy.get(pos).setDate(appointmentEntity_in.getAppointmentTime());
+               // retrievedData_copy.get(pos).getDisplayText(patient_info);
+                retrievedData_copy.get(pos).setVisitReason(appointmentEntity_in.getVisitReason());
+
+                retrievedData.clear();
+                retrievedData.addAll(retrievedData_copy);
+                break;
+            }
+            pos++;
+        }
     }
 
     public void deleteFromRetrievedData(SimpleAppointment patientEntity) {
@@ -114,7 +128,7 @@ public class AppointmentsAndPatientsRecyclerViewAdapter extends RecyclerView.Ada
     //Defining interface
     public interface EditAppointmentClickListener {
         //Achieve the click method, passing the subscript.
-        void onItemClick(String appointmentID);
+        void onItemClick(SimpleAppointment simpleAppointment);
     }
 
     private AppointmentsAndPatientsRecyclerViewAdapter.DeleteAppointmentClickListener deleteAppointmentClickListener;

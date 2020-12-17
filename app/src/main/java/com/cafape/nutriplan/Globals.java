@@ -12,5 +12,6 @@ public class Globals
 
     public static final int REQCODE_NEWPATIENT_ADDED = 100;
     public static final int REQCODE_NEWAPPOINTMENT_ADDED = 101;
+    public static final int REQCODE_EDITAPPOINTMENT = 102;
 
 }

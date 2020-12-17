@@ -17,6 +17,7 @@
     <string name="saved">Salvato</string>
     <string name="deleted">Eliminato</string>
     <string name="edited">Modificato</string>
+    <string name="edit">Modifica</string>
 
     <string name="share_with">Apri con...</string>
     <string name="no_whatsapp">Whatsapp non installato</string>

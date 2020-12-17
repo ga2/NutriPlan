@@ -47,6 +47,7 @@ import org.threeten.bp.LocalDate;
 import org.threeten.bp.format.DateTimeFormatter;
 import org.threeten.bp.format.TextStyle;
 
+import static com.cafape.nutriplan.Globals.REQCODE_EDITAPPOINTMENT;
 import static com.cafape.nutriplan.Globals.REQCODE_NEWAPPOINTMENT_ADDED;
 import static com.cafape.nutriplan.Globals.REQCODE_NEWPATIENT_ADDED;
 import static com.cafape.nutriplan.Globals.TIMEFORMAT;
@@ -83,17 +84,27 @@ public class ActivityAppointments extends AppCompatActivity
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == REQCODE_NEWAPPOINTMENT_ADDED) {
-                AppointmentEntity appointmentEntity = (AppointmentEntity)data.getSerializableExtra("newAppointmentEntity");
-                String patient_info = (String)data.getSerializableExtra("patient_info");
+        if ((requestCode == REQCODE_NEWAPPOINTMENT_ADDED)) {
+            if (resultCode == RESULT_OK) {
+                AppointmentEntity appointmentEntity = (AppointmentEntity) data.getSerializableExtra("newAppointmentEntity");
+                String patient_info = (String) data.getSerializableExtra("patient_info");
                 appointmentsRecyclerViewAdapter.addToRetrievedData(new SimpleAppointment(appointmentEntity, patient_info));
                 appointmentsRecyclerViewAdapter.notifyDataSetChanged();
                 Calendar calendar = Calendar.getInstance();
                 calendar.setTime(appointmentEntity.getAppointmentTime());
                 arrayList_appointmentEntity_ofTheDay.add(new SimpleAppointment(appointmentEntity, patient_info));
-                activityappointments_calendarView.addDecorator(new EventDecoratorMonth(CalendarDay.from(
-                        calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH) + 1, calendar.get(Calendar.DAY_OF_MONTH))));
+                activityappointments_calendarView.addDecorator(new EventDecoratorMonth(CalendarDay.from(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH) + 1, calendar.get(Calendar.DAY_OF_MONTH))));
                 getAppointmentsOfTheDay();
+            }
+        } else if (requestCode == REQCODE_EDITAPPOINTMENT){
+            if (resultCode == RESULT_OK) {
+                AppointmentEntity appointmentEntity = (AppointmentEntity) data.getSerializableExtra("newAppointmentEntity");
+                String patient_info = (String) data.getSerializableExtra("patient_info");
+                appointmentsRecyclerViewAdapter.editRetievedDataByID(appointmentEntity, patient_info);
+                appointmentsRecyclerViewAdapter.notifyDataSetChanged();
+                updateAppointmentOfTheDay(new SimpleAppointment(appointmentEntity, patient_info), patient_info);
+                getAppointmentsOfTheDay();
+            }
         }
     }
 
@@ -131,6 +142,7 @@ public class ActivityAppointments extends AppCompatActivity
                 args.putSerializable("arrayList", (Serializable)arrayList_appointmentEntity_ofTheDay);
                 LocalDate dateSelected = activityappointments_calendarView.getSelectedDate().getDate();
                 args.putSerializable("dateSelected", (Serializable)dateSelected);
+                args.putSerializable("editMode", false);
 
                 Intent intent_goToActivity = new Intent(context, ActivityAddAppointment.class);
                 intent_goToActivity.putExtra("appointmentsOfTheDay", args);
@@ -204,20 +216,29 @@ public class ActivityAppointments extends AppCompatActivity
                 //Call click method
                 appointmentsRecyclerViewAdapter.setEditAppointmentClickListener(new AppointmentsAndPatientsRecyclerViewAdapter.EditAppointmentClickListener() {
                     @Override
-                    public void onItemClick(String name) {
-                        //todo edit appointment
+                    public void onItemClick(SimpleAppointment appointment_toEdit) {
+                        Bundle args = new Bundle();
+                        args.putSerializable("arrayList", (Serializable)arrayList_appointmentEntity_ofTheDay);
+                        LocalDate dateSelected = activityappointments_calendarView.getSelectedDate().getDate();
+                        args.putSerializable("dateSelected", (Serializable)dateSelected);
+                        args.putSerializable("appointmentToEdit", (Serializable)appointment_toEdit);
+                        args.putSerializable("editMode", true);
+
+                        Intent intent_goToActivity = new Intent(context, ActivityAddAppointment.class);
+                        intent_goToActivity.putExtra("appointmentsOfTheDay", args);
+                        startActivityForResult(intent_goToActivity, REQCODE_EDITAPPOINTMENT);
                     }
                 });
 
                 appointmentsRecyclerViewAdapter.setDeleteAppointmentClickListener(new AppointmentsAndPatientsRecyclerViewAdapter.DeleteAppointmentClickListener() {
                     @Override
-                    public void onItemClick(SimpleAppointment appointmentID_toDelete) {
+                    public void onItemClick(SimpleAppointment appointment_toDelete) {
                         AlertDialog.Builder builder = AlertBuilderUtils.BuildAlert(ActivityAppointments.this, R.string.warning, R.string.activityappointments_string_alertMessage_deleteappointment);
                         builder.setPositiveButton(R.string.yes, new DialogInterface.OnClickListener()
                         {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
-                                deleteAppointment(appointmentID_toDelete);
+                                deleteAppointment(appointment_toDelete);
                             }
                         });
                         builder.setNegativeButton(R.string.back, null);
@@ -275,6 +296,22 @@ public class ActivityAppointments extends AppCompatActivity
         getDelete.execute();
     }
 
+    public void updateAppointmentOfTheDay(SimpleAppointment simpleAppointment_in, String patient_info) {
+        int id = simpleAppointment_in.getAppointmentID();
+        int pos = 0;
+        for(SimpleAppointment appointmentEntity : arrayList_appointmentEntity_ofTheDay) {
+            if(appointmentEntity.getAppointmentID() == id) {
+                arrayList_appointmentEntity_ofTheDay.get(pos).setVisitReason(simpleAppointment_in.getVisitReason());
+                arrayList_appointmentEntity_ofTheDay.get(pos).setDate(simpleAppointment_in.getDate());
+                arrayList_appointmentEntity_ofTheDay.get(pos).generateDisplayText(patient_info);
+
+
+                break;
+            }
+            pos++;
+        }
+    }
+
     public void getAppointmentForCalendar(int req_year, int req_month) {
         class GetAppointmentsForCalendar extends AsyncTask<Void, Void, List<AppointmentEntity>>
         {
@@ -295,7 +332,6 @@ public class ActivityAppointments extends AppCompatActivity
                             .getPatient(appointmentEntity.getPatientID_ref());
                     arrayList_appointmentEntity_ofTheDay.add(new SimpleAppointment(appointmentEntity, patientEntity.getNameSurnameBday(context.getString(R.string.of_the))));
                 }
-                //todo doesn't update
                 return appointmentList;
             }
 
@@ -304,7 +340,6 @@ public class ActivityAppointments extends AppCompatActivity
                 super.onPostExecute(appointments);
 
                 for(AppointmentEntity appointmentEntity : appointments) {
-                    //todo add decorator only if not present
                     Date appointmentDate = appointmentEntity.getAppointmentTime();
                     Calendar calendar = Calendar.getInstance();
                     calendar.setTime(appointmentDate);

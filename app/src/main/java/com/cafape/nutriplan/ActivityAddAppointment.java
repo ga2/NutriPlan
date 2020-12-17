@@ -25,19 +25,18 @@ import com.cafape.nutriplan.database.DatabaseRepository;
 import com.cafape.nutriplan.database.entities.AppointmentEntity;
 import com.cafape.nutriplan.database.entities.PatientEntity;
 import com.cafape.nutriplan.database.entities.PatientWithAppointments;
+import com.cafape.nutriplan.objects.SimpleAppointment;
 import com.cafape.nutriplan.support.AlertBuilderUtils;
-import com.cafape.nutriplan.support.Utils;
 
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 
 import org.threeten.bp.LocalDate;
 import org.threeten.bp.format.TextStyle;
-
-import static com.cafape.nutriplan.Globals.DATEFORMAT_DISPLAY;
 
 public class ActivityAddAppointment extends AppCompatActivity
 {
@@ -55,7 +54,10 @@ public class ActivityAddAppointment extends AppCompatActivity
     private HashMap<String, PatientEntity> activityaddappontment_hashMap_patients;
     private PatientEntity patientEntity_toInsert;
     private Button activityaddappointment_button_add;
+    private Button activityaddappointment_button_edit;
     private ArrayAdapter<String> activityaddappointment_adapter_patients;
+
+    boolean editMode;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,17 +65,26 @@ public class ActivityAddAppointment extends AppCompatActivity
         setContentView(R.layout.activity_add_appointment);
         context = getApplicationContext();
 
-        setUiComponents();
         Intent intent = this.getIntent();
         Bundle args = intent.getBundleExtra("appointmentsOfTheDay");
+        editMode = args.getBoolean("editMode");
+        SimpleAppointment simpleAppointment_toEdit = null;
+        if(editMode) {
+            simpleAppointment_toEdit = (SimpleAppointment)args.getSerializable("appointmentToEdit");
+        }
+
         initDate(args);
+        setUiComponents();
         initAppointmentoOfTheDay(args);
-        getPatients();
-        setListeners();
+        if(!editMode) {
+            getPatients();
+        } else {
+            initEditMode(simpleAppointment_toEdit);
+        }
+        setListeners(simpleAppointment_toEdit);
     }
 
     //todo non aprire se non ci sono pazienti
-    //salvato? visualizza boh
 
     public void setUiComponents() {
         activityaddappointment_timePicker = findViewById(R.id.activityaddappointment_timePicker);
@@ -82,9 +93,10 @@ public class ActivityAddAppointment extends AppCompatActivity
         activityaddappointment_editText_visitReason = findViewById(R.id.activityaddappointment_editText_visitReason);
         activityaddappointment_recyclerView = findViewById(R.id.activityaddappointment_recyclerView);
         activityaddappointment_button_add = findViewById(R.id.activityaddappointment_button_add);
+        activityaddappointment_button_edit = findViewById(R.id.activityaddappointment_button_edit);
     }
 
-    public void setListeners() {
+    public void setListeners(SimpleAppointment simpleAppointment_toEdit) {
         activityaddappointment_button_add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -104,6 +116,15 @@ public class ActivityAddAppointment extends AppCompatActivity
                 }
             }
         });
+        if(editMode) {
+            activityaddappointment_button_edit.setOnClickListener(new View.OnClickListener()
+            {
+                @Override
+                public void onClick(View view) {
+                    editAppointment(simpleAppointment_toEdit, activityaddappointment_editText_visitReason.getText().toString(), activityaddappointment_timePicker.getHour(), activityaddappointment_timePicker.getMinute());
+                }
+            });
+        }
     }
 
     public void initAppointmentoOfTheDay(Bundle args) {
@@ -141,6 +162,37 @@ public class ActivityAddAppointment extends AppCompatActivity
     public void initDate(Bundle args) {
         activityaddappointment_localDate = (LocalDate) args.getSerializable("dateSelected");
         setDate();
+    }
+
+    public void initEditMode(SimpleAppointment simpleAppointment_toEdit) {
+        activityaddappointment_autocompleteTextView.setEnabled(false);
+        activityaddappointment_button_add.setVisibility(View.GONE);
+        activityaddappointment_button_edit.setVisibility(View.VISIBLE);
+
+        activityaddappointment_timePicker.setHour(simpleAppointment_toEdit.getHour());
+        activityaddappointment_timePicker.setMinute(simpleAppointment_toEdit.getMinutes());
+        activityaddappointment_editText_visitReason.setText(simpleAppointment_toEdit.getVisitReason());
+        class GetPatient extends AsyncTask<Void, Void, PatientEntity>
+        {
+            @Override
+            protected PatientEntity doInBackground(Void... voids) {
+                PatientEntity patientsList = DatabaseRepository
+                        .getInstance(getApplicationContext())
+                        .getAppDatabase()
+                        .patientDao()
+                        .getPatient(simpleAppointment_toEdit.getPatientID());
+                return patientsList;
+            }
+
+            @Override
+            protected void onPostExecute(PatientEntity patient) {
+                super.onPostExecute(patient);
+                activityaddappointment_autocompleteTextView.setText(patient.getNameSurnameBday(getString(R.string.of_the)));
+            }
+        }
+
+        GetPatient getPatient = new GetPatient();
+        getPatient.execute();
     }
 
     public void getPatients() {
@@ -186,59 +238,7 @@ public class ActivityAddAppointment extends AppCompatActivity
 
         activityaddappointment_autocompleteTextView.setThreshold(2);
     }
-    /*
-    private void getAppointments() {
-        class GetAppointments extends AsyncTask<Void, Void, List<AppointmentEntity>>
-        {
-            @Override
-            protected List<AppointmentEntity> doInBackground(Void... voids) {
-                List<AppointmentEntity> appointmentList = DatabaseRepository
-                        .getInstance(context)
-                        .getAppDatabase()
-                        .appointmentDao()
-                        .getAppointmentOfDay(String.valueOf(activityappointments_calendarView.getSelectedDate().getMonth()));
-                return appointmentList;
-            }
 
-            @Override
-            protected void onPostExecute(List<AppointmentEntity> appointments) {
-                super.onPostExecute(appointments);
-                for (AppointmentEntity appointment : appointments) {
-                    System.out.println(appointment.getPatientID_ref());
-                }
-                appointmentAddRecyclerViewAdapter = new AppointmentsRecyclerViewAdapter(context, appointments);
-                activityaddappointment_recyclerView.setLayoutManager(new LinearLayoutManager(context));
-                activityaddappointment_recyclerView.setAdapter(appointmentAddRecyclerViewAdapter);
-                appointmentAddRecyclerViewAdapter.notifyDataSetChanged();
-
-                if(appointmentAddRecyclerViewAdapter.getItemCount() == 0) {
-                    activityaddappointment_textView_nodata_details = findViewById(R.id.textView_nodata_details);
-                    activityaddappointment_constraintLayout_nodata = findViewById(R.id.constraintLayout_nodata);
-                    activityaddappointment_textView_nodata_details.setText(getString(R.string.activityappointments_string_nodata_details));
-                    activityaddappointment_textView_nodata_details.setVisibility(View.VISIBLE);
-                    activityaddappointment_constraintLayout_nodata.setVisibility(View.VISIBLE);
-                } else {
-                    if(activityaddappointment_textView_nodata_details == null) {
-                        activityaddappointment_textView_nodata_details = findViewById(R.id.textView_nodata_details);
-                        activityaddappointment_constraintLayout_nodata = findViewById(R.id.constraintLayout_nodata);
-                    }
-                    activityaddappointment_textView_nodata_details.setText("");
-                    activityaddappointment_constraintLayout_nodata.setVisibility(View.GONE);
-                }
-                //Call click method
-                appointmentAddRecyclerViewAdapter.setEditAppointmentClickListener(new AppointmentsRecyclerViewAdapter.EditAppointmentClickListener() {
-                    @Override
-                    public void onItemClick(String name) {
-                        //openWhatsapp(name);
-                    }
-                });
-            }
-        }
-
-        GetAppointments getPatients = new GetAppointments();
-        getPatients.execute();
-    }
-    */
     public void saveAppointment(int hour, int minutes, LocalDate localDate, String visitReason, int patient_id, String patient_info) {
         class SaveAppointment extends AsyncTask<Void, Void, Void>
         {
@@ -268,6 +268,46 @@ public class ActivityAddAppointment extends AppCompatActivity
             }
         }
         new SaveAppointment().execute();
+    }
+
+    public void editAppointment(SimpleAppointment simpleAppointment_toEdit, String visitReason, int hour, int minutes) {
+        class EditAppointment extends AsyncTask<Void, Void, AppointmentEntity>
+        {
+            @Override
+            protected AppointmentEntity doInBackground(Void... voids) {
+
+                Calendar calendar = Calendar.getInstance();
+                calendar.setTime(simpleAppointment_toEdit.getDate());
+                calendar.set(Calendar.HOUR_OF_DAY, hour);
+                calendar.set(Calendar.MINUTE, minutes);
+
+                DatabaseRepository
+                        .getInstance(context)
+                        .getAppDatabase()
+                        .appointmentDao()
+                        .updateAppointmentByID(simpleAppointment_toEdit.getAppointmentID(), visitReason, calendar.getTime());
+
+                AppointmentEntity appointment = DatabaseRepository
+                        .getInstance(context)
+                        .getAppDatabase()
+                        .appointmentDao()
+                        .getAppointmentByID(simpleAppointment_toEdit.getAppointmentID());
+
+                return appointment;
+            }
+
+            @Override
+            protected void onPostExecute(AppointmentEntity appointmentEntity) {
+                super.onPostExecute(appointmentEntity);
+                Intent data = new Intent();
+                data.putExtra("newAppointmentEntity", appointmentEntity);
+                data.putExtra("patient_info", activityaddappointment_autocompleteTextView.getText().toString());
+                setResult(RESULT_OK, data);
+                finish();
+                Toast.makeText(getApplicationContext(), getString(R.string.saved), Toast.LENGTH_LONG).show();
+            }
+        }
+        new EditAppointment().execute();
     }
 
     public void setDate() {

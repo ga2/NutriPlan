@@ -5,34 +5,42 @@ import com.cafape.nutriplan.database.entities.AppointmentEntity;
 import com.cafape.nutriplan.support.Utils;
 
 import java.io.Serializable;
+import java.util.Calendar;
+import java.util.Date;
 
 import static com.cafape.nutriplan.Globals.TIMEFORMAT;
 
 public class SimpleAppointment implements Serializable
 {
+    private Date date;
     private int year;
     private int month;
     private int day;
+    private int hour;
+    private int minutes;
+    private String visitReason = "";
     private String displayText;
     private int appointmentID;
     private int patientID;
 
     public SimpleAppointment(AppointmentEntity appointmentEntity, String patient_info) {
         String visitReason = appointmentEntity.getVisitReason();
+        this.date = appointmentEntity.getAppointmentTime();
         if(!visitReason.isEmpty()) {
+            this.visitReason = visitReason;
             visitReason = ": " + visitReason;
         }
-        String time = Utils.convertDateFormat(appointmentEntity.getAppointmentTime(), TIMEFORMAT);
-        String name_surname = patient_info;
-        this.displayText = time + " " + Globals.LONG_DASH + " " + name_surname + visitReason;
+        setDate(date);
+
         this.appointmentID = appointmentEntity.getAppointmentID();
         this.patientID = appointmentEntity.getPatientID_ref();
-        this.year = Integer.parseInt(Utils.convertDateFormat(appointmentEntity.getAppointmentTime(), "yyyy"));
-        this.month = Integer.parseInt(Utils.convertDateFormat(appointmentEntity.getAppointmentTime(), "MM"));
-        this.day = Integer.parseInt(Utils.convertDateFormat(appointmentEntity.getAppointmentTime(), "dd"));
+        String time = Utils.convertDateFormat(date, "HH:mm");
+        String name_surname = patient_info;
+        this.displayText = time + " " + Globals.LONG_DASH + " " + name_surname + visitReason;
     }
 
-    public SimpleAppointment(int year, int month, int day,String time, String name_surname, String visitReason, int appointmentID, int patientID) {
+    /*
+    public SimpleAppointment(int year, int month, int day, String time, String name_surname, String visitReason, int appointmentID, int patientID) {
         if(!visitReason.isEmpty()) {
             visitReason = ": " + visitReason;
         }
@@ -44,11 +52,31 @@ public class SimpleAppointment implements Serializable
         this.year = year;
     }
 
+     */
     public String getDisplayText() {
         return displayText;
     }
 
+    /*
+    public String getDisplayText(String ) {
+        String visitReason_app = "";
+        visitReason_app = ": " + visitReason;
+        String time = Utils.convertDateFormat(date, "HH:mm");
+        String name_surname = patient_info;
+        this.displayText = time + " " + Globals.LONG_DASH + " " + name_surname + visitReason_app;
+        return displayText;
+    }
+    */
+
+    public void generateDisplayText(String name_surname) {
+        String visitReason_app = "";
+        visitReason_app = ": " + visitReason;
+        String time = Utils.convertDateFormat(date, "HH:mm");
+        this.displayText = time + " " + Globals.LONG_DASH + " " + name_surname + visitReason_app;
+    }
+
     public void setDisplayText(String displayText) {
+
         this.displayText = displayText;
     }
 
@@ -90,5 +118,44 @@ public class SimpleAppointment implements Serializable
 
     public void setDay(int day) {
         this.day = day;
+    }
+
+    public int getHour() {
+        return hour;
+    }
+
+    public void setHour(int hour) {
+        this.hour = hour;
+    }
+
+    public int getMinutes() {
+        return minutes;
+    }
+
+    public void setMinutes(int minutes) {
+        this.minutes = minutes;
+    }
+
+    public String getVisitReason() {
+        return visitReason;
+    }
+
+    public void setVisitReason(String visitReason) {
+        this.visitReason = visitReason;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(date);
+        this.hour = calendar.get(Calendar.HOUR_OF_DAY);
+        this.minutes = calendar.get(Calendar.MINUTE);
+        this.year = calendar.get(Calendar.YEAR);
+        this.month = calendar.get(Calendar.MONTH) + 1;
+        this.day = calendar.get(Calendar.DAY_OF_MONTH);
     }
 }

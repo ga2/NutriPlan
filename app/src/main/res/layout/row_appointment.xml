@@ -57,9 +57,8 @@
                 android:id="@+id/rowAppointment_imageView_edit"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="16dp"
+                android:layout_marginEnd="24dp"
                 android:src="@drawable/ic_baseline_edit_24"
-                android:visibility="invisible"
                 app:layout_constraintEnd_toStartOf="@+id/rowAppointment_imageView_delete"
                 app:layout_constraintTop_toTopOf="parent" />
 
