@@ -18,13 +18,13 @@ public interface PatientDao
     List<PatientEntity> getAllPatients();
 
     @Query("SELECT * FROM PatientEntity WHERE patiendID = :patientID_target LIMIT 1")
-    PatientEntity getPatient(int patientID_target);
+    PatientEntity getPatient(long patientID_target);
 
     @Query("SELECT COUNT(*) FROM PatientEntity")
     int getPatientsNumber();
 
     @Insert
-    void insert(PatientEntity patientEntity);
+    long insert(PatientEntity patientEntity);
 
     @Update
     void update(PatientEntity patientEntity);

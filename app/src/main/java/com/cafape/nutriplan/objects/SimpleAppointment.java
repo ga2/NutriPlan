@@ -20,8 +20,8 @@ public class SimpleAppointment implements Serializable
     private int minutes;
     private String visitReason = "";
     private String displayText;
-    private int appointmentID;
-    private int patientID;
+    private long appointmentID;
+    private long patientID;
 
     public SimpleAppointment(AppointmentEntity appointmentEntity, String patient_info) {
         String visitReason = appointmentEntity.getVisitReason();
@@ -80,7 +80,7 @@ public class SimpleAppointment implements Serializable
         this.displayText = displayText;
     }
 
-    public int getAppointmentID() {
+    public long getAppointmentID() {
         return appointmentID;
     }
 
@@ -88,7 +88,7 @@ public class SimpleAppointment implements Serializable
         this.appointmentID = appointmentID;
     }
 
-    public int getPatientID() {
+    public long getPatientID() {
         return patientID;
     }
 

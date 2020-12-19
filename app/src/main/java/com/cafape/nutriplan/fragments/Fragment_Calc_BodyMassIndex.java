@@ -13,6 +13,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.cafape.nutriplan.R;
+import com.cafape.nutriplan.support.Utils;
 
 import java.text.DecimalFormat;
 import java.util.regex.Pattern;
@@ -131,20 +132,6 @@ public class Fragment_Calc_BodyMassIndex extends Fragment
         return pattern.matcher(strNum).matches();
     }
 
-    public String calculateBMI(String height, String weight) {
-        float height_float = Float.parseFloat(height);
-        float weight_float = Float.parseFloat(weight);
-
-        float result = (1.3f * weight_float) / (float)Math.pow(height_float / 100, 2.5f);
-
-        if(result > 0 && result < 100) {
-            DecimalFormat df = new DecimalFormat("###.##");
-            return df.format(result);
-        } else {
-            return LONG_DASH;
-        }
-    }
-
     public void setNullResult() {
         fragment_calc_bmi_constraintLayout_textView_result.setText(LONG_DASH);
     }
@@ -152,7 +139,7 @@ public class Fragment_Calc_BodyMassIndex extends Fragment
     public void setBMIResult(String height_string, String weight_string) {
         if((height_string != null && height_string.length() > 0) && (weight_string != null && weight_string.length() > 0)) {
             if(isPositiveNumeric(height_string) && isPositiveNumeric(weight_string)) {
-                String bmiValue = calculateBMI(height_string, weight_string);
+                String bmiValue = Utils.calculateBMI(height_string, weight_string);
 
                 fragment_calc_bmi_constraintLayout_textView_result.setText(bmiValue);
             }

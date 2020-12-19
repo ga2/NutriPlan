@@ -10,24 +10,24 @@ import java.util.Date;
 public class AppointmentEntity implements Serializable, Comparable<AppointmentEntity>
 {
     @PrimaryKey(autoGenerate = true)
-    private int appointmentID;
+    private long appointmentID;
     private Date appointmentTime;
     private String visitReason;
-    private int patientID_ref;
+    private long patientID_ref;
 
     public AppointmentEntity() {}
 
-    public AppointmentEntity(Date appointmentTime, String visitReason, int patientID_ref) {
+    public AppointmentEntity(Date appointmentTime, String visitReason, long patientID_ref) {
         this.appointmentTime = appointmentTime;
         this.visitReason = visitReason;
         this.patientID_ref = patientID_ref;
     }
 
-    public int getAppointmentID() {
+    public long getAppointmentID() {
         return appointmentID;
     }
 
-    public void setAppointmentID(int appointmentID) {
+    public void setAppointmentID(long appointmentID) {
         this.appointmentID = appointmentID;
     }
 
@@ -47,13 +47,15 @@ public class AppointmentEntity implements Serializable, Comparable<AppointmentEn
         this.visitReason = visitReason;
     }
 
-    public int getPatientID_ref() {
+    public long getPatientID_ref() {
         return patientID_ref;
     }
 
-    public void setPatientID_ref(int patientID_ref) {
+    public void setPatientID_ref(long patientID_ref) {
         this.patientID_ref = patientID_ref;
     }
+
+
 
     @Override
     public int compareTo(AppointmentEntity appointmentEntity) {

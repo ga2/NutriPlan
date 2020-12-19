@@ -97,7 +97,7 @@ public class AppointmentsAndPatientsRecyclerViewAdapter extends RecyclerView.Ada
     }
 
     public void editRetievedDataByID(AppointmentEntity appointmentEntity_in, String patient_info) {
-        int id = appointmentEntity_in.getAppointmentID();
+        long id = appointmentEntity_in.getAppointmentID();
         int pos = 0;
         for(SimpleAppointment appointmentEntity : retrievedData) {
             if(appointmentEntity.getAppointmentID() == id) {

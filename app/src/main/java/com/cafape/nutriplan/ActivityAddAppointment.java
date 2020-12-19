@@ -239,7 +239,7 @@ public class ActivityAddAppointment extends AppCompatActivity
         activityaddappointment_autocompleteTextView.setThreshold(2);
     }
 
-    public void saveAppointment(int hour, int minutes, LocalDate localDate, String visitReason, int patient_id, String patient_info) {
+    public void saveAppointment(int hour, int minutes, LocalDate localDate, String visitReason, long patient_id, String patient_info) {
         class SaveAppointment extends AsyncTask<Void, Void, Void>
         {
             private AppointmentEntity appointmentEntity;

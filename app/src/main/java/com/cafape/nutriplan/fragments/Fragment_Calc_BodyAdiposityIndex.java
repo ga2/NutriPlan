@@ -13,6 +13,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.cafape.nutriplan.R;
+import com.cafape.nutriplan.support.Utils;
 
 import java.text.DecimalFormat;
 import java.util.regex.Pattern;
@@ -132,18 +133,7 @@ public class Fragment_Calc_BodyAdiposityIndex extends Fragment
         return pattern.matcher(strNum).matches();
     }
 
-    public String calculateBAI(String height, String hipscirc) {
-        float height_float = Float.parseFloat(height);
-        float hipscirc_float = Float.parseFloat(hipscirc);
 
-        float result = (hipscirc_float / (float)Math.pow(height_float / 100, 1.5f)) - 18;
-
-        if(result > 0 && result < 100) {
-            DecimalFormat df = new DecimalFormat("###.##");
-            return df.format(result);} else {
-            return LONG_DASH;
-        }
-    }
 
     public void setNullResult() {
         fragment_calc_bai_constraintLayout_textView_result.setText(LONG_DASH);
@@ -152,7 +142,7 @@ public class Fragment_Calc_BodyAdiposityIndex extends Fragment
     public void setBAIResult(String height_string, String hipscirc_string) {
         if((height_string != null && height_string.length() > 0) && (hipscirc_string != null && hipscirc_string.length() > 0)) {
             if(isPositiveNumeric(height_string) && isPositiveNumeric(hipscirc_string)) {
-                String bmiValue = calculateBAI(height_string, hipscirc_string);
+                String bmiValue = Utils.calculateBAI(height_string, hipscirc_string);
 
                 fragment_calc_bai_constraintLayout_textView_result.setText(bmiValue);
             }

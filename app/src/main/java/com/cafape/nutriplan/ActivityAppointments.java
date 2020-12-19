@@ -299,7 +299,7 @@ public class ActivityAppointments extends AppCompatActivity
     }
 
     public void updateAppointmentOfTheDay(SimpleAppointment simpleAppointment_in, String patient_info) {
-        int id = simpleAppointment_in.getAppointmentID();
+        long id = simpleAppointment_in.getAppointmentID();
         int pos = 0;
         for(SimpleAppointment appointmentEntity : arrayList_appointmentEntity_ofTheDay) {
             if(appointmentEntity.getAppointmentID() == id) {

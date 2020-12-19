@@ -16,7 +16,7 @@ import static com.cafape.nutriplan.Globals.DATEFORMAT_DISPLAY;
 public class PatientEntity implements Serializable
 {
     @PrimaryKey(autoGenerate = true)
-    private int patiendID;
+    private long patiendID;
     private String name;
     private String surname;
     @TypeConverters({TimestampConverter.class})
@@ -70,11 +70,11 @@ public class PatientEntity implements Serializable
         this.workinglActivity_details = workinglActivity_details;
     }
 
-    public int getPatiendID() {
+    public long getPatiendID() {
         return patiendID;
     }
 
-    public void setPatiendID(int patiendID) {
+    public void setPatiendID(long patiendID) {
         this.patiendID = patiendID;
     }
 

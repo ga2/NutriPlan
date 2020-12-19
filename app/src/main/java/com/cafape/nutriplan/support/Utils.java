@@ -2,14 +2,19 @@ package com.cafape.nutriplan.support;
 
 import android.util.Log;
 import android.widget.DatePicker;
+import android.widget.RadioButton;
 
+import com.cafape.nutriplan.R;
 import com.prolificinteractive.materialcalendarview.CalendarDay;
 
 import java.text.DateFormat;
+import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
+
+import static com.cafape.nutriplan.Globals.LONG_DASH;
 
 public class Utils
 {
@@ -93,5 +98,32 @@ public class Utils
         }
 
         return new String(array);
+    }
+
+    public static String calculateBAI(String height, String hipscirc) {
+        float height_float = Float.parseFloat(height);
+        float hipscirc_float = Float.parseFloat(hipscirc);
+
+        float result = (hipscirc_float / (float)Math.pow(height_float / 100, 1.5f)) - 18;
+
+        if(result > 0 && result < 100) {
+            DecimalFormat df = new DecimalFormat("###.##");
+            return df.format(result);} else {
+            return LONG_DASH;
+        }
+    }
+
+    public static String calculateBMI(String height, String weight) {
+        float height_float = Float.parseFloat(height);
+        float weight_float = Float.parseFloat(weight);
+
+        float result = (1.3f * weight_float) / (float)Math.pow(height_float / 100, 2.5f);
+
+        if(result > 0 && result < 100) {
+            DecimalFormat df = new DecimalFormat("###.##");
+            return df.format(result);
+        } else {
+            return LONG_DASH;
+        }
     }
 }

@@ -26,16 +26,16 @@ public interface AppointmentDao
     List<AppointmentEntity> getAppointments();
 
     @Query("SELECT * FROM AppointmentEntity WHERE appointmentID =:appointmentID")
-    AppointmentEntity getAppointmentByID(int appointmentID);
+    AppointmentEntity getAppointmentByID(long appointmentID);
 
     @Query("SELECT * FROM AppointmentEntity WHERE patientID_ref =:patientID ORDER BY appointmentTime DESC LIMIT 1")
-    AppointmentEntity getLastAppointmentByPatientID(int patientID);
+    AppointmentEntity getLastAppointmentByPatientID(long patientID);
 
     @Query("DELETE FROM Appointmententity WHERE appointmentID =:appointmentID")
-    int deleteByID(int appointmentID);
+    int deleteByID(long appointmentID);
 
     @Query("UPDATE AppointmentEntity SET visitReason = :visit_reason, appointmentTime = :appointment_time WHERE appointmentID =:appointmentID")
-    void updateAppointmentByID(int appointmentID, String visit_reason, Date appointment_time);
+    void updateAppointmentByID(long appointmentID, String visit_reason, Date appointment_time);
 
     @Insert
     void insert(AppointmentEntity appointmentEntity);
