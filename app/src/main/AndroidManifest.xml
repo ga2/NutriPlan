@@ -11,10 +11,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.NutriPlan">
-        <activity android:name=".ActivityAddAppointment"
-            android:label="@string/title_activity_appointments"></activity>
-        <activity android:name=".ActivityAppointments"
-            android:label="@string/title_activity_appointments"/>
+        <activity android:name=".ActivityAddPatient2"></activity>
+        <activity
+            android:name=".ActivityAddAppointment"
+            android:label="@string/title_activity_appointments" />
+        <activity
+            android:name=".ActivityAppointments"
+            android:label="@string/title_activity_appointments" />
         <activity
             android:name=".ActivityAddPatient"
             android:label="@string/title_activity_addpatient" />

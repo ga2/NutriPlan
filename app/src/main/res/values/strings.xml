@@ -1,8 +1,9 @@
 <resources>
     <string name="app_name">NutriPlan</string>
-    <string name="build_number">20201217</string>
+    <string name="build_number">20201219</string>
     <string name="title_activity_main_menu">MainMenu</string>
 
+    <string name="longdash">—</string>
     <string name="yes">Sì</string>
     <string name="no">No</string>
     <string name="of_the">del</string>
@@ -21,6 +22,10 @@
 
     <string name="share_with">Apri con...</string>
     <string name="no_whatsapp">Whatsapp non installato</string>
+
+    <string name="hint_cm">(cm)</string>
+    <string name="hint_perc">(%)</string>
+    <string name="hint_kg">(kg)</string>
 
     <string name="height">Altezza (cm)</string>
     <string name="hip_circ">Circonferenza dei fianchi (cm)</string>
@@ -46,11 +51,11 @@
     <!-- START Activity_calc -->
 
     <string name="activitycalc_string_tab_pi">Peso Ideale</string>
-    <string name="activitycalc_string_pi_short">PI</string>
+    <string name="pi_short">PI</string>
     <string name="activitycalc_string_tab_bai">Body Adiposity Index</string>
-    <string name="activitycalc_string_bai_short">BAI</string>
+    <string name="bai_short">BAI</string>
     <string name="activitycalc_string_tab_bmi">Body Mass Index</string>
-    <string name="activitycalc_string_bmi_short">BMI</string>
+    <string name="bmi_short">BMI</string>
 
     <!-- END Activity_calc -->
 
@@ -101,6 +106,35 @@
     <string name="activityaddpatient_string_physicalactivity">Attività fisica?</string>
     <string name="activityaddpatient_string_workingactivity">Attività lavorativa?</string>
 
+    <string name="activityaddpatient_string_subtitle_anamnesis">Anamnesi alimentare</string>
+    <string name="activityaddpatient_string_welcomefood">Alimenti graditi</string>
+    <string name="activityaddpatient_string_nonwelcomefood">Alimenti non graditi</string>
+    <string name="activityaddpatient_string_breakfast">Colazione</string>
+    <string name="activityaddpatient_string_nibble">Spuntino</string>
+    <string name="activityaddpatient_string_lunch">Pranzo</string>
+    <string name="activityaddpatient_string_snack">Merenda</string>
+    <string name="activityaddpatient_string_dinner">Cena</string>
+    <string name="activityaddpatient_string_postdinner">Post-cena</string>
+
+    <string name="activityaddpatient_string_subtitle_foodplanprototype">Prototipo piano alimentare</string>
+
+    <string name="activityaddpatient_string_antropometry">2. Antropometria</string>
+    <string name="activityaddpatient_string_subtitle_circmufrences">Circonferenze</string>
+    <string name="activityaddpatient_string_weist">Vita</string>
+    <string name="activityaddpatient_string_belly">Pancia</string>
+    <string name="activityaddpatient_string_hips">Fianchi</string>
+    <string name="activityaddpatient_string_leg">Coscia</string>
+    <string name="activityaddpatient_string_arm">Braccio</string>
+
+    <string name="activityaddpatient_string_subtitle_pliche">Pliche</string>
+    <string name="activityaddpatient_string_bicipital">Bicipitale</string>
+    <string name="activityaddpatient_string_pectoral">Pettorale</string>
+    <string name="activityaddpatient_string_subscapularis">Sottoscapolare</string>
+    <string name="activityaddpatient_string_umbilicale">Ombelicale</string>
+    <string name="activityaddpatient_string_femoral">Femorale</string>
+
+    <string name="activityaddpatient_string_subtitle_healthindexes">Indici di salute</string>
+
     <string name="activityaddpatient_string_alertTitle_formCheck">Controllare la completezza dei campi\n</string>
     <string name="activityaddpatient_string_alertMessage_formCheck_name">\n• Inserire un nome</string>
     <string name="activityaddpatient_string_alertMessage_formCheck_surname">\n• Inserire un cognome</string>
@@ -121,5 +155,7 @@
 
     <string name="activityaddappointment_string_addPatient">Nome paziente</string>
     <string name="activityaddappointment_string_alertMessage_formCheck_name">\n• Selezionare il paziente dalla lista</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
     <!-- END Activity_addappointment -->
 </resources>

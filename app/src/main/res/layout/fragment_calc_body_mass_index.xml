@@ -88,7 +88,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="58dp"
                 android:gravity="center"
-                android:text="@string/activitycalc_string_bmi_short"
+                android:text="@string/bmi_short"
                 android:textColor="@color/dark_grey"
                 android:textSize="36sp"
                 app:layout_constraintEnd_toEndOf="parent"

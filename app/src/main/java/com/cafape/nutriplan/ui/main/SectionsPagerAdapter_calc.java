@@ -17,7 +17,7 @@ import com.cafape.nutriplan.fragments.Fragment_Calc_IdealWeight;
  * A [FragmentPagerAdapter] that returns a fragment corresponding to
  * one of the sections/tabs/pages.
  */
-public class SectionsPagerAdapter extends FragmentPagerAdapter
+public class SectionsPagerAdapter_calc extends FragmentPagerAdapter
 {
     final int NUMBER_PAGES = 3;
 
@@ -25,7 +25,7 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter
     private static final int[] TAB_TITLES = new int[]{R.string.activitycalc_string_tab_pi, R.string.activitycalc_string_tab_bmi, R.string.activitycalc_string_tab_bai};
     private final Context mContext;
 
-    public SectionsPagerAdapter(Context context, FragmentManager fm) {
+    public SectionsPagerAdapter_calc(Context context, FragmentManager fm) {
         super(fm, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
         mContext = context;
     }

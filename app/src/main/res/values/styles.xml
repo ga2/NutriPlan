@@ -5,6 +5,9 @@
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">1dp</item>
         <item name="android:background">@color/primaryDarkColor</item>
+        <item name="color">@color/primaryDarkColor</item>
+        <item name="backgroundColor">@color/primaryDarkColor</item>
+        <item name="tint">@color/primaryDarkColor</item>
     </style>
 
     <style name="style_nodata" parent="android:Widget.TextView">
@@ -58,8 +61,20 @@
     </style>
 
     <style name="style_activityaddpatient_textView_surveysectiontitle">
+        <item name="android:textColor">@color/primaryDarkColor</item>
+        <item name="color">@color/primaryDarkColor</item>
         <item name="android:textSize">20sp</item>
+        <item name="textAllCaps">true</item>
+        <item name="android:textStyle">bold</item>
         <item name="android:color">@color/primaryDarkColor</item>
+    </style>
+
+    <style name="style_activityaddpatient_textView_surveysectionsubtitle">
+        <item name="android:textColor">@color/primaryColor</item>
+        <item name="color">@color/primaryColor</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:color">@color/primaryColor</item>
+        <item name="android:layout_marginLeft">@dimen/dim_margin_small</item>
     </style>
 
     <style name="style_activityaddpatient_recyclerView_textView_time">
