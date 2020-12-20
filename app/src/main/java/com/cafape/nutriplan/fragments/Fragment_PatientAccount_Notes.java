@@ -96,14 +96,14 @@ public class Fragment_PatientAccount_Notes extends Fragment
         PatientAnamnesisEntity patientAnamnesisEntity = ((ActivityPatientAccount)getActivity()).getPatientAnamnesisEntity();
         activitypatientaccount_textView_visitreason.setText(patientEntity.getVisitReason());
         activitypatientaccount_textView_previouspathologies.setText(patientEntity.getPreviousPathologies_details());
-                activitypatientaccount_textView_hereditarypathologies.setText(patientEntity.getHereditaryPathologies_details());
-                activitypatientaccount_textView_allergies.setText(patientEntity.getAllergies_details());
+        activitypatientaccount_textView_hereditarypathologies.setText(patientEntity.getHereditaryPathologies_details());
+        activitypatientaccount_textView_allergies.setText(patientEntity.getAllergies_details());
         activitypatientaccount_textView_productsassumption.setText(patientEntity.getProductsAssumption_details());
-                activitypatientaccount_textView_intestine.setText(transformIntInString("intestine", patientEntity.getInstestine()));
-        activitypatientaccount_textView_menstrualcycle.setText(transformIntInString("menstrualcycle", patientEntity.getMenstrualCycle()));
-                activitypatientaccount_textView_physicalactivity.setText(patientEntity.getPhysicalActivity_details());
+        activitypatientaccount_textView_intestine.setText(transformIntInString("intestine", patientEntity.getInstestine(), null));
+        activitypatientaccount_textView_menstrualcycle.setText(transformIntInString("menstrualcycle", patientEntity.getMenstrualCycle(), patientEntity.getSex()));
+        activitypatientaccount_textView_physicalactivity.setText(patientEntity.getPhysicalActivity_details());
         activitypatientaccount_textView_workingactivity.setText(patientEntity.getWorkinglActivity_details());
-                activitypatientaccount_textView_welcomefood.setText(patientAnamnesisEntity.getWelcomefood());
+        activitypatientaccount_textView_welcomefood.setText(patientAnamnesisEntity.getWelcomefood());
         activitypatientaccount_textView_nonwelcomefood.setText(patientAnamnesisEntity.getNonwelcomefood());
     }
 
@@ -119,7 +119,7 @@ public class Fragment_PatientAccount_Notes extends Fragment
         */
     }
 
-    public String transformIntInString(String type, int value) {
+    public String transformIntInString(String type, int value, String sex) {
         switch (type) {
             case "intestine": {
                 switch (value) {
@@ -130,7 +130,8 @@ public class Fragment_PatientAccount_Notes extends Fragment
                 }
 
             } break;
-            case "mestrualcycle": {
+            case "menstrualcycle": {
+                if(sex.equalsIgnoreCase("F"))
                 switch (value) {
                     case 1: {return getString(R.string.activityaddpatient_string_menstrualcycle_regular);}
                     case 2: {return getString(R.string.activityaddpatient_string_menstrualcycle_irregular);}
@@ -140,7 +141,6 @@ public class Fragment_PatientAccount_Notes extends Fragment
         }
         return "";
     }
-
 
     public String getStringFromEditText(EditText editText) {
         return editText.getText().toString();

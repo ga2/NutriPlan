@@ -4,7 +4,6 @@ import android.drm.DrmStore;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.viewpager.widget.ViewPager;
 
 import android.text.Editable;
@@ -14,15 +13,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.RadioButton;
 
 import com.cafape.nutriplan.ActivityAddPatient2;
 import com.cafape.nutriplan.R;
-import com.cafape.nutriplan.database.entities.PatientAnamnesisEntity;
 import com.cafape.nutriplan.database.entities.PatientAntropometryEntity;
-import com.cafape.nutriplan.support.Utils;
-
-import static com.cafape.nutriplan.Globals.LONG_DASH;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -215,7 +209,7 @@ public class Fragment_AddPatient_Antropometry extends Fragment
                         activityaddpatient_editText_arm, activityaddpatient_editText_bicipital, activityaddpatient_editText_pectoral,
                         activityaddpatient_editText_subscapularis,
                         activityaddpatient_editText_umbilicale, activityaddpatient_editText_femoral, activityaddpatient_pi,
-                        activityaddpatient_bai, activityaddpatient_bmi);
+                        activityaddpatient_bai, activityaddpatient_bmi, "");
                 ((ActivityAddPatient2)getActivity()).setPatientAntropometryEntity(patientAntropometryEntity);
                 ((ActivityAddPatient2)getActivity()).saveData();
             }

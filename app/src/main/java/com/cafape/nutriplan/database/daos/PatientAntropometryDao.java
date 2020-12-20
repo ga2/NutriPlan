@@ -9,6 +9,8 @@ import androidx.room.Update;
 import com.cafape.nutriplan.database.entities.PatientAnamnesisEntity;
 import com.cafape.nutriplan.database.entities.PatientAntropometryEntity;
 
+import java.util.List;
+
 @Dao
 public interface PatientAntropometryDao
 {
@@ -17,7 +19,7 @@ public interface PatientAntropometryDao
     PatientAntropometryEntity getLastPatientAntropometry(long patientID_target);
 
     @Query("SELECT * FROM PatientAntropometryEntity WHERE patient_ref_ID = :patientID_target ORDER BY antropometryTime DESC")
-    PatientAntropometryEntity getAllPatientAntropometry(long patientID_target);
+    List<PatientAntropometryEntity> getAllPatientAntropometry(long patientID_target);
 
     @Insert
     long insert(PatientAntropometryEntity patientAntropometryEntity);

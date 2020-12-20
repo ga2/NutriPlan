@@ -168,7 +168,14 @@
 
     <string name="activityappointments_string_notes">NOTE</string>
     <string name="activityappointments_string_visits">VISITE</string>
+
+    <string name="activitypatientaccount_string_visit_add">Nuova visita</string>
+    <string name="activitypatientaccount_string_nodata_details">Aggiungere una visita</string>
+    <string name="activitypatientaccount_string_visit_ofthedate">Visita del</string>
     <string name="activityappointments_string_file">FILE</string>
     <string name="activityappointments_string_report">REPORT</string>
     <!-- END Activity_patientaccount -->
+
+
+
 </resources>

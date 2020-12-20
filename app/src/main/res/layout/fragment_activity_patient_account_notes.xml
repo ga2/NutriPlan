@@ -144,6 +144,7 @@
 
             <TextView
                 android:id="@+id/activitypatientaccount_textView_allergies"
+                style="@style/style_textView_form_options"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"

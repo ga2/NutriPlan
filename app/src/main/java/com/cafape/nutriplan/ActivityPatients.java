@@ -113,7 +113,7 @@ public class ActivityPatients extends AppCompatActivity
             @Override
             public void onClick(View view) {
                 ((SearchView)searchMenuItem.getActionView()).setQuery("",true);
-                //Intent intent_goToActivity = new Intent(context, ActivityAddPatient.class);
+
                 Intent intent_goToActivity = new Intent(context, ActivityAddPatient2.class);
                 startActivityForResult(intent_goToActivity, REQCODE_NEWPATIENT_ADDED);
             }

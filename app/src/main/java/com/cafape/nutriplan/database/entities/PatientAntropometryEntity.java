@@ -35,8 +35,9 @@ public class PatientAntropometryEntity
     private float pi;
     private float bai;
     private float bmi;
+    private String notes = "";
 
-    public PatientAntropometryEntity(long patient_ref_ID, float weight, float height, float weist, float belly, float hips, float leg, float arm, float bicipital, float pectoral, float subscapularis, float umbelicale, float femoral, float pi, float bai, float bmi) {
+    public PatientAntropometryEntity(long patient_ref_ID, float weight, float height, float weist, float belly, float hips, float leg, float arm, float bicipital, float pectoral, float subscapularis, float umbelicale, float femoral, float pi, float bai, float bmi, String notes) {
         this.patient_ref_ID = patient_ref_ID;
         Date date = new Date();
         this.antropometryTime = date;
@@ -55,6 +56,7 @@ public class PatientAntropometryEntity
         this.pi = pi;
         this.bai = bai;
         this.bmi = bmi;
+        this.notes = notes;
     }
 
     public long getAntropometryID() {
@@ -199,5 +201,13 @@ public class PatientAntropometryEntity
 
     public void setBmi(float bmi) {
         this.bmi = bmi;
+    }
+
+    public String getNotes() {
+        return notes;
+    }
+
+    public void setNotes(String notes) {
+        this.notes = notes;
     }
 }

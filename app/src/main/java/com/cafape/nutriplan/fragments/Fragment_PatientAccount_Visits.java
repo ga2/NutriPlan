@@ -1,14 +1,21 @@
 package com.cafape.nutriplan.fragments;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.TextView;
 
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import com.cafape.nutriplan.ActivityPatientAccount;
 import com.cafape.nutriplan.R;
+import com.cafape.nutriplan.adapters.VisitsRecyclerViewAdapter;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -26,6 +33,11 @@ public class Fragment_PatientAccount_Visits extends Fragment
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+
+    private VisitsRecyclerViewAdapter visitsRecyclerViewAdapter;
+
+    private TextView activitypatientaccoun_textView_nodata_details;
+    private ConstraintLayout activitypatientaccoun_constraintLayout_nodata;
 
 
     public Fragment_PatientAccount_Visits() {
@@ -64,12 +76,32 @@ public class Fragment_PatientAccount_Visits extends Fragment
         View layout = inflater.inflate(R.layout.fragment_activity_patient_account_visits, container, false);
         setUiComponents(layout);
         setListeners(layout);
+        initVisitsList();
         return layout;
     }
 
-
-
     public void setUiComponents(View layout) {
+        ActivityPatientAccount activityPatientAccount = ((ActivityPatientAccount)getActivity());
+        RecyclerView activitypatientaccount_recycleView_visits = layout.findViewById(R.id.activitypatientaccount_recycleView_visits);
+        visitsRecyclerViewAdapter = new VisitsRecyclerViewAdapter(getContext(), activityPatientAccount.getPatientAntropometryEntities());
+        activitypatientaccount_recycleView_visits.setLayoutManager(new LinearLayoutManager(activityPatientAccount.getApplicationContext()));
+        activitypatientaccount_recycleView_visits.setAdapter(visitsRecyclerViewAdapter);
+        activityPatientAccount.setVisitsRecyclerViewAdapter(visitsRecyclerViewAdapter);
+
+        if(visitsRecyclerViewAdapter.getItemCount() == 0) {
+            activitypatientaccoun_textView_nodata_details = layout.findViewById(R.id.textView_nodata_details);
+            activitypatientaccoun_constraintLayout_nodata = layout.findViewById(R.id.constraintLayout_nodata);
+            activitypatientaccoun_textView_nodata_details.setText(getString(R.string.activitypatientaccount_string_nodata_details));
+            activitypatientaccoun_textView_nodata_details.setVisibility(View.VISIBLE);
+            activitypatientaccoun_constraintLayout_nodata.setVisibility(View.VISIBLE);
+        } else {
+            if(activitypatientaccoun_textView_nodata_details == null) {
+                activitypatientaccoun_textView_nodata_details = layout.findViewById(R.id.textView_nodata_details);
+                activitypatientaccoun_constraintLayout_nodata = layout.findViewById(R.id.constraintLayout_nodata);
+            }
+            activitypatientaccoun_textView_nodata_details.setText("");
+            activitypatientaccoun_constraintLayout_nodata.setVisibility(View.GONE);
+        }
         //activityaddpatient_button_backto2 = layout.findViewById(R.id.activityaddpatient_button_backto2);
         //activityaddpatient_button_save = layout.findViewById(R.id.activityaddpatient_button_save);
 
@@ -85,6 +117,10 @@ public class Fragment_PatientAccount_Visits extends Fragment
         });
 
         */
+    }
+
+    public void initVisitsList() {
+
     }
 
 
