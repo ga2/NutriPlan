@@ -1,0 +1,392 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/constraintLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.main.PlaceholderFragment">
+
+
+    <LinearLayout
+        android:id="@+id/activitypatientaccount_linearLayout1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="16dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/activitypatientaccount_textView_visitreason_label"
+                style="@style/style_form_label"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/activityaddpatient_string_visitreason" />
+
+            <TextView
+                android:id="@+id/activitypatientaccount_textView_visitreason"
+                style="@style/style_textView_form_options"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="@string/longdash" />
+        </LinearLayout>
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="0.67" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/activitypatientaccount_linearLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="16dp"
+        android:baselineAligned="false"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/activitypatientaccount_linearLayout1">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/activitypatientaccount_textView_previouspathologies_label"
+                style="@style/style_form_label"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/activityaddpatient_string_previouspathologies" />
+
+            <TextView
+                android:id="@+id/activitypatientaccount_textView_previouspathologies"
+                style="@style/style_textView_form_options"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="@string/longdash" />
+        </LinearLayout>
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1.5" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/activitypatientaccount_textView_hereditarypathologies_label"
+                style="@style/style_form_label"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/activityaddpatient_string_hereditarypathologies" />
+
+            <TextView
+                android:id="@+id/activitypatientaccount_textView_hereditarypathologies"
+                style="@style/style_textView_form_options"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="@string/longdash" />
+        </LinearLayout>
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1.5" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/activitypatientaccount_linearLayout3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="16dp"
+        android:baselineAligned="false"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/activitypatientaccount_linearLayout2">
+
+        <LinearLayout
+            style="@style/style_textView_form_options"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/activitypatientaccount_textView_allergies_label"
+                style="@style/style_form_label"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/activityaddpatient_string_allergies" />
+
+            <TextView
+                android:id="@+id/activitypatientaccount_textView_allergies"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="@string/longdash" />
+        </LinearLayout>
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1.5" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/activitypatientaccount_textView_productsassumption_label"
+                style="@style/style_form_label"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/activityaddpatient_string_productsassumption" />
+
+            <TextView
+                android:id="@+id/activitypatientaccount_textView_productsassumption"
+                style="@style/style_textView_form_options"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="@string/longdash" />
+        </LinearLayout>
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1.5" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/activitypatientaccount_linearLayout4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="16dp"
+        android:baselineAligned="false"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/activitypatientaccount_linearLayout3">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/activitypatientaccount_textView_intestine_label"
+                style="@style/style_form_label"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/activityaddpatient_string_intestine" />
+
+            <TextView
+                android:id="@+id/activitypatientaccount_textView_intestine"
+                style="@style/style_textView_form_options"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="@string/longdash" />
+        </LinearLayout>
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1.5" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/activitypatientaccount_textView_menstrualcycle_label"
+                style="@style/style_form_label"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/activityaddpatient_string_menstrualcycle" />
+
+            <TextView
+                android:id="@+id/activitypatientaccount_textView_menstrualcycle"
+                style="@style/style_textView_form_options"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="@string/longdash" />
+        </LinearLayout>
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1.5" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/activitypatientaccount_linearLayout5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="16dp"
+        android:baselineAligned="false"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/activitypatientaccount_linearLayout4">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/activitypatientaccount_textView_physicalactivity_label"
+                style="@style/style_form_label"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/activityaddpatient_string_physicalactivity" />
+
+            <TextView
+                android:id="@+id/activitypatientaccount_textView_physicalactivity"
+                style="@style/style_textView_form_options"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="@string/longdash" />
+        </LinearLayout>
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1.5" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/activitypatientaccount_textView_workingactivity_label"
+                style="@style/style_form_label"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/activityaddpatient_string_workingactivity" />
+
+            <TextView
+                android:id="@+id/activitypatientaccount_textView_workingactivity"
+                style="@style/style_textView_form_options"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="@string/longdash" />
+        </LinearLayout>
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1.5" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/activitypatientaccount_linearLayout6"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="16dp"
+        android:layout_weight="1"
+        android:baselineAligned="false"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/activitypatientaccount_linearLayout5">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/activitypatientaccount_textView_welcomefood_label"
+                style="@style/style_form_label"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/activityaddpatient_string_welcomefood" />
+
+            <TextView
+                android:id="@+id/activitypatientaccount_textView_welcomefood"
+                style="@style/style_textView_form_options"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="@string/longdash" />
+        </LinearLayout>
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1.5" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/activitypatientaccount_textView_nonwelcomefood_label"
+                style="@style/style_form_label"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/activityaddpatient_string_nonwelcomefood" />
+
+            <TextView
+                android:id="@+id/activitypatientaccount_textView_nonwelcomefood"
+                style="@style/style_textView_form_options"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="@string/longdash" />
+        </LinearLayout>
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1.5" />
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

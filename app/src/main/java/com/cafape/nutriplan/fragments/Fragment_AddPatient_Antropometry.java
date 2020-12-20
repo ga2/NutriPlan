@@ -97,12 +97,12 @@ public class Fragment_AddPatient_Antropometry extends Fragment
         String weight = getStringFromEditText(activityaddpatient_editText_weight);
 
         if(!height.isEmpty() && !weight.isEmpty()) {
-            String bodyMassIndex = Utils.calculateBMI(height, weight);
+            String bodyMassIndex =  ((ActivityAddPatient2) getActivity()).calculateBMI(height, weight);
             activityaddpatient_editText_bmi.setText(bodyMassIndex);
         }
 
         if(!height.isEmpty() && !hips.isEmpty()) {
-            String bodyAdiposityIndex = Utils.calculateBAI(height, hips);
+            String bodyAdiposityIndex =  ((ActivityAddPatient2) getActivity()).calculateBAI(height, hips);
             activityaddpatient_editText_bai.setText(bodyAdiposityIndex);
         }
 

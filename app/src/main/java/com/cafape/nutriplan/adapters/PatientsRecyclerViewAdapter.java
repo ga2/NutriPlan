@@ -1,6 +1,7 @@
 package com.cafape.nutriplan.adapters;
 
 import android.content.Context;
+import android.graphics.Paint;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -43,7 +44,15 @@ public class PatientsRecyclerViewAdapter extends RecyclerView.Adapter<PatientsRe
     public void onBindViewHolder(ViewHolder holder, int position) {
         PatientEntity dataGot = retrievedData.get(position);
         holder.rowPatients_textView_name.setText(dataGot.getName() + " " + dataGot.getSurname());
+        holder.rowPatients_textView_name.setPaintFlags(holder.rowPatients_textView_name.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
         holder.rowPatients_textView_bdate.setText(Utils.convertDateFormat(dataGot.getBirthDate(), Globals.DATEFORMAT_DISPLAY));
+        holder.rowPatients_textView_name.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View view) {
+                patientAccountClickListener.onItemClick(dataGot);
+            }
+        });
         holder.rowPatients_imageView_call.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -105,6 +114,18 @@ public class PatientsRecyclerViewAdapter extends RecyclerView.Adapter<PatientsRe
             }
         }
         notifyDataSetChanged();
+    }
+
+    //Declarative interface
+    private PatientAccountClickListener patientAccountClickListener;
+    //set method
+    public void setPatientAccountClickListener(PatientAccountClickListener patientAccountClickListener) {
+        this.patientAccountClickListener = patientAccountClickListener;
+    }
+    //Defining interface
+    public interface PatientAccountClickListener {
+        //Achieve the click method, passing the subscript.
+        void onItemClick(PatientEntity patientID);
     }
 
     //Declarative interface

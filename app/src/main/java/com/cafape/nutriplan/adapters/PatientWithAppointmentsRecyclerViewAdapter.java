@@ -2,6 +2,7 @@ package com.cafape.nutriplan.adapters;
 
 import android.content.Context;
 import android.graphics.Color;
+import android.graphics.Paint;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.cafape.nutriplan.R;
 import com.cafape.nutriplan.database.entities.AppointmentEntity;
+import com.cafape.nutriplan.database.entities.PatientEntity;
 import com.cafape.nutriplan.database.entities.PatientWithAppointments;
 import com.cafape.nutriplan.objects.SimplePatientWithAppointment;
 import com.cafape.nutriplan.support.Utils;
@@ -55,7 +57,16 @@ public class PatientWithAppointmentsRecyclerViewAdapter extends RecyclerView.Ada
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         SimplePatientWithAppointment dataGot = retrievedData.get(position);
+
         holder.rowPatients_textView_name.setText(dataGot.getPatientEntity().getName() + " " + dataGot.getPatientEntity().getSurname());
+        holder.rowPatients_textView_name.setPaintFlags(holder.rowPatients_textView_name.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
+        holder.rowPatients_textView_name.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View view) {
+                patientAccountClickListener.onItemClick(dataGot.getPatientEntity());
+            }
+        });
         holder.rowPatients_textView_bdate.setText(Utils.convertDateFormat(dataGot.getPatientEntity().getBirthDate(), DATEFORMAT_DISPLAY));
 
         Date dateVisit = dataGot.getVisit();
@@ -142,6 +153,18 @@ public class PatientWithAppointmentsRecyclerViewAdapter extends RecyclerView.Ada
             }
         }
         notifyDataSetChanged();
+    }
+
+    //Declarative interface
+    private PatientsRecyclerViewAdapter.PatientAccountClickListener patientAccountClickListener;
+    //set method
+    public void setPatientAccountClickListener(PatientsRecyclerViewAdapter.PatientAccountClickListener patientAccountClickListener) {
+        this.patientAccountClickListener = patientAccountClickListener;
+    }
+    //Defining interface
+    public interface PatientAccountClickListener {
+        //Achieve the click method, passing the subscript.
+        void onItemClick(PatientEntity patientEntity);
     }
 
     //Declarative interface

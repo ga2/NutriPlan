@@ -21,17 +21,16 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.cafape.nutriplan.adapters.PatientWithAppointmentsRecyclerViewAdapter;
+import com.cafape.nutriplan.adapters.PatientsRecyclerViewAdapter;
 import com.cafape.nutriplan.database.DatabaseRepository;
 import com.cafape.nutriplan.database.entities.AppointmentEntity;
 import com.cafape.nutriplan.database.entities.PatientEntity;
-import com.cafape.nutriplan.database.entities.PatientWithAppointments;
 import com.cafape.nutriplan.objects.SimplePatientWithAppointment;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.List;
 
 import static com.cafape.nutriplan.Globals.REQCODE_NEWPATIENT_ADDED;
@@ -161,6 +160,13 @@ public class ActivityPatients extends AppCompatActivity
 
                 patientsRecyclerViewAdapter.notifyDataSetChanged();
 
+                patientsRecyclerViewAdapter.setPatientAccountClickListener(new PatientsRecyclerViewAdapter.PatientAccountClickListener()
+                {
+                    @Override
+                    public void onItemClick(PatientEntity patientID) {
+                        openPatientAccount(patientID);
+                    }
+                });
 
                 //Call click method
                 patientsRecyclerViewAdapter.setWhatsapClickListener(new PatientWithAppointmentsRecyclerViewAdapter.WhatsapClickListener() {
@@ -195,6 +201,14 @@ public class ActivityPatients extends AppCompatActivity
             activityPatients_textView_nodata_details.setText("");
             activityPatients_constraintLayout_nodata.setVisibility(View.GONE);
         }
+    }
+
+    public void openPatientAccount(PatientEntity patientEntity) {
+        Intent intent_goToActivity = new Intent(context, ActivityPatientAccount.class);
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("patientObject", patientEntity);
+        intent_goToActivity.putExtra("args", bundle);
+        startActivity(intent_goToActivity);
     }
 
     public void openCall(String stringPhoneNumber) {

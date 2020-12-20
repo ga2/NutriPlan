@@ -44,7 +44,8 @@
                     android:ellipsize="end"
                     android:gravity="center_vertical"
                     android:maxLength="32"
-                    android:text="TextView" />
+                    android:text="TextView"
+                    android:textColor="@color/blue_map" />
 
                 <TextView
                     android:id="@+id/rowPatients_textView_dash"
