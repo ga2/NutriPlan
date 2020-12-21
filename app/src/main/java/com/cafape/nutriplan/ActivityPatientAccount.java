@@ -16,6 +16,7 @@ import com.cafape.nutriplan.database.entities.AppointmentEntity;
 import com.cafape.nutriplan.database.entities.PatientAnamnesisEntity;
 import com.cafape.nutriplan.database.entities.PatientAntropometryEntity;
 import com.cafape.nutriplan.database.entities.PatientEntity;
+import com.cafape.nutriplan.fragments.Fragment_PatientAccount_Visits;
 import com.cafape.nutriplan.objects.SimpleAppointment;
 import com.cafape.nutriplan.objects.SimplePatientWithAppointment;
 import com.cafape.nutriplan.support.AlertBuilderUtils;
@@ -31,11 +32,15 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.cafape.nutriplan.ui.main.SectionsPagerAdapter_patientaccount;
+import com.prolificinteractive.materialcalendarview.CalendarDay;
 
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+
+import static com.cafape.nutriplan.Globals.REQCODE_NEWAPPOINTMENT_ADDED;
+import static com.cafape.nutriplan.Globals.REQCODE_NEWVISIT;
 
 public class ActivityPatientAccount extends AppCompatActivity
 {
@@ -44,6 +49,7 @@ public class ActivityPatientAccount extends AppCompatActivity
     private PatientAnamnesisEntity patientAnamnesisEntity;
     private TextView activitypatientaccount_appBarLayout_textView_namesurname;
     private List<PatientAntropometryEntity> patientAntropometryEntities;
+    private SectionsPagerAdapter_patientaccount sectionsPagerAdapter;
 
     private VisitsRecyclerViewAdapter visitsRecyclerViewAdapter;
 
@@ -55,23 +61,50 @@ public class ActivityPatientAccount extends AppCompatActivity
 
         setUiComponents();
         setListeners();
-        initPatient();
+        initPatient(0);
     }
 
-    public void initFrames() {
-        SectionsPagerAdapter_patientaccount sectionsPagerAdapter = new SectionsPagerAdapter_patientaccount(this, getSupportFragmentManager());
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if ((requestCode == REQCODE_NEWVISIT)) {
+            if (resultCode == RESULT_OK) {
+                PatientAntropometryEntity patientAntropometryEntity = (PatientAntropometryEntity) data.getSerializableExtra("newVisitEntity");
+                patientAntropometryEntities.add(patientAntropometryEntity);
+
+                //((Fragment_PatientAccount_Visits)(sectionsPagerAdapter.getItem(1))).updateVisitsList(patientAntropometryEntity);
+                initPatient(1);
+
+
+                /*String patient_info = (String) data.getSerializableExtra("patient_info");
+                appointmentsRecyclerViewAdapter.addToRetrievedData(new SimpleAppointment(appointmentEntity, patient_info));
+                appointmentsRecyclerViewAdapter.notifyDataSetChanged();
+                Calendar calendar = Calendar.getInstance();
+                calendar.setTime(appointmentEntity.getAppointmentTime());
+                arrayList_appointmentEntity_ofTheDay.add(new SimpleAppointment(appointmentEntity, patient_info));
+                activityappointments_calendarView.addDecorator(new ActivityAppointments.EventDecoratorMonth(CalendarDay.from(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH) + 1, calendar.get(Calendar.DAY_OF_MONTH))));
+                getAppointmentsOfTheDay();
+
+                 */
+            }
+        }
+    }
+
+    public void initFrames(int framePageToShow) {
+        sectionsPagerAdapter = new SectionsPagerAdapter_patientaccount(this, getSupportFragmentManager());
         ViewPager viewPager = findViewById(R.id.view_pager);
         viewPager.setAdapter(sectionsPagerAdapter);
         TabLayout tabs = findViewById(R.id.tabs);
         tabs.setupWithViewPager(viewPager);
+        viewPager.setCurrentItem(framePageToShow);
     }
 
-    public void initPatient() {
+    public void initPatient(int framePageToShow) {
         Intent intent = this.getIntent();
         Bundle args = intent.getBundleExtra("args");
         patientEntity = (PatientEntity)args.getSerializable("patientObject");
         activitypatientaccount_appBarLayout_textView_namesurname.setText(patientEntity.getNameSurnameBday(getString(R.string.of_the)));
-        getPatientAnamnesis();
+        getPatientAnamnesis(framePageToShow);
     }
 
     public void setUiComponents() {
@@ -94,7 +127,7 @@ public class ActivityPatientAccount extends AppCompatActivity
         return patientAntropometryEntities;
     }
 
-    private void getPatientAnamnesis() {
+    private void getPatientAnamnesis(int framePageToShow) {
         class GetPatientAnamnesis extends AsyncTask<Void, Void, Void>
         {
             @Override
@@ -113,7 +146,7 @@ public class ActivityPatientAccount extends AppCompatActivity
             @Override
             protected void onPostExecute(Void aVoid) {
                 super.onPostExecute(aVoid);
-                getPatientAntropometry();
+                getPatientAntropometry(framePageToShow);
             }
         }
 
@@ -121,13 +154,11 @@ public class ActivityPatientAccount extends AppCompatActivity
         getPatientAnamnesis.execute();
     }
 
-    private void getPatientAntropometry() {
+    private void getPatientAntropometry(int framePageToShow) {
         class GetPatientAntropometries extends AsyncTask<Void, Void, Void>
         {
             @Override
             protected Void doInBackground(Void... voids) {
-                ArrayList<SimplePatientWithAppointment> arrayList_simplePatientWithAppointment = new ArrayList<>();
-
                 patientAntropometryEntities = DatabaseRepository
                         .getInstance(getApplicationContext())
                         .getAppDatabase()
@@ -139,7 +170,7 @@ public class ActivityPatientAccount extends AppCompatActivity
             @Override
             protected void onPostExecute(Void aVoid) {
                 super.onPostExecute(aVoid);
-                initFrames();
+                initFrames(framePageToShow);
             }
         }
 
@@ -161,5 +192,13 @@ public class ActivityPatientAccount extends AppCompatActivity
                 startActivity(intent_goToActivity);
             }
         });
+    }
+
+    public void openNewVisit() {
+        Intent intent_goToActivity = new Intent(context, ActivityAddVisit.class);
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("patientObject", patientEntity);
+        intent_goToActivity.putExtra("args", bundle);
+        startActivityForResult(intent_goToActivity, REQCODE_NEWVISIT);
     }
 }

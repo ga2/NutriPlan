@@ -15,6 +15,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.cafape.nutriplan.ActivityPatientAccount;
 import com.cafape.nutriplan.R;
 import com.cafape.nutriplan.adapters.VisitsRecyclerViewAdapter;
+import com.cafape.nutriplan.database.entities.PatientAntropometryEntity;
+import com.cafape.nutriplan.database.entities.PatientEntity;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -38,11 +41,14 @@ public class Fragment_PatientAccount_Visits extends Fragment
     private TextView activitypatientaccoun_textView_nodata_details;
     private ConstraintLayout activitypatientaccoun_constraintLayout_nodata;
 
-
+    public Fragment_PatientAccount_Visits() {
+        setRetainInstance(true);
+    }
+/*
     public Fragment_PatientAccount_Visits() {
         // Required empty public constructor
     }
-
+*/
     /**
      * Use this factory method to create a new instance of
      * this fragment using the provided parameters.
@@ -74,7 +80,6 @@ public class Fragment_PatientAccount_Visits extends Fragment
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View layout = inflater.inflate(R.layout.fragment_patientaccount_visits, container, false);
         setUiComponents(layout);
-        setListeners(layout);
         initVisitsList();
         return layout;
     }
@@ -101,22 +106,27 @@ public class Fragment_PatientAccount_Visits extends Fragment
             activitypatientaccoun_textView_nodata_details.setText("");
             activitypatientaccoun_constraintLayout_nodata.setVisibility(View.GONE);
         }
-    }
 
-    public void setListeners(View layout) {
-       /* activityaddpatient_button_backto2.setOnClickListener(new View.OnClickListener() {
+        FloatingActionButton activitypatientaccount_fab_visit_add = layout.findViewById(R.id.activitypatientaccount_fab_visit_add);
+        activitypatientaccount_fab_visit_add.setOnClickListener(new View.OnClickListener()
+        {
             @Override
-            public void onClick(View v) {
-                ViewPager viewPager = getActivity().findViewById(R.id.view_pager);
-                viewPager.setCurrentItem(1);
+            public void onClick(View view) {
+                ((ActivityPatientAccount)getActivity()).openNewVisit();
             }
         });
-
-        */
     }
 
     public void initVisitsList() {
 
+    }
+
+    public void updateVisitsList( PatientAntropometryEntity patientAntropometryEntity) {
+        //if(visitsRecyclerViewAdapter != null)
+        {
+            visitsRecyclerViewAdapter.addToRetrievedData(patientAntropometryEntity);
+            visitsRecyclerViewAdapter.notifyDataSetChanged();
+        }
     }
 
 

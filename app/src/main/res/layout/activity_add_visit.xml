@@ -10,10 +10,10 @@
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toTopOf="parent"
-    tools:context=".ActivityVisitShow">
+    tools:context=".ActivityAddVisit">
 
     <LinearLayout
-        android:id="@+id/activityvisitshow_linearLayout_info"
+        android:id="@+id/activityaddvisit_linearLayout_info"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:background="@color/primaryLightColorVar1"
@@ -35,32 +35,27 @@
     </LinearLayout>
 
     <ScrollView
-        android:id="@+id/activityvisitshow_scrollView"
+        android:id="@+id/activityaddvisit_scrollView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-
-        android:layout_marginTop="@dimen/dim_margin_normal"
+        android:layout_marginTop="8dp"
         android:layout_marginBottom="72dp"
-        android:padding="@dimen/dim_margin_normal"
+        android:fillViewport="false"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/activityvisitshow_linearLayout_info">
+        app:layout_constraintTop_toBottomOf="@+id/activityaddvisit_linearLayout_info">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginBottom="@dimen/dim_margin_normal"
-            android:fillViewport="true">
+            android:layout_height="match_parent">
 
             <LinearLayout
-                android:id="@+id/activityvisitshow_linearLayout1"
+                android:id="@+id/activityaddvisit_linearLayout1"
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="16dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
                 android:orientation="horizontal"
-                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
 
@@ -71,19 +66,19 @@
                     android:orientation="vertical">
 
                     <TextView
-                        android:id="@+id/activityvisitshow_textView_weight_label"
-                        style="@style/style_form_label"
+                        android:id="@+id/activityaddvisit_textView_weight"
+                        style="@style/style_textView_form_options"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="@string/weight" />
 
-                    <TextView
-                        android:id="@+id/activityvisitshow_textView_weight"
-                        style="@style/style_textView_form_options"
+                    <EditText
+                        android:id="@+id/activityaddvisit_editText_weight"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:ems="10"
-                        android:hint="@string/hint_kg" />
+                        android:hint="@string/hint_kg"
+                        android:inputType="numberDecimal" />
                 </LinearLayout>
 
                 <Space
@@ -92,26 +87,25 @@
                     android:layout_weight="1.5" />
 
                 <LinearLayout
-                    style="@style/style_textView_form_options"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:orientation="vertical">
 
                     <TextView
-                        android:id="@+id/activityvisitshow_textView_height_label"
-                        style="@style/style_form_label"
+                        android:id="@+id/activityaddvisit_textView_height"
+                        style="@style/style_textView_form_options"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="@string/height" />
 
-                    <TextView
-                        android:id="@+id/activityvisitshow_textView_height"
-                        style="@style/style_textView_form_options"
+                    <EditText
+                        android:id="@+id/activityaddvisit_editText_height"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:ems="10"
-                        android:hint="@string/hint_cm" />
+                        android:hint="@string/hint_cm"
+                        android:inputType="numberDecimal" />
                 </LinearLayout>
 
                 <Space
@@ -121,17 +115,16 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/activityvisitshow_linearLayout_circumferences"
+                android:id="@+id/activityaddvisit_linearLayout_circumferences"
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:orientation="horizontal"
-                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/activityvisitshow_linearLayout1">
+                app:layout_constraintTop_toBottomOf="@id/activityaddvisit_linearLayout1">
 
                 <TextView
-                    android:id="@+id/activityvisitshow_textView_circumferences"
+                    android:id="@+id/activityaddvisit_textView_circumferences"
                     style="@style/style_activityaddpatient_textView_surveysectionsubtitle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -143,23 +136,23 @@
                     style="@style/style_divider"
                     android:layout_width="0dp"
                     android:layout_marginStart="8dp"
-                    app:layout_constraintBottom_toBottomOf="@+id/activityvisitshow_textView_anamnesis"
+                    app:layout_constraintBottom_toBottomOf="@+id/activityaddvisit_textView_anamnesis"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/activityvisitshow_textView_anamnesis"
-                    app:layout_constraintTop_toTopOf="@+id/activityvisitshow_textView_anamnesis" />
+                    app:layout_constraintStart_toEndOf="@+id/activityaddvisit_textView_anamnesis"
+                    app:layout_constraintTop_toTopOf="@+id/activityaddvisit_textView_anamnesis" />
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/activityvisitshow_linearLayout2"
+                android:id="@+id/activityaddvisit_linearLayout2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="16dp"
                 android:baselineAligned="false"
                 android:orientation="horizontal"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/activityvisitshow_linearLayout_circumferences">
+                app:layout_constraintTop_toBottomOf="@+id/activityaddvisit_linearLayout_circumferences">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -168,19 +161,19 @@
                     android:orientation="vertical">
 
                     <TextView
-                        android:id="@+id/activityvisitshow_textView_weist_label"
-                        style="@style/style_form_label"
+                        android:id="@+id/activityaddvisit_textView_weist"
+                        style="@style/style_textView_form_options"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="@string/activityaddpatient_string_weist" />
 
-                    <TextView
-                        android:id="@+id/activityvisitshow_textView_weist"
-                        style="@style/style_textView_form_options"
+                    <EditText
+                        android:id="@+id/activityaddvisit_editText_weist"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:ems="10"
-                        android:hint="@string/hint_cm" />
+                        android:hint="@string/hint_cm"
+                        android:inputType="numberDecimal" />
                 </LinearLayout>
 
                 <Space
@@ -195,19 +188,19 @@
                     android:orientation="vertical">
 
                     <TextView
-                        android:id="@+id/activityvisitshow_textView_belly_label"
-                        style="@style/style_form_label"
+                        android:id="@+id/activityaddvisit_textView_belly"
+                        style="@style/style_textView_form_options"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="@string/activityaddpatient_string_belly" />
 
-                    <TextView
-                        android:id="@+id/activityvisitshow_textView_belly"
-                        style="@style/style_textView_form_options"
+                    <EditText
+                        android:id="@+id/activityaddvisit_editText_belly"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:ems="10"
-                        android:hint="@string/hint_cm" />
+                        android:hint="@string/hint_cm"
+                        android:inputType="numberDecimal" />
                 </LinearLayout>
 
                 <Space
@@ -218,16 +211,16 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/activityvisitshow_linearLayout3"
+                android:id="@+id/activityaddvisit_linearLayout3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
+                android:layout_marginStart="24dp"
                 android:layout_marginTop="16dp"
                 android:baselineAligned="false"
                 android:orientation="horizontal"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/activityvisitshow_linearLayout2">
+                app:layout_constraintTop_toBottomOf="@+id/activityaddvisit_linearLayout2">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -236,19 +229,19 @@
                     android:orientation="vertical">
 
                     <TextView
-                        android:id="@+id/activityvisitshow_textView_hips_label"
-                        style="@style/style_form_label"
+                        android:id="@+id/activityaddvisit_textView_hips"
+                        style="@style/style_textView_form_options"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="@string/activityaddpatient_string_hips" />
 
-                    <TextView
-                        android:id="@+id/activityvisitshow_textView_hips"
-                        style="@style/style_textView_form_options"
+                    <EditText
+                        android:id="@+id/activityaddvisit_editText_hips"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:ems="10"
-                        android:hint="@string/hint_cm" />
+                        android:hint="@string/hint_cm"
+                        android:inputType="numberDecimal" />
                 </LinearLayout>
 
                 <Space
@@ -263,19 +256,19 @@
                     android:orientation="vertical">
 
                     <TextView
-                        android:id="@+id/activityvisitshow_textView_leg_label"
-                        style="@style/style_form_label"
+                        android:id="@+id/activityaddvisit_textView_leg"
+                        style="@style/style_textView_form_options"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="@string/activityaddpatient_string_leg" />
 
-                    <TextView
-                        android:id="@+id/activityvisitshow_textView_leg"
-                        style="@style/style_textView_form_options"
+                    <EditText
+                        android:id="@+id/activityaddvisit_editText_leg"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:ems="10"
-                        android:hint="@string/hint_cm" />
+                        android:hint="@string/hint_cm"
+                        android:inputType="numberDecimal" />
                 </LinearLayout>
 
                 <Space
@@ -286,16 +279,16 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/activityvisitshow_linearLayout4"
+                android:id="@+id/activityaddvisit_linearLayout4"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
+                android:layout_marginStart="24dp"
                 android:layout_marginTop="16dp"
                 android:baselineAligned="false"
                 android:orientation="horizontal"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/activityvisitshow_linearLayout3">
+                app:layout_constraintTop_toBottomOf="@+id/activityaddvisit_linearLayout3">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -304,19 +297,19 @@
                     android:orientation="vertical">
 
                     <TextView
-                        android:id="@+id/activityvisitshow_textView_arm_label"
-                        style="@style/style_form_label"
+                        android:id="@+id/activityaddvisit_textView_arm"
+                        style="@style/style_textView_form_options"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="@string/activityaddpatient_string_arm" />
 
-                    <TextView
-                        android:id="@+id/activityvisitshow_textView_arm"
-                        style="@style/style_textView_form_options"
+                    <EditText
+                        android:id="@+id/activityaddvisit_editText_arm"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:ems="10"
-                        android:hint="@string/hint_cm" />
+                        android:hint="@string/hint_cm"
+                        android:inputType="numberDecimal" />
                 </LinearLayout>
 
                 <Space
@@ -327,17 +320,16 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/activityvisitshow_linearLayout_pliche"
+                android:id="@+id/activityaddvisit_linearLayout_pliche"
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:orientation="horizontal"
-                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/activityvisitshow_linearLayout4">
+                app:layout_constraintTop_toBottomOf="@+id/activityaddvisit_linearLayout4">
 
                 <TextView
-                    android:id="@+id/activityvisitshow_textView_pliche"
+                    android:id="@+id/activityaddvisit_textView_pliche"
                     style="@style/style_activityaddpatient_textView_surveysectionsubtitle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -349,23 +341,23 @@
                     style="@style/style_divider"
                     android:layout_width="0dp"
                     android:layout_marginStart="8dp"
-                    app:layout_constraintBottom_toBottomOf="@+id/activityvisitshow_textView_pliche"
+                    app:layout_constraintBottom_toBottomOf="@+id/activityaddvisit_textView_pliche"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/activityvisitshow_textView_pliche"
-                    app:layout_constraintTop_toTopOf="@+id/activityvisitshow_textView_pliche" />
+                    app:layout_constraintStart_toEndOf="@+id/activityaddvisit_textView_pliche"
+                    app:layout_constraintTop_toTopOf="@+id/activityaddvisit_textView_pliche" />
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/activityvisitshow_linearLayout5"
+                android:id="@+id/activityaddvisit_linearLayout5"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="16dp"
                 android:baselineAligned="false"
                 android:orientation="horizontal"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/activityvisitshow_linearLayout_pliche">
+                app:layout_constraintTop_toBottomOf="@+id/activityaddvisit_linearLayout_pliche">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -374,19 +366,19 @@
                     android:orientation="vertical">
 
                     <TextView
-                        android:id="@+id/activityvisitshow_textView_bicipital_label"
-                        style="@style/style_form_label"
+                        android:id="@+id/activityaddvisit_textView_bicipital"
+                        style="@style/style_textView_form_options"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="@string/activityaddpatient_string_bicipital" />
 
-                    <TextView
-                        android:id="@+id/activityvisitshow_textView_bicipital"
-                        style="@style/style_textView_form_options"
+                    <EditText
+                        android:id="@+id/activityaddvisit_editText_bicipital"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:ems="10"
-                        android:hint="@string/hint_perc" />
+                        android:hint="@string/hint_perc"
+                        android:inputType="numberDecimal" />
                 </LinearLayout>
 
                 <Space
@@ -401,19 +393,19 @@
                     android:orientation="vertical">
 
                     <TextView
-                        android:id="@+id/activityvisitshow_textView_pectoral_label"
-                        style="@style/style_form_label"
+                        android:id="@+id/activityaddvisit_textView_pectoral"
+                        style="@style/style_textView_form_options"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="@string/activityaddpatient_string_pectoral" />
 
-                    <TextView
-                        android:id="@+id/activityvisitshow_textView_pectoral"
-                        style="@style/style_textView_form_options"
+                    <EditText
+                        android:id="@+id/activityaddvisit_editText_pectoral"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:ems="10"
-                        android:hint="@string/hint_perc" />
+                        android:hint="@string/hint_perc"
+                        android:inputType="numberDecimal" />
                 </LinearLayout>
 
                 <Space
@@ -424,17 +416,17 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/activityvisitshow_linearLayout6"
+                android:id="@+id/activityaddvisit_linearLayout6"
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_marginStart="8dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
                 android:layout_marginTop="16dp"
                 android:layout_weight="1"
                 android:baselineAligned="false"
                 android:orientation="horizontal"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/activityvisitshow_linearLayout5">
+                app:layout_constraintTop_toBottomOf="@id/activityaddvisit_linearLayout5">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -443,19 +435,19 @@
                     android:orientation="vertical">
 
                     <TextView
-                        android:id="@+id/activityvisitshow_textView_subscapularis_label"
-                        style="@style/style_form_label"
+                        android:id="@+id/activityaddvisit_textView_subscapularis"
+                        style="@style/style_textView_form_options"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="@string/activityaddpatient_string_subscapularis" />
 
-                    <TextView
-                        android:id="@+id/activityvisitshow_textView_subscapularis"
-                        style="@style/style_textView_form_options"
+                    <EditText
+                        android:id="@+id/activityaddvisit_editText_subscapularis"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:ems="10"
-                        android:hint="@string/hint_perc" />
+                        android:hint="@string/hint_perc"
+                        android:inputType="numberDecimal" />
                 </LinearLayout>
 
                 <Space
@@ -470,19 +462,19 @@
                     android:orientation="vertical">
 
                     <TextView
-                        android:id="@+id/activityvisitshow_textView_umbilicale_label"
-                        style="@style/style_form_label"
+                        android:id="@+id/activityaddvisit_textView_umbilicale"
+                        style="@style/style_textView_form_options"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="@string/activityaddpatient_string_umbilicale" />
 
-                    <TextView
-                        android:id="@+id/activityvisitshow_textView_umbilicale"
-                        style="@style/style_textView_form_options"
+                    <EditText
+                        android:id="@+id/activityaddvisit_editText_umbilicale"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:ems="10"
-                        android:hint="@string/hint_perc" />
+                        android:hint="@string/hint_perc"
+                        android:inputType="numberDecimal" />
                 </LinearLayout>
 
                 <Space
@@ -493,17 +485,17 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/activityvisitshow_linearLayout7"
+                android:id="@+id/activityaddvisit_linearLayout7"
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_marginStart="8dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
                 android:layout_marginTop="16dp"
                 android:layout_weight="1"
                 android:baselineAligned="false"
                 android:orientation="horizontal"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/activityvisitshow_linearLayout6">
+                app:layout_constraintTop_toBottomOf="@id/activityaddvisit_linearLayout6">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -512,19 +504,19 @@
                     android:orientation="vertical">
 
                     <TextView
-                        android:id="@+id/activityvisitshow_textView_femoral_label"
-                        style="@style/style_form_label"
+                        android:id="@+id/activityaddvisit_textView_femoral"
+                        style="@style/style_textView_form_options"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="@string/activityaddpatient_string_femoral" />
 
-                    <TextView
-                        android:id="@+id/activityvisitshow_textView_femoral"
-                        style="@style/style_textView_form_options"
+                    <EditText
+                        android:id="@+id/activityaddvisit_editText_femoral"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:ems="10"
-                        android:hint="@string/hint_perc" />
+                        android:hint="@string/hint_perc"
+                        android:inputType="numberDecimal" />
                 </LinearLayout>
 
                 <Space
@@ -535,17 +527,16 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/activityvisitshow_linearLayout_healthindexes"
+                android:id="@+id/activityaddvisit_linearLayout_healthindexes"
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:orientation="horizontal"
-                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/activityvisitshow_linearLayout7">
+                app:layout_constraintTop_toBottomOf="@+id/activityaddvisit_linearLayout7">
 
                 <TextView
-                    android:id="@+id/activityvisitshow_textView_healthindexes"
+                    android:id="@+id/activityaddvisit_textView_healthindexes"
                     style="@style/style_activityaddpatient_textView_surveysectionsubtitle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -557,24 +548,24 @@
                     style="@style/style_divider"
                     android:layout_width="0dp"
                     android:layout_marginStart="8dp"
-                    app:layout_constraintBottom_toBottomOf="@+id/activityvisitshow_textView_healthindexes"
+                    app:layout_constraintBottom_toBottomOf="@+id/activityaddvisit_textView_healthindexes"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/activityvisitshow_textView_healthindexes"
-                    app:layout_constraintTop_toTopOf="@+id/activityvisitshow_textView_healthindexes" />
+                    app:layout_constraintStart_toEndOf="@+id/activityaddvisit_textView_healthindexes"
+                    app:layout_constraintTop_toTopOf="@+id/activityaddvisit_textView_healthindexes" />
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/activityvisitshow_linearLayout8"
+                android:id="@+id/activityaddvisit_linearLayout8"
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="24dp"
                 android:layout_weight="1"
-                android:baselineAligned="false"
                 android:orientation="horizontal"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/activityvisitshow_linearLayout_healthindexes">
+                app:layout_constraintTop_toBottomOf="@id/activityaddvisit_linearLayout_healthindexes">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -583,19 +574,20 @@
                     android:orientation="vertical">
 
                     <TextView
-                        android:id="@+id/activityvisitshow_textView_pi_label"
-                        style="@style/style_form_label"
+                        android:id="@+id/activityaddvisit_textView_pi"
+                        style="@style/style_textView_form_options"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="@string/pi_short" />
 
-                    <TextView
-                        android:id="@+id/activityvisitshow_textView_pi"
-                        style="@style/style_textView_form_options"
+                    <EditText
+                        android:id="@+id/activityaddvisit_editText_pi"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:ems="10"
-                        android:hint="@string/longdash" />
+                        android:enabled="false"
+                        android:hint="@string/longdash"
+                        android:inputType="numberDecimal" />
                 </LinearLayout>
 
                 <Space
@@ -610,19 +602,20 @@
                     android:orientation="vertical">
 
                     <TextView
-                        android:id="@+id/activityvisitshow_textView_bai_label"
-                        style="@style/style_form_label"
+                        android:id="@+id/activityaddvisit_textView_bai"
+                        style="@style/style_textView_form_options"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="@string/bai_short" />
 
-                    <TextView
-                        android:id="@+id/activityvisitshow_textView_bai"
-                        style="@style/style_textView_form_options"
+                    <EditText
+                        android:id="@+id/activityaddvisit_editText_bai"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:ems="10"
-                        android:hint="@string/longdash" />
+                        android:enabled="false"
+                        android:hint="@string/longdash"
+                        android:inputType="numberDecimal" />
                 </LinearLayout>
 
                 <Space
@@ -637,24 +630,36 @@
                     android:orientation="vertical">
 
                     <TextView
-                        android:id="@+id/activityvisitshow_textView_bmi_label"
-                        style="@style/style_form_label"
+                        android:id="@+id/activityaddvisit_textView_bmi"
+                        style="@style/style_textView_form_options"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="@string/bmi_short" />
 
-                    <TextView
-                        android:id="@+id/activityvisitshow_textView_bmi"
-                        style="@style/style_textView_form_options"
+                    <EditText
+                        android:id="@+id/activityaddvisit_editText_bmi"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:ems="10"
-                        android:hint="@string/longdash" />
+                        android:enabled="false"
+                        android:hint="@string/longdash"
+                        android:inputType="numberDecimal" />
                 </LinearLayout>
 
             </LinearLayout>
 
+            <Button
+                android:id="@+id/activityaddvisit_button_save"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:layout_marginEnd="16dp"
+                android:backgroundTint="@color/secondaryColor"
+                android:text="@string/save"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/activityaddvisit_linearLayout8" />
+
+
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
-
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -17,6 +17,9 @@ import com.cafape.nutriplan.ActivityAddPatient2;
 import com.cafape.nutriplan.R;
 import com.cafape.nutriplan.database.entities.PatientAntropometryEntity;
 
+import static com.cafape.nutriplan.support.Utils.getStringFromEditText;
+import static com.cafape.nutriplan.support.Utils.parseStringToFloat;
+
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link Fragment_AddPatient_Antropometry#newInstance} factory method to
@@ -215,16 +218,5 @@ public class Fragment_AddPatient_Antropometry extends Fragment
         });
     }
     
-    public float parseStringToFloat(EditText editText) {
-        String string = getStringFromEditText(editText);
-        float res = 0.0f;
-        if(!string.isEmpty()) {
-            res = Float.parseFloat(string);    
-        }
-        return res;
-    }
 
-    public String getStringFromEditText(EditText editText) {
-        return editText.getText().toString();
-    }
 }

@@ -2,6 +2,7 @@ package com.cafape.nutriplan.support;
 
 import android.util.Log;
 import android.widget.DatePicker;
+import android.widget.EditText;
 import android.widget.RadioButton;
 
 import com.cafape.nutriplan.R;
@@ -125,5 +126,18 @@ public class Utils
         } else {
             return LONG_DASH;
         }
+    }
+
+    public static float parseStringToFloat(EditText editText) {
+        String string = getStringFromEditText(editText);
+        float res = 0.0f;
+        if(!string.isEmpty()) {
+            res = Float.parseFloat(string);
+        }
+        return res;
+    }
+
+    public static String getStringFromEditText(EditText editText) {
+        return editText.getText().toString();
     }
 }
