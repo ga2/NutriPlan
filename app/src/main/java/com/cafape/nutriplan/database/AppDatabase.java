@@ -15,7 +15,7 @@ import com.cafape.nutriplan.database.entities.PatientAnamnesisEntity;
 import com.cafape.nutriplan.database.entities.PatientAntropometryEntity;
 import com.cafape.nutriplan.database.entities.PatientEntity;
 
-@Database(entities = {PatientEntity.class, AppointmentEntity.class, PatientAnamnesisEntity.class, PatientAntropometryEntity.class}, version = 1, exportSchema = false)
+@Database(entities = {PatientEntity.class, AppointmentEntity.class, PatientAnamnesisEntity.class, PatientAntropometryEntity.class}, version = 2, exportSchema = false)
 @TypeConverters({TimestampConverter.class})
 public abstract class AppDatabase extends RoomDatabase {
     public abstract PatientDao patientDao();

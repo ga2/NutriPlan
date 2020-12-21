@@ -3,6 +3,13 @@
     <string name="app_name_subtitle">L\'app Android per nutrizionisti</string>
     <string name="build_number">20201221</string>
 
+    <string name="biometric_title">Login biometrico</string>
+    <string name="biometric_subtitle">Login usando l\'impronta digitale</string>
+    <string name="biometric_negative">Usa la password</string>
+    <string name="biometric_auth_error">Errore di autenticazione: %1$s</string>
+    <string name="biometric_auth_succeded">Autenticazione eseguita!</string>
+    <string name="biometric_auth_failed">Autenticazione fallita</string>
+
     <string name="longdash">—</string>
     <string name="yes">Sì</string>
     <string name="no">No</string>

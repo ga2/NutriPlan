@@ -1,5 +1,6 @@
 package com.cafape.nutriplan.fragments;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,6 +10,13 @@ import android.widget.EditText;
 import androidx.fragment.app.Fragment;
 
 import com.cafape.nutriplan.R;
+import com.github.mikephil.charting.charts.BarChart;
+import com.github.mikephil.charting.data.BarData;
+import com.github.mikephil.charting.data.BarDataSet;
+import com.github.mikephil.charting.data.BarEntry;
+import com.github.mikephil.charting.interfaces.datasets.IBarDataSet;
+
+import java.util.ArrayList;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -17,7 +25,7 @@ import com.cafape.nutriplan.R;
  */
 public class Fragment_PatientAccount_Report extends Fragment
 {
-
+    private BarChart chart;
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -26,7 +34,6 @@ public class Fragment_PatientAccount_Report extends Fragment
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-
 
     public Fragment_PatientAccount_Report() {
         // Required empty public constructor
@@ -67,12 +74,11 @@ public class Fragment_PatientAccount_Report extends Fragment
         return layout;
     }
 
-
-
     public void setUiComponents(View layout) {
-        //activityaddpatient_button_backto2 = layout.findViewById(R.id.activityaddpatient_button_backto2);
-        //activityaddpatient_button_save = layout.findViewById(R.id.activityaddpatient_button_save);
-
+        chart = layout.findViewById(R.id.fragmentpatientaccount_report_chart);
+        chart.setDrawBarShadow(false);
+        chart.setDrawValueAboveBar(true);
+        setData(20, 14);
     }
 
     public void setListeners(View layout) {
@@ -87,8 +93,49 @@ public class Fragment_PatientAccount_Report extends Fragment
         */
     }
 
-
     public String getStringFromEditText(EditText editText) {
         return editText.getText().toString();
+    }
+
+    private void setData(int count, float range) {
+        float start = 1f;
+
+        ArrayList<BarEntry> values = new ArrayList<>();
+
+        for (int i = (int) start; i < start + count; i++) {
+            float val = (float) (Math.random() * (range + 1));
+
+            if (Math.random() * 100 < 25) {
+                values.add(new BarEntry(i, val, getResources().getDrawable(R.drawable.circle_background)));
+            } else {
+                values.add(new BarEntry(i, val));
+            }
+        }
+
+        BarDataSet set1;
+
+        if (chart.getData() != null && chart.getData().getDataSetCount() > 0) {
+            set1 = (BarDataSet) chart.getData().getDataSetByIndex(0);
+            set1.setValues(values);
+            set1.setColor(Color.GREEN);
+            chart.getData().notifyDataChanged();
+            chart.notifyDataSetChanged();
+        } else {
+            set1 = new BarDataSet(values, "The year 2017");
+            set1.setColor(Color.GREEN);
+
+            set1.setDrawIcons(false);
+
+            ArrayList<IBarDataSet> dataSets = new ArrayList<>();
+            dataSets.add(set1);
+
+            BarData data = new BarData(dataSets);
+            data.setValueTextSize(10f);
+            //data.setValueTypeface(tfLight);
+            data.setBarWidth(0.9f);
+
+
+            chart.setData(data);
+        }
     }
 }
