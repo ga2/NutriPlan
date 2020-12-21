@@ -1,182 +1,183 @@
+
+
 <resources>
-    <string name="app_name">NutriPlan</string>
-    <string name="build_number">20201221</string>
-    <string name="title_activity_main_menu">MainMenu</string>
+<string name="app_name">NutriPlan</string>
+<string name="build_number">20201221</string>
 
-    <string name="longdash">—</string>
-    <string name="yes">Sì</string>
-    <string name="no">No</string>
-    <string name="of_the">del</string>
-    <string name="back">Indietro</string>
-    <string name="forward">Avanti</string>
-    <string name="error">Errore</string>
-    <string name="warning">Attenzione</string>
-    <string name="hour">Ore</string>
-    <string name="add">Aggiungi</string>
-    <string name="dear">Gentile %1$s,\n</string>
-    <string name="nodata">Nessun dato da mostrare</string>
-    <string name="save">Salva</string>
-    <string name="saved">Salvato</string>
-    <string name="deleted">Eliminato</string>
-    <string name="edited">Modificato</string>
-    <string name="edit">Modifica</string>
+<string name="longdash">—</string>
+<string name="yes">Yes</string>
+<string name="no">No</string>
+<string name="of_the">of the</string>
+<string name="back">Back</string>
+<string name="forward">Forward</string>
+<string name="error">Error</string>
+<string name="warning">Warning</string>
+<string name="hour">Hours</string>
+<string name="add">Add</string>
+<string name="dear">Dear %1$s,\n</string>
+<string name="nodata">No data to show</string>
+<string name="save">Save</string>
+<string name="saved">Saved</string>
+<string name="deleted">Deleted</string>
+<string name="edited">Modified</string>
+<string name="edit">Modify</string>
 
-    <string name="share_with">Apri con...</string>
-    <string name="no_whatsapp">Whatsapp non installato</string>
+<string name="share_with">Open with...</string>
+<string name="no_whatsapp">Whatsapp not installed</string>
 
-    <string name="hint_cm">(cm)</string>
-    <string name="hint_perc">(%)</string>
-    <string name="hint_kg">(kg)</string>
+<string name="hint_cm">(cm)</string>
+<string name="hint_perc">(%)</string>
+<string name="hint_kg">(kg)</string>
 
-    <string name="height">Altezza (cm)</string>
-    <string name="hip_circ">Circonferenza dei fianchi (cm)</string>
-    <string name="weight">Peso (kg)</string>
-    <string name="sex">Sesso</string>
-    <string name="born">nascita</string>
+<string name="height">Height (cm)</string>
+<string name="hip_circ">Circumference of the hips (cm)</string>
+<string name="weight">Weight (kg)</string>
+<string name="sex">Sex</string>
+<string name="born">Date of birth</string>
 
-    <string name="male_short">M</string>
-    <string name="female_short">F</string>
-    <string name="male_long">Uomo ♂</string>
-    <string name="female_long">Donna ♀</string>
+<string name="male_short">M</string>
+<string name="female_short">F</string>
+<string name="male_long">Male ♂</string>
+<string name="female_long">Female ♀</string>
 
-    <!-- START Activity titles -->
+<!-- START Activity titles -->
 
-    <string name="title_activity_menu">NutriPlan</string>
-    <string name="title_activity_calc">Calcolatore indici di salute</string>
-    <string name="title_activity_patients">Pazienti</string>
-    <string name="title_activity_addpatient">Nuovo paziente</string>
-    <string name="title_activity_appointments">Appuntamenti</string>
-    <string name="title_activity_patientaccount">Scheda paziente</string>
-    <string name="title_activity_patientaccount_visit">Scheda paziente - visita</string>
-    <string name="title_activity_patientaccount_visit_new">Scheda paziente - nuova visita</string>
+<string name="title_activity_menu">NutriPlan</string>
+<string name="title_activity_calc">Health indices calculator</string>
+<string name="title_activity_patients">Patients</string>
+<string name="title_activity_addpatient">New patient</string>
+<string name="title_activity_appointments">Appointments</string>
+<string name="title_activity_patientaccount">Patient data</string>
+<string name="title_activity_patientaccount_visit">Patient data - visit</string>
+<string name="title_activity_patientaccount_visit_new">Patient data - new visit</string>
 
-    <!-- END Activity titles -->
+<!-- END Activity titles -->
 
-    <!-- START Activity_calc -->
+<!-- START Activity_calc -->
 
-    <string name="activitycalc_string_tab_pi">Peso Ideale</string>
-    <string name="pi_short">PI</string>
-    <string name="activitycalc_string_tab_bai">Body Adiposity Index</string>
-    <string name="bai_short">BAI</string>
-    <string name="activitycalc_string_tab_bmi">Body Mass Index</string>
-    <string name="bmi_short">BMI</string>
+<string name="activitycalc_string_tab_pi">Ideal Weight</string>
+<string name="pi_short">PI</string>
+<string name="activitycalc_string_tab_bai">Body Adiposity Index</string>
+<string name="bai_short">BAI</string>
+<string name="activitycalc_string_tab_bmi">Body Mass Index</string>
+<string name="bmi_short">BMI</string>
 
-    <!-- END Activity_calc -->
+<!-- END Activity_calc -->
 
-    <!-- START Activity_patients -->
+<!-- START Activity_patients -->
 
-    <string name="activitypatients_string_patient_add">Aggiungi paziente</string>
-    <string name="activitypatients_string_patient_search">Cerca paziente</string>
-    <string name="activitypatients_string_patient_nextVisit">Prossimo appuntamento:</string>
-    <string name="activitypatients_string_patient_lastVisit">Ultimo appuntamento:</string>
+<string name="activitypatients_string_patient_add">Add patient</string>
+<string name="activitypatients_string_patient_search">Look for patient</string>
+<string name="activitypatients_string_patient_nextVisit">Next appointment:</string>
+<string name="activitypatients_string_patient_lastVisit">Last appointment:</string>
 
-    <!-- END Activity_patients -->
+<!-- END Activity_patients -->
 
-    <!-- START Activity_add_patient -->
+<!-- START Activity_add_patient -->
 
-    <string name="activityaddpatient_string_details">Aggiungi dettagli</string>
-    <string name="activityaddpatient_string_nodata_details">Aggiungere un paziente usando il tasto "+"</string>
-    <string name="activityaddpatient_string_survey">1. Questionario</string>
+<string name="activityaddpatient_string_details">Add details</string>
+<string name="activityaddpatient_string_nodata_details">Add a patient using the button "+"</string>
+<string name="activityaddpatient_string_survey">1. Questionnaire</string>
 
-    <string name="activityaddpatient_string_name">Nome*</string>
-    <string name="activityaddpatient_string_surname">Cognome*</string>
-    <string name="activityaddpatient_string_bdate">Data di nascita</string>
-    <string name="activityaddpatient_string_age">Età</string>
-    <!--sex-->
-    <string name="activityaddpatient_string_phone">Telefono*</string>
-    <string name="activityaddpatient_string_visitreason">Motivo della visita</string>
-    <string name="activityaddpatient_string_weighthistory">Storia ponderale</string>
-    <string name="activityaddpatient_string_previousdiets">Ha seguito altre diete in precedenza?</string>
-    <string name="activityaddpatient_string_previouspathologies">Patologie pregresse o in atto?</string>
-    <string name="activityaddpatient_string_hereditarypathologies">Patologie ereditarie in famiglia?</string>
-    <string name="activityaddpatient_string_allergies">Allergie?</string>
-    <string name="activityaddpatient_string_productsassumption">Assunzione farmaci, integratori o prodotti erboristici?</string>
-    <string name="activityaddpatient_string_intestine">Alvo</string>
-    <string name="activityaddpatient_string_intestine_diarrheal">Diarroico</string>
-    <string name="activityaddpatient_string_intestine_diarrheal_tag">1</string>
-    <string name="activityaddpatient_string_intestine_constipated">Stitico</string>
-    <string name="activityaddpatient_string_intestine_constipated_tag">2</string>
-    <string name="activityaddpatient_string_intestine_alternate">Alterno</string>
-    <string name="activityaddpatient_string_intestine_alternate_tag">3</string>
-    <string name="activityaddpatient_string_intestine_regular">Regolare</string>
-    <string name="activityaddpatient_string_intestine_regular_tag">4</string>
-    <string name="activityaddpatient_string_menstrualcycle">Ciclo mestruale</string>
-    <string name="activityaddpatient_string_menstrualcycle_regular">Regolare</string>
-    <string name="activityaddpatient_string_menstrualcycle_regular_tag">1</string>
-    <string name="activityaddpatient_string_menstrualcycle_irregular">Irregolare</string>
-    <string name="activityaddpatient_string_menstrualcycle_irregular_tag">2</string>
-    <string name="activityaddpatient_string_menstrualcycle_absent">Assente</string>
-    <string name="activityaddpatient_string_menstrualcycle_absent_tag">3</string>
-    <string name="activityaddpatient_string_physicalactivity">Attività fisica?</string>
-    <string name="activityaddpatient_string_workingactivity">Attività lavorativa?</string>
+<string name="activityaddpatient_string_name">Name*</string>
+<string name="activityaddpatient_string_surname">Surname*</string>
+<string name="activityaddpatient_string_bdate">Date of birth</string>
+<string name="activityaddpatient_string_age">Age</string>
+<!--sex-->
+<string name="activityaddpatient_string_phone">Phone number*</string>
+<string name="activityaddpatient_string_visitreason">Reason for the visit</string>
+<string name="activityaddpatient_string_weighthistory">Weight history</string>
+<string name="activityaddpatient_string_previousdiets">Have you followed any other diets before?</string>
+<string name="activityaddpatient_string_previouspathologies">Previous or current pathologies?</string>
+<string name="activityaddpatient_string_hereditarypathologies">Hereditary pathologies in the family?</string>
+<string name="activityaddpatient_string_allergies">Allergies?</string>
+<string name="activityaddpatient_string_productsassumption">Taking medications, supplements or herbal products?</string>
+<string name="activityaddpatient_string_intestine">Alvo</string>
+<string name="activityaddpatient_string_intestine_diarrheal">Diarrheal</string>
+<string name="activityaddpatient_string_intestine_diarrheal_tag">1</string>
+<string name="activityaddpatient_string_intestine_constipated">Constipated</string>
+<string name="activityaddpatient_string_intestine_constipated_tag">2</string>
+<string name="activityaddpatient_string_intestine_alternate">Alternate</string>
+<string name="activityaddpatient_string_intestine_alternate_tag">3</string>
+<string name="activityaddpatient_string_intestine_regular">Regular</string>
+<string name="activityaddpatient_string_intestine_regular_tag">4</string>
+<string name="activityaddpatient_string_menstrualcycle">Menstrual cycle</string>
+<string name="activityaddpatient_string_menstrualcycle_regular">Regular</string>
+<string name="activityaddpatient_string_menstrualcycle_regular_tag">1</string>
+<string name="activityaddpatient_string_menstrualcycle_irregular">Irregular</string>
+<string name="activityaddpatient_string_menstrualcycle_irregular_tag">2</string>
+<string name="activityaddpatient_string_menstrualcycle_absent">Absent</string>
+<string name="activityaddpatient_string_menstrualcycle_absent_tag">3</string>
+<string name="activityaddpatient_string_physicalactivity">Physical activity?</string>
+<string name="activityaddpatient_string_workingactivity">Working activity?</string>
 
-    <string name="activityaddpatient_string_subtitle_anamnesis">Anamnesi alimentare</string>
-    <string name="activityaddpatient_string_welcomefood">Alimenti graditi</string>
-    <string name="activityaddpatient_string_nonwelcomefood">Alimenti non graditi</string>
-    <string name="activityaddpatient_string_breakfast">Colazione</string>
-    <string name="activityaddpatient_string_nibble">Spuntino</string>
-    <string name="activityaddpatient_string_lunch">Pranzo</string>
-    <string name="activityaddpatient_string_snack">Merenda</string>
-    <string name="activityaddpatient_string_dinner">Cena</string>
-    <string name="activityaddpatient_string_postdinner">Post-cena</string>
+<string name="activityaddpatient_string_subtitle_anamnesis">Food anamnesis</string>
+<string name="activityaddpatient_string_welcomefood">Welcome foods</string>
+<string name="activityaddpatient_string_nonwelcomefood">Non welcome foods</string>
+<string name="activityaddpatient_string_breakfast">Breakfast</string>
+<string name="activityaddpatient_string_nibble">Nibble</string>
+<string name="activityaddpatient_string_lunch">Lunch</string>
+<string name="activityaddpatient_string_snack">Snack</string>
+<string name="activityaddpatient_string_dinner">Dinner</string>
+<string name="activityaddpatient_string_postdinner">Post-dinner</string>
 
-    <string name="activityaddpatient_string_subtitle_foodplanprototype">Prototipo piano alimentare</string>
+<string name="activityaddpatient_string_subtitle_foodplanprototype">Food plan prototype</string>
 
-    <string name="activityaddpatient_string_antropometry">2. Antropometria</string>
-    <string name="activityaddpatient_string_subtitle_circmufrences">Circonferenze</string>
-    <string name="activityaddpatient_string_weist">Vita</string>
-    <string name="activityaddpatient_string_belly">Pancia</string>
-    <string name="activityaddpatient_string_hips">Fianchi</string>
-    <string name="activityaddpatient_string_leg">Coscia</string>
-    <string name="activityaddpatient_string_arm">Braccio</string>
+<string name="activityaddpatient_string_antropometry">2. Antropometry</string>
+<string name="activityaddpatient_string_subtitle_circmufrences">Circumferences</string>
+<string name="activityaddpatient_string_weist">Weist</string>
+<string name="activityaddpatient_string_belly">Belly</string>
+<string name="activityaddpatient_string_hips">Hips</string>
+<string name="activityaddpatient_string_leg">Leg</string>
+<string name="activityaddpatient_string_arm">Arm</string>
 
-    <string name="activityaddpatient_string_subtitle_pliche">Pliche</string>
-    <string name="activityaddpatient_string_bicipital">Bicipitale</string>
-    <string name="activityaddpatient_string_pectoral">Pettorale</string>
-    <string name="activityaddpatient_string_subscapularis">Sottoscapolare</string>
-    <string name="activityaddpatient_string_umbilicale">Ombelicale</string>
-    <string name="activityaddpatient_string_femoral">Femorale</string>
+<string name="activityaddpatient_string_subtitle_pliche">Pliche</string>
+<string name="activityaddpatient_string_bicipital">Bicipital</string>
+<string name="activityaddpatient_string_pectoral">Pectoral</string>
+<string name="activityaddpatient_string_subscapularis">Subscapularis</string>
+<string name="activityaddpatient_string_umbilicale">Umbilical</string>
+<string name="activityaddpatient_string_femoral">Femoral</string>
 
-    <string name="activityaddpatient_string_subtitle_healthindexes">Indici di salute</string>
+<string name="activityaddpatient_string_subtitle_healthindexes">Health indexes</string>
 
-    <string name="activityaddpatient_string_alertTitle_formCheck">Controllare la completezza dei campi\n</string>
-    <string name="activityaddpatient_string_alertMessage_formCheck_name">\n• Inserire un nome</string>
-    <string name="activityaddpatient_string_alertMessage_formCheck_surname">\n• Inserire un cognome</string>
-    <string name="activityaddpatient_string_alertMessage_formCheck_phone">\n• Inserire un numero di telefono</string>
+<string name="activityaddpatient_string_alertTitle_formCheck">Check the completeness of the fields\n</string>
+<string name="activityaddpatient_string_alertMessage_formCheck_name">\n• Please enter a name</string>
+<string name="activityaddpatient_string_alertMessage_formCheck_surname">\n• Please enter a surname</string>
+<string name="activityaddpatient_string_alertMessage_formCheck_phone">\n• Please enter a phone number</string>
 
-    <!-- END Activity_add_patient -->
+<!-- END Activity_add_patient -->
 
-    <!-- START Activity_appointments -->
+<!-- START Activity_appointments -->
 
-    <string name="activityappointments_string_addAppointment">Aggiungi appuntamento</string>
-    <string name="activityappointments_string_nodata_details">Aggiungere un appuntamento</string>
-    <string name="activityappointments_string_alertMessage_deleteappointment">Confermare l\'eliminazione dell\'appuntamento?</string>
-    <string name="activityappointments_string_alertMessage_blockopening">Non è possibile aggiungere un appuntamento senza pazienti.</string>
+<string name="activityappointments_string_addAppointment">Add appointment</string>
+<string name="activityappointments_string_nodata_details">Add an appointment</string>
+<string name="activityappointments_string_alertMessage_deleteappointment">Confirm the deletion of the appointment?</string>
+<string name="activityappointments_string_alertMessage_blockopening">It is not possible to add an appointment without patients.</string>
 
-    <!-- END Activity_appointments -->
+<!-- END Activity_appointments -->
 
-    <!-- START Activity_addappointment -->
+<!-- START Activity_addappointment -->
 
-    <string name="activityaddappointment_string_addPatient">Nome paziente</string>
-    <string name="activityaddappointment_string_alertMessage_formCheck_name">\n• Selezionare il paziente dalla lista</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="title_activity_patient_account">ActivityPatientAccount</string>
-    <string name="tab_text_1">Tab 1</string>
-    <string name="tab_text_2">Tab 2</string>
-    <!-- END Activity_addappointment -->
+<string name="activityaddappointment_string_addPatient">Patient name</string>
+<string name="activityaddappointment_string_alertMessage_formCheck_name">\n• Select the patient from the list</string>
+<!-- TODO: Remove or change this placeholder text -->
+<string name="hello_blank_fragment">Hello blank fragment</string>
+<string name="title_activity_patient_account">ActivityPatientAccount</string>
+<string name="tab_text_1">Tab 1</string>
+<string name="tab_text_2">Tab 2</string>
+<!-- END Activity_addappointment -->
 
-    <!-- START Activity_patientaccount -->
+<!-- START Activity_patientaccount -->
 
-    <string name="activityappointments_string_notes">NOTE</string>
-    <string name="activityappointments_string_visits">VISITE</string>
+<string name="activityappointments_string_notes">NOTES</string>
+<string name="activityappointments_string_visits">VISITS</string>
 
-    <string name="activitypatientaccount_string_visit_add">Nuova visita</string>
-    <string name="activitypatientaccount_string_nodata_details">Aggiungere una visita</string>
-    <string name="activitypatientaccount_string_visit_ofthedate">Visita del</string>
-    <string name="activityappointments_string_file">FILE</string>
-    <string name="activityappointments_string_report">REPORT</string>
-    <!-- END Activity_patientaccount -->
+<string name="activitypatientaccount_string_visit_add">New visit</string>
+<string name="activitypatientaccount_string_nodata_details">Add new visit</string>
+<string name="activitypatientaccount_string_visit_ofthedate">Visit of the date</string>
+<string name="activityappointments_string_file">FILE</string>
+<string name="activityappointments_string_report">REPORT</string>
+<!-- END Activity_patientaccount -->
 
 
 </resources>
