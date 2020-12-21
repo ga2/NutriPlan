@@ -156,6 +156,7 @@ public class ActivityPatientAccount extends AppCompatActivity
                 Intent intent_goToActivity = new Intent(context, ActivityVisitShow.class);
                 Bundle bundle = new Bundle();
                 bundle.putSerializable("visitObject", patientAntropometryEntity);
+                bundle.putSerializable("name_surname", patientEntity.getName() + " " + patientEntity.getSurname());
                 intent_goToActivity.putExtra("args", bundle);
                 startActivity(intent_goToActivity);
             }

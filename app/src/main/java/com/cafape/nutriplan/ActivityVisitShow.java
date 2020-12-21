@@ -8,6 +8,7 @@ import android.widget.TextView;
 
 import com.cafape.nutriplan.database.entities.PatientAntropometryEntity;
 import com.cafape.nutriplan.objects.SimpleAppointment;
+import com.cafape.nutriplan.support.Utils;
 
 import org.w3c.dom.Text;
 
@@ -21,12 +22,16 @@ public class ActivityVisitShow extends AppCompatActivity
         Intent intent = this.getIntent();
         Bundle args = intent.getBundleExtra("args");
         if((args != null) && (args.containsKey("visitObject"))) {
-            PatientAntropometryEntity patientAntropometryEntity = (PatientAntropometryEntity)args.getSerializable("visitObject");
-            setUiComponents(patientAntropometryEntity);
+            if(args.containsKey("name_surname")) {
+                PatientAntropometryEntity patientAntropometryEntity = (PatientAntropometryEntity) args.getSerializable("visitObject");
+                String name_surname = args.getString("name_surname");
+                setUiComponents(patientAntropometryEntity, name_surname);
+            }
         }
     }
     
-    public void setUiComponents(PatientAntropometryEntity patientAntropometryEntity) {
+    public void setUiComponents(PatientAntropometryEntity patientAntropometryEntity, String name_surname) {
+        TextView activitypatientaccount_appBarLayout_textView_namesurname = findViewById(R.id.activitypatientaccount_appBarLayout_textView_namesurname);
         TextView activityvisitshow_textView_weight = findViewById(R.id.activityvisitshow_textView_weight);
         TextView activityvisitshow_textView_height = findViewById(R.id.activityvisitshow_textView_height);
         TextView activityvisitshow_textView_weist = findViewById(R.id.activityvisitshow_textView_weist);
@@ -43,6 +48,7 @@ public class ActivityVisitShow extends AppCompatActivity
         TextView activityvisitshow_textView_bai = findViewById(R.id.activityvisitshow_textView_bai);
         TextView activityvisitshow_textView_bmi = findViewById(R.id.activityvisitshow_textView_bmi);
 
+        activitypatientaccount_appBarLayout_textView_namesurname.setText(name_surname + " " + Globals.LONG_DASH + " " + getString(R.string.activitypatientaccount_string_visit_ofthedate) + " " + Utils.convertDateFormat(patientAntropometryEntity.getAntropometryTime(), Globals.DATETIMEFORMAT_DISPLAY));
         activityvisitshow_textView_weight.setText(parseToString(patientAntropometryEntity.getWeight(), Globals.KILOGRAM));
         activityvisitshow_textView_height.setText(parseToString(patientAntropometryEntity.getHeight(), Globals.CENTIMETRES));
         activityvisitshow_textView_weist.setText(parseToString(patientAntropometryEntity.getWeist(), Globals.CENTIMETRES));

@@ -30,6 +30,7 @@
             android:ems="10"
             android:padding="@dimen/dim_margin_normal"
             android:text="Name"
+            android:textColor="@color/colorIconsText"
             android:textSize="24sp" />
     </LinearLayout>
 
