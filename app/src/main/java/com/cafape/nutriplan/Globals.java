@@ -3,6 +3,9 @@ package com.cafape.nutriplan;
 public class Globals
 {
     public static final String DBNAME = "NutriPlanDB";
+    public static final String PERCENTAGE = "%";
+    public static final String KILOGRAM = "kg";
+    public static final String CENTIMETRES = "cm";
     public static final String LONG_DASH = "—";
     public static final String DATEFORMAT = "yyyy-MM-dd";
     public static final String DATETIMEFORMAT = "yyyy-MM-dd HH:mm";

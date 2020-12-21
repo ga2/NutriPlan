@@ -1,6 +1,5 @@
 package com.cafape.nutriplan.fragments;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -73,7 +72,7 @@ public class Fragment_PatientAccount_Visits extends Fragment
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View layout = inflater.inflate(R.layout.fragment_activity_patient_account_visits, container, false);
+        View layout = inflater.inflate(R.layout.fragment_patientaccount_visits, container, false);
         setUiComponents(layout);
         setListeners(layout);
         initVisitsList();
@@ -102,9 +101,6 @@ public class Fragment_PatientAccount_Visits extends Fragment
             activitypatientaccoun_textView_nodata_details.setText("");
             activitypatientaccoun_constraintLayout_nodata.setVisibility(View.GONE);
         }
-        //activityaddpatient_button_backto2 = layout.findViewById(R.id.activityaddpatient_button_backto2);
-        //activityaddpatient_button_save = layout.findViewById(R.id.activityaddpatient_button_save);
-
     }
 
     public void setListeners(View layout) {

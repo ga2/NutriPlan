@@ -8,12 +8,13 @@ import com.cafape.nutriplan.Globals;
 import com.cafape.nutriplan.database.converters.TimestampConverter;
 import com.cafape.nutriplan.support.Utils;
 
+import java.io.Serializable;
 import java.text.DateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
 @Entity
-public class PatientAntropometryEntity
+public class PatientAntropometryEntity implements Serializable
 {
     @PrimaryKey(autoGenerate = true)
     private long antropometryID;

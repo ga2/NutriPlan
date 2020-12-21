@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">NutriPlan</string>
-    <string name="build_number">20201220</string>
+    <string name="build_number">20201221</string>
     <string name="title_activity_main_menu">MainMenu</string>
 
     <string name="longdash">—</string>
@@ -47,6 +47,8 @@
     <string name="title_activity_addpatient">Nuovo paziente</string>
     <string name="title_activity_appointments">Appuntamenti</string>
     <string name="title_activity_patientaccount">Scheda paziente</string>
+    <string name="title_activity_patientaccount_visit">Scheda paziente - visita</string>
+    <string name="title_activity_patientaccount_visit_new">Scheda paziente - nuova visita</string>
 
     <!-- END Activity titles -->
 
@@ -175,7 +177,6 @@
     <string name="activityappointments_string_file">FILE</string>
     <string name="activityappointments_string_report">REPORT</string>
     <!-- END Activity_patientaccount -->
-
 
 
 </resources>

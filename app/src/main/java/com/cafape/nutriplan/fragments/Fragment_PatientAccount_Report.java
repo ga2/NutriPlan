@@ -61,7 +61,7 @@ public class Fragment_PatientAccount_Report extends Fragment
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View layout = inflater.inflate(R.layout.fragment_activity_patient_account_report, container, false);
+        View layout = inflater.inflate(R.layout.fragment_patientaccount_report, container, false);
         setUiComponents(layout);
         setListeners(layout);
         return layout;

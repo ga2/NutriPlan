@@ -11,10 +11,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.NutriPlan">
+        <activity android:name=".ActivityVisitShow"
+            android:label="@string/title_activity_patientaccount_visit"
+            ></activity>
         <activity
             android:name=".ActivityPatientAccount"
             android:label="@string/title_activity_patientaccount"
-            android:theme="@style/Theme.NutriPlan.NoActionBar"></activity>
+            android:theme="@style/Theme.NutriPlan.NoActionBar" />
         <activity
             android:name=".ActivityAddPatient2"
             android:label="@string/title_activity_addpatient" />

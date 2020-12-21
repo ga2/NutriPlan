@@ -1,23 +1,17 @@
 package com.cafape.nutriplan.fragments;
 
 import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
-import androidx.viewpager.widget.ViewPager;
 
-import com.cafape.nutriplan.ActivityAddPatient2;
 import com.cafape.nutriplan.ActivityPatientAccount;
 import com.cafape.nutriplan.R;
 import com.cafape.nutriplan.database.entities.PatientAnamnesisEntity;
-import com.cafape.nutriplan.database.entities.PatientAntropometryEntity;
 import com.cafape.nutriplan.database.entities.PatientEntity;
 
 /**
@@ -71,7 +65,7 @@ public class Fragment_PatientAccount_Notes extends Fragment
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View layout = inflater.inflate(R.layout.fragment_activity_patient_account_notes, container, false);
+        View layout = inflater.inflate(R.layout.fragment_patientaccount_notes, container, false);
         setUiComponents(layout);
         setListeners();
         return layout;

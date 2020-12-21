@@ -61,7 +61,7 @@ public class Fragment_PatientAccount_File extends Fragment
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View layout = inflater.inflate(R.layout.fragment_activity_patient_account_files, container, false);
+        View layout = inflater.inflate(R.layout.fragment_patientaccount_files, container, false);
         setUiComponents(layout);
         setListeners(layout);
         return layout;

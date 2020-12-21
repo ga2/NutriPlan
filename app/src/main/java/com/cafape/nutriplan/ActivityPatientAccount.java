@@ -1,6 +1,7 @@
 package com.cafape.nutriplan;
 
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.AsyncTask;
@@ -38,6 +39,7 @@ import java.util.List;
 
 public class ActivityPatientAccount extends AppCompatActivity
 {
+    private Context context;
     private PatientEntity patientEntity;
     private PatientAnamnesisEntity patientAnamnesisEntity;
     private TextView activitypatientaccount_appBarLayout_textView_namesurname;
@@ -49,6 +51,7 @@ public class ActivityPatientAccount extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_patient_account);
+        context = getApplicationContext();
 
         setUiComponents();
         setListeners();
@@ -150,10 +153,12 @@ public class ActivityPatientAccount extends AppCompatActivity
         {
             @Override
             public void onItemClick(PatientAntropometryEntity patientAntropometryEntity) {
-
+                Intent intent_goToActivity = new Intent(context, ActivityVisitShow.class);
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("visitObject", patientAntropometryEntity);
+                intent_goToActivity.putExtra("args", bundle);
+                startActivity(intent_goToActivity);
             }
         });
     }
-
-
 }
