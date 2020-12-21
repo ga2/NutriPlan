@@ -1,10 +1,12 @@
 <resources>
     <string name="app_name">NutriPlan</string>
+    <string name="app_name_subtitle">L\'app Android per nutrizionisti</string>
     <string name="build_number">20201221</string>
 
     <string name="longdash">—</string>
     <string name="yes">Sì</string>
     <string name="no">No</string>
+    <string name="start">Inizia</string>
     <string name="of_the">del</string>
     <string name="back">Indietro</string>
     <string name="forward">Avanti</string>

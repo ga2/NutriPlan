@@ -1,6 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <style name="style_mainactivity_title" parent="android:Widget.TextView">
+        <item name="android:textSize">40sp</item>
+        <item name="color">@color/primaryColor</item>
+    </style>
+
+    <style name="style_mainactivity_subtitle" parent="style_mainactivity_title">
+        <item name="android:textSize">32sp</item>
+    </style>
+
     <style name="style_divider">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">1dp</item>
