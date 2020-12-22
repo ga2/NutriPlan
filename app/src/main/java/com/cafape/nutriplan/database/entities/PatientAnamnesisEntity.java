@@ -3,8 +3,10 @@ package com.cafape.nutriplan.database.entities;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
+import java.io.Serializable;
+
 @Entity
-public class PatientAnamnesisEntity
+public class PatientAnamnesisEntity implements Serializable
 {
     @PrimaryKey(autoGenerate = true)
     private long anamnesisID;

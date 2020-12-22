@@ -16,6 +16,9 @@ public interface PatientAnamnesisDao
     @Query("SELECT * FROM PatientAnamnesisEntity WHERE patient_ref_ID = :patientID_target LIMIT 1")
     PatientAnamnesisEntity getPatientAnamnesis(long patientID_target);
 
+    @Query("UPDATE PatientAnamnesisEntity SET welcomefood = :welcomeFood, nonwelcomefood = :nonWelcomeFood WHERE anamnesisID = :anamnesisID")
+    void updateWithID(long anamnesisID, String welcomeFood, String nonWelcomeFood);
+
     @Insert
     long insert(PatientAnamnesisEntity patientAnamnesisEntity);
 

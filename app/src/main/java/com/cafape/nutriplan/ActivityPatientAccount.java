@@ -39,6 +39,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
+import static com.cafape.nutriplan.Globals.REQCODE_EDITPATIENTNOTES;
 import static com.cafape.nutriplan.Globals.REQCODE_NEWAPPOINTMENT_ADDED;
 import static com.cafape.nutriplan.Globals.REQCODE_NEWVISIT;
 
@@ -72,20 +73,14 @@ public class ActivityPatientAccount extends AppCompatActivity
                 PatientAntropometryEntity patientAntropometryEntity = (PatientAntropometryEntity) data.getSerializableExtra("newVisitEntity");
                 patientAntropometryEntities.add(patientAntropometryEntity);
 
-                //((Fragment_PatientAccount_Visits)(sectionsPagerAdapter.getItem(1))).updateVisitsList(patientAntropometryEntity);
                 initPatient(1);
+            }
+        } else if((requestCode == REQCODE_EDITPATIENTNOTES)) {
+            if (resultCode == RESULT_OK) {
+                patientAnamnesisEntity = (PatientAnamnesisEntity) data.getSerializableExtra("updatedPatientAnamnesisEntity");
+                patientEntity = (PatientEntity) data.getSerializableExtra("updatedPatientEntity");
 
-
-                /*String patient_info = (String) data.getSerializableExtra("patient_info");
-                appointmentsRecyclerViewAdapter.addToRetrievedData(new SimpleAppointment(appointmentEntity, patient_info));
-                appointmentsRecyclerViewAdapter.notifyDataSetChanged();
-                Calendar calendar = Calendar.getInstance();
-                calendar.setTime(appointmentEntity.getAppointmentTime());
-                arrayList_appointmentEntity_ofTheDay.add(new SimpleAppointment(appointmentEntity, patient_info));
-                activityappointments_calendarView.addDecorator(new ActivityAppointments.EventDecoratorMonth(CalendarDay.from(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH) + 1, calendar.get(Calendar.DAY_OF_MONTH))));
-                getAppointmentsOfTheDay();
-
-                 */
+                getPatientAnamnesis(0);
             }
         }
     }
@@ -200,5 +195,14 @@ public class ActivityPatientAccount extends AppCompatActivity
         bundle.putSerializable("patientObject", patientEntity);
         intent_goToActivity.putExtra("args", bundle);
         startActivityForResult(intent_goToActivity, REQCODE_NEWVISIT);
+    }
+
+    public void openEditPatientNotes() {
+        Intent intent_goToActivity = new Intent(context, ActivityEditPatientNotes.class);
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("patientObject", patientEntity);
+        bundle.putSerializable("patientAnamnesisObject", patientAnamnesisEntity);
+        intent_goToActivity.putExtra("args", bundle);
+        startActivityForResult(intent_goToActivity, REQCODE_EDITPATIENTNOTES);
     }
 }

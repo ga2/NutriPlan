@@ -26,8 +26,8 @@
     <string name="save">Save</string>
     <string name="saved">Saved</string>
     <string name="deleted">Deleted</string>
-    <string name="edited">Modified</string>
-    <string name="edit">Modify</string>
+    <string name="edited">Edited</string>
+    <string name="edit">Edit</string>
 
     <string name="share_with">Open with...</string>
     <string name="no_whatsapp">Whatsapp not installed</string>
@@ -92,7 +92,7 @@
     <string name="activityaddpatient_string_age">Age</string>
     <!--sex-->
     <string name="activityaddpatient_string_phone">Phone number*</string>
-    <string name="activityaddpatient_string_visitreason">Reason for the visit</string>
+    <string name="activityaddpatient_string_visitreason">Reason of the visit</string>
     <string name="activityaddpatient_string_weighthistory">Weight history</string>
     <string name="activityaddpatient_string_previousdiets">Have you followed any other diets before?</string>
     <string name="activityaddpatient_string_previouspathologies">Previous or current pathologies?</string>

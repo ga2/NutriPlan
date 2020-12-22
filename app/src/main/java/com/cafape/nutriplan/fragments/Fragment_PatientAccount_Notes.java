@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -71,8 +72,6 @@ public class Fragment_PatientAccount_Notes extends Fragment
         return layout;
     }
 
-
-
     public void setUiComponents(View layout) {
         TextView activitypatientaccount_textView_visitreason = layout.findViewById(R.id.activitypatientaccount_textView_visitreason);
         TextView activitypatientaccount_textView_previouspathologies = layout.findViewById(R.id.activitypatientaccount_textView_previouspathologies);
@@ -99,6 +98,15 @@ public class Fragment_PatientAccount_Notes extends Fragment
         activitypatientaccount_textView_workingactivity.setText(patientEntity.getWorkinglActivity_details());
         activitypatientaccount_textView_welcomefood.setText(patientAnamnesisEntity.getWelcomefood());
         activitypatientaccount_textView_nonwelcomefood.setText(patientAnamnesisEntity.getNonwelcomefood());
+
+        Button activitypatientaccount_button_edit = layout.findViewById(R.id.activitypatientaccount_button_edit);
+        activitypatientaccount_button_edit.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View view) {
+                ((ActivityPatientAccount)getActivity()).openEditPatientNotes();
+            }
+        });
     }
 
     public void setListeners() {
