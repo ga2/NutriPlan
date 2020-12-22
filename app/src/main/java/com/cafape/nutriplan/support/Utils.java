@@ -132,6 +132,7 @@ public class Utils
         String string = getStringFromEditText(editText);
         float res = 0.0f;
         if(!string.isEmpty()) {
+            string = string.replace(",", ".");
             res = Float.parseFloat(string);
         }
         return res;

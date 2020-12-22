@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -21,6 +22,7 @@ import com.cafape.nutriplan.support.AlertBuilderUtils;
 import com.cafape.nutriplan.support.Utils;
 import com.cafape.nutriplan.ui.CustomDatePicker;
 
+import java.util.Calendar;
 import java.util.Date;
 
 /**
@@ -86,9 +88,21 @@ public class Fragment_AddPatient_Survey extends Fragment
     public void setUiComponents(View layout) {
         activityaddpatient_button_goto2 = layout.findViewById(R.id.activityaddpatient_button_goto2);
         activityaddpatient_datepicker_bdate = layout.findViewById(R.id.activityaddpatient_datepicker_bdate);
+        activityaddpatient_editText_age = layout.findViewById(R.id.activityaddpatient_editText_age);
     }
 
     public void setListeners(View layout) {
+
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTimeInMillis(System.currentTimeMillis());
+        activityaddpatient_datepicker_bdate.init(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH), new DatePicker.OnDateChangedListener() {
+            @Override
+            public void onDateChanged(DatePicker datePicker, int year, int month, int dayOfMonth) {
+                Date date = Utils.getDateFromDatePicker(datePicker);
+                activityaddpatient_editText_age.setText(String.valueOf(Utils.calculateAge(date)));
+            }
+        });
+
         activityaddpatient_button_goto2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -96,6 +110,7 @@ public class Fragment_AddPatient_Survey extends Fragment
                 String patientEntity_surname = ((EditText)layout.findViewById(R.id.activityaddpatient_editText_surname)).getText().toString();
                 Date patientEntity_bdate = Utils.getDateFromDatePicker(activityaddpatient_datepicker_bdate);
                 String patientEntity_phone = ((EditText)layout.findViewById(R.id.activityaddpatient_editText_phone)).getText().toString();
+                activityaddpatient_editText_age.setText(Utils.calculateAge(patientEntity_bdate));
                 
                 if(!patientEntity_name.isEmpty() && !patientEntity_surname.isEmpty() && !patientEntity_phone.isEmpty()) {
                     patientEntity_name = Utils.upperCaseAllFirst(patientEntity_name);

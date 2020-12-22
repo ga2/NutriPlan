@@ -32,6 +32,8 @@ public class MainActivity extends AppCompatActivity
     //todo fingerprint
     //todo casetta
     //todo file tab
+	//todo immagini tabella bai
+	//responsiveness
     //todo plot
 
     @Override

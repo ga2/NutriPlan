@@ -40,6 +40,7 @@ public class Fragment_AddPatient_Antropometry extends Fragment
     private Button activityaddpatient_button_backto2;
     private Button activityaddpatient_button_save;
 
+
     private EditText activityaddpatient_editText_weight;
     private EditText activityaddpatient_editText_height;
     private EditText activityaddpatient_editText_hips;
@@ -93,12 +94,12 @@ public class Fragment_AddPatient_Antropometry extends Fragment
         String weight = getStringFromEditText(activityaddpatient_editText_weight);
 
         if(!height.isEmpty() && !weight.isEmpty()) {
-            String bodyMassIndex =  ((ActivityAddPatient2) getActivity()).calculateBMI(height, weight);
+            String bodyMassIndex =  ((ActivityAddPatient2) getActivity()).calculateBMI(height, weight).replace(",", ".");
             activityaddpatient_editText_bmi.setText(bodyMassIndex);
         }
 
         if(!height.isEmpty() && !hips.isEmpty()) {
-            String bodyAdiposityIndex =  ((ActivityAddPatient2) getActivity()).calculateBAI(height, hips);
+            String bodyAdiposityIndex =  ((ActivityAddPatient2) getActivity()).calculateBAI(height, hips).replace(",", ".");;
             activityaddpatient_editText_bai.setText(bodyAdiposityIndex);
         }
 
@@ -130,7 +131,6 @@ public class Fragment_AddPatient_Antropometry extends Fragment
             }
         });
 
-        //peso, altezza, fianchi
         activityaddpatient_editText_weight.addTextChangedListener(new TextWatcher()
         {
             @Override
@@ -217,6 +217,6 @@ public class Fragment_AddPatient_Antropometry extends Fragment
             }
         });
     }
-    
+
 
 }
