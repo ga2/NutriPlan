@@ -110,7 +110,7 @@ public class Fragment_AddPatient_Survey extends Fragment
                 String patientEntity_surname = ((EditText)layout.findViewById(R.id.activityaddpatient_editText_surname)).getText().toString();
                 Date patientEntity_bdate = Utils.getDateFromDatePicker(activityaddpatient_datepicker_bdate);
                 String patientEntity_phone = ((EditText)layout.findViewById(R.id.activityaddpatient_editText_phone)).getText().toString();
-                activityaddpatient_editText_age.setText(Utils.calculateAge(patientEntity_bdate));
+                activityaddpatient_editText_age.setText(String.valueOf(Utils.calculateAge(patientEntity_bdate)));
                 
                 if(!patientEntity_name.isEmpty() && !patientEntity_surname.isEmpty() && !patientEntity_phone.isEmpty()) {
                     patientEntity_name = Utils.upperCaseAllFirst(patientEntity_name);
