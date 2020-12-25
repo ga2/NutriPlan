@@ -2,62 +2,44 @@ package com.cafape.nutriplan;
 
 import android.app.AlertDialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
-import android.database.Cursor;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 
-import com.cafape.nutriplan.adapters.AppointmentsAndPatientsRecyclerViewAdapter;
 import com.cafape.nutriplan.adapters.FilesRecyclerViewAdapter;
-import com.cafape.nutriplan.adapters.PatientWithAppointmentsRecyclerViewAdapter;
-import com.cafape.nutriplan.adapters.PatientsRecyclerViewAdapter;
 import com.cafape.nutriplan.adapters.VisitsRecyclerViewAdapter;
 import com.cafape.nutriplan.database.DatabaseRepository;
-import com.cafape.nutriplan.database.entities.AppointmentEntity;
 import com.cafape.nutriplan.database.entities.FileEntity;
 import com.cafape.nutriplan.database.entities.PatientAnamnesisEntity;
 import com.cafape.nutriplan.database.entities.PatientAntropometryEntity;
 import com.cafape.nutriplan.database.entities.PatientEntity;
-import com.cafape.nutriplan.fragments.Fragment_PatientAccount_Visits;
-import com.cafape.nutriplan.objects.SimpleAppointment;
 import com.cafape.nutriplan.objects.SimplePatientWithAppointment;
 import com.cafape.nutriplan.support.AlertBuilderUtils;
 import com.cafape.nutriplan.support.Utils;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.tabs.TabLayout;
 
 import androidx.core.content.FileProvider;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.viewpager.widget.ViewPager;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.provider.OpenableColumns;
-import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.cafape.nutriplan.ui.main.SectionsPagerAdapter_patientaccount;
-import com.prolificinteractive.materialcalendarview.CalendarDay;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 
 import static com.cafape.nutriplan.Globals.MIME_JPG;
 import static com.cafape.nutriplan.Globals.MIME_PDF;
 import static com.cafape.nutriplan.Globals.MIME_PNG;
 import static com.cafape.nutriplan.Globals.REQCODE_EDITPATIENTNOTES;
-import static com.cafape.nutriplan.Globals.REQCODE_NEWAPPOINTMENT_ADDED;
 import static com.cafape.nutriplan.Globals.REQCODE_NEWVISIT;
 import static com.cafape.nutriplan.Globals.REQUEST_CODE_LOADFILE;
-import static com.cafape.nutriplan.support.Utils.myprint;
 
 public class ActivityPatientAccount extends AppCompatActivity
 {
@@ -257,13 +239,6 @@ public class ActivityPatientAccount extends AppCompatActivity
                 catch (IOException e) {
                     e.printStackTrace();
                 }
-                /*DatabaseRepository
-                        .getInstance(getApplicationContext())
-                        .getAppDatabase()
-                        .fileDao()
-                        .getFilesByPatient(patientEntity.getPatiendID());
-                 */
-
                 return null;
             }
 
@@ -306,30 +281,17 @@ public class ActivityPatientAccount extends AppCompatActivity
 
                 // Get URI and MIME type of file
                 Uri uri = FileProvider.getUriForFile(context, getPackageName() + ".fileprovider", userFile);
-                //String mime = getContentResolver().getType(uri);
-
-                /*
-                // Open file with user selected app
-                Intent intent = new Intent();
-                intent.setAction(Intent.ACTION_VIEW);
-                intent.setDataAndType(uri, mime);
-                intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
-                startActivity(intent);
-
-
-                Intent intent_goToActivity = new Intent(context, ActivityVisitShow.class);
-                Bundle bundle = new Bundle();
-                bundle.putSerializable("visitObject", patientAntropometryEntity);
-                bundle.putSerializable("name_surname", patientEntity.getName() + " " + patientEntity.getSurname());
-                intent_goToActivity.putExtra("args", bundle);
-                startActivity(intent_goToActivity);*/
-
                 Intent intent = new Intent(Intent.ACTION_VIEW, uri);
                 intent.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION | Intent.FLAG_GRANT_WRITE_URI_PERMISSION);
                 startActivity(intent);
-
-
             }
+        });
+        this.filesRecyclerViewAdapter.setDeleteFileClickListener(fileEntity -> {
+            AlertDialog.Builder builder = AlertBuilderUtils.BuildAlert(ActivityPatientAccount.this, R.string.warning, R.string.activitypatientaccount_string_alertMessage_deletefile);
+            builder.setPositiveButton(R.string.yes, (dialogInterface, i) -> deleteFileEntity(fileEntity));
+            builder.setNegativeButton(R.string.back, null);
+            AlertDialog alertDialog = builder.create();
+            alertDialog.show();
         });
     }
 
@@ -361,5 +323,33 @@ public class ActivityPatientAccount extends AppCompatActivity
         startActivityForResult(intent, REQUEST_CODE_LOADFILE);
     }
 
+    public void deleteFileEntity(FileEntity fileEntity) {
+        class AsyncTaskDeleteFile extends AsyncTask<Void, Void, Integer>
+        {
+            @Override
+            protected Integer doInBackground(Void... voids)
+            {
+                File docsDirectory = new File(context.getFilesDir(), Globals.DOCUMENT_FOLDER_NAME);
+                File userDirectory = new File(docsDirectory, String.valueOf(patientEntity.getPatiendID()));
+                File userFile = new File(userDirectory, fileEntity.getFilePseudoname());
+                int deletingResult = 0;
+                if(userFile.delete()) {
+                    deletingResult = DatabaseRepository.getInstance(context).getAppDatabase().fileDao().deleteByID(fileEntity.getFileID());
+                }
+                return deletingResult;
+            }
 
+            @Override
+            protected void onPostExecute(Integer deletingResult)
+            {
+                super.onPostExecute(deletingResult);
+                if ((deletingResult != 0)) {
+                    Toast.makeText(context, R.string.deleted, Toast.LENGTH_SHORT).show();
+                }
+                initPatient(2);
+            }
+        }
+
+        new AsyncTaskDeleteFile().execute();
+    }
 }

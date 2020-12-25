@@ -24,4 +24,7 @@ public interface FileDao
 
     @Delete
     void delete(FileEntity appointmentEntity);
+
+    @Query("DELETE FROM FileEntity WHERE fileID = :fileID")
+    int deleteByID(long fileID);
 }

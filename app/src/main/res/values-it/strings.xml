@@ -184,6 +184,7 @@
     <string name="activityappointments_string_file">FILE</string>
     <string name="activitypatientaccount_string_file_add">Carica file</string>
     <string name="activitypatientaccount_string_file_details">Aggiungere un file</string>
+    <string name="activitypatientaccount_string_alertMessage_deletefile">Confermare l\'eliminazione del file</string>
     <string name="activityappointments_string_report">REPORT</string>
     <!-- END Activity_patientaccount -->
 

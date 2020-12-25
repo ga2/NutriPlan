@@ -5,12 +5,14 @@ import android.graphics.Paint;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.cafape.nutriplan.R;
 import com.cafape.nutriplan.database.entities.FileEntity;
+import com.cafape.nutriplan.objects.SimpleAppointment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -49,6 +51,13 @@ public class FilesRecyclerViewAdapter extends RecyclerView.Adapter<FilesRecycler
                 fileopeningClickListener.onItemClick(dataGot);
             }
         });
+        holder.rowFile_imageView_delete.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View view) {
+                deleteFileClickListener.onItemClick(retrievedData.get(position));
+            }
+        });
     }
 
     // total number of rows
@@ -60,10 +69,12 @@ public class FilesRecyclerViewAdapter extends RecyclerView.Adapter<FilesRecycler
     // stores and recycles views as they are scrolled off screen
     public class ViewHolder extends RecyclerView.ViewHolder{
         TextView rowFile_textView_fileName;
+        ImageView rowFile_imageView_delete;
 
         ViewHolder(View itemView) {
             super(itemView);
             rowFile_textView_fileName = itemView.findViewById(R.id.rowFile_textView_fileName);
+            rowFile_imageView_delete = itemView.findViewById(R.id.rowFile_imageView_delete);
         }
     }
 
@@ -88,6 +99,15 @@ public class FilesRecyclerViewAdapter extends RecyclerView.Adapter<FilesRecycler
     //Defining interface
     public interface FileopeningClickListener
     {
+        //Achieve the click method, passing the subscript.
+        void onItemClick(FileEntity fileEntity);
+    }
+
+    private FilesRecyclerViewAdapter.DeleteFileClickListener deleteFileClickListener;
+    public void setDeleteFileClickListener(FilesRecyclerViewAdapter.DeleteFileClickListener deleteFileClickListener) {
+        this.deleteFileClickListener = deleteFileClickListener;
+    }
+    public interface DeleteFileClickListener {
         //Achieve the click method, passing the subscript.
         void onItemClick(FileEntity fileEntity);
     }

@@ -185,6 +185,7 @@
 
     <string name="activitypatientaccount_string_file_add">New file</string>
     <string name="activitypatientaccount_string_file_details">Add new file</string>
+    <string name="activitypatientaccount_string_alertMessage_deletefile">Confirm the deletion of the file?</string>
     <string name="activityappointments_string_report">REPORT</string>
     <!-- END Activity_patientaccount -->
 </resources>
