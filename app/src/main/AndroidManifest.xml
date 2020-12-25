@@ -3,6 +3,7 @@
     package="com.cafape.nutriplan">
 
     <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <uses-feature
         android:name="android.hardware.fingerprint"
@@ -51,6 +52,16 @@
                Set to true if your app is Standalone, that is, it does not require the handheld
                app to run.
         -->
+
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/provider_paths" />
+        </provider>
         <meta-data
             android:name="com.google.android.wearable.standalone"
             android:value="true" />

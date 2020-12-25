@@ -19,6 +19,7 @@ import android.view.View;
 import android.widget.SearchView;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.Toolbar;
 
 import com.cafape.nutriplan.adapters.PatientWithAppointmentsRecyclerViewAdapter;
 import com.cafape.nutriplan.adapters.PatientsRecyclerViewAdapter;

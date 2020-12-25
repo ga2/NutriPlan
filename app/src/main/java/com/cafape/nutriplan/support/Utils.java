@@ -1,5 +1,9 @@
 package com.cafape.nutriplan.support;
 
+import android.content.Context;
+import android.database.Cursor;
+import android.net.Uri;
+import android.provider.OpenableColumns;
 import android.util.Log;
 import android.widget.DatePicker;
 import android.widget.EditText;
@@ -8,6 +12,14 @@ import android.widget.RadioButton;
 import com.cafape.nutriplan.R;
 import com.prolificinteractive.materialcalendarview.CalendarDay;
 
+import org.apache.commons.lang3.RandomStringUtils;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.text.DateFormat;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
@@ -140,5 +152,65 @@ public class Utils
 
     public static String getStringFromEditText(EditText editText) {
         return editText.getText().toString();
+    }
+    
+    public static String getFileUriName(Context context, Uri uri) {
+        String displayName = "";
+        try (Cursor cursor = context.getContentResolver().query(uri, null, null, null, null, null)) {
+            if (cursor != null && cursor.moveToFirst()) {
+                displayName = cursor.getString(cursor.getColumnIndex(OpenableColumns.DISPLAY_NAME));
+            }
+        }
+        return displayName;
+    }
+
+    public static String generateRandomAlphanumericString() {
+        int length = 20;
+        boolean useLetters = true;
+        boolean useNumbers = true;
+        String generatedString = RandomStringUtils.random(length, useLetters, useNumbers);
+
+        return generatedString;
+    }
+
+    public static String getFileExtension(String fileName) {
+        String extension = "";
+
+        int i = fileName.lastIndexOf('.');
+        int p = Math.max(fileName.lastIndexOf('/'), fileName.lastIndexOf('\\'));
+
+        if (i > p)
+        {
+            extension = fileName.substring(i+1);
+            return extension;
+        }
+        return "";
+    }
+
+    public static void copyFile(String src_path, String dst_path) throws IOException {
+        File src = new File(src_path);
+        File dst = new File(dst_path);
+        InputStream in = new FileInputStream(src);
+        OutputStream out = new FileOutputStream(dst);
+
+        copyFile(in, out);
+    }
+
+    public static void copyFile(InputStream in, File dst_file) throws IOException {
+        OutputStream out = new FileOutputStream(dst_file);
+
+        copyFile(in, out);
+    }
+
+    public static void copyFile(InputStream in, OutputStream out) throws IOException {
+        // Transfer bytes from in to out
+        byte[] buf = new byte[1024];
+        int len;
+        while ((len = in.read(buf)) > 0)
+        {
+            out.write(buf, 0, len);
+        }
+        in.close();
+        out.close();
     }
 }

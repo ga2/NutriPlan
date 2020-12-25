@@ -29,15 +29,13 @@ public class MainActivity extends AppCompatActivity
     private BiometricPrompt biometricPrompt;
     private BiometricPrompt.PromptInfo promptInfo;
 
-    //todo casetta 0
-    //todo modifica pazeinte 1
-    //todo file tab 2
-    //todo plot 3
-    //todo consigli in base alle patologie —> cambiare inserimento patologie con checkbox secondo file che ti ho inviato 4
-    //todo databasebackup 5
-    //todo immagini tabella bai 6
-    //todo fingerprint 7
-    //todo responsiveness 8
+    //todo file tab 1
+    //todo plot 2
+    //todo consigli in base alle patologie —> cambiare inserimento patologie con checkbox secondo file che ti ho inviato 3
+    //todo databasebackup 4
+    //todo immagini tabella bai 5
+    //todo fingerprint 6
+    //todo responsiveness 7
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

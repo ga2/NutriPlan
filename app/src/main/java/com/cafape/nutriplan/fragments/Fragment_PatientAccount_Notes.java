@@ -23,12 +23,10 @@ import com.cafape.nutriplan.database.entities.PatientEntity;
 public class Fragment_PatientAccount_Notes extends Fragment
 {
 
-    // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
-    // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
 
@@ -45,7 +43,6 @@ public class Fragment_PatientAccount_Notes extends Fragment
      * @param param2 Parameter 2.
      * @return A new instance of fragment Fragment_AddPatient_Antropometry.
      */
-    // TODO: Rename and change types and number of parameters
     public static Fragment_PatientAccount_Notes newInstance(String param1, String param2) {
         Fragment_PatientAccount_Notes fragment = new Fragment_PatientAccount_Notes();
         Bundle args = new Bundle();
@@ -86,7 +83,7 @@ public class Fragment_PatientAccount_Notes extends Fragment
         TextView activitypatientaccount_textView_nonwelcomefood = layout.findViewById(R.id.activitypatientaccount_textView_nonwelcomefood);
 
         PatientEntity patientEntity = ((ActivityPatientAccount)getActivity()).getPatient();
-        PatientAnamnesisEntity patientAnamnesisEntity = ((ActivityPatientAccount)getActivity()).getPatientAnamnesisEntity();
+
         activitypatientaccount_textView_visitreason.setText(patientEntity.getVisitReason());
         activitypatientaccount_textView_previouspathologies.setText(patientEntity.getPreviousPathologies_details());
         activitypatientaccount_textView_hereditarypathologies.setText(patientEntity.getHereditaryPathologies_details());
@@ -96,8 +93,11 @@ public class Fragment_PatientAccount_Notes extends Fragment
         activitypatientaccount_textView_menstrualcycle.setText(transformIntInString("menstrualcycle", patientEntity.getMenstrualCycle(), patientEntity.getSex()));
         activitypatientaccount_textView_physicalactivity.setText(patientEntity.getPhysicalActivity_details());
         activitypatientaccount_textView_workingactivity.setText(patientEntity.getWorkinglActivity_details());
-        activitypatientaccount_textView_welcomefood.setText(patientAnamnesisEntity.getWelcomefood());
-        activitypatientaccount_textView_nonwelcomefood.setText(patientAnamnesisEntity.getNonwelcomefood());
+        PatientAnamnesisEntity patientAnamnesisEntity = ((ActivityPatientAccount)getActivity()).getPatientAnamnesisEntity();
+        if(patientAnamnesisEntity != null) {
+            activitypatientaccount_textView_welcomefood.setText(patientAnamnesisEntity.getWelcomefood());
+            activitypatientaccount_textView_nonwelcomefood.setText(patientAnamnesisEntity.getNonwelcomefood());
+        }
 
         Button activitypatientaccount_button_edit = layout.findViewById(R.id.activitypatientaccount_button_edit);
         activitypatientaccount_button_edit.setOnClickListener(new View.OnClickListener()

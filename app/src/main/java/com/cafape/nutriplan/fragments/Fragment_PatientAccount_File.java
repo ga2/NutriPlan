@@ -5,10 +5,18 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.TextView;
 
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import com.cafape.nutriplan.ActivityPatientAccount;
 import com.cafape.nutriplan.R;
+import com.cafape.nutriplan.adapters.FilesRecyclerViewAdapter;
+import com.cafape.nutriplan.adapters.VisitsRecyclerViewAdapter;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -18,14 +26,17 @@ import com.cafape.nutriplan.R;
 public class Fragment_PatientAccount_File extends Fragment
 {
 
-    // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
-    // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+
+    private FilesRecyclerViewAdapter filesRecyclerViewAdapter;
+
+    private TextView activitypatientaccount_textView_nodata_details;
+    private ConstraintLayout activitypatientaccount_constraintLayout_nodata;
 
 
     public Fragment_PatientAccount_File() {
@@ -40,7 +51,6 @@ public class Fragment_PatientAccount_File extends Fragment
      * @param param2 Parameter 2.
      * @return A new instance of fragment Fragment_AddPatient_Antropometry.
      */
-    // TODO: Rename and change types and number of parameters
     public static Fragment_PatientAccount_File newInstance(String param1, String param2) {
         Fragment_PatientAccount_File fragment = new Fragment_PatientAccount_File();
         Bundle args = new Bundle();
@@ -68,9 +78,36 @@ public class Fragment_PatientAccount_File extends Fragment
     }
 
     public void setUiComponents(View layout) {
-        //activityaddpatient_button_backto2 = layout.findViewById(R.id.activityaddpatient_button_backto2);
-        //activityaddpatient_button_save = layout.findViewById(R.id.activityaddpatient_button_save);
+        ActivityPatientAccount activityPatientAccount = ((ActivityPatientAccount)getActivity());
+        RecyclerView activitypatientaccount_recycleView_files = layout.findViewById(R.id.activitypatientaccount_recycleView_files);
+        filesRecyclerViewAdapter = new FilesRecyclerViewAdapter(getContext(), activityPatientAccount.getPatientFilesEntities());
+        activitypatientaccount_recycleView_files.setLayoutManager(new LinearLayoutManager(activityPatientAccount.getApplicationContext()));
+        activitypatientaccount_recycleView_files.setAdapter(filesRecyclerViewAdapter);
+        activityPatientAccount.setFilesRecyclerViewAdapter(filesRecyclerViewAdapter);
 
+        if(filesRecyclerViewAdapter.getItemCount() == 0) {
+            activitypatientaccount_textView_nodata_details = layout.findViewById(R.id.textView_nodata_details);
+            activitypatientaccount_constraintLayout_nodata = layout.findViewById(R.id.constraintLayout_nodata);
+            activitypatientaccount_textView_nodata_details.setText(getString(R.string.activitypatientaccount_string_nodata_details));
+            activitypatientaccount_textView_nodata_details.setVisibility(View.VISIBLE);
+            activitypatientaccount_constraintLayout_nodata.setVisibility(View.VISIBLE);
+        } else {
+            if(activitypatientaccount_textView_nodata_details == null) {
+                activitypatientaccount_textView_nodata_details = layout.findViewById(R.id.textView_nodata_details);
+                activitypatientaccount_constraintLayout_nodata = layout.findViewById(R.id.constraintLayout_nodata);
+            }
+            activitypatientaccount_textView_nodata_details.setText("");
+            activitypatientaccount_constraintLayout_nodata.setVisibility(View.GONE);
+        }
+
+        FloatingActionButton activitypatientaccount_fab_file_add = layout.findViewById(R.id.activitypatientaccount_fab_file_add);
+        activitypatientaccount_fab_file_add.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View view) {
+                ((ActivityPatientAccount)getActivity()).performFileSearch();
+            }
+        });
     }
 
     public void setListeners(View layout) {
