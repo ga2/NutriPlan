@@ -125,10 +125,6 @@ public class ActivityPatientAccount extends AppCompatActivity
         return patientAnamnesisEntity;
     }
 
-    public List<PatientAntropometryEntity> getPatientAntropometryEntities() {
-        return patientAntropometryEntities;
-    }
-
     public List<FileEntity> getPatientFilesEntities() {
         return fileEntities;
     }
@@ -152,7 +148,7 @@ public class ActivityPatientAccount extends AppCompatActivity
             @Override
             protected void onPostExecute(Void aVoid) {
                 super.onPostExecute(aVoid);
-                getPatientAntropometry(framePageToShow);
+                getAllPatientAntropometry(framePageToShow);
             }
         }
 
@@ -160,7 +156,7 @@ public class ActivityPatientAccount extends AppCompatActivity
         getPatientAnamnesis.execute();
     }
 
-    private void getPatientAntropometry(int framePageToShow) {
+    private void getAllPatientAntropometry(int framePageToShow) {
         class GetPatientAntropometries extends AsyncTask<Void, Void, Void>
         {
             @Override
@@ -182,6 +178,10 @@ public class ActivityPatientAccount extends AppCompatActivity
 
         GetPatientAntropometries getPatientAntropometries = new GetPatientAntropometries();
         getPatientAntropometries.execute();
+    }
+
+    public List<PatientAntropometryEntity> getPatientAntropometryEntities() {
+        return patientAntropometryEntities;
     }
 
     private void getPatientFiles(int framePageToShow) {

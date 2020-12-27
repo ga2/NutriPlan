@@ -104,6 +104,17 @@
         <item name="android:textSize">22sp</item>
     </style>
 
+    <style name="style_text_report_label">
+        <item name="android:textSize">18sp</item>
+        <item name="color">@color/light_grey</item>
+    </style>
+
+    <style name="style_text_report">
+        <item name="android:textSize">20sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="color">@color/dark_grey</item>
+    </style>
+
 
 
 </resources>

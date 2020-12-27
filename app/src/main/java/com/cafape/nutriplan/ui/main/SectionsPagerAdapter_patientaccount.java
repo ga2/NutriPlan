@@ -9,9 +9,6 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
 import com.cafape.nutriplan.R;
-import com.cafape.nutriplan.fragments.Fragment_Calc_BodyAdiposityIndex;
-import com.cafape.nutriplan.fragments.Fragment_Calc_BodyMassIndex;
-import com.cafape.nutriplan.fragments.Fragment_Calc_IdealWeight;
 import com.cafape.nutriplan.fragments.Fragment_PatientAccount_File;
 import com.cafape.nutriplan.fragments.Fragment_PatientAccount_Notes;
 import com.cafape.nutriplan.fragments.Fragment_PatientAccount_Report;
@@ -28,7 +25,7 @@ public class SectionsPagerAdapter_patientaccount extends FragmentPagerAdapter
 
     @StringRes
     private static final int[] TAB_TITLES = new int[]{R.string.activityappointments_string_notes, R.string.activityappointments_string_visits,
-    R.string.activityappointments_string_file, R.string.activityappointments_string_report};
+    R.string.activityappointments_string_file, R.string.activitypatientaccount_string_report};
     private final Context mContext;
 
     public SectionsPagerAdapter_patientaccount(Context context, FragmentManager fm) {

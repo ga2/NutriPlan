@@ -18,6 +18,12 @@ public interface PatientAntropometryDao
     @Query("SELECT * FROM PatientAntropometryEntity WHERE patient_ref_ID = :patientID_target ORDER BY antropometryTime DESC LIMIT 1")
     PatientAntropometryEntity getLastPatientAntropometry(long patientID_target);
 
+    @Query("SELECT * FROM PatientAntropometryEntity WHERE patient_ref_ID = :patientID_target ORDER BY antropometryTime ASC LIMIT 1")
+    PatientAntropometryEntity getFirstPatientAntropometry(long patientID_target);
+
+    @Query("SELECT * FROM PatientAntropometryEntity WHERE patient_ref_ID = :patientID_target ORDER BY antropometryTime LIMIT 5")
+    List<PatientAntropometryEntity> getLastPatientAntropometryLastFive(long patientID_target);
+
     @Query("SELECT * FROM PatientAntropometryEntity WHERE patient_ref_ID = :patientID_target ORDER BY antropometryTime DESC")
     List<PatientAntropometryEntity> getAllPatientAntropometry(long patientID_target);
 

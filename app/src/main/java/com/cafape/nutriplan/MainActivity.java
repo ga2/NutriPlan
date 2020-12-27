@@ -29,7 +29,6 @@ public class MainActivity extends AppCompatActivity
     private BiometricPrompt biometricPrompt;
     private BiometricPrompt.PromptInfo promptInfo;
 
-    //todo file tab 1
     //todo plot 2
     //todo consigli in base alle patologie —> cambiare inserimento patologie con checkbox secondo file che ti ho inviato 3
     //todo databasebackup 4

@@ -172,7 +172,7 @@
                         style="@style/style_form_label"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="@string/activityaddpatient_string_weist" />
+                        android:text="@string/weist" />
 
                     <TextView
                         android:id="@+id/activityvisitshow_textView_weist"
@@ -199,7 +199,7 @@
                         style="@style/style_form_label"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="@string/activityaddpatient_string_belly" />
+                        android:text="@string/belly" />
 
                     <TextView
                         android:id="@+id/activityvisitshow_textView_belly"
@@ -240,7 +240,7 @@
                         style="@style/style_form_label"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="@string/activityaddpatient_string_hips" />
+                        android:text="@string/hips" />
 
                     <TextView
                         android:id="@+id/activityvisitshow_textView_hips"
@@ -267,7 +267,7 @@
                         style="@style/style_form_label"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="@string/activityaddpatient_string_leg" />
+                        android:text="@string/leg" />
 
                     <TextView
                         android:id="@+id/activityvisitshow_textView_leg"
@@ -308,7 +308,7 @@
                         style="@style/style_form_label"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="@string/activityaddpatient_string_arm" />
+                        android:text="@string/arm" />
 
                     <TextView
                         android:id="@+id/activityvisitshow_textView_arm"

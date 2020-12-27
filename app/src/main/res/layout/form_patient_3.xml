@@ -149,7 +149,7 @@
                 style="@style/style_textView_form_options"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/activityaddpatient_string_weist" />
+                android:text="@string/weist" />
 
             <EditText
                 android:id="@+id/activityaddpatient_editText_weist"
@@ -176,7 +176,7 @@
                 style="@style/style_textView_form_options"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/activityaddpatient_string_belly" />
+                android:text="@string/belly" />
 
             <EditText
                 android:id="@+id/activityaddpatient_editText_belly"
@@ -217,7 +217,7 @@
                 style="@style/style_textView_form_options"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/activityaddpatient_string_hips" />
+                android:text="@string/hips" />
 
             <EditText
                 android:id="@+id/activityaddpatient_editText_hips"
@@ -244,7 +244,7 @@
                 style="@style/style_textView_form_options"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/activityaddpatient_string_leg" />
+                android:text="@string/leg" />
 
             <EditText
                 android:id="@+id/activityaddpatient_editText_leg"
@@ -285,7 +285,7 @@
                 style="@style/style_textView_form_options"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/activityaddpatient_string_arm" />
+                android:text="@string/arm" />
 
             <EditText
                 android:id="@+id/activityaddpatient_editText_arm"

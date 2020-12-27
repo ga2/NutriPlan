@@ -132,11 +132,11 @@
 
     <string name="activityaddpatient_string_antropometry">2. Antropometria</string>
     <string name="activityaddpatient_string_subtitle_circmufrences">Circonferenze</string>
-    <string name="activityaddpatient_string_weist">Vita</string>
-    <string name="activityaddpatient_string_belly">Pancia</string>
-    <string name="activityaddpatient_string_hips">Fianchi</string>
-    <string name="activityaddpatient_string_leg">Coscia</string>
-    <string name="activityaddpatient_string_arm">Braccio</string>
+    <string name="weist">Vita</string>
+    <string name="belly">Pancia</string>
+    <string name="hips">Fianchi</string>
+    <string name="leg">Coscia</string>
+    <string name="arm">Braccio</string>
 
     <string name="activityaddpatient_string_subtitle_pliche">Pliche</string>
     <string name="activityaddpatient_string_bicipital">Bicipitale</string>
@@ -185,7 +185,36 @@
     <string name="activitypatientaccount_string_file_add">Carica file</string>
     <string name="activitypatientaccount_string_file_details">Aggiungere un file</string>
     <string name="activitypatientaccount_string_alertMessage_deletefile">Confermare l\'eliminazione del file</string>
-    <string name="activityappointments_string_report">REPORT</string>
+    <string name="activitypatientaccount_string_report">REPORT</string>
+
+    <string name="activitypatientaccount_string_report_starting_kg">%1$s di partenza (kg):</string>
+    <string name="activitypatientaccount_string_report_current_kg">%1$s attuale (kg):</string>
+    <string name="activitypatientaccount_string_report_starting_cm">%1$s di partenza (cm):</string>
+    <string name="activitypatientaccount_string_report_current_cm">%1$s attuale (cm):</string>
+    <string name="activitypatientaccount_string_report_current_BMI">BMI attuale:</string>
+
+    <string name="activitypatientaccount_string_report_idealweight">Peso ideale: %1$s → %2$s kg all\'obiettivo</string>
+    <!--
+    <string name="activitypatientaccount_string_weight_and_bmi">Peso e BMI</string>
+    <string name="activitypatientaccount_string_weight_first">Peso di partenza (kg): </string>
+    <string name="activitypatientaccount_string_weight_last">Peso attuale (kg): </string>
+    <string name="activitypatientaccount_string_bmi_last">BMI attuale:</string>
+    <string name="activitypatientaccount_string_weist">Vita</string>
+    <string name="activitypatientaccount_string_weist_first">Vita di partenza (cm): </string>
+    <string name="activitypatientaccount_string_weist_last">Vita attuale (cm): </string>
+    <string name="activitypatientaccount_string_hips">Fianchi</string>
+    <string name="activitypatientaccount_string_hips_first">Fianchi di partenza (cm): </string>
+    <string name="activitypatientaccount_string_hips_last">Fianchi attuale (cm): </string>
+    <string name="activitypatientaccount_string_arm">Braccio</string>
+    <string name="activitypatientaccount_string_arm_first">Braccio di partenza (cm): </string>
+    <string name="activitypatientaccount_string_arm_last">Braccio attuale (cm): </string>
+    <string name="activitypatientaccount_string_belly">Pancia</string>
+    <string name="activitypatientaccount_string_belly_first">Pancia di partenza (cm): </string>
+    <string name="activitypatientaccount_string_belly_last">Pancia attuale (cm)</string>
+    <string name="activitypatientaccount_string_leg">Coscia</string>
+    <string name="activitypatientaccount_string_leg_first">Coscia di partenza (cm): </string>
+    <string name="activitypatientaccount_string_leg_last">Coscia attuale (cm): </string>
+    -->
     <!-- END Activity_patientaccount -->
 
 
