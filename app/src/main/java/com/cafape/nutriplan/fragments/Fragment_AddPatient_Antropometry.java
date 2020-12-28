@@ -1,5 +1,7 @@
 package com.cafape.nutriplan.fragments;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -12,6 +14,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 
 import com.cafape.nutriplan.ActivityAddPatient2;
 import com.cafape.nutriplan.R;
@@ -46,6 +50,9 @@ public class Fragment_AddPatient_Antropometry extends Fragment
     private EditText activityaddpatient_editText_pi;
     private EditText activityaddpatient_editText_bmi;
     private EditText activityaddpatient_editText_bai;
+
+    private LinearLayout activityaddpatient_linearLayout_bai;
+    private LinearLayout activityaddpatient_linearLayout_bmi;
 
     public Fragment_AddPatient_Antropometry() {
         // Required empty public constructor
@@ -117,6 +124,9 @@ public class Fragment_AddPatient_Antropometry extends Fragment
         activityaddpatient_editText_pi = layout.findViewById(R.id.activityaddpatient_editText_pi);
         activityaddpatient_editText_bai = layout.findViewById(R.id.activityaddpatient_editText_bai);
         activityaddpatient_editText_bmi = layout.findViewById(R.id.activityaddpatient_editText_bmi);
+
+        activityaddpatient_linearLayout_bmi = layout.findViewById(R.id.activityaddpatient_linearLayout_bmi);
+        activityaddpatient_linearLayout_bai = layout.findViewById(R.id.activityaddpatient_linearLayout_bai);
     }
 
     public void setListeners(View layout) {
@@ -212,6 +222,22 @@ public class Fragment_AddPatient_Antropometry extends Fragment
                 ((ActivityAddPatient2)getActivity()).setPatientAntropometryEntity(patientAntropometryEntity);
                 ((ActivityAddPatient2)getActivity()).saveData();
             }
+        });
+
+        activityaddpatient_linearLayout_bai.setOnClickListener(view -> {
+            AlertDialog.Builder alert_bai = new AlertDialog.Builder(getActivity());
+            LayoutInflater factory = LayoutInflater.from(getActivity());
+            final View view_bai = factory.inflate(R.layout.table_bai, null);
+            alert_bai.setView(view_bai);
+            alert_bai.show();
+        });
+
+        activityaddpatient_linearLayout_bmi.setOnClickListener(view -> {
+            AlertDialog.Builder alert_bmi = new AlertDialog.Builder(getActivity());
+            LayoutInflater factory = LayoutInflater.from(getActivity());
+            final View view_bmi = factory.inflate(R.layout.table_bmi, null);
+            alert_bmi.setView(view_bmi);
+            alert_bmi.show();
         });
     }
 

@@ -586,12 +586,27 @@
             android:layout_weight="1"
             android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/activityaddpatient_textView_bai"
-                style="@style/style_textView_form_options"
-                android:layout_width="match_parent"
+            <LinearLayout
+                android:id="@+id/activityaddpatient_linearLayout_bai"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/bai_short" />
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/activityaddpatient_textView_bai"
+                    style="@style/style_textView_form_options"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/bai_short" />
+
+                <ImageView
+                    android:id="@+id/activityaddpatient_imageView_bai_info"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="@dimen/dim_margin_normal"
+                    android:layout_weight="1"
+                    app:srcCompat="@drawable/ic_baseline_info_24" />
+            </LinearLayout>
 
             <EditText
                 android:id="@+id/activityaddpatient_editText_bai"
@@ -614,12 +629,27 @@
             android:layout_weight="1"
             android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/activityaddpatient_textView_bmi"
-                style="@style/style_textView_form_options"
-                android:layout_width="match_parent"
+            <LinearLayout
+                android:id="@+id/activityaddpatient_linearLayout_bmi"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/bmi_short" />
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/activityaddpatient_textView_bmi"
+                    style="@style/style_textView_form_options"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/bmi_short" />
+
+                <ImageView
+                    android:id="@+id/activityaddpatient_imageView_bmi_info"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="@dimen/dim_margin_normal"
+                    android:layout_weight="1.5"
+                    app:srcCompat="@drawable/ic_baseline_info_24" />
+            </LinearLayout>
 
             <EditText
                 android:id="@+id/activityaddpatient_editText_bmi"

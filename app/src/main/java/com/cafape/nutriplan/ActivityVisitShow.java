@@ -2,8 +2,13 @@ package com.cafape.nutriplan;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.cafape.nutriplan.database.entities.PatientAntropometryEntity;
@@ -14,10 +19,12 @@ import org.w3c.dom.Text;
 
 public class ActivityVisitShow extends AppCompatActivity
 {
+    Context context;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_visit_show);
+        context = getApplicationContext();
 
         Intent intent = this.getIntent();
         Bundle args = intent.getBundleExtra("args");
@@ -64,6 +71,24 @@ public class ActivityVisitShow extends AppCompatActivity
         activityvisitshow_textView_pi.setText(parseToString(patientAntropometryEntity.getPi(), Globals.PERCENTAGE));
         activityvisitshow_textView_bai.setText(parseToString(patientAntropometryEntity.getBai(), Globals.PERCENTAGE));
         activityvisitshow_textView_bmi.setText(parseToString(patientAntropometryEntity.getBmi(), Globals.PERCENTAGE));
+
+        LinearLayout activityvisitshow_linearLayout_bmi = findViewById(R.id.activityvisitshow_linearLayout_bmi);
+        activityvisitshow_linearLayout_bmi.setOnClickListener(view -> {
+            AlertDialog.Builder alert_bmi = new AlertDialog.Builder(ActivityVisitShow.this);
+            LayoutInflater factory = LayoutInflater.from(ActivityVisitShow.this);
+            final View view_bai = factory.inflate(R.layout.table_bmi, null);
+            alert_bmi.setView(view_bai);
+            alert_bmi.show();
+        });
+
+        LinearLayout activityvisitshow_linearLayout_bai = findViewById(R.id.activityvisitshow_linearLayout_bai);
+        activityvisitshow_linearLayout_bai.setOnClickListener(view -> {
+            AlertDialog.Builder alert_bai = new AlertDialog.Builder(ActivityVisitShow.this);
+            LayoutInflater factory = LayoutInflater.from(ActivityVisitShow.this);
+            final View view_bai = factory.inflate(R.layout.table_bai, null);
+            alert_bai.setView(view_bai);
+            alert_bai.show();
+        });
     }
 
     public String parseToString(float number, String unit) {
