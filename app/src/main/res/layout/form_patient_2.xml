@@ -1,550 +1,626 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginStart="8dp"
-    android:layout_marginTop="16dp"
-    android:layout_marginEnd="16dp"
-    android:focusableInTouchMode="true"
-    android:orientation="vertical"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toTopOf="parent">
-
-    <LinearLayout
-        android:id="@+id/activityaddpatient_linearLayout_anamnesis"
+    >
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="horizontal"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:focusableInTouchMode="true"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
-            android:id="@+id/activityaddpatient_textView_anamnesis"
-            style="@style/style_activityaddpatient_textView_surveysectionsubtitle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/activityaddpatient_string_subtitle_anamnesis"
+        <LinearLayout
+            android:id="@+id/activityaddpatient_linearLayout_anamnesis"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <View
-            style="@style/style_divider"
-            android:layout_width="0dp"
-            android:layout_marginStart="8dp"
-            app:layout_constraintBottom_toBottomOf="@+id/activityaddpatient_textView_anamnesis"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/activityaddpatient_textView_anamnesis"
-            app:layout_constraintTop_toTopOf="@+id/activityaddpatient_textView_anamnesis" />
-    </LinearLayout>
-
-
-    <LinearLayout
-        android:id="@+id/activityaddpatient_linearLayout10"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="16dp"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/activityaddpatient_linearLayout_anamnesis">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:orientation="vertical">
+            app:layout_constraintTop_toTopOf="parent">
 
             <TextView
-                android:id="@+id/activityaddpatient_textView_welcomefood"
-                style="@style/style_textView_form_options"
-                android:layout_width="match_parent"
+                android:id="@+id/activityaddpatient_textView_anamnesis"
+                style="@style/style_activityaddpatient_textView_surveysectionsubtitle"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/activityaddpatient_string_welcomefood" />
+                android:text="@string/activityaddpatient_string_subtitle_anamnesis"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-            <EditText
-                android:id="@+id/activityaddpatient_editText_welcomefood"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint="@string/activityaddpatient_string_details"
-                android:inputType="textMultiLine|textLongMessage" />
+            <View
+                style="@style/style_divider"
+                android:layout_width="0dp"
+                android:layout_marginStart="8dp"
+                app:layout_constraintBottom_toBottomOf="@+id/activityaddpatient_textView_anamnesis"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/activityaddpatient_textView_anamnesis"
+                app:layout_constraintTop_toTopOf="@+id/activityaddpatient_textView_anamnesis" />
         </LinearLayout>
 
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1.5" />
 
         <LinearLayout
+            android:id="@+id/activityaddpatient_linearLayout10"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:orientation="vertical">
-
-            <TextView
-                android:id="@+id/activityaddpatient_textView_nonwelcomefood"
-                style="@style/style_textView_form_options"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/activityaddpatient_string_nonwelcomefood" />
-
-            <EditText
-                android:id="@+id/activityaddpatient_editText_nonwelcomefood"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint="@string/activityaddpatient_string_details"
-                android:inputType="textMultiLine|textLongMessage" />
-        </LinearLayout>
-
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1.5" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/activityaddpatient_linearLayout11"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="16dp"
-        android:baselineAligned="false"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/activityaddpatient_linearLayout10">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:orientation="vertical">
-
-            <TextView
-                android:id="@+id/activityaddpatient_textView_anamnesis_breakfast"
-                style="@style/style_textView_form_options"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/activityaddpatient_string_breakfast" />
-
-            <EditText
-                android:id="@+id/activityaddpatient_editText_anamnesis_breakfast"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint="@string/activityaddpatient_string_details"
-                android:inputType="textMultiLine|textLongMessage" />
-        </LinearLayout>
-
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1.5" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:orientation="vertical">
-
-            <TextView
-                android:id="@+id/activityaddpatient_textView_anamnesis_nibble"
-                style="@style/style_textView_form_options"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/activityaddpatient_string_nibble" />
-
-            <EditText
-                android:id="@+id/activityaddpatient_editText_anamnesis_nibble"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint="@string/activityaddpatient_string_details"
-                android:inputType="textMultiLine|textLongMessage" />
-        </LinearLayout>
-
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1.5" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/activityaddpatient_linearLayout12"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="16dp"
-        android:baselineAligned="false"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/activityaddpatient_linearLayout11">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:orientation="vertical">
-
-            <TextView
-                android:id="@+id/activityaddpatient_textView_anamnesis_lunch"
-                style="@style/style_textView_form_options"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/activityaddpatient_string_lunch" />
-
-            <EditText
-                android:id="@+id/activityaddpatient_editText_anamnesis_lunch"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint="@string/activityaddpatient_string_details"
-                android:inputType="textMultiLine|textLongMessage" />
-        </LinearLayout>
-
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1.5" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:orientation="vertical">
-
-            <TextView
-                android:id="@+id/activityaddpatient_textView_anamnesis_snack"
-                style="@style/style_textView_form_options"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/activityaddpatient_string_snack" />
-
-            <EditText
-                android:id="@+id/activityaddpatient_editText_anamnesis_snack"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint="@string/activityaddpatient_string_details"
-                android:inputType="textMultiLine|textLongMessage" />
-        </LinearLayout>
-
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1.5" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/activityaddpatient_linearLayout13"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="16dp"
-        android:baselineAligned="false"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/activityaddpatient_linearLayout12">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:orientation="vertical">
-
-            <TextView
-                android:id="@+id/activityaddpatient_textView_anamnesis_dinner"
-                style="@style/style_textView_form_options"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/activityaddpatient_string_dinner" />
-
-            <EditText
-                android:id="@+id/activityaddpatient_editText_anamnesis_dinner"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint="@string/activityaddpatient_string_details"
-                android:inputType="textMultiLine|textLongMessage" />
-        </LinearLayout>
-
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1.5" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:orientation="vertical">
-
-            <TextView
-                android:id="@+id/activityaddpatient_textView_anamnesis_postdinner"
-                style="@style/style_textView_form_options"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/activityaddpatient_string_postdinner" />
-
-            <EditText
-                android:id="@+id/activityaddpatient_editText_anamnesis_postdinner"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint="@string/activityaddpatient_string_details"
-                android:inputType="textMultiLine|textLongMessage" />
-        </LinearLayout>
-
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1.5" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/activityaddpatient_linearLayout_foodplanprototype"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="16dp"
-        android:orientation="horizontal"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/activityaddpatient_linearLayout13">
-
-        <TextView
-            android:id="@+id/activityaddpatient_textView_foodplanprototype"
-            style="@style/style_activityaddpatient_textView_surveysectionsubtitle"
-            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/activityaddpatient_string_subtitle_foodplanprototype"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="16dp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@+id/activityaddpatient_linearLayout_anamnesis">
 
-        <View
-            style="@style/style_divider"
-            android:layout_width="0dp"
-            android:layout_marginStart="8dp"
-            app:layout_constraintBottom_toBottomOf="@+id/activityaddpatient_textView_anamnesis"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/activityaddpatient_textView_anamnesis"
-            app:layout_constraintTop_toTopOf="@+id/activityaddpatient_textView_anamnesis" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/activityaddpatient_linearLayout14"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="16dp"
-        android:baselineAligned="false"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/activityaddpatient_linearLayout_foodplanprototype">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:orientation="vertical">
-
-            <TextView
-                android:id="@+id/activityaddpatient_textView_prototype_breakfast"
-                style="@style/style_textView_form_options"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/activityaddpatient_string_breakfast" />
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical">
 
-            <EditText
-                android:id="@+id/activityaddpatient_editText_prototype_breakfast"
+                <TextView
+                    android:id="@+id/activityaddpatient_textView_welcomefood"
+                    style="@style/style_textView_form_options"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/activityaddpatient_string_welcomefood" />
+
+                <EditText
+                    android:id="@+id/activityaddpatient_editText_welcomefood"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:hint="@string/activityaddpatient_string_details"
+                    android:inputType="textMultiLine|textLongMessage" />
+            </LinearLayout>
+
+            <Space
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint="@string/activityaddpatient_string_details"
-                android:inputType="textMultiLine|textLongMessage" />
+                android:layout_height="match_parent"
+                android:layout_weight="1.5" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/activityaddpatient_textView_nonwelcomefood"
+                    style="@style/style_textView_form_options"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/activityaddpatient_string_nonwelcomefood" />
+
+                <EditText
+                    android:id="@+id/activityaddpatient_editText_nonwelcomefood"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:hint="@string/activityaddpatient_string_details"
+                    android:inputType="textMultiLine|textLongMessage" />
+            </LinearLayout>
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1.5" />
         </LinearLayout>
 
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1.5" />
-
         <LinearLayout
+            android:id="@+id/activityaddpatient_linearLayout11"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:orientation="vertical">
-
-            <TextView
-                android:id="@+id/activityaddpatient_textView_prototype_nibble"
-                style="@style/style_textView_form_options"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/activityaddpatient_string_nibble" />
-
-            <EditText
-                android:id="@+id/activityaddpatient_editText_prototype_nibble"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint="@string/activityaddpatient_string_details"
-                android:inputType="textMultiLine|textLongMessage" />
-        </LinearLayout>
-
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1.5" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/activityaddpatient_linearLayout15"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="16dp"
-        android:layout_weight="1"
-        android:baselineAligned="false"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/activityaddpatient_linearLayout14">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:orientation="vertical">
-
-            <TextView
-                android:id="@+id/activityaddpatient_textView_prototype_lunch"
-                style="@style/style_textView_form_options"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/activityaddpatient_string_lunch" />
-
-            <EditText
-                android:id="@+id/activityaddpatient_editText_prototype_lunch"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint="@string/activityaddpatient_string_details"
-                android:inputType="textMultiLine|textLongMessage" />
-        </LinearLayout>
-
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1.5" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:orientation="vertical">
-
-            <TextView
-                android:id="@+id/activityaddpatient_textView_prototype_snack"
-                style="@style/style_textView_form_options"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/activityaddpatient_string_snack" />
-
-            <EditText
-                android:id="@+id/activityaddpatient_editText_prototype_snack"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint="@string/activityaddpatient_string_details"
-                android:inputType="textMultiLine|textLongMessage" />
-        </LinearLayout>
-
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1.5" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/activityaddpatient_linearLayout16"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="16dp"
-        android:layout_weight="1"
-        android:baselineAligned="false"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/activityaddpatient_linearLayout15">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:orientation="vertical">
-
-            <TextView
-                android:id="@+id/activityaddpatient_textView_prototype_dinner"
-                style="@style/style_textView_form_options"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/activityaddpatient_string_dinner" />
-
-            <EditText
-                android:id="@+id/activityaddpatient_editText_prototype_dinner"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint="@string/activityaddpatient_string_details"
-                android:inputType="textMultiLine|textLongMessage" />
-        </LinearLayout>
-
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="0.67" />
-
-    </LinearLayout>
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="24dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/activityaddpatient_linearLayout16">
-
-        <Button
-            android:id="@+id/activityaddpatient_button_backto1"
-            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:text="@string/back"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="16dp"
+            android:baselineAligned="false"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@+id/activityaddpatient_linearLayout10">
 
-        <Button
-            android:id="@+id/activityaddpatient_button_goto3"
-            android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/activityaddpatient_textView_anamnesis_breakfast"
+                    style="@style/style_textView_form_options"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/activityaddpatient_string_breakfast" />
+
+                <EditText
+                    android:id="@+id/activityaddpatient_editText_anamnesis_breakfast"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:hint="@string/activityaddpatient_string_details"
+                    android:inputType="textMultiLine|textLongMessage" />
+            </LinearLayout>
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1.5" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/activityaddpatient_textView_anamnesis_nibble"
+                    style="@style/style_textView_form_options"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/activityaddpatient_string_nibble" />
+
+                <EditText
+                    android:id="@+id/activityaddpatient_editText_anamnesis_nibble"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:hint="@string/activityaddpatient_string_details"
+                    android:inputType="textMultiLine|textLongMessage" />
+            </LinearLayout>
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1.5" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/activityaddpatient_linearLayout12"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:text="@string/forward"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="16dp"
+            android:baselineAligned="false"
+            android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/activityaddpatient_linearLayout11">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/activityaddpatient_textView_anamnesis_lunch"
+                    style="@style/style_textView_form_options"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/activityaddpatient_string_lunch" />
+
+                <EditText
+                    android:id="@+id/activityaddpatient_editText_anamnesis_lunch"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:hint="@string/activityaddpatient_string_details"
+                    android:inputType="textMultiLine|textLongMessage" />
+            </LinearLayout>
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1.5" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/activityaddpatient_textView_anamnesis_snack"
+                    style="@style/style_textView_form_options"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/activityaddpatient_string_snack" />
+
+                <EditText
+                    android:id="@+id/activityaddpatient_editText_anamnesis_snack"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:hint="@string/activityaddpatient_string_details"
+                    android:inputType="textMultiLine|textLongMessage" />
+            </LinearLayout>
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1.5" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/activityaddpatient_linearLayout13"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="16dp"
+            android:baselineAligned="false"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/activityaddpatient_linearLayout12">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/activityaddpatient_textView_anamnesis_dinner"
+                    style="@style/style_textView_form_options"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/activityaddpatient_string_dinner" />
+
+                <EditText
+                    android:id="@+id/activityaddpatient_editText_anamnesis_dinner"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:hint="@string/activityaddpatient_string_details"
+                    android:inputType="textMultiLine|textLongMessage" />
+            </LinearLayout>
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1.5" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/activityaddpatient_textView_anamnesis_postdinner"
+                    style="@style/style_textView_form_options"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/activityaddpatient_string_postdinner" />
+
+                <EditText
+                    android:id="@+id/activityaddpatient_editText_anamnesis_postdinner"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:hint="@string/activityaddpatient_string_details"
+                    android:inputType="textMultiLine|textLongMessage" />
+            </LinearLayout>
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1.5" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/activityaddpatient_linearLayout_foodplanprototype"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="16dp"
+            android:orientation="horizontal"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/activityaddpatient_linearLayout13">
+
+            <TextView
+                android:id="@+id/activityaddpatient_textView_foodplanprototype"
+                style="@style/style_activityaddpatient_textView_surveysectionsubtitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/activityaddpatient_string_subtitle_foodplanprototype"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <View
+                style="@style/style_divider"
+                android:layout_width="0dp"
+                android:layout_marginStart="8dp"
+                app:layout_constraintBottom_toBottomOf="@+id/activityaddpatient_textView_anamnesis"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/activityaddpatient_textView_anamnesis"
+                app:layout_constraintTop_toTopOf="@+id/activityaddpatient_textView_anamnesis" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/activityaddpatient_linearLayout14"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="16dp"
+            android:baselineAligned="false"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/activityaddpatient_linearLayout_foodplanprototype">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/activityaddpatient_textView_prototype_breakfast"
+                    style="@style/style_textView_form_options"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/activityaddpatient_string_breakfast" />
+
+                <EditText
+                    android:id="@+id/activityaddpatient_editText_prototype_breakfast"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:hint="@string/activityaddpatient_string_details"
+                    android:inputType="textMultiLine|textLongMessage" />
+            </LinearLayout>
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1.5" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/activityaddpatient_textView_prototype_nibble"
+                    style="@style/style_textView_form_options"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/activityaddpatient_string_nibble" />
+
+                <EditText
+                    android:id="@+id/activityaddpatient_editText_prototype_nibble"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:hint="@string/activityaddpatient_string_details"
+                    android:inputType="textMultiLine|textLongMessage" />
+            </LinearLayout>
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1.5" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/activityaddpatient_linearLayout15"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="16dp"
+            android:layout_weight="1"
+            android:baselineAligned="false"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/activityaddpatient_linearLayout14">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/activityaddpatient_textView_prototype_lunch"
+                    style="@style/style_textView_form_options"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/activityaddpatient_string_lunch" />
+
+                <EditText
+                    android:id="@+id/activityaddpatient_editText_prototype_lunch"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:hint="@string/activityaddpatient_string_details"
+                    android:inputType="textMultiLine|textLongMessage" />
+            </LinearLayout>
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1.5" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/activityaddpatient_textView_prototype_snack"
+                    style="@style/style_textView_form_options"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/activityaddpatient_string_snack" />
+
+                <EditText
+                    android:id="@+id/activityaddpatient_editText_prototype_snack"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:hint="@string/activityaddpatient_string_details"
+                    android:inputType="textMultiLine|textLongMessage" />
+            </LinearLayout>
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1.5" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/activityaddpatient_linearLayout16"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="16dp"
+            android:layout_weight="1"
+            android:baselineAligned="false"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/activityaddpatient_linearLayout15">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/activityaddpatient_textView_prototype_dinner"
+                    style="@style/style_textView_form_options"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/activityaddpatient_string_dinner" />
+
+                <EditText
+                    android:id="@+id/activityaddpatient_editText_prototype_dinner"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:hint="@string/activityaddpatient_string_details"
+                    android:inputType="textMultiLine|textLongMessage" />
+            </LinearLayout>
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="0.67" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/activityaddpatient_linearLayout_foodsuggestions"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="16dp"
+            android:layout_weight="1"
+            android:baselineAligned="false"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/activityaddpatient_linearLayout16">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/activityaddpatient_textView_yesfood_label"
+                    style="@style/style_form_label"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:gravity="center_vertical"
+                    android:minLines="3"
+                    android:paddingTop="@dimen/dim_margin_small"
+                    android:paddingBottom="@dimen/dim_margin_small"
+                    android:text="@string/activityaddpatient_string_foodyes" />
+
+                <TextView
+                    android:id="@+id/activityaddpatient_textView_yesfood"
+                    style="@style/style_textView_form_options"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginStart="@dimen/dim_margin_normal"
+                    android:gravity="center_vertical"
+                    android:minLines="3" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dim_margin_normal"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/activityaddpatient_textView_nofood_label"
+                    style="@style/style_form_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:gravity="center_vertical"
+                    android:minLines="3"
+                    android:paddingTop="@dimen/dim_margin_small"
+                    android:paddingBottom="@dimen/dim_margin_small"
+                    android:text="@string/activityaddpatient_string_foodno" />
+
+                <TextView
+                    android:id="@+id/activityaddpatient_textView_nofood"
+                    style="@style/style_textView_form_options"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginStart="@dimen/dim_margin_normal"
+                    android:gravity="center_vertical"
+                    android:minLines="3" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/activityaddpatient_linearLayout_foodsuggestions"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <Button
+                android:id="@+id/activityaddpatient_button_backto1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:text="@string/back"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <Button
+                android:id="@+id/activityaddpatient_button_goto3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:text="@string/forward"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

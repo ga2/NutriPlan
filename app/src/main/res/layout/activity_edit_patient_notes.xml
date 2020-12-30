@@ -133,6 +133,89 @@
             app:layout_constraintTop_toBottomOf="@+id/activityeditpatientnotes_linearLayout2">
 
             <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <CheckBox
+                        android:id="@+id/activityeditpatientnotes_checkbox_hypercolesterolemia"
+                        style="@style/style_textView_form_options"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/hypercholesterolaemia" />
+
+                    <CheckBox
+                        android:id="@+id/activityeditpatientnotes_checkbox_thyroidism"
+                        style="@style/style_textView_form_options"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/thyroidism" />
+
+                    <CheckBox
+                        android:id="@+id/activityeditpatientnotes_checkbox_diabetes"
+                        style="@style/style_textView_form_options"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/diabetes" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dim_margin_higher"
+                    android:orientation="horizontal">
+
+                    <CheckBox
+                        android:id="@+id/activityeditpatientnotes_checkbox_kidneylaziness"
+                        style="@style/style_textView_form_options"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/kidneyslaziness" />
+
+                    <CheckBox
+                        android:id="@+id/activityeditpatientnotes_checkbox_osteoporosis"
+                        style="@style/style_textView_form_options"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/osteoporosis" />
+
+                    <CheckBox
+                        android:id="@+id/activityeditpatientnotes_checkbox_prostatitis"
+                        style="@style/style_textView_form_options"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/prostatitis" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/activityeditpatientnotes_linearLayout4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="16dp"
+            android:baselineAligned="false"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/activityeditpatientnotes_linearLayout3">
+
+            <LinearLayout
                 style="@style/style_textView_form_options"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -190,7 +273,7 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/activityeditpatientnotes_linearLayout4"
+            android:id="@+id/activityeditpatientnotes_linearLayout5"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
@@ -199,7 +282,7 @@
             android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/activityeditpatientnotes_linearLayout3">
+            app:layout_constraintTop_toBottomOf="@+id/activityeditpatientnotes_linearLayout4">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -315,7 +398,7 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/activityeditpatientnotes_linearLayout5"
+            android:id="@+id/activityeditpatientnotes_linearLayout6"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
@@ -324,7 +407,7 @@
             android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/activityeditpatientnotes_linearLayout4">
+            app:layout_constraintTop_toBottomOf="@id/activityeditpatientnotes_linearLayout5">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -383,7 +466,7 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/activityeditpatientnotes_linearLayout6"
+            android:id="@+id/activityeditpatientnotes_linearLayout7"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
@@ -393,7 +476,7 @@
             android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/activityeditpatientnotes_linearLayout5">
+            app:layout_constraintTop_toBottomOf="@id/activityeditpatientnotes_linearLayout6">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -451,19 +534,90 @@
 
         </LinearLayout>
 
+        <LinearLayout
+            android:id="@+id/activityeditpatientnotes_linearLayout_foodsuggestions"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="16dp"
+            android:layout_weight="1"
+            android:baselineAligned="false"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/activityeditpatientnotes_linearLayout7">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/activityeditpatientnotes_textView_yesfood_label"
+                    style="@style/style_form_label"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:gravity="center_vertical"
+                    android:minLines="3"
+                    android:paddingTop="@dimen/dim_margin_small"
+                    android:paddingBottom="@dimen/dim_margin_small"
+                    android:text="@string/activityaddpatient_string_foodyes" />
+
+                <TextView
+                    android:id="@+id/activityeditpatientnotes_textView_yesfood"
+                    style="@style/style_textView_form_options"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginStart="@dimen/dim_margin_normal"
+                    android:gravity="center_vertical"
+                    android:minLines="3" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dim_margin_normal"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/activityeditpatientnotes_textView_nofood_label"
+                    style="@style/style_form_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:gravity="center_vertical"
+                    android:minLines="3"
+                    android:paddingTop="@dimen/dim_margin_small"
+                    android:paddingBottom="@dimen/dim_margin_small"
+                    android:text="@string/activityaddpatient_string_foodno" />
+
+                <TextView
+                    android:id="@+id/activityeditpatientnotes_textView_nofood"
+                    style="@style/style_textView_form_options"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginStart="@dimen/dim_margin_normal"
+                    android:gravity="center_vertical"
+                    android:minLines="3" />
+            </LinearLayout>
+        </LinearLayout>
+
         <Button
             android:id="@+id/activityeditpatientnotes_button_save"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
             android:layout_marginEnd="16dp"
-            android:layout_marginBottom="72dp"
+            android:layout_marginBottom="32dp"
             android:layout_weight="1"
             android:backgroundTint="@color/secondaryColor"
             android:text="@string/save"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/activityeditpatientnotes_linearLayout6" />
+            app:layout_constraintTop_toBottomOf="@+id/activityeditpatientnotes_linearLayout_foodsuggestions" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

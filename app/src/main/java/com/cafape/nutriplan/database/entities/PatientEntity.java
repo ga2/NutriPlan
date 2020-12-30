@@ -29,6 +29,12 @@ public class PatientEntity implements Serializable
     private String weightHistory;
     private boolean previousPathologies_status;
     private String previousPathologies_details;
+    private boolean pathologiesHasHypercholesterolaemia = false;
+    private boolean pathologiesHasThyroidism = false;
+    private boolean pathologiesHasDiabetes = false;
+    private boolean pathologiesHasKidneysLaziness = false;
+    private boolean pathologiesHasOsteoporosis = false;
+    private boolean pathologiesHasProstatitis = false;
     private boolean hereditaryPathologies_status;
     private String hereditaryPathologies_details;
     private boolean allergies_status;
@@ -44,7 +50,7 @@ public class PatientEntity implements Serializable
 
     public PatientEntity() {}
 
-    public PatientEntity(String name, String surname, Date birthDate, String sex, String phone, String visitReason, boolean previousDiets_status, String previousDiets_details, String weightHistory, boolean previousPathologies_status, String previousPathologies_details, boolean hereditaryPathologies_status, String hereditaryPathologies_details, boolean allergies_status, String allergies_details, boolean productsAssumption_status, String productsAssumption_details, int instestine, int menstrualCycle, boolean physicalActivity_status, String physicalActivity_details, boolean workingActivity_status, String workinglActivity_details) {
+    public PatientEntity(String name, String surname, Date birthDate, String sex, String phone, String visitReason, boolean previousDiets_status, String previousDiets_details, String weightHistory, boolean previousPathologies_status, String previousPathologies_details, boolean pathologiesHasHypercholesterolaemia, boolean pathologiesHasThyroidism, boolean pathologiesHasDiabetes, boolean pathologiesHasKidneysLaziness, boolean pathologiesHasOsteoporosis, boolean pathologiesHasProstatitis, boolean hereditaryPathologies_status, String hereditaryPathologies_details, boolean allergies_status, String allergies_details, boolean productsAssumption_status, String productsAssumption_details, int instestine, int menstrualCycle, boolean physicalActivity_status, String physicalActivity_details, boolean workingActivity_status, String workinglActivity_details) {
         this.name = name;
         this.surname = surname;
         this.birthDate = birthDate;
@@ -56,6 +62,12 @@ public class PatientEntity implements Serializable
         this.weightHistory = weightHistory;
         this.previousPathologies_status = previousPathologies_status;
         this.previousPathologies_details = previousPathologies_details;
+        this.pathologiesHasHypercholesterolaemia = pathologiesHasHypercholesterolaemia;
+        this.pathologiesHasThyroidism = pathologiesHasThyroidism;
+        this.pathologiesHasDiabetes = pathologiesHasDiabetes;
+        this.pathologiesHasKidneysLaziness = pathologiesHasKidneysLaziness;
+        this.pathologiesHasOsteoporosis = pathologiesHasOsteoporosis;
+        this.pathologiesHasProstatitis = pathologiesHasProstatitis;
         this.hereditaryPathologies_status = hereditaryPathologies_status;
         this.hereditaryPathologies_details = hereditaryPathologies_details;
         this.allergies_status = allergies_status;
@@ -164,6 +176,54 @@ public class PatientEntity implements Serializable
 
     public void setPreviousPathologies_details(String previousPathologies_details) {
         this.previousPathologies_details = previousPathologies_details;
+    }
+
+    public boolean isPathologiesHasHypercholesterolaemia() {
+        return pathologiesHasHypercholesterolaemia;
+    }
+
+    public void setPathologiesHasHypercholesterolaemia(boolean pathologiesHasHypercholesterolaemia) {
+        this.pathologiesHasHypercholesterolaemia = pathologiesHasHypercholesterolaemia;
+    }
+
+    public boolean isPathologiesHasThyroidism() {
+        return pathologiesHasThyroidism;
+    }
+
+    public void setPathologiesHasThyroidism(boolean pathologiesHasThyroidism) {
+        this.pathologiesHasThyroidism = pathologiesHasThyroidism;
+    }
+
+    public boolean isPathologiesHasDiabetes() {
+        return pathologiesHasDiabetes;
+    }
+
+    public void setPathologiesHasDiabetes(boolean pathologiesHasDiabetes) {
+        this.pathologiesHasDiabetes = pathologiesHasDiabetes;
+    }
+
+    public boolean isPathologiesHasKidneysLaziness() {
+        return pathologiesHasKidneysLaziness;
+    }
+
+    public void setPathologiesHasKidneysLaziness(boolean pathologiesHasKidneysLaziness) {
+        this.pathologiesHasKidneysLaziness = pathologiesHasKidneysLaziness;
+    }
+
+    public boolean isPathologiesHasOsteoporosis() {
+        return pathologiesHasOsteoporosis;
+    }
+
+    public void setPathologiesHasOsteoporosis(boolean pathologiesHasOsteoporosis) {
+        this.pathologiesHasOsteoporosis = pathologiesHasOsteoporosis;
+    }
+
+    public boolean isPathologiesHasProstatitis() {
+        return pathologiesHasProstatitis;
+    }
+
+    public void setPathologiesHasProstatitis(boolean pathologiesHasProstatitis) {
+        this.pathologiesHasProstatitis = pathologiesHasProstatitis;
     }
 
     public boolean isHereditaryPathologies_status() {

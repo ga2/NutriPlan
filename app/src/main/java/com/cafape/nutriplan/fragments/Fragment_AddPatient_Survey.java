@@ -10,6 +10,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.RadioButton;
@@ -43,6 +45,13 @@ public class Fragment_AddPatient_Survey extends Fragment
     private Button activityaddpatient_button_goto2;
     private CustomDatePicker activityaddpatient_datepicker_bdate;
     private EditText activityaddpatient_editText_age;
+
+    private CheckBox activityaddpatient_checkbox_hypercolesterolemia;
+    private CheckBox activityaddpatient_checkbox_thyroidism;
+    private CheckBox activityaddpatient_checkbox_diabetes;
+    private CheckBox activityaddpatient_checkbox_kidneylaziness;
+    private CheckBox activityaddpatient_checkbox_osteoporosis;
+    private CheckBox activityaddpatient_checkbox_prostatitis;
 
     public Fragment_AddPatient_Survey() {
         // Required empty public constructor
@@ -124,6 +133,22 @@ public class Fragment_AddPatient_Survey extends Fragment
                     boolean patientEntity_previousPathologies_status = !patientEntity_previousPathologies_details.isEmpty();
                     String patientEntity_hereditaryPathologies_details = ((EditText)layout.findViewById(R.id.activityaddpatient_editText_hereditaryPathologies)).getText().toString();
                     boolean patientEntity_hereditaryPathologies_status = !patientEntity_hereditaryPathologies_details.isEmpty();
+
+                    activityaddpatient_checkbox_hypercolesterolemia = layout.findViewById(R.id.activityaddpatient_checkbox_hypercolesterolemia);
+                    activityaddpatient_checkbox_thyroidism = layout.findViewById(R.id.activityaddpatient_checkbox_thyroidism);
+                    activityaddpatient_checkbox_diabetes = layout.findViewById(R.id.activityaddpatient_checkbox_diabetes);
+                    activityaddpatient_checkbox_kidneylaziness = layout.findViewById(R.id.activityaddpatient_checkbox_kidneylaziness);
+                    activityaddpatient_checkbox_osteoporosis = layout.findViewById(R.id.activityaddpatient_checkbox_osteoporosis);
+                    activityaddpatient_checkbox_prostatitis = layout.findViewById(R.id.activityaddpatient_checkbox_prostatitis);
+                    setCheckboxes();
+
+                    boolean activityaddpatient_checkbox_hypercolesterolemia_res = getBooleamFromCheckbox(activityaddpatient_checkbox_hypercolesterolemia);
+                    boolean activityaddpatient_checkbox_thyroidism_res = getBooleamFromCheckbox(activityaddpatient_checkbox_thyroidism);
+                    boolean activityaddpatient_checkbox_diabetes_res = getBooleamFromCheckbox(activityaddpatient_checkbox_diabetes);
+                    boolean activityaddpatient_checkbox_kidneylaziness_res = getBooleamFromCheckbox(activityaddpatient_checkbox_kidneylaziness);
+                    boolean activityaddpatient_checkbox_osteoporosis_res = getBooleamFromCheckbox(activityaddpatient_checkbox_osteoporosis);
+                    boolean activityaddpatient_checkbox_prostatitis_res = getBooleamFromCheckbox(activityaddpatient_checkbox_prostatitis);
+
                     String patientEntity_allergies_details = ((EditText)layout.findViewById(R.id.activityaddpatient_editText_allergies)).getText().toString();
                     boolean patientEntity_allergies_status = !patientEntity_allergies_details.isEmpty();
                     String patientEntity_productsAssumption_details = ((EditText)layout.findViewById(R.id.activityaddpatient_editText_productsAssumption)).getText().toString();
@@ -136,12 +161,15 @@ public class Fragment_AddPatient_Survey extends Fragment
                             patientEntity_sex, patientEntity_phone,
                             patientEntity_visitReason, patientEntity_previousDiets_status, patientEntity_previousDiets_details,
                             patientEntity_weightHistory, patientEntity_previousPathologies_status, patientEntity_previousPathologies_details,
+                            activityaddpatient_checkbox_hypercolesterolemia_res, activityaddpatient_checkbox_thyroidism_res, activityaddpatient_checkbox_diabetes_res,
+                            activityaddpatient_checkbox_kidneylaziness_res, activityaddpatient_checkbox_osteoporosis_res, activityaddpatient_checkbox_prostatitis_res,
                             patientEntity_hereditaryPathologies_status, patientEntity_hereditaryPathologies_details,
                             patientEntity_allergies_status, patientEntity_allergies_details,
                             patientEntity_productsAssumption_status, patientEntity_productsAssumption_details,
                             patientEntity_intestine, patientEntity_menstrualCycle,
                             patientEntity_physicalActivity_status, patientEntity_physicalActivity_details,
                             patientEntity_workingActivity_status, patientEntity_workingActivity_details);
+
                     ((ActivityAddPatient2)getActivity()).setPatientEntity(patientEntity);
 
                             ViewPager viewPager = getActivity().findViewById(R.id.view_pager);
@@ -168,9 +196,63 @@ public class Fragment_AddPatient_Survey extends Fragment
         });
     }
 
+    public void setCheckboxes() {
+        activityaddpatient_checkbox_hypercolesterolemia.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener()
+        {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                ((ActivityAddPatient2)getActivity()).getPatientEntity().setPathologiesHasHypercholesterolaemia(b);
+            }
+        });
+
+        activityaddpatient_checkbox_thyroidism.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener()
+        {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                ((ActivityAddPatient2)getActivity()).getPatientEntity().setPathologiesHasThyroidism(b);
+            }
+        });
+
+        activityaddpatient_checkbox_diabetes.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener()
+        {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                ((ActivityAddPatient2)getActivity()).getPatientEntity().setPathologiesHasDiabetes(b);
+            }
+        });
+
+        activityaddpatient_checkbox_kidneylaziness.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener()
+        {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                ((ActivityAddPatient2)getActivity()).getPatientEntity().setPathologiesHasKidneysLaziness(b);
+            }
+        });
+
+        activityaddpatient_checkbox_osteoporosis.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener()
+        {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                ((ActivityAddPatient2)getActivity()).getPatientEntity().setPathologiesHasOsteoporosis(b);
+            }
+        });
+
+        activityaddpatient_checkbox_prostatitis.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener()
+        {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                ((ActivityAddPatient2)getActivity()).getPatientEntity().setPathologiesHasProstatitis(b);
+            }
+        });
+    }
+
     public String getTagFromRadioGroup(View layout, int radioGroupReference) {
         RadioGroup radioGroup = layout.findViewById(radioGroupReference);
         RadioButton radioButton = layout.findViewById(radioGroup.getCheckedRadioButtonId());
         return radioButton.getTag().toString();
+    }
+
+    public boolean getBooleamFromCheckbox(CheckBox checkBox) {
+        return checkBox.isChecked();
     }
 }

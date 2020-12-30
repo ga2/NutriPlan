@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">NutriPlan</string>
     <string name="app_name_subtitle">The Android app for nutritionists</string>
-    <string name="build_number">20201228</string>
+    <string name="build_number">20201230</string>
 
     <string name="biometric_title">Biometric login</string>
     <string name="biometric_subtitle">Log in using your biometric credential</string>
@@ -46,6 +46,13 @@
     <string name="female_short">F</string>
     <string name="male_long">Male ♂</string>
     <string name="female_long">Female ♀</string>
+
+    <string name="hypercholesterolaemia">Hypercholesterolaemia</string>
+    <string name="thyroidism">Thyroidism</string>
+    <string name="diabetes">Diabetes</string>
+    <string name="kidneyslaziness">Reduced kidney function</string>
+    <string name="osteoporosis">Osteoporosis</string>
+    <string name="prostatitis">Prostatitis</string>
 
     <!-- START Activity titles -->
 
@@ -96,6 +103,23 @@
     <string name="activityaddpatient_string_weighthistory">Weight history</string>
     <string name="activityaddpatient_string_previousdiets">Have you followed any other diets before?</string>
     <string name="activityaddpatient_string_previouspathologies">Previous or current pathologies?</string>
+    <string name="activityaddpatient_string_foodyes">YES FOOD:</string>
+    <string name="activityaddpatient_string_foodno">NO FOOD:</string>
+    <string name="activityaddpatient_string_hypercholesterolaemia_food_y">whole foods, cereals</string>
+    <string name="activityaddpatient_string_hypercholesterolaemia_food_n">molluscs, crustaceans</string>
+    <string name="activityaddpatient_string_thyroidism_food_y"></string>
+    <string name="activityaddpatient_string_thyroidism_food_n">brassicaceae</string>
+    <string name="activityaddpatient_string_diabetes_food_y"></string>
+    <string name="activityaddpatient_string_diabetes_food_n"></string>
+    <string name="activityaddpatient_string_kidneyslaziness_food_y"></string>
+    <string name="activityaddpatient_string_kidneyslaziness_food_n">added salt, all foods containing sodium: preserved in salt, in brine, aged cheeses, sausages, salted, bivalve molluscs,
+     common bread, bouillon cube with glutamate etc.</string>
+    <string name="activityaddpatient_string_osteoporosis_food_y">milk and dairy products, fish, legumes, citrus fruits, figs, walnuts, hazelnuts, almonds</string>
+    <string name="activityaddpatient_string_osteoporosis_food_n"></string>
+    <string name="activityaddpatient_string_prostatitis_food_y">foods rich in Omega3: oily fish, shellfish, extra virgin olive oil, carrots, pumpkin, courgettes,
+     cabbage, fennel, chicory, turnips, apples and cooked pears</string>
+    <string name="activityaddpatient_string_prostatitis_food_n">beer, sausages, spices, pepper, chilli, spirits, coffee, chocolate, fatty cheeses
+     , fatty fish (eel, tuna, mackerel), molluscs, seafood, crustaceans (shrimp, lobster)</string>
     <string name="activityaddpatient_string_hereditarypathologies">Hereditary pathologies in the family?</string>
     <string name="activityaddpatient_string_allergies">Allergies?</string>
     <string name="activityaddpatient_string_productsassumption">Taking medications, supplements or herbal products?</string>

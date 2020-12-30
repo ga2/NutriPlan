@@ -20,6 +20,8 @@ public class Globals
     public static final String MIME_JPG = "image/jpeg";
     public static final String MIME_PNG = "image/png";
 
+    public static final String COMMA = ", ";
+
 
     public static final int REQCODE_NEWPATIENT_ADDED = 100;
     public static final int REQCODE_NEWAPPOINTMENT_ADDED = 101;

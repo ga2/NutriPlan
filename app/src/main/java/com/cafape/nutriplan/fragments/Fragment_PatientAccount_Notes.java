@@ -1,5 +1,6 @@
 package com.cafape.nutriplan.fragments;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -30,6 +31,7 @@ public class Fragment_PatientAccount_Notes extends Fragment
     private String mParam1;
     private String mParam2;
 
+    private Context context;
 
     public Fragment_PatientAccount_Notes() {
         // Required empty public constructor
@@ -59,6 +61,7 @@ public class Fragment_PatientAccount_Notes extends Fragment
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+        context = getContext();
     }
 
     @Override
@@ -85,7 +88,30 @@ public class Fragment_PatientAccount_Notes extends Fragment
         PatientEntity patientEntity = ((ActivityPatientAccount)getActivity()).getPatient();
 
         activitypatientaccount_textView_visitreason.setText(patientEntity.getVisitReason());
-        activitypatientaccount_textView_previouspathologies.setText(patientEntity.getPreviousPathologies_details());
+        String pathologies = patientEntity.getPreviousPathologies_details();
+        if(!pathologies.isEmpty()) {
+            pathologies = pathologies + ". ";
+        }
+        if(patientEntity.isPathologiesHasHypercholesterolaemia()) {
+            pathologies += context.getString(R.string.hypercholesterolaemia) + ", ";
+        }
+        if(patientEntity.isPathologiesHasThyroidism()) {
+            pathologies += context.getString(R.string.thyroidism) + ", ";
+        }
+        if(patientEntity.isPathologiesHasDiabetes()) {
+            pathologies += context.getString(R.string.diabetes) + ", ";
+        }
+        if(patientEntity.isPathologiesHasKidneysLaziness()) {
+            pathologies += context.getString(R.string.kidneyslaziness) + ", ";
+        }
+        if(patientEntity.isPathologiesHasOsteoporosis()) {
+            pathologies += context.getString(R.string.osteoporosis) + ", ";
+        }
+        if(patientEntity.isPathologiesHasProstatitis()) {
+            pathologies += context.getString(R.string.prostatitis) + ", ";
+        }
+        pathologies = pathologies.substring(0, pathologies.length() - 2);
+        activitypatientaccount_textView_previouspathologies.setText(pathologies);
         activitypatientaccount_textView_hereditarypathologies.setText(patientEntity.getHereditaryPathologies_details());
         activitypatientaccount_textView_allergies.setText(patientEntity.getAllergies_details());
         activitypatientaccount_textView_productsassumption.setText(patientEntity.getProductsAssumption_details());

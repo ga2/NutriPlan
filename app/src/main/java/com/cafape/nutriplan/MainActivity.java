@@ -31,11 +31,14 @@ public class MainActivity extends AppCompatActivity
 
     //todo file tab 1
     //todo plot 2
-    //todo consigli in base alle patologie —> cambiare inserimento patologie con checkbox secondo file che ti ho inviato 3
-    //todo databasebackup 4
     //todo immagini tabella bai 5
+    // todo consigli in base alle patologie —> cambiare inserimento patologie con checkbox secondo file che ti ho inviato 3
+
+
     //todo fingerprint 6
     //todo responsiveness 7
+
+    //todo databasebackup 4
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -91,13 +94,10 @@ public class MainActivity extends AppCompatActivity
     }
 
     public void setListeners() {
-        activityMain_button_login.setOnClickListener(new View.OnClickListener()
+        activityMain_button_login.setOnClickListener(view ->
         {
-            @Override
-            public void onClick(View view) {
                 Intent intent_goToActivity = new Intent(context, ActivityMenu.class);
                 startActivity(intent_goToActivity);
-            }
         });
     }
 

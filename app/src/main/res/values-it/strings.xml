@@ -47,6 +47,13 @@
     <string name="male_long">Uomo ♂</string>
     <string name="female_long">Donna ♀</string>
 
+    <string name="hypercholesterolaemia">Ipercolesterolemia</string>
+    <string name="thyroidism">Tiroidismo</string>
+    <string name="diabetes">Diabete</string>
+    <string name="kidneyslaziness">Ridotta funzionalità renale</string>
+    <string name="osteoporosis">Osteoporosi</string>
+    <string name="prostatitis">Prostatite</string>
+
     <!-- START Activity titles -->
 
     <string name="title_activity_menu">NutriPlan</string>
@@ -97,6 +104,23 @@
     <string name="activityaddpatient_string_previousdiets">Ha seguito altre diete in precedenza?</string>
     <string name="activityaddpatient_string_previouspathologies">Patologie pregresse o in atto?</string>
     <string name="activityaddpatient_string_hereditarypathologies">Patologie ereditarie in famiglia?</string>
+    <string name="activityaddpatient_string_foodyes">CIBI SI:</string>
+    <string name="activityaddpatient_string_foodno">CIBI NO:</string>
+    <string name="activityaddpatient_string_hypercholesterolaemia_food_y">alimenti integrali, cereali</string>
+    <string name="activityaddpatient_string_hypercholesterolaemia_food_n">molluschi, crostacei</string>
+    <string name="activityaddpatient_string_thyroidism_food_y"></string>
+    <string name="activityaddpatient_string_thyroidism_food_n">brassicacee</string>
+    <string name="activityaddpatient_string_diabetes_food_y"></string>
+    <string name="activityaddpatient_string_diabetes_food_n"></string>
+    <string name="activityaddpatient_string_kidneyslaziness_food_y"></string>
+    <string name="activityaddpatient_string_kidneyslaziness_food_n">sale aggiunto, tutti gli alimenti contenenti sodio: conservati sotto sale, in salamoia, formaggi stagionati, insaccati, salati, molluschi bivalvi,
+    pane comune, dado da brodo con glutammato ecc.</string>
+    <string name="activityaddpatient_string_osteoporosis_food_y">latte e latticini, pesce, legumi, agrumi, fichi, noci, nocciole, mandorle</string>
+    <string name="activityaddpatient_string_osteoporosis_food_n"></string>
+    <string name="activityaddpatient_string_prostatitis_food_y">cibi ricchi di Omega3: pesce azzurro, crostacei, olio extravergine d\'oliva, carote zucca, zucchine,
+    cavolo, finocchio, cicoria, rape, mele e pere cotte</string>
+    <string name="activityaddpatient_string_prostatitis_food_n">birra, insaccati, spezie, pepe, peperoncino, superalcolici, caffè, cioccolato, formaggi grassi
+    , pesci grassi (anguilla, tonno, sgombro), molluschi, frutti di mare, crostacei (gamberi, aragosta)</string>
     <string name="activityaddpatient_string_allergies">Allergie?</string>
     <string name="activityaddpatient_string_productsassumption">Assunzione farmaci, integratori o prodotti erboristici?</string>
     <string name="activityaddpatient_string_intestine">Alvo</string>

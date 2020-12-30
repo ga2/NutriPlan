@@ -12,14 +12,12 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.cafape.nutriplan.database.entities.PatientAntropometryEntity;
-import com.cafape.nutriplan.objects.SimpleAppointment;
 import com.cafape.nutriplan.support.Utils;
-
-import org.w3c.dom.Text;
 
 public class ActivityVisitShow extends AppCompatActivity
 {
-    Context context;
+    private Context context;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -93,7 +91,7 @@ public class ActivityVisitShow extends AppCompatActivity
 
     public String parseToString(float number, String unit) {
         if(number > 0) {
-            return String.valueOf(number) + " " + unit;
+            return number + " " + unit;
         } else {
             return "";
         }

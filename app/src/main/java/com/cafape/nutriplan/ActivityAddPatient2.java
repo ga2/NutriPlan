@@ -36,6 +36,7 @@ public class ActivityAddPatient2 extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_patient2);
+        patientEntity = new PatientEntity();
 
         SectionsPagerAdapter_addpatient sectionsPagerAdapter_addpatient = new SectionsPagerAdapter_addpatient(this, getSupportFragmentManager());
         viewPager = findViewById(R.id.view_pager);
@@ -82,6 +83,18 @@ public class ActivityAddPatient2 extends AppCompatActivity
 
     public void setPatientAntropometryEntity(PatientAntropometryEntity patientAntropometryEntity) {
         this.patientAntropometryEntity = patientAntropometryEntity;
+    }
+
+    public PatientEntity getPatientEntity() {
+        return patientEntity;
+    }
+
+    public PatientAnamnesisEntity getPatientAnamnesisEntity() {
+        return patientAnamnesisEntity;
+    }
+
+    public PatientAntropometryEntity getPatientAntropometryEntity() {
+        return patientAntropometryEntity;
     }
 
     public ViewPager getViewPager() {

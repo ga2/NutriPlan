@@ -10,10 +10,17 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.cafape.nutriplan.ActivityAddPatient2;
 import com.cafape.nutriplan.R;
 import com.cafape.nutriplan.database.entities.PatientAnamnesisEntity;
+import com.cafape.nutriplan.database.entities.PatientEntity;
+
+import org.apache.commons.lang3.StringUtils;
+
+import static com.cafape.nutriplan.Globals.COMMA;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -22,7 +29,6 @@ import com.cafape.nutriplan.database.entities.PatientAnamnesisEntity;
  */
 public class Fragment_AddPatient_Anamnesis extends Fragment
 {
-
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
@@ -32,6 +38,13 @@ public class Fragment_AddPatient_Anamnesis extends Fragment
 
     private Button activityaddpatient_button_backto1;
     private Button activityaddpatient_button_goto3;
+
+    private LinearLayout activityaddpatient_linearLayout_foodsuggestions;
+    private TextView activityaddpatient_textView_yesfood;
+    private TextView activityaddpatient_textView_nofood;
+
+    private String nofood = "";
+    private String yesfood = "";
 
     public Fragment_AddPatient_Anamnesis() {
         // Required empty public constructor
@@ -72,7 +85,18 @@ public class Fragment_AddPatient_Anamnesis extends Fragment
         return layout;
     }
 
+    @Override
+    public void onResume(){
+        super.onResume();
+        nofood = "";
+        yesfood = "";
+        showFoodPreferences();
+    }
+
     public void setUiComponents(View layout) {
+        activityaddpatient_linearLayout_foodsuggestions = layout.findViewById(R.id.activityaddpatient_linearLayout_foodsuggestions);
+        activityaddpatient_textView_yesfood = layout.findViewById(R.id.activityaddpatient_textView_yesfood);
+        activityaddpatient_textView_nofood = layout.findViewById(R.id.activityaddpatient_textView_nofood);
         activityaddpatient_button_backto1 = layout.findViewById(R.id.activityaddpatient_button_backto1);
         activityaddpatient_button_goto3 = layout.findViewById(R.id.activityaddpatient_button_goto3);
     }
@@ -115,6 +139,84 @@ public class Fragment_AddPatient_Anamnesis extends Fragment
                 viewPager.setCurrentItem(2);
             }
         });
+    }
+
+    public void showFoodPreferences() {
+        boolean hasOne = false;
+        PatientEntity patientEntity = ((ActivityAddPatient2)getActivity()).getPatientEntity();
+        if(patientEntity.isPathologiesHasHypercholesterolaemia()) {
+            hasOne = true;
+            yesfood = yesfood + getString(R.string.activityaddpatient_string_hypercholesterolaemia_food_y) + COMMA;
+            nofood = nofood + getString(R.string.activityaddpatient_string_hypercholesterolaemia_food_n) + COMMA;
+        } else {
+            yesfood = yesfood.replace(getString(R.string.activityaddpatient_string_hypercholesterolaemia_food_y), "");
+            nofood = nofood.replace(getString(R.string.activityaddpatient_string_hypercholesterolaemia_food_n), "");
+        }
+
+        if(patientEntity.isPathologiesHasThyroidism()) {
+            hasOne = true;
+            //yesfood = yesfood + getString(R.string.activityaddpatient_string_thyroidism_food_y) + COMMA;
+            nofood = nofood + getString(R.string.activityaddpatient_string_thyroidism_food_n) + COMMA;
+        } else {
+            //yesfood = yesfood.replace(getString(R.string.activityaddpatient_string_thyroidism_food_y), "");
+            nofood = nofood.replace(getString(R.string.activityaddpatient_string_thyroidism_food_n), "");
+        }
+/*
+        if(patientEntity.isPathologiesHasDiabetes()) {
+            hasOne = true;
+            yesfood = yesfood + getString(R.string.activityaddpatient_string_diabetes_food_y) + COMMA;
+            nofood = nofood + getString(R.string.activityaddpatient_string_diabetes_food_n) + COMMA;
+        } else {
+            yesfood = yesfood.replace(getString(R.string.activityaddpatient_string_diabetes_food_y), "");
+            nofood = nofood.replace(getString(R.string.activityaddpatient_string_diabetes_food_n), "");
+        }*/
+
+        if(patientEntity.isPathologiesHasKidneysLaziness()) {
+            hasOne = true;
+            //yesfood = yesfood + getString(R.string.activityaddpatient_string_kidneyslaziness_food_y) + COMMA;
+            nofood = nofood + getString(R.string.activityaddpatient_string_kidneyslaziness_food_n) + COMMA;
+        } else {
+            //yesfood = yesfood.replace(getString(R.string.activityaddpatient_string_kidneyslaziness_food_y), "");
+            nofood = nofood.replace(getString(R.string.activityaddpatient_string_kidneyslaziness_food_n), "");
+        }
+
+        if(patientEntity.isPathologiesHasOsteoporosis()) {
+            hasOne = true;
+            yesfood = yesfood + getString(R.string.activityaddpatient_string_osteoporosis_food_y) + COMMA;
+            nofood = nofood + getString(R.string.activityaddpatient_string_osteoporosis_food_n) + COMMA;
+        } else {
+            yesfood = yesfood.replace(getString(R.string.activityaddpatient_string_osteoporosis_food_y), "");
+            //nofood = nofood.replace(getString(R.string.activityaddpatient_string_osteoporosis_food_n), "");
+        }
+
+        if(patientEntity.isPathologiesHasProstatitis()) {
+            hasOne = true;
+            yesfood = yesfood + getString(R.string.activityaddpatient_string_prostatitis_food_y);
+            nofood = nofood + getString(R.string.activityaddpatient_string_prostatitis_food_n);
+        } else {
+            yesfood = yesfood.replace(getString(R.string.activityaddpatient_string_prostatitis_food_y), "");
+            nofood = nofood.replace(getString(R.string.activityaddpatient_string_prostatitis_food_n), "");
+        }
+
+        activityaddpatient_textView_yesfood.setText(StringUtils.stripEnd(StringUtils.strip(yesfood.replace(", ,", "")), COMMA));
+        activityaddpatient_textView_nofood.setText(StringUtils.stripEnd(StringUtils.strip(nofood.replace(", ,", "")), COMMA));
+        checkUncheckFoodTextBox(hasOne);
+    }
+
+    public void checkUncheckFoodTextBox(boolean activation) {
+        if(activation) {
+            if(!nofood.isEmpty() || !yesfood.isEmpty()) {
+                if(activityaddpatient_linearLayout_foodsuggestions.getVisibility() != View.VISIBLE){
+                    activityaddpatient_linearLayout_foodsuggestions.setVisibility(View.VISIBLE);
+                }
+            }
+        } else {
+            if(activityaddpatient_linearLayout_foodsuggestions.getVisibility() == View.VISIBLE) {
+                if(nofood.isEmpty() && yesfood.isEmpty()) {
+                    activityaddpatient_linearLayout_foodsuggestions.setVisibility(View.GONE);
+                }
+            }
+        }
     }
 
     public String getStringFromEditText(EditText editText) {
