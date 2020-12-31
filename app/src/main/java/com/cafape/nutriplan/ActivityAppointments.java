@@ -322,7 +322,7 @@ public class ActivityAppointments extends AppCompatActivity
                         .getInstance(context)
                         .getAppDatabase()
                         .appointmentDao()
-                        .getAppointmentsForMonth(String.valueOf(req_year), String.valueOf(req_month));
+                        .getAppointmentsForMonth(String.valueOf(req_year),  String.format("%02d", req_month));
 
                 arrayList_appointmentEntity_ofTheDay = new ArrayList<>();
                 for(AppointmentEntity appointmentEntity : appointmentList) {
