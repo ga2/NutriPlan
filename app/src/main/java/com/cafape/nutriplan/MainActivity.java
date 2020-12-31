@@ -29,6 +29,8 @@ public class MainActivity extends AppCompatActivity
     private BiometricPrompt biometricPrompt;
     private BiometricPrompt.PromptInfo promptInfo;
 
+    //todo cibi si no nella scheda riassuntiva
+
     //todo file tab 1
     //todo plot 2
     //todo immagini tabella bai 5

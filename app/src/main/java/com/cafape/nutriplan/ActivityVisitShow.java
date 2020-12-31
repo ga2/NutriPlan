@@ -66,7 +66,7 @@ public class ActivityVisitShow extends AppCompatActivity
         activityvisitshow_textView_subscapularis.setText(parseToString(patientAntropometryEntity.getSubscapularis(), Globals.CENTIMETRES));
         activityvisitshow_textView_umbilicale.setText(parseToString(patientAntropometryEntity.getUmbelicale(), Globals.CENTIMETRES));
         activityvisitshow_textView_femoral.setText(parseToString(patientAntropometryEntity.getFemoral(), Globals.CENTIMETRES));
-        activityvisitshow_textView_pi.setText(parseToString(patientAntropometryEntity.getPi(), Globals.PERCENTAGE));
+        activityvisitshow_textView_pi.setText(parseToString(patientAntropometryEntity.getPi(), Globals.KILOGRAM));
         activityvisitshow_textView_bai.setText(parseToString(patientAntropometryEntity.getBai(), Globals.PERCENTAGE));
         activityvisitshow_textView_bmi.setText(parseToString(patientAntropometryEntity.getBmi(), Globals.PERCENTAGE));
 
