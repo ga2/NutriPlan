@@ -1,7 +1,6 @@
 <resources>
     <string name="app_name">NutriPlan</string>
     <string name="app_name_subtitle">L\'app Android per nutrizionisti</string>
-    <string name="build_number">20201221</string>
 
     <string name="biometric_title">Login biometrico</string>
     <string name="biometric_subtitle">Login usando l\'impronta digitale</string>

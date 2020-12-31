@@ -1,10 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    >
+<androidx.constraintlayout.widget.ConstraintLayout
     android:id="@+id/constraintLayout"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     tools:context=".ui.main.PlaceholderFragment">
 
 
@@ -390,14 +395,87 @@
 
     </LinearLayout>
 
+    <LinearLayout
+        android:id="@+id/activitypatientaccount_linearLayout_foodsuggestions"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_weight="1"
+        android:baselineAligned="false"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/activitypatientaccount_linearLayout6">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/activitypatientaccount_textView_yesfood_label"
+                style="@style/style_form_label"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:gravity="center_vertical"
+                android:minLines="3"
+                android:paddingTop="@dimen/dim_margin_small"
+                android:paddingBottom="@dimen/dim_margin_small"
+                android:text="@string/activityaddpatient_string_foodyes" />
+
+            <TextView
+                android:id="@+id/activitypatientaccount_textView_yesfood"
+                style="@style/style_textView_form_options"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="@dimen/dim_margin_normal"
+                android:gravity="center_vertical"
+                android:minLines="3" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dim_margin_normal"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/activitypatientaccount_textView_nofood_label"
+                style="@style/style_form_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:gravity="center_vertical"
+                android:minLines="3"
+                android:paddingTop="@dimen/dim_margin_small"
+                android:paddingBottom="@dimen/dim_margin_small"
+                android:text="@string/activityaddpatient_string_foodno" />
+
+            <TextView
+                android:id="@+id/activitypatientaccount_textView_nofood"
+                style="@style/style_textView_form_options"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="@dimen/dim_margin_normal"
+                android:gravity="center_vertical"
+                android:minLines="3" />
+        </LinearLayout>
+    </LinearLayout>
+
     <Button
         android:id="@+id/activitypatientaccount_button_edit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="32dp"
         android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
         android:text="@string/edit"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/activitypatientaccount_linearLayout6" />
+        app:layout_constraintTop_toBottomOf="@+id/activitypatientaccount_linearLayout_foodsuggestions" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

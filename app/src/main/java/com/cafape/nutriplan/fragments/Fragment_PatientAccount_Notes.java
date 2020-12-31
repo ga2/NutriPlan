@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
@@ -15,6 +16,10 @@ import com.cafape.nutriplan.ActivityPatientAccount;
 import com.cafape.nutriplan.R;
 import com.cafape.nutriplan.database.entities.PatientAnamnesisEntity;
 import com.cafape.nutriplan.database.entities.PatientEntity;
+
+import org.apache.commons.lang3.StringUtils;
+
+import static com.cafape.nutriplan.Globals.COMMA;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -31,7 +36,12 @@ public class Fragment_PatientAccount_Notes extends Fragment
     private String mParam1;
     private String mParam2;
 
+    private String yesfood = "";
+    private String nofood = "";
+
     private Context context;
+
+    private LinearLayout activitypatientaccount_linearLayout_foodsuggestions;
 
     public Fragment_PatientAccount_Notes() {
         // Required empty public constructor
@@ -85,6 +95,10 @@ public class Fragment_PatientAccount_Notes extends Fragment
         TextView activitypatientaccount_textView_welcomefood = layout.findViewById(R.id.activitypatientaccount_textView_welcomefood);
         TextView activitypatientaccount_textView_nonwelcomefood = layout.findViewById(R.id.activitypatientaccount_textView_nonwelcomefood);
 
+        activitypatientaccount_linearLayout_foodsuggestions = layout.findViewById(R.id.activitypatientaccount_linearLayout_foodsuggestions);
+        TextView activitypatientaccount_textView_yesfood = layout.findViewById(R.id.activitypatientaccount_textView_yesfood);
+        TextView activitypatientaccount_textView_nofood = layout.findViewById(R.id.activitypatientaccount_textView_nofood);
+
         PatientEntity patientEntity = ((ActivityPatientAccount)getActivity()).getPatient();
 
         activitypatientaccount_textView_visitreason.setText(patientEntity.getVisitReason());
@@ -94,23 +108,34 @@ public class Fragment_PatientAccount_Notes extends Fragment
         }
         if(patientEntity.isPathologiesHasHypercholesterolaemia()) {
             pathologies += context.getString(R.string.hypercholesterolaemia) + ", ";
+            yesfood = yesfood + getString(R.string.activityaddpatient_string_hypercholesterolaemia_food_y) + COMMA;
+            nofood = nofood + getString(R.string.activityaddpatient_string_hypercholesterolaemia_food_n) + COMMA;
         }
         if(patientEntity.isPathologiesHasThyroidism()) {
             pathologies += context.getString(R.string.thyroidism) + ", ";
         }
         if(patientEntity.isPathologiesHasDiabetes()) {
             pathologies += context.getString(R.string.diabetes) + ", ";
+            nofood = nofood + getString(R.string.activityaddpatient_string_thyroidism_food_n) + COMMA;
         }
         if(patientEntity.isPathologiesHasKidneysLaziness()) {
             pathologies += context.getString(R.string.kidneyslaziness) + ", ";
+            nofood = nofood + getString(R.string.activityaddpatient_string_kidneyslaziness_food_n) + COMMA;
         }
         if(patientEntity.isPathologiesHasOsteoporosis()) {
             pathologies += context.getString(R.string.osteoporosis) + ", ";
+            yesfood = yesfood + getString(R.string.activityaddpatient_string_osteoporosis_food_y) + COMMA;
         }
         if(patientEntity.isPathologiesHasProstatitis()) {
             pathologies += context.getString(R.string.prostatitis) + ", ";
+            yesfood = yesfood + getString(R.string.activityaddpatient_string_prostatitis_food_y) + COMMA;
+            nofood = nofood + getString(R.string.activityaddpatient_string_prostatitis_food_n) + COMMA;
         }
         pathologies = pathologies.substring(0, pathologies.length() - 2);
+        activitypatientaccount_textView_yesfood.setText(StringUtils.stripEnd(StringUtils.strip(yesfood.replace(", ,", ",")), COMMA));
+        activitypatientaccount_textView_nofood.setText(StringUtils.stripEnd(StringUtils.strip(nofood.replace(", ,", ",")), COMMA));
+
+
         activitypatientaccount_textView_previouspathologies.setText(pathologies);
         activitypatientaccount_textView_hereditarypathologies.setText(patientEntity.getHereditaryPathologies_details());
         activitypatientaccount_textView_allergies.setText(patientEntity.getAllergies_details());
@@ -145,6 +170,22 @@ public class Fragment_PatientAccount_Notes extends Fragment
         });
 
         */
+    }
+
+    public void checkUncheckFoodTextBox(boolean activation) {
+        if(activation) {
+            if(nofood.isEmpty() || yesfood.isEmpty()){
+                if(activitypatientaccount_linearLayout_foodsuggestions.getVisibility() != View.VISIBLE) {
+                    activitypatientaccount_linearLayout_foodsuggestions.setVisibility(View.VISIBLE);
+                }
+            }
+        } else {
+            if(activitypatientaccount_linearLayout_foodsuggestions.getVisibility() == View.VISIBLE) {
+                if(nofood.isEmpty() && yesfood.isEmpty()) {
+                    activitypatientaccount_linearLayout_foodsuggestions.setVisibility(View.GONE);
+                }
+            }
+        }
     }
 
     public String transformIntInString(String type, int value, String sex) {

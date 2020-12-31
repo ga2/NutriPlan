@@ -295,7 +295,6 @@ public class ActivityEditPatientNotes extends AppCompatActivity
                 }
             }
         }
-
     }
 
     public void updateDataEntity() {
