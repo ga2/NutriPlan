@@ -106,6 +106,11 @@ public class ActivityAddAppointment extends AppCompatActivity
                     patientEntity_toInsert = activityaddappontment_hashMap_patients.get(patientString);
                     saveAppointment(activityaddappointment_timePicker.getHour(), activityaddappointment_timePicker.getMinute(), activityaddappointment_localDate, activityaddappointment_editText_visitReason.getText().toString(), patientEntity_toInsert.getPatiendID(), patientString);
                 } else {
+                    saveAppointment(activityaddappointment_timePicker.getHour(), activityaddappointment_timePicker.getMinute(), activityaddappointment_localDate, activityaddappointment_editText_visitReason.getText().toString(), 0, patientString);
+                }
+
+
+                /* else {
                     String message = getString(R.string.activityaddpatient_string_alertTitle_formCheck);
                     message += getString(R.string.activityaddappointment_string_alertMessage_formCheck_name);
 
@@ -113,7 +118,7 @@ public class ActivityAddAppointment extends AppCompatActivity
                     builder.setPositiveButton(R.string.back, null);
                     AlertDialog alertDialog = builder.create();
                     alertDialog.show();
-                }
+                }*/
             }
         });
         if(editMode) {
