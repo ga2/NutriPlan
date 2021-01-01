@@ -28,6 +28,10 @@
     <string name="deleted">Deleted</string>
     <string name="edited">Edited</string>
     <string name="edit">Edit</string>
+    <string name="export_nutr">Export</string>
+    <string name="export_description">Create and save a .nutr file that contains all Nutriplan data.</string>
+    <string name="import_nutr">Restore</string>
+    <string name="import_description">Select the .nutr file from the tablet to import data. All data currently on the tablet will be overwritten.</string>
 
     <string name="share_with">Open with...</string>
     <string name="no_whatsapp">Whatsapp not installed</string>
