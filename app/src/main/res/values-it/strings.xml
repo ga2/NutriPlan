@@ -60,6 +60,7 @@
     <string name="title_activity_patients">Pazienti</string>
     <string name="title_activity_addpatient">Nuovo paziente</string>
     <string name="title_activity_appointments">Appuntamenti</string>
+    <string name="title_activity_importexport">Backup/ripristino</string>
     <string name="title_activity_patientaccount">Scheda paziente</string>
     <string name="title_activity_patientaccount_visit">Scheda paziente - visita</string>
     <string name="title_activity_patientaccount_visit_new">Scheda paziente - nuova visita</string>

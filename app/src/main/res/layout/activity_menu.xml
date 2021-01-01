@@ -1,101 +1,162 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="@color/material_gray_200"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ActivityMenu">
+    android:background="@color/material_gray_200">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/activitymanu_constraintLayout_card_calc"
-        style="@style/style_mainactivity_card"
-        android:layout_marginTop="68dp"
-        android:background="@drawable/layout_activitymenu_card"
-        android:elevation="4dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:orientation="horizontal"
+        tools:context=".ActivityMenu">
 
-        <ImageView
-            android:id="@+id/activitymenu_card_imageView_calc"
-            style="@style/style_mainactivity_card_imageView"
-            app:layout_constraintBottom_toTopOf="@+id/activitymenu_card_textView_calc"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/menu_image_calc" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingTop="@dimen/dim_margin_high"
+            android:paddingBottom="@dimen/dim_margin_high">
 
-        <TextView
-            android:id="@+id/activitymenu_card_textView_calc"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            android:text="@string/title_activity_calc"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/activitymanu_constraintLayout_card_appointment"
+                style="@style/style_mainactivity_card"
+                android:background="@drawable/layout_activitymenu_card"
+                android:elevation="4dp">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/activitymanu_constraintLayout_card_patient"
-        style="@style/style_mainactivity_card_lower"
-        android:background="@drawable/layout_activitymenu_card"
-        android:elevation="4dp"
-        app:layout_constraintEnd_toStartOf="@+id/activitymanu_constraintLayout_card_calc"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/activitymanu_constraintLayout_card_calc">
+                <ImageView
+                    android:id="@+id/actvivitymenu_imageView_appointment"
+                    style="@style/style_mainactivity_card_imageView"
+                    app:layout_constraintBottom_toTopOf="@+id/activitymenu_card_textView_appointment"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/menu_image_appointment" />
 
-        <ImageView
-            android:id="@+id/activitymenu_card_imageView_patient"
-            style="@style/style_mainactivity_card_imageView"
-            app:layout_constraintBottom_toTopOf="@+id/activitymenu_card_textView_patient"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/menu_image_patient" />
+                <TextView
+                    android:id="@+id/activitymenu_card_textView_appointment"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:text="@string/title_activity_appointments"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" />
 
-        <TextView
-            android:id="@+id/activitymenu_card_textView_patient"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            android:text="@string/title_activity_patients"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/activitymanu_constraintLayout_card_appointment"
-        style="@style/style_mainactivity_card_lower"
-        android:background="@drawable/layout_activitymenu_card"
-        android:elevation="4dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/activitymanu_constraintLayout_card_calc"
-        app:layout_constraintTop_toBottomOf="@+id/activitymanu_constraintLayout_card_calc">
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/activitymanu_constraintLayout_card_patient"
+                style="@style/style_mainactivity_card"
+                android:background="@drawable/layout_activitymenu_card"
+                android:elevation="4dp">
 
-        <ImageView
-            android:id="@+id/actvivitymenu_imageView_appointment"
-            style="@style/style_mainactivity_card_imageView"
-            app:layout_constraintBottom_toTopOf="@+id/activitymenu_card_textView_appointment"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/menu_image_appointment" />
+                <ImageView
+                    android:id="@+id/activitymenu_card_imageView_patient"
+                    style="@style/style_mainactivity_card_imageView"
+                    app:layout_constraintBottom_toTopOf="@+id/activitymenu_card_textView_patient"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/menu_image_patient" />
 
-        <TextView
-            android:id="@+id/activitymenu_card_textView_appointment"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            android:text="@string/title_activity_appointments"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+                <TextView
+                    android:id="@+id/activitymenu_card_textView_patient"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:text="@string/title_activity_patients"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/activitymanu_constraintLayout_card_calc"
+                style="@style/style_mainactivity_card"
+                android:background="@drawable/layout_activitymenu_card"
+                android:elevation="4dp">
+
+                <ImageView
+                    android:id="@+id/activitymenu_card_imageView_calc"
+                    style="@style/style_mainactivity_card_imageView"
+                    app:layout_constraintBottom_toTopOf="@+id/activitymenu_card_textView_calc"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/menu_image_calc" />
+
+                <TextView
+                    android:id="@+id/activitymenu_card_textView_calc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:text="@string/title_activity_calc"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/activitymanu_constraintLayout_card_importexport"
+                style="@style/style_mainactivity_card"
+                android:background="@drawable/layout_activitymenu_card"
+                android:elevation="4dp">
+
+                <ImageView
+                    android:id="@+id/actvivitymenu_imageView_importexport"
+                    style="@style/style_mainactivity_card_imageView"
+                    app:layout_constraintBottom_toTopOf="@+id/activitymenu_card_textView_importexport"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/menu_image_importexport" />
+
+                <TextView
+                    android:id="@+id/activitymenu_card_textView_importexport"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:text="@string/title_activity_importexport"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+</ScrollView>

@@ -272,6 +272,7 @@ public class ActivityAppointments extends AppCompatActivity
                 super.onPostExecute(deletingResult);
                 if ((deletingResult != null) && (deletingResult != null)) {
                     Toast.makeText(context, R.string.deleted, Toast.LENGTH_SHORT).show();
+                    arrayList_appointmentEntity_ofTheDay.remove(simpleAppointment);
                     appointmentsRecyclerViewAdapter.deleteFromRetrievedData(simpleAppointment);
                     appointmentsRecyclerViewAdapter.notifyDataSetChanged();
                     if(appointmentsRecyclerViewAdapter.getItemCount() == 0) {
@@ -326,12 +327,12 @@ public class ActivityAppointments extends AppCompatActivity
 
                 arrayList_appointmentEntity_ofTheDay = new ArrayList<>();
                 for(AppointmentEntity appointmentEntity : appointmentList) {
-                    PatientEntity patientEntity = DatabaseRepository
-                            .getInstance(context)
-                            .getAppDatabase()
-                            .patientDao()
-                            .getPatient(appointmentEntity.getPatientID_ref());
-                    arrayList_appointmentEntity_ofTheDay.add(new SimpleAppointment(appointmentEntity, patientEntity.getNameSurnameBday(context.getString(R.string.of_the))));
+                    if(appointmentEntity.getPatientID_ref() > 0) {
+                        PatientEntity patientEntity = DatabaseRepository.getInstance(context).getAppDatabase().patientDao().getPatient(appointmentEntity.getPatientID_ref());
+                        arrayList_appointmentEntity_ofTheDay.add(new SimpleAppointment(appointmentEntity, patientEntity.getNameSurnameBday(context.getString(R.string.of_the))));
+                    } else {
+                        arrayList_appointmentEntity_ofTheDay.add(new SimpleAppointment(appointmentEntity, appointmentEntity.getVisitReason()));
+                    }
                 }
                 return appointmentList;
             }

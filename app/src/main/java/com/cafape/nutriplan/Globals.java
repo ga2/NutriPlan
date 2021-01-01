@@ -21,6 +21,7 @@ public class Globals
     public static final String MIME_PNG = "image/png";
 
     public static final String COMMA = ", ";
+    public static final String COLON = ": ";
 
 
     public static final int REQCODE_NEWPATIENT_ADDED = 100;

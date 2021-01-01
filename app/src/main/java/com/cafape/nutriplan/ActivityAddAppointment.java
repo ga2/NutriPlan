@@ -27,7 +27,11 @@ import com.cafape.nutriplan.database.entities.PatientEntity;
 import com.cafape.nutriplan.database.entities.PatientWithAppointments;
 import com.cafape.nutriplan.objects.SimpleAppointment;
 import com.cafape.nutriplan.support.AlertBuilderUtils;
+import com.cafape.nutriplan.support.Utils;
 
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -37,6 +41,11 @@ import java.util.Locale;
 
 import org.threeten.bp.LocalDate;
 import org.threeten.bp.format.TextStyle;
+
+import kotlinx.coroutines.GlobalScope;
+
+import static com.cafape.nutriplan.Globals.COLON;
+import static com.cafape.nutriplan.Globals.COMMA;
 
 public class ActivityAddAppointment extends AppCompatActivity
 {
@@ -255,8 +264,11 @@ public class ActivityAddAppointment extends AppCompatActivity
                 //adding to database
                 Calendar calendar = Calendar.getInstance();
                 calendar.set(localDate.getYear(), localDate.getMonthValue() - 1, localDate.getDayOfMonth(), hour, minutes);
-
-                appointmentEntity = new AppointmentEntity(calendar.getTime(), visitReason, patient_id);
+                if(patient_id > 0) {
+                    appointmentEntity = new AppointmentEntity(calendar.getTime(), visitReason, patient_id);
+                } else {
+                    appointmentEntity = new AppointmentEntity(calendar.getTime(), getHourFormatted(hour, minutes) + Globals.LONG_DASH + " " + patient_info + COMMA + visitReason, 0);
+                }
                 DatabaseRepository.getInstance(getApplicationContext()).getAppDatabase().appointmentDao().insert(appointmentEntity);
                 return null;
             }
@@ -324,5 +336,10 @@ public class ActivityAddAppointment extends AppCompatActivity
         TextView activityaddappointment_textView_monthYear = findViewById(R.id.activityaddappointment_textView_monthYear);
         activityaddappointment_textView_day.setText(day);
         activityaddappointment_textView_monthYear.setText(month + " " + year);
+    }
+
+    public String getHourFormatted(int hour, int minutes) {
+        String minutes_string = String.valueOf(minutes);
+        return String.format("%02d", hour) + ":" + minutes_string  + " ";
     }
 }

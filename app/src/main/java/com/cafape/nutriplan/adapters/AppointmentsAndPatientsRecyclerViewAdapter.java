@@ -45,7 +45,11 @@ public class AppointmentsAndPatientsRecyclerViewAdapter extends RecyclerView.Ada
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         SimpleAppointment dataGot = retrievedData.get(position);
-        holder.rowAppointment_textView_infouser.setText(dataGot.getDisplayText());
+        if(dataGot.getPatientID() > 0) {
+            holder.rowAppointment_textView_infouser.setText(dataGot.getDisplayText());
+        } else {
+            holder.rowAppointment_textView_infouser.setText(dataGot.getVisitReason());
+        }
 
         holder.rowAppointment_imageView_edit.setOnClickListener(new View.OnClickListener() {
             @Override

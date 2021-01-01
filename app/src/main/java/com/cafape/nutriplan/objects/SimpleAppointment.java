@@ -148,6 +148,10 @@ public class SimpleAppointment implements Serializable
         return date;
     }
 
+    public String getFormattedHour() {
+        return Utils.convertDateFormat(date, TIMEFORMAT);
+    }
+
     public void setDate(Date date) {
         this.date = date;
         Calendar calendar = Calendar.getInstance();
