@@ -75,6 +75,7 @@
 
     <!-- START ActivityMenu -->
     <string name="activitymenu_string_importing_failed">Ripristino fallito. Verifica la validità del file.</string>
+    <string name="activitymenu_string_export_permission">Autorizzazione "Memoria" necessaria per l\'esportazione!</string>
     <!-- END ActivityMenu -->
 
     <!-- START Activity_calc -->

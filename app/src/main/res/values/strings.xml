@@ -76,6 +76,7 @@
 
     <!-- START ActivityMenu -->
     <string name="activitymenu_string_importing_failed">Restoring failed. Check the validity of the file.</string>
+    <string name="activitymenu_string_export_permission">"Storage" permission is required to export data!</string>
     <!-- END ActivityMenu -->
 
     <!-- START Activity_calc -->

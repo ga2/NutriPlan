@@ -2,13 +2,14 @@ package com.cafape.nutriplan;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.core.content.FileProvider;
+import androidx.core.app.ActivityCompat;
 
 import android.Manifest;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -16,6 +17,7 @@ import android.os.ParcelFileDescriptor;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.cafape.nutriplan.support.Globals;
@@ -26,7 +28,6 @@ import com.cafape.nutriplan.support.Zipper;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
-import java.io.OutputStream;
 
 import static com.cafape.nutriplan.support.Globals.DBNAME;
 import static com.cafape.nutriplan.support.Globals.EXTENSIONE_BACKUP;
@@ -34,7 +35,6 @@ import static com.cafape.nutriplan.support.Globals.FORMAT_DATE_SAVEDB;
 import static com.cafape.nutriplan.support.Globals.PERMISSION_WRITEEXTERNALSTORAGE;
 import static com.cafape.nutriplan.support.Globals.REQCODE_OVERWRITEDB;
 import static com.cafape.nutriplan.support.Globals.REQCODE_WRITEFILE;
-import static com.cafape.nutriplan.support.Utils.myprint;
 
 public class ActivityMenu extends AppCompatActivity
 {
@@ -72,6 +72,22 @@ public class ActivityMenu extends AppCompatActivity
                     writeDBFile(uri);
                 }
             }
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults)
+    {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if(ActivityCompat.checkSelfPermission(this, permissions[0]) == PackageManager.PERMISSION_GRANTED) {
+            switch (requestCode) {
+                case PERMISSION_WRITEEXTERNALSTORAGE: {
+                    initializeEmptyBackuFile();
+                }
+                break;
+            }
+        } else {
+            Toast.makeText(context, R.string.activitymenu_string_export_permission, Toast.LENGTH_LONG).show();
         }
     }
 
@@ -118,11 +134,12 @@ public class ActivityMenu extends AppCompatActivity
                 LayoutInflater factory = LayoutInflater.from(ActivityMenu.this);
                 final View view_importexport = factory.inflate(R.layout.dialog_importexport, null);
                 alert_importexport.setView(view_importexport);
-                alert_importexport.show();
+                AlertDialog alertDialog = alert_importexport.show();
                 ImageView dialogimportexport_imageButton_export = view_importexport.findViewById(R.id.dialogimportexport_imageButton_export);
                 dialogimportexport_imageButton_export.setOnClickListener(view_export ->
                 {
-                    initializeEmptyBackupile();
+                    initializeEmptyBackuFile();
+                    alertDialog.cancel();
                 });
                 ImageView dialogimportexport_imageButton_import = view_importexport.findViewById(R.id.dialogimportexport_imageButton_import);
                 dialogimportexport_imageButton_import.setOnClickListener(view_import ->
@@ -131,12 +148,13 @@ public class ActivityMenu extends AppCompatActivity
                     intent.addCategory(Intent.CATEGORY_OPENABLE);
                     intent.setType("*/*");
                     startActivityForResult(intent, REQCODE_OVERWRITEDB);
+                    alertDialog.cancel();
                 });
             }
         });
     }
 
-    public void initializeEmptyBackupile() {
+    public void initializeEmptyBackuFile() {
         if((Utils.askForPermission(ActivityMenu.this, Manifest.permission.WRITE_EXTERNAL_STORAGE, PERMISSION_WRITEEXTERNALSTORAGE))) {
             Intent intent = new Intent(Intent.ACTION_CREATE_DOCUMENT);
 
@@ -177,7 +195,6 @@ public class ActivityMenu extends AppCompatActivity
                         //FILES SECTIONS
                         File docsDirectory = new File(context.getFilesDir(), Globals.DOCUMENT_FOLDER_NAME);
                         String[] filesPaths_toZip = new String[] {fileDatabasePath, fileDatabasePath_shm, fileDatabasePath_wal, docsDirectory.getAbsolutePath()};
-                        //String[] filesPaths_toZip = new String[] {fileDatabasePath, fileDatabasePath_shm, fileDatabasePath_wal};
                         Zipper.zip(filesPaths_toZip, new FileOutputStream(pfd.getFileDescriptor()));
                         return true;
                     }
@@ -266,8 +283,6 @@ public class ActivityMenu extends AppCompatActivity
                                         Utils.copyFile(current_file.getAbsolutePath(), dest_file.getAbsolutePath());
                                     }
                                 }
-
-
                             } else {
                                 return false;
                             }
