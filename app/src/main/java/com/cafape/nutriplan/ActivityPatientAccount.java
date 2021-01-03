@@ -41,6 +41,7 @@ import static com.cafape.nutriplan.support.Globals.MIME_PNG;
 import static com.cafape.nutriplan.support.Globals.REQCODE_EDITPATIENTNOTES;
 import static com.cafape.nutriplan.support.Globals.REQCODE_NEWVISIT;
 import static com.cafape.nutriplan.support.Globals.REQCODE_LOADFILE;
+import static com.cafape.nutriplan.support.Utils.myprint;
 
 public class ActivityPatientAccount extends AppCompatActivity
 {

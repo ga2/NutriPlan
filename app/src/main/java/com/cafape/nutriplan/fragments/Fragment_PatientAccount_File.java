@@ -38,7 +38,6 @@ public class Fragment_PatientAccount_File extends Fragment
     private TextView activitypatientaccount_textView_nodata_details;
     private ConstraintLayout activitypatientaccount_constraintLayout_nodata;
 
-
     public Fragment_PatientAccount_File() {
         // Required empty public constructor
     }

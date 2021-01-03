@@ -2,6 +2,7 @@ package com.cafape.nutriplan;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.core.content.FileProvider;
 
 import android.Manifest;
 import android.app.AlertDialog;
@@ -25,6 +26,7 @@ import com.cafape.nutriplan.support.Zipper;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.io.OutputStream;
 
 import static com.cafape.nutriplan.support.Globals.DBNAME;
 import static com.cafape.nutriplan.support.Globals.EXTENSIONE_BACKUP;
@@ -32,6 +34,7 @@ import static com.cafape.nutriplan.support.Globals.FORMAT_DATE_SAVEDB;
 import static com.cafape.nutriplan.support.Globals.PERMISSION_WRITEEXTERNALSTORAGE;
 import static com.cafape.nutriplan.support.Globals.REQCODE_OVERWRITEDB;
 import static com.cafape.nutriplan.support.Globals.REQCODE_WRITEFILE;
+import static com.cafape.nutriplan.support.Utils.myprint;
 
 public class ActivityMenu extends AppCompatActivity
 {
@@ -216,17 +219,18 @@ public class ActivityMenu extends AppCompatActivity
                     ParcelFileDescriptor pfd = getContentResolver().openFileDescriptor(uri, "r");
                     if(pfd != null) {
                         if(Utils.getFileExtension(Utils.getFileUriName(context, uri)).equals(EXTENSIONE_BACKUP)) {
-                            File fileDatabase = context.getDatabasePath(DBNAME);
-                            String baseDataBaseName = fileDatabase.getName();
-                            String fileDatabasePath = fileDatabase.getAbsolutePath();
-                            String fileDatabasePath_shm = fileDatabasePath + "-shm";
-                            String fileDatabasePath_wal = fileDatabasePath + "-wal";
                             File dirtemp_db = new File(getCacheDir(), "db_backup");
                             if (!dirtemp_db.exists()) {
                                 dirtemp_db.mkdir();
                             }
 
                             if(Unzipper.unzip(new FileInputStream(pfd.getFileDescriptor()), dirtemp_db) > 0) {
+                                File fileDatabase = context.getDatabasePath(DBNAME);
+                                String baseDataBaseName = fileDatabase.getName();
+                                String fileDatabasePath = fileDatabase.getAbsolutePath();
+                                String fileDatabasePath_shm = fileDatabasePath + "-shm";
+                                String fileDatabasePath_wal = fileDatabasePath + "-wal";
+
                                 String db_cached_base = dirtemp_db.getAbsolutePath() + "/" + baseDataBaseName;
                                 String db_cached_base_shm = dirtemp_db.getAbsolutePath() + "/" + baseDataBaseName + "-shm";
                                 String db_cached_base_wal = dirtemp_db.getAbsolutePath() + "/" + baseDataBaseName + "-wal";
@@ -235,7 +239,34 @@ public class ActivityMenu extends AppCompatActivity
                                 Utils.copyFile(db_cached_base_shm, fileDatabasePath_shm);
                                 Utils.copyFile(db_cached_base_wal, fileDatabasePath_wal);
 
-                                ///copyfolder
+                                File docsDirectory = new File(context.getFilesDir(), Globals.DOCUMENT_FOLDER_NAME);
+                                if (!docsDirectory.exists()) {
+                                    docsDirectory.mkdir();
+                                }
+                                String files_cached_base = dirtemp_db.getAbsolutePath() + "/" + Globals.DOCUMENT_FOLDER_NAME;
+                                File directoryContent_unzipped = new File(files_cached_base);
+                                String[] fileInside_unzipped_Dir = directoryContent_unzipped.list();
+                                for(String currentSub_unzipped_Dir : fileInside_unzipped_Dir) {
+                                    File docsPatientDirectory = new File(files_cached_base, currentSub_unzipped_Dir);
+                                    if (!docsPatientDirectory.exists()) {
+                                        docsPatientDirectory.mkdir();
+                                    }
+
+                                    File docsPatientDirectory_unzipped = new File(directoryContent_unzipped, currentSub_unzipped_Dir);
+                                    String[] fileInsideDir_unzipped_patient = docsPatientDirectory_unzipped.list();
+                                    for(String filePatient_unzipped : fileInsideDir_unzipped_patient) {
+                                        File current_file = new File(docsPatientDirectory_unzipped, filePatient_unzipped);
+                                        String dest_file_patientFolder_targetPath = docsDirectory.getAbsolutePath() + "/" + docsPatientDirectory.getName();
+                                        File dest_file_patientFolder_target = new File(dest_file_patientFolder_targetPath);
+                                        if (!dest_file_patientFolder_target.exists()) {
+                                            dest_file_patientFolder_target.mkdir();
+                                        }
+
+                                        File dest_file = new File(dest_file_patientFolder_target, current_file.getName());
+                                        Utils.copyFile(current_file.getAbsolutePath(), dest_file.getAbsolutePath());
+                                    }
+                                }
+
 
                             } else {
                                 return false;
