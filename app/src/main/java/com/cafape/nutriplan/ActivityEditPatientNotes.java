@@ -23,7 +23,7 @@ import com.cafape.nutriplan.support.Utils;
 
 import org.apache.commons.lang3.StringUtils;
 
-import static com.cafape.nutriplan.Globals.COMMA;
+import static com.cafape.nutriplan.support.Globals.COMMA;
 
 public class ActivityEditPatientNotes extends AppCompatActivity
 {

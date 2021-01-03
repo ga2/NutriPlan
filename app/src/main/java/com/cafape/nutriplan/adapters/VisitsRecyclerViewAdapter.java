@@ -9,10 +9,9 @@ import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.cafape.nutriplan.Globals;
+import com.cafape.nutriplan.support.Globals;
 import com.cafape.nutriplan.R;
 import com.cafape.nutriplan.database.entities.PatientAntropometryEntity;
-import com.cafape.nutriplan.database.entities.PatientEntity;
 import com.cafape.nutriplan.support.Utils;
 
 import java.util.ArrayList;

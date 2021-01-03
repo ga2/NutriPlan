@@ -10,7 +10,7 @@ import com.cafape.nutriplan.support.Utils;
 import java.io.Serializable;
 import java.util.Date;
 
-import static com.cafape.nutriplan.Globals.DATEFORMAT_DISPLAY;
+import static com.cafape.nutriplan.support.Globals.DATEFORMAT_DISPLAY;
 
 @Entity
 public class PatientEntity implements Serializable

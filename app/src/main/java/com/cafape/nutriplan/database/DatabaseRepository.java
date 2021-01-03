@@ -4,7 +4,7 @@ import android.content.Context;
 
 import androidx.room.Room;
 
-import static com.cafape.nutriplan.Globals.DBNAME;
+import static com.cafape.nutriplan.support.Globals.DBNAME;
 
 public class DatabaseRepository
 {

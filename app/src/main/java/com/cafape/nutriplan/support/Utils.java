@@ -1,21 +1,26 @@
 package com.cafape.nutriplan.support;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.net.Uri;
+import android.provider.MediaStore;
 import android.provider.OpenableColumns;
 import android.util.Log;
 import android.widget.DatePicker;
 import android.widget.EditText;
-import android.widget.RadioButton;
 
-import com.cafape.nutriplan.R;
-import com.prolificinteractive.materialcalendarview.CalendarDay;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
+import androidx.loader.content.CursorLoader;
 
 import org.apache.commons.lang3.RandomStringUtils;
 
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -27,7 +32,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 
-import static com.cafape.nutriplan.Globals.LONG_DASH;
+import static com.cafape.nutriplan.support.Globals.LONG_DASH;
 
 public class Utils
 {
@@ -40,6 +45,29 @@ public class Utils
         }
     }
 
+    public static boolean askForPermission(Activity appCompatActivity, String permission, Integer requestCode)
+    {
+        if (ContextCompat.checkSelfPermission(appCompatActivity.getApplicationContext(), permission) != PackageManager.PERMISSION_GRANTED)
+        {
+            // Should we show an explanation?
+            if (ActivityCompat.shouldShowRequestPermissionRationale(appCompatActivity, permission))
+            {
+                //This is called if user has denied the permission before
+                //In this case I am just asking the permission again
+                ActivityCompat.requestPermissions(appCompatActivity, new String[]{permission}, requestCode);
+            }
+            else
+            {
+                ActivityCompat.requestPermissions(appCompatActivity, new String[]{permission}, requestCode);
+            }
+            return false;
+        }
+        else
+        {
+            return true;
+        }
+    }
+
     public static java.util.Date getDateFromDatePicker(DatePicker datePicker){
         int day = datePicker.getDayOfMonth();
         int month = datePicker.getMonth();
@@ -48,6 +76,11 @@ public class Utils
         Calendar calendar = Calendar.getInstance();
         calendar.set(year, month, day);
 
+        return calendar.getTime();
+    }
+
+    public static Date getCurrentTimeStamp() {
+        Calendar calendar = Calendar.getInstance(Locale.getDefault());
         return calendar.getTime();
     }
 
@@ -159,6 +192,7 @@ public class Utils
         try (Cursor cursor = context.getContentResolver().query(uri, null, null, null, null, null)) {
             if (cursor != null && cursor.moveToFirst()) {
                 displayName = cursor.getString(cursor.getColumnIndex(OpenableColumns.DISPLAY_NAME));
+                cursor.close();
             }
         }
         return displayName;
@@ -198,7 +232,12 @@ public class Utils
 
     public static void copyFile(InputStream in, File dst_file) throws IOException {
         OutputStream out = new FileOutputStream(dst_file);
+        copyFile(in, out);
+    }
 
+    public static void copyFile(File src_file, File dst_file) throws IOException {
+        InputStream in = new FileInputStream(src_file);
+        OutputStream out = new FileOutputStream(dst_file);
         copyFile(in, out);
     }
 
@@ -212,5 +251,33 @@ public class Utils
         }
         in.close();
         out.close();
+    }
+
+    public static InputStream convertFileToInputStream(File file) {
+        InputStream is = null;
+        try
+        {
+            is = new FileInputStream(file.getAbsolutePath());
+            //is.close();
+        }
+        catch (FileNotFoundException e)
+        {
+            e.printStackTrace();
+        }
+        return is;
+    }
+
+    public static byte[] convertFileToBytes(InputStream inputStream) throws IOException {
+        byte[] b = new byte[1024];
+        ByteArrayOutputStream os = new ByteArrayOutputStream();
+        int c;
+        while ((c = inputStream.read(b)) != -1) {
+            os.write(b, 0, c);
+        }
+        return os.toByteArray();
+    }
+
+    public static byte[] convertFileToBytes(File file) throws IOException {
+        return convertFileToBytes(convertFileToInputStream(file));
     }
 }

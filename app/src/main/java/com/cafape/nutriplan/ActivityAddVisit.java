@@ -1,7 +1,6 @@
 package com.cafape.nutriplan;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.viewpager.widget.ViewPager;
 
 import android.content.Intent;
 import android.os.AsyncTask;
@@ -17,7 +16,7 @@ import android.widget.Toast;
 import com.cafape.nutriplan.database.DatabaseRepository;
 import com.cafape.nutriplan.database.entities.PatientAntropometryEntity;
 import com.cafape.nutriplan.database.entities.PatientEntity;
-import com.cafape.nutriplan.support.Utils;
+import com.cafape.nutriplan.support.Globals;
 
 import java.text.DecimalFormat;
 

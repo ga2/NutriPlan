@@ -4,13 +4,9 @@ import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 import androidx.room.TypeConverters;
 
-import com.cafape.nutriplan.Globals;
 import com.cafape.nutriplan.database.converters.TimestampConverter;
-import com.cafape.nutriplan.support.Utils;
 
 import java.io.Serializable;
-import java.text.DateFormat;
-import java.util.Calendar;
 import java.util.Date;
 
 @Entity

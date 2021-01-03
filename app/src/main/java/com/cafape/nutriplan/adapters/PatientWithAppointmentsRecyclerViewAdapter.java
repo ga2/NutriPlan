@@ -12,21 +12,16 @@ import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.cafape.nutriplan.R;
-import com.cafape.nutriplan.database.entities.AppointmentEntity;
 import com.cafape.nutriplan.database.entities.PatientEntity;
-import com.cafape.nutriplan.database.entities.PatientWithAppointments;
 import com.cafape.nutriplan.objects.SimplePatientWithAppointment;
 import com.cafape.nutriplan.support.Utils;
 
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Collections;
 import java.util.Date;
 import java.util.List;
-import java.util.ListIterator;
 
-import static com.cafape.nutriplan.Globals.DATEFORMAT_DISPLAY;
-import static com.cafape.nutriplan.Globals.LONG_DASH;
+import static com.cafape.nutriplan.support.Globals.DATEFORMAT_DISPLAY;
+import static com.cafape.nutriplan.support.Globals.LONG_DASH;
 
 public class PatientWithAppointmentsRecyclerViewAdapter extends RecyclerView.Adapter<PatientWithAppointmentsRecyclerViewAdapter.ViewHolder>
 {

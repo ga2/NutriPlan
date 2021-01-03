@@ -1,8 +1,9 @@
-package com.cafape.nutriplan;
+package com.cafape.nutriplan.support;
 
 public class Globals
 {
     public static final String DBNAME = "NutriPlanDB";
+    public static final String EXTENSIONE_BACKUP = "nutr";
 
     public static final String DOCUMENT_FOLDER_NAME = "Documents";
 
@@ -15,6 +16,8 @@ public class Globals
     public static final String TIMEFORMAT = "HH:mm";
     public static final String DATEFORMAT_DISPLAY = "dd/MM/yyyy";
     public static final String DATETIMEFORMAT_DISPLAY = "dd/MM/yyyy HH:mm";
+    public static final String FORMAT_DATE_SAVEDB = "yyyyMMdd_HHmm";
+
 
     public static final String MIME_PDF = "application/pdf";
     public static final String MIME_JPG = "image/jpeg";
@@ -29,6 +32,11 @@ public class Globals
     public static final int REQCODE_EDITAPPOINTMENT = 102;
     public static final int REQCODE_NEWVISIT = 103;
     public static final int REQCODE_EDITPATIENTNOTES = 104;
-    public static final int REQUEST_CODE_LOADFILE = 105;
+    public static final int REQCODE_LOADFILE = 105;
+    public static final int REQCODE_WRITEFILE = 106;
+    public static final int REQCODE_OVERWRITEDB = 107;
+
+
+    public static final int PERMISSION_WRITEEXTERNALSTORAGE = 200;
 
 }

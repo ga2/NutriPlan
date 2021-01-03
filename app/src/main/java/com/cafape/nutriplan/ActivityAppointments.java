@@ -13,20 +13,16 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.provider.CalendarContract;
 import android.text.style.ForegroundColorSpan;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.cafape.nutriplan.adapters.AppointmentsAndPatientsRecyclerViewAdapter;
-import com.cafape.nutriplan.adapters.PatientWithAppointmentsRecyclerViewAdapter;
 import com.cafape.nutriplan.database.DatabaseRepository;
 import com.cafape.nutriplan.database.entities.AppointmentEntity;
 import com.cafape.nutriplan.database.entities.PatientEntity;
-import com.cafape.nutriplan.database.entities.PatientWithAppointments;
 import com.cafape.nutriplan.objects.SimpleAppointment;
-import com.cafape.nutriplan.objects.SimplePatientWithAppointment;
 import com.cafape.nutriplan.support.AlertBuilderUtils;
 import com.cafape.nutriplan.support.Utils;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -38,7 +34,6 @@ import com.prolificinteractive.materialcalendarview.OnDateSelectedListener;
 import com.prolificinteractive.materialcalendarview.OnMonthChangedListener;
 
 import java.io.Serializable;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -47,15 +42,11 @@ import java.util.List;
 import java.util.Locale;
 
 import org.threeten.bp.LocalDate;
-import org.threeten.bp.format.DateTimeFormatter;
 import org.threeten.bp.format.TextStyle;
 
-import static com.cafape.nutriplan.Globals.DATEFORMAT;
-import static com.cafape.nutriplan.Globals.REQCODE_EDITAPPOINTMENT;
-import static com.cafape.nutriplan.Globals.REQCODE_NEWAPPOINTMENT_ADDED;
-import static com.cafape.nutriplan.Globals.REQCODE_NEWPATIENT_ADDED;
-import static com.cafape.nutriplan.Globals.TIMEFORMAT;
-import static com.cafape.nutriplan.support.Utils.myprint;
+import static com.cafape.nutriplan.support.Globals.DATEFORMAT;
+import static com.cafape.nutriplan.support.Globals.REQCODE_EDITAPPOINTMENT;
+import static com.cafape.nutriplan.support.Globals.REQCODE_NEWAPPOINTMENT_ADDED;
 
 public class ActivityAppointments extends AppCompatActivity
 {

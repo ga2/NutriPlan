@@ -1,6 +1,6 @@
 package com.cafape.nutriplan.objects;
 
-import com.cafape.nutriplan.Globals;
+import com.cafape.nutriplan.support.Globals;
 import com.cafape.nutriplan.database.entities.AppointmentEntity;
 import com.cafape.nutriplan.support.Utils;
 
@@ -8,7 +8,7 @@ import java.io.Serializable;
 import java.util.Calendar;
 import java.util.Date;
 
-import static com.cafape.nutriplan.Globals.TIMEFORMAT;
+import static com.cafape.nutriplan.support.Globals.TIMEFORMAT;
 
 public class SimpleAppointment implements Serializable
 {

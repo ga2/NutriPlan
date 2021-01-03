@@ -12,7 +12,7 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 
 import com.cafape.nutriplan.ActivityPatientAccount;
-import com.cafape.nutriplan.Globals;
+import com.cafape.nutriplan.support.Globals;
 import com.cafape.nutriplan.R;
 import com.cafape.nutriplan.database.entities.PatientAntropometryEntity;
 import com.cafape.nutriplan.support.Utils;

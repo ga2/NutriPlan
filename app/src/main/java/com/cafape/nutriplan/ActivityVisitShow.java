@@ -12,6 +12,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.cafape.nutriplan.database.entities.PatientAntropometryEntity;
+import com.cafape.nutriplan.support.Globals;
 import com.cafape.nutriplan.support.Utils;
 
 public class ActivityVisitShow extends AppCompatActivity

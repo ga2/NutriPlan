@@ -240,6 +240,4 @@ public class Fragment_AddPatient_Antropometry extends Fragment
             alert_bmi.show();
         });
     }
-
-
 }

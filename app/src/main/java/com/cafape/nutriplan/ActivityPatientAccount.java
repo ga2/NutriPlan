@@ -16,6 +16,7 @@ import com.cafape.nutriplan.database.entities.PatientAntropometryEntity;
 import com.cafape.nutriplan.database.entities.PatientEntity;
 import com.cafape.nutriplan.objects.SimplePatientWithAppointment;
 import com.cafape.nutriplan.support.AlertBuilderUtils;
+import com.cafape.nutriplan.support.Globals;
 import com.cafape.nutriplan.support.Utils;
 import com.google.android.material.tabs.TabLayout;
 
@@ -34,12 +35,12 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.cafape.nutriplan.Globals.MIME_JPG;
-import static com.cafape.nutriplan.Globals.MIME_PDF;
-import static com.cafape.nutriplan.Globals.MIME_PNG;
-import static com.cafape.nutriplan.Globals.REQCODE_EDITPATIENTNOTES;
-import static com.cafape.nutriplan.Globals.REQCODE_NEWVISIT;
-import static com.cafape.nutriplan.Globals.REQUEST_CODE_LOADFILE;
+import static com.cafape.nutriplan.support.Globals.MIME_JPG;
+import static com.cafape.nutriplan.support.Globals.MIME_PDF;
+import static com.cafape.nutriplan.support.Globals.MIME_PNG;
+import static com.cafape.nutriplan.support.Globals.REQCODE_EDITPATIENTNOTES;
+import static com.cafape.nutriplan.support.Globals.REQCODE_NEWVISIT;
+import static com.cafape.nutriplan.support.Globals.REQCODE_LOADFILE;
 
 public class ActivityPatientAccount extends AppCompatActivity
 {
@@ -82,7 +83,7 @@ public class ActivityPatientAccount extends AppCompatActivity
 
                 getPatientAnamnesis(0);
             }
-        } else if(requestCode == REQUEST_CODE_LOADFILE) {
+        } else if(requestCode == REQCODE_LOADFILE) {
             if (resultCode == RESULT_OK) {
                 if (data != null) {
                     Uri uri = data.getData();
@@ -320,7 +321,7 @@ public class ActivityPatientAccount extends AppCompatActivity
         String [] mimeTypes = {MIME_JPG, MIME_PDF, MIME_PNG};
         intent.setType("*/*");
         intent.putExtra(Intent.EXTRA_MIME_TYPES, mimeTypes);
-        startActivityForResult(intent, REQUEST_CODE_LOADFILE);
+        startActivityForResult(intent, REQCODE_LOADFILE);
     }
 
     public void deleteFileEntity(FileEntity fileEntity) {

@@ -5,7 +5,6 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
@@ -26,15 +25,10 @@ import com.cafape.nutriplan.database.entities.AppointmentEntity;
 import com.cafape.nutriplan.database.entities.PatientEntity;
 import com.cafape.nutriplan.database.entities.PatientWithAppointments;
 import com.cafape.nutriplan.objects.SimpleAppointment;
-import com.cafape.nutriplan.support.AlertBuilderUtils;
-import com.cafape.nutriplan.support.Utils;
+import com.cafape.nutriplan.support.Globals;
 
-import java.text.SimpleDateFormat;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
@@ -42,10 +36,7 @@ import java.util.Locale;
 import org.threeten.bp.LocalDate;
 import org.threeten.bp.format.TextStyle;
 
-import kotlinx.coroutines.GlobalScope;
-
-import static com.cafape.nutriplan.Globals.COLON;
-import static com.cafape.nutriplan.Globals.COMMA;
+import static com.cafape.nutriplan.support.Globals.COMMA;
 
 public class ActivityAddAppointment extends AppCompatActivity
 {

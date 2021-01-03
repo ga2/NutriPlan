@@ -8,7 +8,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.TimeZone;
 
-import static com.cafape.nutriplan.Globals.DATETIMEFORMAT;
+import static com.cafape.nutriplan.support.Globals.DATETIMEFORMAT;
 
 public class TimestampConverter
 {

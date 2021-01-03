@@ -19,7 +19,6 @@ import android.view.View;
 import android.widget.SearchView;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.widget.Toolbar;
 
 import com.cafape.nutriplan.adapters.PatientWithAppointmentsRecyclerViewAdapter;
 import com.cafape.nutriplan.adapters.PatientsRecyclerViewAdapter;
@@ -34,7 +33,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
-import static com.cafape.nutriplan.Globals.REQCODE_NEWPATIENT_ADDED;
+import static com.cafape.nutriplan.support.Globals.REQCODE_NEWPATIENT_ADDED;
 
 public class ActivityPatients extends AppCompatActivity
 {

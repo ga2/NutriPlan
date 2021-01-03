@@ -15,10 +15,9 @@ import android.widget.TextView;
 import com.cafape.nutriplan.R;
 import com.cafape.nutriplan.support.Utils;
 
-import java.text.DecimalFormat;
 import java.util.regex.Pattern;
 
-import static com.cafape.nutriplan.Globals.LONG_DASH;
+import static com.cafape.nutriplan.support.Globals.LONG_DASH;
 
 /**
  * A simple {@link Fragment} subclass.

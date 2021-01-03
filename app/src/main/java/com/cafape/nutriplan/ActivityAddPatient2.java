@@ -3,14 +3,11 @@ package com.cafape.nutriplan;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
-import android.widget.Button;
-import android.widget.RadioButton;
 import android.widget.Toast;
 
 import com.cafape.nutriplan.database.DatabaseRepository;
@@ -18,12 +15,8 @@ import com.cafape.nutriplan.database.entities.PatientAnamnesisEntity;
 import com.cafape.nutriplan.database.entities.PatientAntropometryEntity;
 import com.cafape.nutriplan.database.entities.PatientEntity;
 import com.cafape.nutriplan.ui.main.SectionsPagerAdapter_addpatient;
-import com.cafape.nutriplan.ui.main.SectionsPagerAdapter_calc;
 
 import java.text.DecimalFormat;
-
-import static com.cafape.nutriplan.Globals.LONG_DASH;
-import static com.cafape.nutriplan.support.Utils.myprint;
 
 public class ActivityAddPatient2 extends AppCompatActivity
 {

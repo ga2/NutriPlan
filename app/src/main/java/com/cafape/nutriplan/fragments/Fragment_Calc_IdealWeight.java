@@ -18,7 +18,7 @@ import com.cafape.nutriplan.R;
 
 import java.util.regex.Pattern;
 
-import static com.cafape.nutriplan.Globals.LONG_DASH;
+import static com.cafape.nutriplan.support.Globals.LONG_DASH;
 
 /**
  * A simple {@link Fragment} subclass.

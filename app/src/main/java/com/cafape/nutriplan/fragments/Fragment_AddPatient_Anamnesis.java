@@ -20,7 +20,7 @@ import com.cafape.nutriplan.database.entities.PatientEntity;
 
 import org.apache.commons.lang3.StringUtils;
 
-import static com.cafape.nutriplan.Globals.COMMA;
+import static com.cafape.nutriplan.support.Globals.COMMA;
 
 /**
  * A simple {@link Fragment} subclass.

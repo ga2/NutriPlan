@@ -28,6 +28,8 @@
     <string name="edited">Modificato</string>
     <string name="edit">Modifica</string>
     <string name="export_nutr">Esporta</string>
+    <string name="loading">Caricamento...</string>
+    <string name="loading_complete">Caricamento completato</string>
     <string name="export_description">Crea e salva un file .nutr che racchiude tutti i dati di Nutriplan.</string>
     <string name="import_nutr">Ripristina</string>
     <string name="import_description">Seleziona il file .nutr dal tablet per importare dati. Tutti i dati attualmente sul tablet verranno sovrascritti.</string>
@@ -70,6 +72,10 @@
     <string name="title_activity_patientaccount_visit_new">Scheda paziente - nuova visita</string>
 
     <!-- END Activity titles -->
+
+    <!-- START ActivityMenu -->
+    <string name="activitymenu_string_importing_failed">Ripristino fallito. Verifica la validità del file.</string>
+    <!-- END ActivityMenu -->
 
     <!-- START Activity_calc -->
 
