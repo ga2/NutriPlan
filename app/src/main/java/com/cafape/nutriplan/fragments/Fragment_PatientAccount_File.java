@@ -73,7 +73,6 @@ public class Fragment_PatientAccount_File extends Fragment
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View layout = inflater.inflate(R.layout.fragment_patientaccount_files, container, false);
         setUiComponents(layout);
-        setListeners(layout);
         return layout;
     }
 
@@ -109,19 +108,6 @@ public class Fragment_PatientAccount_File extends Fragment
             }
         });
     }
-
-    public void setListeners(View layout) {
-       /* activityaddpatient_button_backto2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                ViewPager viewPager = getActivity().findViewById(R.id.view_pager);
-                viewPager.setCurrentItem(1);
-            }
-        });
-
-        */
-    }
-
 
     public String getStringFromEditText(EditText editText) {
         return editText.getText().toString();

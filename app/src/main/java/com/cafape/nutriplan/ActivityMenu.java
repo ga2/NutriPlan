@@ -25,10 +25,6 @@ import com.cafape.nutriplan.support.Zipper;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.Arrays;
 
 import static com.cafape.nutriplan.support.Globals.DBNAME;
 import static com.cafape.nutriplan.support.Globals.EXTENSIONE_BACKUP;
@@ -36,7 +32,6 @@ import static com.cafape.nutriplan.support.Globals.FORMAT_DATE_SAVEDB;
 import static com.cafape.nutriplan.support.Globals.PERMISSION_WRITEEXTERNALSTORAGE;
 import static com.cafape.nutriplan.support.Globals.REQCODE_OVERWRITEDB;
 import static com.cafape.nutriplan.support.Globals.REQCODE_WRITEFILE;
-import static com.cafape.nutriplan.support.Utils.myprint;
 
 public class ActivityMenu extends AppCompatActivity
 {
@@ -124,7 +119,7 @@ public class ActivityMenu extends AppCompatActivity
                 ImageView dialogimportexport_imageButton_export = view_importexport.findViewById(R.id.dialogimportexport_imageButton_export);
                 dialogimportexport_imageButton_export.setOnClickListener(view_export ->
                 {
-                    initializeEmptyDBFile();
+                    initializeEmptyBackupile();
                 });
                 ImageView dialogimportexport_imageButton_import = view_importexport.findViewById(R.id.dialogimportexport_imageButton_import);
                 dialogimportexport_imageButton_import.setOnClickListener(view_import ->
@@ -138,7 +133,7 @@ public class ActivityMenu extends AppCompatActivity
         });
     }
 
-    public void initializeEmptyDBFile() {
+    public void initializeEmptyBackupile() {
         if((Utils.askForPermission(ActivityMenu.this, Manifest.permission.WRITE_EXTERNAL_STORAGE, PERMISSION_WRITEEXTERNALSTORAGE))) {
             Intent intent = new Intent(Intent.ACTION_CREATE_DOCUMENT);
 
@@ -154,6 +149,7 @@ public class ActivityMenu extends AppCompatActivity
 
         //todo chiedere di abilitare
         //todo abiitare e proseguire
+        //todo chiuedere alla fine
     }
 
     public void writeDBFile(Uri uri) {
@@ -170,11 +166,15 @@ public class ActivityMenu extends AppCompatActivity
                 try {
                     ParcelFileDescriptor pfd = getContentResolver().openFileDescriptor(uri, "w");
                     if(pfd != null) {
+                        //DB SECTION
                         File fileDatabase = context.getDatabasePath(DBNAME);
                         String fileDatabasePath = fileDatabase.getAbsolutePath();
                         String fileDatabasePath_shm = fileDatabasePath + "-shm";
                         String fileDatabasePath_wal = fileDatabasePath + "-wal";
-                        String[] filesPaths_toZip = new String[] {fileDatabasePath, fileDatabasePath_shm, fileDatabasePath_wal};
+                        //FILES SECTIONS
+                        File docsDirectory = new File(context.getFilesDir(), Globals.DOCUMENT_FOLDER_NAME);
+                        String[] filesPaths_toZip = new String[] {fileDatabasePath, fileDatabasePath_shm, fileDatabasePath_wal, docsDirectory.getAbsolutePath()};
+                        //String[] filesPaths_toZip = new String[] {fileDatabasePath, fileDatabasePath_shm, fileDatabasePath_wal};
                         Zipper.zip(filesPaths_toZip, new FileOutputStream(pfd.getFileDescriptor()));
                         return true;
                     }
@@ -234,6 +234,8 @@ public class ActivityMenu extends AppCompatActivity
                                 Utils.copyFile(db_cached_base, fileDatabasePath);
                                 Utils.copyFile(db_cached_base_shm, fileDatabasePath_shm);
                                 Utils.copyFile(db_cached_base_wal, fileDatabasePath_wal);
+
+                                ///copyfolder
 
                             } else {
                                 return false;

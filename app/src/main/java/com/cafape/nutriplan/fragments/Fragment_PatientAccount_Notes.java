@@ -131,7 +131,9 @@ public class Fragment_PatientAccount_Notes extends Fragment
             yesfood = yesfood + getString(R.string.activityaddpatient_string_prostatitis_food_y) + COMMA;
             nofood = nofood + getString(R.string.activityaddpatient_string_prostatitis_food_n) + COMMA;
         }
-        pathologies = pathologies.substring(0, pathologies.length() - 2);
+        if(pathologies.length() >= 2) {
+            pathologies = pathologies.substring(0, pathologies.length() - 2);
+        }
         activitypatientaccount_textView_yesfood.setText(StringUtils.stripEnd(StringUtils.strip(yesfood.replace(", ,", ",")), COMMA));
         activitypatientaccount_textView_nofood.setText(StringUtils.stripEnd(StringUtils.strip(nofood.replace(", ,", ",")), COMMA));
 
