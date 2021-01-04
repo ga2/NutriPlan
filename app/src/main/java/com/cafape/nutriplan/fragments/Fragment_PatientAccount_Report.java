@@ -144,13 +144,13 @@ public class Fragment_PatientAccount_Report extends Fragment
             fragmentpatientaccount_report_currentweist.setText(String.valueOf(activityPatientAccount_antropometry_last.getWeist()));
             float difference_weist = activityPatientAccount_antropometry_first.getWeist() - activityPatientAccount_antropometry_last.getWeist();
             String res_weist = String.valueOf(difference_weist) + " " + Globals.CENTIMETRES;
-            ConstraintLayout fragmentpatientaccount_report_contraintlayout_roundresult_weist = layout.findViewById(R.id.fragmentpatientaccount_report_contraintlayout_roundresult_weist);
+            /*ConstraintLayout fragmentpatientaccount_report_contraintlayout_roundresult_weist = layout.findViewById(R.id.fragmentpatientaccount_report_contraintlayout_roundresult_weist);
             if (difference_weist > 0) {
                 fragmentpatientaccount_report_contraintlayout_roundresult_weist.setBackground(context.getDrawable(R.drawable.circle_stroke_red));
             }
             else if (difference_weist == 0) {
                 fragmentpatientaccount_report_contraintlayout_roundresult_weist.setBackground(context.getDrawable(R.drawable.circle_stroke_yellow));
-            }
+            }*/
             TextView fragmentpatientaccount_report_contraintlayout_roundresult_weist_value = layout.findViewById(R.id.fragmentpatientaccount_report_contraintlayout_roundresult_weist_value);
             fragmentpatientaccount_report_contraintlayout_roundresult_weist_value.setText(res_weist);
 
@@ -164,13 +164,13 @@ public class Fragment_PatientAccount_Report extends Fragment
             fragmentpatientaccount_report_currenthips.setText(String.valueOf(activityPatientAccount_antropometry_last.getHips()));
             float difference_hips = activityPatientAccount_antropometry_first.getHips() - activityPatientAccount_antropometry_last.getHips();
             String res_hips = String.valueOf(difference_hips) + " " + Globals.CENTIMETRES;
-            ConstraintLayout fragmentpatientaccount_report_contraintlayout_roundresult_hips = layout.findViewById(R.id.fragmentpatientaccount_report_contraintlayout_roundresult_hips);
+            /*ConstraintLayout fragmentpatientaccount_report_contraintlayout_roundresult_hips = layout.findViewById(R.id.fragmentpatientaccount_report_contraintlayout_roundresult_hips);
             if (difference_hips > 0) {
                 fragmentpatientaccount_report_contraintlayout_roundresult_hips.setBackground(context.getDrawable(R.drawable.circle_stroke_red));
             }
             else if (difference_hips == 0) {
                 fragmentpatientaccount_report_contraintlayout_roundresult_hips.setBackground(context.getDrawable(R.drawable.circle_stroke_yellow));
-            }
+            }*/
             TextView fragmentpatientaccount_report_contraintlayout_roundresult_hips_value = layout.findViewById(R.id.fragmentpatientaccount_report_contraintlayout_roundresult_hips_value);
             fragmentpatientaccount_report_contraintlayout_roundresult_hips_value.setText(res_hips);
 
@@ -185,13 +185,15 @@ public class Fragment_PatientAccount_Report extends Fragment
             fragmentpatientaccount_report_currentarm.setText(String.valueOf(activityPatientAccount_antropometry_last.getArm()));
             float difference_arm = activityPatientAccount_antropometry_first.getArm() - activityPatientAccount_antropometry_last.getArm();
             String res_arm = String.valueOf(difference_arm) + " " + Globals.CENTIMETRES;
-            ConstraintLayout fragmentpatientaccount_report_contraintlayout_roundresult_arm = layout.findViewById(R.id.fragmentpatientaccount_report_contraintlayout_roundresult_arm);
+            /*ConstraintLayout fragmentpatientaccount_report_contraintlayout_roundresult_arm = layout.findViewById(R.id.fragmentpatientaccount_report_contraintlayout_roundresult_arm);
             if (difference_arm > 0) {
                 fragmentpatientaccount_report_contraintlayout_roundresult_arm.setBackground(context.getDrawable(R.drawable.circle_stroke_red));
             }
             else if (difference_arm == 0) {
                 fragmentpatientaccount_report_contraintlayout_roundresult_arm.setBackground(context.getDrawable(R.drawable.circle_stroke_yellow));
             }
+
+             */
             TextView fragmentpatientaccount_report_contraintlayout_roundresult_arm_value = layout.findViewById(R.id.fragmentpatientaccount_report_contraintlayout_roundresult_arm_value);
             fragmentpatientaccount_report_contraintlayout_roundresult_arm_value.setText(res_arm);
 
@@ -206,13 +208,13 @@ public class Fragment_PatientAccount_Report extends Fragment
             fragmentpatientaccount_report_currentbelly.setText(String.valueOf(activityPatientAccount_antropometry_last.getBelly()));
             float difference_belly = activityPatientAccount_antropometry_first.getBelly() - activityPatientAccount_antropometry_last.getBelly();
             String res_belly = String.valueOf(difference_belly) + " " + Globals.CENTIMETRES;
-            ConstraintLayout fragmentpatientaccount_report_contraintlayout_roundresult_belly = layout.findViewById(R.id.fragmentpatientaccount_report_contraintlayout_roundresult_belly);
+            /*ConstraintLayout fragmentpatientaccount_report_contraintlayout_roundresult_belly = layout.findViewById(R.id.fragmentpatientaccount_report_contraintlayout_roundresult_belly);
             if (difference_belly > 0) {
                 fragmentpatientaccount_report_contraintlayout_roundresult_belly.setBackground(context.getDrawable(R.drawable.circle_stroke_red));
             }
             else if (difference_belly == 0) {
                 fragmentpatientaccount_report_contraintlayout_roundresult_belly.setBackground(context.getDrawable(R.drawable.circle_stroke_yellow));
-            }
+            }*/
             TextView fragmentpatientaccount_report_contraintlayout_roundresult_belly_value = layout.findViewById(R.id.fragmentpatientaccount_report_contraintlayout_roundresult_belly_value);
             fragmentpatientaccount_report_contraintlayout_roundresult_belly_value.setText(res_belly);
 
@@ -226,13 +228,13 @@ public class Fragment_PatientAccount_Report extends Fragment
             fragmentpatientaccount_report_currentleg.setText(String.valueOf(activityPatientAccount_antropometry_last.getLeg()));
             float difference_leg = activityPatientAccount_antropometry_first.getLeg() - activityPatientAccount_antropometry_last.getLeg();
             String res_leg = String.valueOf(difference_leg) + " " + Globals.CENTIMETRES;
-            ConstraintLayout fragmentpatientaccount_report_contraintlayout_roundresult_leg = layout.findViewById(R.id.fragmentpatientaccount_report_contraintlayout_roundresult_leg);
+            /*ConstraintLayout fragmentpatientaccount_report_contraintlayout_roundresult_leg = layout.findViewById(R.id.fragmentpatientaccount_report_contraintlayout_roundresult_leg);
             if (difference_leg > 0) {
                 fragmentpatientaccount_report_contraintlayout_roundresult_leg.setBackground(context.getDrawable(R.drawable.circle_stroke_red));
             }
             else if (difference_leg == 0) {
                 fragmentpatientaccount_report_contraintlayout_roundresult_leg.setBackground(context.getDrawable(R.drawable.circle_stroke_yellow));
-            }
+            }*/
             TextView fragmentpatientaccount_report_contraintlayout_roundresult_leg_value = layout.findViewById(R.id.fragmentpatientaccount_report_contraintlayout_roundresult_leg_value);
             fragmentpatientaccount_report_contraintlayout_roundresult_leg_value.setText(res_leg);
     }

@@ -295,7 +295,7 @@
                     android:layout_height="72dp"
                     android:layout_marginStart="@dimen/dim_margin_highest"
                     android:layout_marginTop="@dimen/dim_margin_normal"
-                    android:background="@drawable/circle_stroke_green">
+                    android:background="@drawable/circle_stroke_grey">
 
                     <TextView
                         android:id="@+id/fragmentpatientaccount_report_contraintlayout_roundresult_weist_value"
@@ -435,7 +435,7 @@
                     android:layout_height="72dp"
                     android:layout_marginStart="@dimen/dim_margin_highest"
                     android:layout_marginTop="@dimen/dim_margin_normal"
-                    android:background="@drawable/circle_stroke_green">
+                    android:background="@drawable/circle_stroke_grey">
 
                     <TextView
                         android:id="@+id/fragmentpatientaccount_report_contraintlayout_roundresult_hips_value"
@@ -572,7 +572,7 @@
                     android:layout_height="72dp"
                     android:layout_marginStart="@dimen/dim_margin_highest"
                     android:layout_marginTop="@dimen/dim_margin_normal"
-                    android:background="@drawable/circle_stroke_green">
+                    android:background="@drawable/circle_stroke_grey">
 
                     <TextView
                         android:id="@+id/fragmentpatientaccount_report_contraintlayout_roundresult_arm_value"
@@ -709,7 +709,7 @@
                     android:layout_height="72dp"
                     android:layout_marginStart="@dimen/dim_margin_highest"
                     android:layout_marginTop="@dimen/dim_margin_normal"
-                    android:background="@drawable/circle_stroke_green">
+                    android:background="@drawable/circle_stroke_grey">
 
                     <TextView
                         android:id="@+id/fragmentpatientaccount_report_contraintlayout_roundresult_belly_value"
@@ -846,7 +846,7 @@
                     android:layout_height="72dp"
                     android:layout_marginStart="@dimen/dim_margin_highest"
                     android:layout_marginTop="@dimen/dim_margin_normal"
-                    android:background="@drawable/circle_stroke_green">
+                    android:background="@drawable/circle_stroke_grey">
 
                     <TextView
                         android:id="@+id/fragmentpatientaccount_report_contraintlayout_roundresult_leg_value"

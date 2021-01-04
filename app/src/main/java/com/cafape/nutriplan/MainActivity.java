@@ -39,20 +39,6 @@ public class MainActivity extends AppCompatActivity
     //todo responsiveness 7
     //todo casetta 8
 
-    /////////////////////////////////////
-//    - Implemented MBI and BAI tables in new visit
-//- Fix bug in deletion of new appointment
-//- add appointment also without patients registered
-
-//- Fixed time format when adding appointment
-//- Added non-empty patient name when adding an appointment
-// - Add title to edit note in the bar
-// - Blocked editing of an appointment of a user not recorded
-
-    // -  Fixed multiplication of yes/no food in notes
-    // - Added indices to the note tab
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
