@@ -40,9 +40,14 @@ public class MainActivity extends AppCompatActivity
     //todo casetta 8
 
     /////////////////////////////////////
-    // fix pulsanti BAI e BMI in nuova visita
-    // fix eliminazione nuovo appuntamento senza paziente
-    // add appointment also without patients registered
+//    - Implemented MBI and BAI tables in new visit
+//- Fix bug in deletion of new appointment
+//- add appointment also without patients registered
+
+//- Fixed time format when adding appointment
+//- Added non-empty patient name when adding an appointment
+// - Add title to edit note in the bar
+// - Blocked editing of an appointment of a user not recorded
 
 
     @Override

@@ -69,6 +69,7 @@
     <string name="title_activity_appointments">Appointments</string>
     <string name="title_activity_importexport">Backup/restore</string>
     <string name="title_activity_patientaccount">Patient data</string>
+    <string name="title_activity_patient_editnotes">Edit notes</string>
     <string name="title_activity_patientaccount_visit">Patient data - visit</string>
     <string name="title_activity_patientaccount_visit_new">Patient data - new visit</string>
 
@@ -196,6 +197,7 @@
     <string name="activityappointments_string_nodata_details">Add an appointment</string>
     <string name="activityappointments_string_alertMessage_deleteappointment">Confirm the deletion of the appointment?</string>
     <string name="activityappointments_string_alertMessage_blockopening">It is not possible to add an appointment without patients.</string>
+    <string name="activityappointments_string_alertMessage_blockediting">It is not possible to edit an appointment of an unregistered patient. Please delete and re-create the appointment with the new information.</string>
 
     <!-- END Activity_appointments -->
 
@@ -203,6 +205,7 @@
 
     <string name="activityaddappointment_string_addPatient">Patient name</string>
     <string name="activityaddappointment_string_alertMessage_formCheck_name">\n• Select the patient from the list</string>
+    <string name="activityaddappointment_string_alertMessage_nopatienttyped">It is not possible to add an appointment without a patient.</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_patient_account">ActivityPatientAccount</string>
     <string name="tab_text_1">Tab 1</string>

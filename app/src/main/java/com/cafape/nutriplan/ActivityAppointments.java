@@ -221,16 +221,23 @@ public class ActivityAppointments extends AppCompatActivity
                 appointmentsRecyclerViewAdapter.setEditAppointmentClickListener(new AppointmentsAndPatientsRecyclerViewAdapter.EditAppointmentClickListener() {
                     @Override
                     public void onItemClick(SimpleAppointment appointment_toEdit) {
-                        Bundle args = new Bundle();
-                        args.putSerializable("arrayList", (Serializable)arrayList_appointmentEntity_ofTheDay);
-                        LocalDate dateSelected = activityappointments_calendarView.getSelectedDate().getDate();
-                        args.putSerializable("dateSelected", (Serializable)dateSelected);
-                        args.putSerializable("appointmentToEdit", (Serializable)appointment_toEdit);
-                        args.putSerializable("editMode", true);
+                        if (appointment_toEdit.getPatientID() > 0) {
+                            Bundle args = new Bundle();
+                            args.putSerializable("arrayList", (Serializable) arrayList_appointmentEntity_ofTheDay);
+                            LocalDate dateSelected = activityappointments_calendarView.getSelectedDate().getDate();
+                            args.putSerializable("dateSelected", (Serializable) dateSelected);
+                            args.putSerializable("appointmentToEdit", (Serializable) appointment_toEdit);
+                            args.putSerializable("editMode", true);
 
-                        Intent intent_goToActivity = new Intent(context, ActivityAddAppointment.class);
-                        intent_goToActivity.putExtra("appointmentsOfTheDay", args);
-                        startActivityForResult(intent_goToActivity, REQCODE_EDITAPPOINTMENT);
+                            Intent intent_goToActivity = new Intent(context, ActivityAddAppointment.class);
+                            intent_goToActivity.putExtra("appointmentsOfTheDay", args);
+                            startActivityForResult(intent_goToActivity, REQCODE_EDITAPPOINTMENT);
+                        } else {
+                            AlertDialog.Builder builder = AlertBuilderUtils.BuildAlert(ActivityAppointments.this, R.string.warning, R.string.activityappointments_string_alertMessage_blockediting);
+                            builder.setNegativeButton(R.string.back, null);
+                            AlertDialog alertDialog = builder.create();
+                            alertDialog.show();
+                        }
                     }
                 });
 

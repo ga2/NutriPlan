@@ -5,6 +5,7 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
@@ -25,6 +26,7 @@ import com.cafape.nutriplan.database.entities.AppointmentEntity;
 import com.cafape.nutriplan.database.entities.PatientEntity;
 import com.cafape.nutriplan.database.entities.PatientWithAppointments;
 import com.cafape.nutriplan.objects.SimpleAppointment;
+import com.cafape.nutriplan.support.AlertBuilderUtils;
 import com.cafape.nutriplan.support.Globals;
 
 import java.util.ArrayList;
@@ -84,8 +86,6 @@ public class ActivityAddAppointment extends AppCompatActivity
         setListeners(simpleAppointment_toEdit);
     }
 
-    //todo non aprire se non ci sono pazienti
-
     public void setUiComponents() {
         activityaddappointment_timePicker = findViewById(R.id.activityaddappointment_timePicker);
         activityaddappointment_timePicker.setIs24HourView(true);
@@ -101,12 +101,21 @@ public class ActivityAddAppointment extends AppCompatActivity
             @Override
             public void onClick(View view) {
                 String patientString = activityaddappointment_autocompleteTextView.getText().toString();
-                int patientPosition = activityaddappointment_adapter_patients.getPosition(patientString);
-                if(patientPosition > - 1) {
-                    patientEntity_toInsert = activityaddappontment_hashMap_patients.get(patientString);
-                    saveAppointment(activityaddappointment_timePicker.getHour(), activityaddappointment_timePicker.getMinute(), activityaddappointment_localDate, activityaddappointment_editText_visitReason.getText().toString(), patientEntity_toInsert.getPatiendID(), patientString);
+                if(!patientString.isEmpty()) {
+                    int patientPosition = activityaddappointment_adapter_patients.getPosition(patientString);
+                    if (patientPosition > -1) {
+                        patientEntity_toInsert = activityaddappontment_hashMap_patients.get(patientString);
+                        saveAppointment(activityaddappointment_timePicker.getHour(), activityaddappointment_timePicker.getMinute(), activityaddappointment_localDate, activityaddappointment_editText_visitReason.getText().toString(), patientEntity_toInsert.getPatiendID(), patientString);
+                    }
+                    else {
+                        saveAppointment(activityaddappointment_timePicker.getHour(), activityaddappointment_timePicker.getMinute(), activityaddappointment_localDate, activityaddappointment_editText_visitReason.getText().toString(), 0, patientString);
+                    }
                 } else {
-                    saveAppointment(activityaddappointment_timePicker.getHour(), activityaddappointment_timePicker.getMinute(), activityaddappointment_localDate, activityaddappointment_editText_visitReason.getText().toString(), 0, patientString);
+                    String message = context.getString(R.string.activityaddappointment_string_alertMessage_nopatienttyped);
+                    AlertDialog.Builder builder = AlertBuilderUtils.BuildAlert(ActivityAddAppointment.this, R.string.error, message);
+                    builder.setPositiveButton(R.string.back, null);
+                    AlertDialog alertDialog = builder.create();
+                    alertDialog.show();
                 }
             }
         });
@@ -181,6 +190,7 @@ public class ActivityAddAppointment extends AppCompatActivity
             @Override
             protected void onPostExecute(PatientEntity patient) {
                 super.onPostExecute(patient);
+                //todo crash su paziente non creato
                 activityaddappointment_autocompleteTextView.setText(patient.getNameSurnameBday(getString(R.string.of_the)));
             }
         }
@@ -247,7 +257,11 @@ public class ActivityAddAppointment extends AppCompatActivity
                 if(patient_id > 0) {
                     appointmentEntity = new AppointmentEntity(calendar.getTime(), visitReason, patient_id);
                 } else {
-                    appointmentEntity = new AppointmentEntity(calendar.getTime(), getHourFormatted(hour, minutes) + Globals.LONG_DASH + " " + patient_info + COMMA + visitReason, 0);
+                    String target_visit_reason = "";
+                    if(!visitReason.isEmpty()) {
+                        target_visit_reason = COMMA + visitReason;
+                    }
+                    appointmentEntity = new AppointmentEntity(calendar.getTime(), getHourFormatted(hour, minutes) + Globals.LONG_DASH + " " + patient_info + target_visit_reason, 0);
                 }
                 long newID = DatabaseRepository.getInstance(getApplicationContext()).getAppDatabase().appointmentDao().insert(appointmentEntity);
                 appointmentEntity.setAppointmentID(newID);
@@ -320,7 +334,6 @@ public class ActivityAddAppointment extends AppCompatActivity
     }
 
     public String getHourFormatted(int hour, int minutes) {
-        String minutes_string = String.valueOf(minutes);
-        return String.format("%02d", hour) + ":" + minutes_string  + " ";
+        return String.format("%02d", hour) + ":" + String.format("%02d", minutes)  + " ";
     }
 }

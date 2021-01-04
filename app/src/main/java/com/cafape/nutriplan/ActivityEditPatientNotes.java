@@ -144,8 +144,8 @@ public class ActivityEditPatientNotes extends AppCompatActivity
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                 patientEntity.setPathologiesHasHypercholesterolaemia(b);
                 if(b) {
-                    yesfood = yesfood + getString(R.string.activityaddpatient_string_hypercholesterolaemia_food_y) + COMMA;
-                    nofood = nofood + getString(R.string.activityaddpatient_string_hypercholesterolaemia_food_n) + COMMA;
+                    yesfood = yesfood + COMMA + getString(R.string.activityaddpatient_string_hypercholesterolaemia_food_y);
+                    nofood = nofood + COMMA + getString(R.string.activityaddpatient_string_hypercholesterolaemia_food_n);
                 } else {
                     yesfood = yesfood.replace(getString(R.string.activityaddpatient_string_hypercholesterolaemia_food_y), "");
                     nofood = nofood.replace(getString(R.string.activityaddpatient_string_hypercholesterolaemia_food_n), "");
@@ -162,7 +162,7 @@ public class ActivityEditPatientNotes extends AppCompatActivity
                 patientEntity.setPathologiesHasThyroidism(b);
                 if(b) {
                     //yesfood = yesfood + getString(R.string.activityaddpatient_string_thyroidism_food_y) + COMMA;
-                    nofood = nofood + getString(R.string.activityaddpatient_string_thyroidism_food_n) + COMMA;
+                    nofood = nofood + COMMA + getString(R.string.activityaddpatient_string_thyroidism_food_n);
                 } else {
                     //yesfood = yesfood.replace(getString(R.string.activityaddpatient_string_thyroidism_food_y), "");
                     nofood = nofood.replace(getString(R.string.activityaddpatient_string_thyroidism_food_n), "");
@@ -197,7 +197,7 @@ public class ActivityEditPatientNotes extends AppCompatActivity
                 patientEntity.setPathologiesHasKidneysLaziness(b);
                 if(b) {
                     //yesfood = yesfood + getString(R.string.activityaddpatient_string_kidneyslaziness_food_y) + COMMA;
-                    nofood = nofood + getString(R.string.activityaddpatient_string_kidneyslaziness_food_n) + COMMA;
+                    nofood = nofood + COMMA + getString(R.string.activityaddpatient_string_kidneyslaziness_food_n);
                 } else {
                     //yesfood = yesfood.replace(getString(R.string.activityaddpatient_string_kidneyslaziness_food_y), "");
                     nofood = nofood.replace(getString(R.string.activityaddpatient_string_kidneyslaziness_food_n), "");
@@ -213,7 +213,7 @@ public class ActivityEditPatientNotes extends AppCompatActivity
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                 patientEntity.setPathologiesHasOsteoporosis(b);
                 if(b) {
-                    yesfood = yesfood + getString(R.string.activityaddpatient_string_osteoporosis_food_y) + COMMA;
+                    yesfood = yesfood + COMMA + getString(R.string.activityaddpatient_string_osteoporosis_food_y);
                     //nofood = nofood + getString(R.string.activityaddpatient_string_osteoporosis_food_n) + COMMA;
                 } else {
                     yesfood = yesfood.replace(getString(R.string.activityaddpatient_string_osteoporosis_food_y), "");
@@ -230,8 +230,8 @@ public class ActivityEditPatientNotes extends AppCompatActivity
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                 patientEntity.setPathologiesHasProstatitis(b);
                 if(b) {
-                    yesfood = yesfood + getString(R.string.activityaddpatient_string_prostatitis_food_y) + COMMA;
-                    nofood = nofood + getString(R.string.activityaddpatient_string_prostatitis_food_n) + COMMA;
+                    yesfood = yesfood + COMMA + getString(R.string.activityaddpatient_string_prostatitis_food_y);
+                    nofood = nofood + COMMA + getString(R.string.activityaddpatient_string_prostatitis_food_n);
                 } else {
                     yesfood = yesfood.replace(getString(R.string.activityaddpatient_string_prostatitis_food_y), "");
                     nofood = nofood.replace(getString(R.string.activityaddpatient_string_prostatitis_food_n), "");
@@ -243,8 +243,24 @@ public class ActivityEditPatientNotes extends AppCompatActivity
     }
 
     public void updateYesNoFood() {
-        activityeditpatientnotes_textView_yesfood.setText(StringUtils.stripEnd(StringUtils.strip(yesfood.replace(", ,", ",")), COMMA));
-        activityeditpatientnotes_textView_nofood.setText(StringUtils.stripEnd(StringUtils.strip(nofood.replace(", ,", ",")), COMMA));
+        String target_y = yesfood;
+        while (target_y.startsWith(COMMA) || target_y.endsWith(COMMA)) {
+            target_y = target_y.replaceAll("^(, )*", "");
+            target_y = target_y.replaceAll("(, )*$", "");
+            target_y = StringUtils.strip(target_y, ",");
+        }
+        yesfood = target_y;
+
+        String target_n = nofood;
+        while (target_n.startsWith(COMMA) || target_n.endsWith(COMMA)) {
+            target_n = target_n.replaceAll("^(, )*", "");
+            target_n = target_n.replaceAll("(, )*$", "");
+            target_n = StringUtils.strip(target_n, ",");
+        }
+        nofood = target_n;
+
+        activityeditpatientnotes_textView_yesfood.setText(target_y);
+        activityeditpatientnotes_textView_nofood.setText(target_n);
     }
 
     public void setUiComponents() {
@@ -283,10 +299,12 @@ public class ActivityEditPatientNotes extends AppCompatActivity
 
     public void checkUncheckFoodTextBox(boolean activation) {
         if(activation) {
-            if(nofood.isEmpty() || yesfood.isEmpty()){
+            if(!nofood.isEmpty() || !yesfood.isEmpty()){
                  if(activityeditpatientnotes_linearLayout_foodsuggestions.getVisibility() != View.VISIBLE) {
                     activityeditpatientnotes_linearLayout_foodsuggestions.setVisibility(View.VISIBLE);
                 }
+            } else {
+
             }
         } else {
             if(activityeditpatientnotes_linearLayout_foodsuggestions.getVisibility() == View.VISIBLE) {
