@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity
     /////////////////////////////////////
     // fix pulsanti BAI e BMI in nuova visita
     // fix eliminazione nuovo appuntamento senza paziente
-
+    // add appointment also without patients registered
 
 
     @Override

@@ -139,7 +139,15 @@ public class ActivityAppointments extends AppCompatActivity
         activitappointments_fab_appointment_add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                getPatientsNumber();
+                Bundle args = new Bundle();
+                args.putSerializable("arrayList", (Serializable) getAppointmentsOfToday());
+                LocalDate dateSelected = activityappointments_calendarView.getSelectedDate().getDate();
+                args.putSerializable("dateSelected", (Serializable) dateSelected);
+                args.putSerializable("editMode", false);
+
+                Intent intent_goToActivity = new Intent(context, ActivityAddAppointment.class);
+                intent_goToActivity.putExtra("appointmentsOfTheDay", args);
+                startActivityForResult(intent_goToActivity, REQCODE_NEWAPPOINTMENT_ADDED);
             }
         });
     }
