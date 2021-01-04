@@ -17,7 +17,6 @@ import android.os.ParcelFileDescriptor;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.cafape.nutriplan.support.Globals;
@@ -82,7 +81,7 @@ public class ActivityMenu extends AppCompatActivity
         if(ActivityCompat.checkSelfPermission(this, permissions[0]) == PackageManager.PERMISSION_GRANTED) {
             switch (requestCode) {
                 case PERMISSION_WRITEEXTERNALSTORAGE: {
-                    initializeEmptyBackuFile();
+                    initializeEmptyBackupFile();
                 }
                 break;
             }
@@ -138,7 +137,7 @@ public class ActivityMenu extends AppCompatActivity
                 ImageView dialogimportexport_imageButton_export = view_importexport.findViewById(R.id.dialogimportexport_imageButton_export);
                 dialogimportexport_imageButton_export.setOnClickListener(view_export ->
                 {
-                    initializeEmptyBackuFile();
+                    initializeEmptyBackupFile();
                     alertDialog.cancel();
                 });
                 ImageView dialogimportexport_imageButton_import = view_importexport.findViewById(R.id.dialogimportexport_imageButton_import);
@@ -154,7 +153,7 @@ public class ActivityMenu extends AppCompatActivity
         });
     }
 
-    public void initializeEmptyBackuFile() {
+    public void initializeEmptyBackupFile() {
         if((Utils.askForPermission(ActivityMenu.this, Manifest.permission.WRITE_EXTERNAL_STORAGE, PERMISSION_WRITEEXTERNALSTORAGE))) {
             Intent intent = new Intent(Intent.ACTION_CREATE_DOCUMENT);
 
@@ -167,10 +166,6 @@ public class ActivityMenu extends AppCompatActivity
             intent.putExtra(Intent.EXTRA_TITLE, Utils.convertDateFormat(Utils.getCurrentTimeStamp(), FORMAT_DATE_SAVEDB) + "." + EXTENSIONE_BACKUP);
             startActivityForResult(intent, REQCODE_WRITEFILE);
         }
-
-        //todo chiedere di abilitare
-        //todo abiitare e proseguire
-        //todo chiuedere alla fine
     }
 
     public void writeDBFile(Uri uri) {

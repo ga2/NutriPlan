@@ -90,7 +90,9 @@ public class ActivityAppointments extends AppCompatActivity
                 Calendar calendar = Calendar.getInstance();
                 calendar.setTime(appointmentEntity.getAppointmentTime());
                 arrayList_appointmentEntity_ofTheDay.add(new SimpleAppointment(appointmentEntity, patient_info));
-                activityappointments_calendarView.addDecorator(new EventDecoratorMonth(CalendarDay.from(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH) + 1, calendar.get(Calendar.DAY_OF_MONTH))));
+                EventDecoratorMonth eventDecoratorMonth = new EventDecoratorMonth(CalendarDay.from(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH) + 1, calendar.get(Calendar.DAY_OF_MONTH)));
+                activityappointments_calendarView.addDecorator(eventDecoratorMonth);
+                hashMap_calendarDecordatorReference.put(Utils.convertDateFormat(appointmentEntity.getAppointmentTime(), DATEFORMAT), eventDecoratorMonth);
                 getAppointmentsOfTheDay();
             }
         } else if (requestCode == REQCODE_EDITAPPOINTMENT){
@@ -104,6 +106,8 @@ public class ActivityAppointments extends AppCompatActivity
             }
         }
     }
+
+    //todo non elimina decorator se elimina appointment
 
     public void setUiComponents() {
         activityappointments_calendarView = findViewById(R.id.activityappointments_calendarView);
@@ -261,7 +265,7 @@ public class ActivityAppointments extends AppCompatActivity
             @Override
             protected void onPostExecute(Integer deletingResult) {
                 super.onPostExecute(deletingResult);
-                if ((deletingResult != null) && (deletingResult != null)) {
+                if ((deletingResult != null) && (deletingResult > 0)){
                     Toast.makeText(context, R.string.deleted, Toast.LENGTH_SHORT).show();
                     arrayList_appointmentEntity_ofTheDay.remove(simpleAppointment);
                     appointmentsRecyclerViewAdapter.deleteFromRetrievedData(simpleAppointment);

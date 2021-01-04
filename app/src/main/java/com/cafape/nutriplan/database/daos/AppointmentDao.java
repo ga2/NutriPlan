@@ -38,7 +38,7 @@ public interface AppointmentDao
     void updateAppointmentByID(long appointmentID, String visit_reason, Date appointment_time);
 
     @Insert
-    void insert(AppointmentEntity appointmentEntity);
+    long insert(AppointmentEntity appointmentEntity);
 
     @Update
     void update(AppointmentEntity appointmentEntity);

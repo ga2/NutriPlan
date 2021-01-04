@@ -33,12 +33,17 @@ public class MainActivity extends AppCompatActivity
     //todo plot 2
     //todo immagini tabella bai 5
     // todo consigli in base alle patologie —> cambiare inserimento patologie con checkbox secondo file che ti ho inviato 3
-
+    //todo databasebackup 4
 
     //todo fingerprint 6
     //todo responsiveness 7
+    //todo casetta 8
 
-    //todo databasebackup 4
+    /////////////////////////////////////
+    // fix pulsanti BAI e BMI in nuova visita
+    // fix eliminazione nuovo appuntamento senza paziente
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,7 +53,7 @@ public class MainActivity extends AppCompatActivity
 
         setUiComponents();
         setListeners();
-        biometricAuthentication();
+        //biometricAuthentication();
     }
 
     public void biometricAuthentication() {

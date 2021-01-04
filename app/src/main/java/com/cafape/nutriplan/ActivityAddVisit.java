@@ -2,14 +2,17 @@ package com.cafape.nutriplan;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -76,6 +79,24 @@ public class ActivityAddVisit extends AppCompatActivity
                 populateVisit();
                 saveVisitEntity();
             }
+        });
+
+        LinearLayout activityaddvisit_linearLayout_bai = findViewById(R.id.activityaddvisit_linearLayout_bai);
+        activityaddvisit_linearLayout_bai.setOnClickListener(view -> {
+            AlertDialog.Builder alert_bai = new AlertDialog.Builder(ActivityAddVisit.this);
+            LayoutInflater factory = LayoutInflater.from(ActivityAddVisit.this);
+            final View view_bai = factory.inflate(R.layout.table_bai, null);
+            alert_bai.setView(view_bai);
+            alert_bai.show();
+        });
+
+        LinearLayout activityaddvisit_linearLayout_bmi = findViewById(R.id.activityaddvisit_linearLayout_bmi);
+        activityaddvisit_linearLayout_bmi.setOnClickListener(view -> {
+            AlertDialog.Builder alert_bmi = new AlertDialog.Builder(ActivityAddVisit.this);
+            LayoutInflater factory = LayoutInflater.from(ActivityAddVisit.this);
+            final View view_bmi = factory.inflate(R.layout.table_bmi, null);
+            alert_bmi.setView(view_bmi);
+            alert_bmi.show();
         });
     }
     

@@ -108,17 +108,6 @@ public class ActivityAddAppointment extends AppCompatActivity
                 } else {
                     saveAppointment(activityaddappointment_timePicker.getHour(), activityaddappointment_timePicker.getMinute(), activityaddappointment_localDate, activityaddappointment_editText_visitReason.getText().toString(), 0, patientString);
                 }
-
-
-                /* else {
-                    String message = getString(R.string.activityaddpatient_string_alertTitle_formCheck);
-                    message += getString(R.string.activityaddappointment_string_alertMessage_formCheck_name);
-
-                    AlertDialog.Builder builder = AlertBuilderUtils.BuildAlert(ActivityAddAppointment.this, R.string.error, message);
-                    builder.setPositiveButton(R.string.back, null);
-                    AlertDialog alertDialog = builder.create();
-                    alertDialog.show();
-                }*/
             }
         });
         if(editMode) {
@@ -260,7 +249,8 @@ public class ActivityAddAppointment extends AppCompatActivity
                 } else {
                     appointmentEntity = new AppointmentEntity(calendar.getTime(), getHourFormatted(hour, minutes) + Globals.LONG_DASH + " " + patient_info + COMMA + visitReason, 0);
                 }
-                DatabaseRepository.getInstance(getApplicationContext()).getAppDatabase().appointmentDao().insert(appointmentEntity);
+                long newID = DatabaseRepository.getInstance(getApplicationContext()).getAppDatabase().appointmentDao().insert(appointmentEntity);
+                appointmentEntity.setAppointmentID(newID);
                 return null;
             }
 
