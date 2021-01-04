@@ -49,6 +49,9 @@ public class MainActivity extends AppCompatActivity
 // - Add title to edit note in the bar
 // - Blocked editing of an appointment of a user not recorded
 
+    // -  Fixed multiplication of yes/no food in notes
+    // - Added indices to the note tab
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

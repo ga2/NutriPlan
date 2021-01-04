@@ -400,6 +400,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
         android:layout_weight="1"
         android:baselineAligned="false"
         android:orientation="vertical"
@@ -465,17 +466,161 @@
         </LinearLayout>
     </LinearLayout>
 
+    <TextView
+        android:id="@+id/activitypatientaccount_textView_healthindexes"
+        style="@style/style_activityaddpatient_textView_surveysectionsubtitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="24dp"
+        android:text="@string/activityaddpatient_string_subtitle_healthindexes"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/activitypatientaccount_linearLayout_foodsuggestions" />
+
+    <View
+        android:id="@+id/view3"
+        style="@style/style_divider"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:layout_marginStart="8dp"
+        app:layout_constraintBottom_toBottomOf="@+id/activitypatientaccount_textView_healthindexes"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/activitypatientaccount_textView_healthindexes"
+        app:layout_constraintTop_toTopOf="@+id/activitypatientaccount_textView_healthindexes" />
+
+    <LinearLayout
+        android:id="@+id/activitypatientaccount_linearLayout8"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        android:layout_weight="1"
+        android:baselineAligned="false"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/activitypatientaccount_textView_healthindexes">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/activitypatientaccount_textView_pi_label"
+                style="@style/style_form_label"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/pi_short" />
+
+            <TextView
+                android:id="@+id/activitypatientaccount_textView_pi"
+                style="@style/style_textView_form_options"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="@string/longdash" />
+        </LinearLayout>
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/activitypatientaccount_linearLayout_bai"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/activitypatientaccount_textView_bai_label"
+                    style="@style/style_textView_form_options"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/bai_short" />
+
+                <ImageView
+                    android:id="@+id/activitypatientaccount_textView_bai_info"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="@dimen/dim_margin_normal"
+                    android:layout_weight="1.5"
+                    app:srcCompat="@drawable/ic_baseline_info_24" />
+            </LinearLayout>
+
+
+            <TextView
+                android:id="@+id/activitypatientaccount_textView_bai"
+                style="@style/style_textView_form_options"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="@string/longdash" />
+        </LinearLayout>
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/activitypatientaccount_linearLayout_bmi"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/activitypatientaccount_textView_bmi_label"
+                    style="@style/style_textView_form_options"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/bmi_short" />
+
+                <ImageView
+                    android:id="@+id/activitypatientaccount_textView_bmi_info"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="@dimen/dim_margin_normal"
+                    android:layout_weight="1.5"
+                    app:srcCompat="@drawable/ic_baseline_info_24" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/activitypatientaccount_textView_bmi"
+                style="@style/style_textView_form_options"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="@string/longdash" />
+        </LinearLayout>
+
+    </LinearLayout>
+
     <Button
         android:id="@+id/activitypatientaccount_button_edit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="24dp"
         android:layout_marginEnd="16dp"
-        android:layout_marginBottom="16dp"
+        android:layout_marginBottom="32dp"
         android:text="@string/edit"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/activitypatientaccount_linearLayout_foodsuggestions" />
+        app:layout_constraintTop_toBottomOf="@+id/activitypatientaccount_linearLayout8" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

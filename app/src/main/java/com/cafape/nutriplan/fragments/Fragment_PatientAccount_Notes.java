@@ -1,5 +1,6 @@
 package com.cafape.nutriplan.fragments;
 
+import android.app.AlertDialog;
 import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -15,11 +16,14 @@ import androidx.fragment.app.Fragment;
 import com.cafape.nutriplan.ActivityPatientAccount;
 import com.cafape.nutriplan.R;
 import com.cafape.nutriplan.database.entities.PatientAnamnesisEntity;
+import com.cafape.nutriplan.database.entities.PatientAntropometryEntity;
 import com.cafape.nutriplan.database.entities.PatientEntity;
 
 import org.apache.commons.lang3.StringUtils;
 
 import static com.cafape.nutriplan.support.Globals.COMMA;
+import static com.cafape.nutriplan.support.Globals.KILOGRAM;
+import static com.cafape.nutriplan.support.Globals.PERCENTAGE;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -103,6 +107,8 @@ public class Fragment_PatientAccount_Notes extends Fragment
 
         activitypatientaccount_textView_visitreason.setText(patientEntity.getVisitReason());
         String pathologies = patientEntity.getPreviousPathologies_details();
+        yesfood = "";
+        nofood = "";
         if(!pathologies.isEmpty()) {
             pathologies = pathologies + ". ";
         }
@@ -151,6 +157,36 @@ public class Fragment_PatientAccount_Notes extends Fragment
             activitypatientaccount_textView_welcomefood.setText(patientAnamnesisEntity.getWelcomefood());
             activitypatientaccount_textView_nonwelcomefood.setText(patientAnamnesisEntity.getNonwelcomefood());
         }
+
+        PatientAntropometryEntity patientAntropometryEntity = ((ActivityPatientAccount)getActivity()).getPatientAntropometryEntities().get(0);
+        if(patientAntropometryEntity != null) {
+            TextView activitypatientaccount_textView_pi = layout.findViewById(R.id.activitypatientaccount_textView_pi);
+            TextView activitypatientaccount_textView_bai = layout.findViewById(R.id.activitypatientaccount_textView_bai);
+            TextView activitypatientaccount_textView_bmi = layout.findViewById(R.id.activitypatientaccount_textView_bmi);
+
+            activitypatientaccount_textView_pi.setText(patientAntropometryEntity.getPi() + KILOGRAM);
+            activitypatientaccount_textView_bai.setText(patientAntropometryEntity.getBai() + PERCENTAGE);
+            activitypatientaccount_textView_bmi.setText(patientAntropometryEntity.getBmi() + PERCENTAGE);
+        }
+
+        LinearLayout activitypatientaccount_linearLayout_bai = layout.findViewById(R.id.activitypatientaccount_linearLayout_bai);
+        LinearLayout activitypatientaccount_linearLayout_bmi = layout.findViewById(R.id.activitypatientaccount_linearLayout_bmi);
+
+        activitypatientaccount_linearLayout_bai.setOnClickListener(view -> {
+            AlertDialog.Builder alert_bai = new AlertDialog.Builder(getActivity());
+            LayoutInflater factory = LayoutInflater.from(getActivity());
+            final View view_bai = factory.inflate(R.layout.table_bai, null);
+            alert_bai.setView(view_bai);
+            alert_bai.show();
+        });
+
+        activitypatientaccount_linearLayout_bmi.setOnClickListener(view -> {
+            AlertDialog.Builder alert_bmi = new AlertDialog.Builder(getActivity());
+            LayoutInflater factory = LayoutInflater.from(getActivity());
+            final View view_bmi = factory.inflate(R.layout.table_bmi, null);
+            alert_bmi.setView(view_bmi);
+            alert_bmi.show();
+        });
 
         Button activitypatientaccount_button_edit = layout.findViewById(R.id.activitypatientaccount_button_edit);
         activitypatientaccount_button_edit.setOnClickListener(new View.OnClickListener()
