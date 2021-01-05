@@ -29,11 +29,6 @@ public class MainActivity extends AppCompatActivity
     private BiometricPrompt biometricPrompt;
     private BiometricPrompt.PromptInfo promptInfo;
 
-    //todo file tab 1
-    //todo plot 2
-    //todo immagini tabella bai 5
-    // todo consigli in base alle patologie —> cambiare inserimento patologie con checkbox secondo file che ti ho inviato 3
-    //todo databasebackup 4
 
     //todo fingerprint 6
     //todo responsiveness 7
@@ -41,6 +36,7 @@ public class MainActivity extends AppCompatActivity
 
 
     ////backup fixing
+    ///fixed fingerprint access
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,7 +46,7 @@ public class MainActivity extends AppCompatActivity
 
         setUiComponents();
         setListeners();
-        //biometricAuthentication();
+        biometricAuthentication();
     }
 
     public void biometricAuthentication() {
@@ -69,6 +65,7 @@ public class MainActivity extends AppCompatActivity
                 public void onAuthenticationSucceeded(@NonNull BiometricPrompt.AuthenticationResult result) {
                     super.onAuthenticationSucceeded(result);
                     Toast.makeText(getApplicationContext(), getString(R.string.biometric_auth_succeded), Toast.LENGTH_SHORT).show();
+                    accessMenu();
                 }
 
                 @Override
@@ -78,7 +75,9 @@ public class MainActivity extends AppCompatActivity
                 }
             });
 
-            promptInfo = new BiometricPrompt.PromptInfo.Builder().setTitle(getString(R.string.biometric_title)).setSubtitle(getString(R.string.biometric_subtitle)).setNegativeButtonText(getString(R.string.biometric_negative)).build();
+            //promptInfo = new BiometricPrompt.PromptInfo.Builder().setTitle(getString(R.string.biometric_title)).setSubtitle(getString(R.string.biometric_subtitle)).setNegativeButtonText(getString(R.string.biometric_negative)).setDeviceCredentialAllowed(true).build();
+            promptInfo = new BiometricPrompt.PromptInfo.Builder().setTitle(getString(R.string.biometric_title)).setSubtitle(getString(R.string.biometric_subtitle)).setDeviceCredentialAllowed(true).build();
+            //promptInfo.isDeviceCredentialAllowed();
 
             // Prompt appears when user clicks "Log in".
             // Consider integrating with the keystore to unlock cryptographic operations,
@@ -98,9 +97,13 @@ public class MainActivity extends AppCompatActivity
     public void setListeners() {
         activityMain_button_login.setOnClickListener(view ->
         {
-                Intent intent_goToActivity = new Intent(context, ActivityMenu.class);
-                startActivity(intent_goToActivity);
+            accessMenu();
         });
+    }
+
+    public void accessMenu() {
+        Intent intent_goToActivity = new Intent(context, ActivityMenu.class);
+        startActivity(intent_goToActivity);
     }
 
     private boolean checkBiometricSupport() {

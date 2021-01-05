@@ -66,6 +66,7 @@ dependencies {
     implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
 
     implementation "androidx.biometric:biometric:1.0.1"
+    //implementation "androidx.biometric:biometric:1.2.0-alpha01"
 
     implementation group: 'org.apache.commons', name: 'commons-lang3', version: '3.11'
     implementation group: 'org.apache.commons', name: 'commons-compress', version: '1.20'
