@@ -189,7 +189,11 @@ public class ActivityMenu extends AppCompatActivity
                         String fileDatabasePath_wal = fileDatabasePath + "-wal";
                         //FILES SECTIONS
                         File docsDirectory = new File(context.getFilesDir(), Globals.DOCUMENT_FOLDER_NAME);
-                        String[] filesPaths_toZip = new String[] {fileDatabasePath, fileDatabasePath_shm, fileDatabasePath_wal, docsDirectory.getAbsolutePath()};
+                        String docsDirectoryAbsPath = "";
+                        if(docsDirectory.exists()) {
+                            docsDirectoryAbsPath = docsDirectory.getAbsolutePath();
+                        }
+                        String[] filesPaths_toZip = new String[] {fileDatabasePath, fileDatabasePath_shm, fileDatabasePath_wal, docsDirectoryAbsPath};
                         Zipper.zip(filesPaths_toZip, new FileOutputStream(pfd.getFileDescriptor()));
                         return true;
                     }
@@ -257,25 +261,29 @@ public class ActivityMenu extends AppCompatActivity
                                 }
                                 String files_cached_base = dirtemp_db.getAbsolutePath() + "/" + Globals.DOCUMENT_FOLDER_NAME;
                                 File directoryContent_unzipped = new File(files_cached_base);
-                                String[] fileInside_unzipped_Dir = directoryContent_unzipped.list();
-                                for(String currentSub_unzipped_Dir : fileInside_unzipped_Dir) {
-                                    File docsPatientDirectory = new File(files_cached_base, currentSub_unzipped_Dir);
-                                    if (!docsPatientDirectory.exists()) {
-                                        docsPatientDirectory.mkdir();
-                                    }
-
-                                    File docsPatientDirectory_unzipped = new File(directoryContent_unzipped, currentSub_unzipped_Dir);
-                                    String[] fileInsideDir_unzipped_patient = docsPatientDirectory_unzipped.list();
-                                    for(String filePatient_unzipped : fileInsideDir_unzipped_patient) {
-                                        File current_file = new File(docsPatientDirectory_unzipped, filePatient_unzipped);
-                                        String dest_file_patientFolder_targetPath = docsDirectory.getAbsolutePath() + "/" + docsPatientDirectory.getName();
-                                        File dest_file_patientFolder_target = new File(dest_file_patientFolder_targetPath);
-                                        if (!dest_file_patientFolder_target.exists()) {
-                                            dest_file_patientFolder_target.mkdir();
+                                if(directoryContent_unzipped.exists()) {
+                                    String[] fileInside_unzipped_Dir = directoryContent_unzipped.list();
+                                    for (String currentSub_unzipped_Dir : fileInside_unzipped_Dir) {
+                                        File docsPatientDirectory = new File(files_cached_base, currentSub_unzipped_Dir);
+                                        if (!docsPatientDirectory.exists()) {
+                                            docsPatientDirectory.mkdir();
                                         }
 
-                                        File dest_file = new File(dest_file_patientFolder_target, current_file.getName());
-                                        Utils.copyFile(current_file.getAbsolutePath(), dest_file.getAbsolutePath());
+                                        File docsPatientDirectory_unzipped = new File(directoryContent_unzipped, currentSub_unzipped_Dir);
+                                        if (docsPatientDirectory_unzipped.exists()) {
+                                            String[] fileInsideDir_unzipped_patient = docsPatientDirectory_unzipped.list();
+                                            for (String filePatient_unzipped : fileInsideDir_unzipped_patient) {
+                                                File current_file = new File(docsPatientDirectory_unzipped, filePatient_unzipped);
+                                                String dest_file_patientFolder_targetPath = docsDirectory.getAbsolutePath() + "/" + docsPatientDirectory.getName();
+                                                File dest_file_patientFolder_target = new File(dest_file_patientFolder_targetPath);
+                                                if (!dest_file_patientFolder_target.exists()) {
+                                                    dest_file_patientFolder_target.mkdir();
+                                                }
+
+                                                File dest_file = new File(dest_file_patientFolder_target, current_file.getName());
+                                                Utils.copyFile(current_file.getAbsolutePath(), dest_file.getAbsolutePath());
+                                            }
+                                        }
                                     }
                                 }
                             } else {

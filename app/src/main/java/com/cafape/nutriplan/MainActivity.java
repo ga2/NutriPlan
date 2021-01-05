@@ -39,6 +39,9 @@ public class MainActivity extends AppCompatActivity
     //todo responsiveness 7
     //todo casetta 8
 
+
+    ////backup fixing
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">NutriPlan</string>
     <string name="app_name_subtitle">The Android app for nutritionists</string>
-    <string name="build_number" translatable="false">20210104</string>
+    <string name="build_number" translatable="false">20210105</string>
 
     <string name="biometric_title">Biometric login</string>
     <string name="biometric_subtitle">Log in using your biometric credential</string>
@@ -16,7 +16,7 @@
     <string name="start">Start</string>
     <string name="of_the">of the</string>
     <string name="back">Back</string>
-    <string name="forward">Forward</string>
+    <string name="forward">Next</string>
     <string name="error">Error</string>
     <string name="warning">Warning</string>
     <string name="hour">Time</string>

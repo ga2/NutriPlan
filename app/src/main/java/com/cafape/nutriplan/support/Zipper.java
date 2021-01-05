@@ -57,19 +57,23 @@ public class Zipper
             byte data[] = new byte[BUFFER];
 
             for(int i = 0; i < _files.length; i++) {
-                File current = new File(_files[i]);
-                if(!current.isDirectory()) {
-                    FileInputStream fi = new FileInputStream(_files[i]);
-                    origin = new BufferedInputStream(fi, BUFFER);
-                    ZipEntry entry = new ZipEntry(_files[i].substring(_files[i].lastIndexOf("/") + 1));
-                    out.putNextEntry(entry);
-                    int count;
-                    while ((count = origin.read(data, 0, BUFFER)) != -1) {
-                        out.write(data, 0, count);
+                String current_filePath = _files[i];
+                if(!current_filePath.isEmpty()) {
+                    File current = new File(current_filePath);
+                    if (!current.isDirectory()) {
+                        FileInputStream fi = new FileInputStream(current_filePath);
+                        origin = new BufferedInputStream(fi, BUFFER);
+                        ZipEntry entry = new ZipEntry(current_filePath.substring(current_filePath.lastIndexOf("/") + 1));
+                        out.putNextEntry(entry);
+                        int count;
+                        while ((count = origin.read(data, 0, BUFFER)) != -1) {
+                            out.write(data, 0, count);
+                        }
+                        origin.close();
                     }
-                    origin.close();
-                } else {
-                    zipSubFolder(out, current, current.getParent().length());
+                    else {
+                        zipSubFolder(out, current, current.getParent().length());
+                    }
                 }
             }
             out.close();

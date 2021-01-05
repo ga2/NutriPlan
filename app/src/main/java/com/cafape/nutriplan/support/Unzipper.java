@@ -5,6 +5,8 @@ import java.io.*;
 import org.apache.commons.compress.archivers.ArchiveEntry;
 import org.apache.commons.compress.archivers.zip.*;
 
+import static com.cafape.nutriplan.support.Utils.myprint;
+
 public class Unzipper
 {
     public static int unzip(File inputZip, File outputFolder) throws IOException {
@@ -21,6 +23,7 @@ public class Unzipper
             zis = new ZipArchiveInputStream(fis, "Cp1252", true); // this supports non-USACII names
             ArchiveEntry entry;
             while ((entry = zis.getNextEntry()) != null) {
+                myprint(entry.getName());
                 File file = new File(outputFolder, entry.getName());
                 if (entry.isDirectory()) {
                     file.mkdirs();
