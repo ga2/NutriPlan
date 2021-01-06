@@ -36,7 +36,11 @@ public class AppointmentsRecyclerViewAdapter  extends RecyclerView.Adapter<Appoi
     @Override
     public void onBindViewHolder(@NonNull AppointmentsRecyclerViewAdapter.ViewHolder holder, int position) {
         SimpleAppointment dataGot = retrievedData.get(position);
-        holder.rowAppointment_textView_infouser.setText(dataGot.getDisplayText());
+        if(dataGot.getPatientID() > 0) {
+            holder.rowAppointment_textView_infouser.setText(dataGot.getDisplayText());
+        } else {
+            holder.rowAppointment_textView_infouser.setText(dataGot.getVisitReason());
+        }
         holder.rowAppointment_imageView_edit.setVisibility(View.GONE);
         holder.rowAppointment_imageView_delete.setVisibility(View.GONE);
     }

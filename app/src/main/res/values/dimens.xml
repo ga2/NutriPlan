@@ -50,4 +50,8 @@
     <dimen name="activitycalc_textView_marginTop">52dp</dimen>
     <dimen name="activitycalc_textView_textSize">26dp</dimen>
     <!-- END INDICES CALCULATORS ACTIVITY -->
+
+    <!-- START APPOINTMENT ACTIVITY -->
+    <dimen name="activityappointments_calendarView_height">400dp</dimen>
+    <!-- END APPOINTMENT ACTIVITY -->
 </resources>
