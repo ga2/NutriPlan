@@ -44,8 +44,11 @@
 
                 <TextView
                     android:id="@+id/activitymenu_card_textView_appointment"
+                    style="@style/style_mainactivity_card_textView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="8dp"
                     android:layout_marginBottom="8dp"
                     android:text="@string/title_activity_appointments"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -76,8 +79,11 @@
 
                 <TextView
                     android:id="@+id/activitymenu_card_textView_patient"
+                    style="@style/style_mainactivity_card_textView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="8dp"
                     android:layout_marginBottom="8dp"
                     android:text="@string/title_activity_patients"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -108,9 +114,13 @@
 
                 <TextView
                     android:id="@+id/activitymenu_card_textView_calc"
+                    style="@style/style_mainactivity_card_textView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="8dp"
                     android:layout_marginBottom="8dp"
+                    android:ems="@integer/activitymenu_cardView_card_ems"
                     android:text="@string/title_activity_calc"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -140,8 +150,11 @@
 
                 <TextView
                     android:id="@+id/activitymenu_card_textView_importexport"
+                    style="@style/style_mainactivity_card_textView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="8dp"
                     android:layout_marginBottom="8dp"
                     android:text="@string/title_activity_importexport"
                     app:layout_constraintBottom_toBottomOf="parent"

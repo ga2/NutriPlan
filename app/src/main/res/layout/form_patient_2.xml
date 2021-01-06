@@ -47,7 +47,7 @@
 
 
         <LinearLayout
-            android:id="@+id/activityaddpatient_linearLayout10"
+            android:id="@+id/activityaddpatient_linearLayout1b"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
@@ -113,7 +113,7 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/activityaddpatient_linearLayout11"
+            android:id="@+id/activityaddpatient_linearLayout2b"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
@@ -122,7 +122,7 @@
             android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/activityaddpatient_linearLayout10">
+            app:layout_constraintTop_toBottomOf="@+id/activityaddpatient_linearLayout1b">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -181,7 +181,7 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/activityaddpatient_linearLayout12"
+            android:id="@+id/activityaddpatient_linearLayout3b"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
@@ -190,7 +190,7 @@
             android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/activityaddpatient_linearLayout11">
+            app:layout_constraintTop_toBottomOf="@+id/activityaddpatient_linearLayout2b">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -249,7 +249,7 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/activityaddpatient_linearLayout13"
+            android:id="@+id/activityaddpatient_linearLayout4b"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
@@ -258,7 +258,7 @@
             android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/activityaddpatient_linearLayout12">
+            app:layout_constraintTop_toBottomOf="@+id/activityaddpatient_linearLayout3b">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -323,7 +323,7 @@
             android:layout_marginTop="16dp"
             android:orientation="horizontal"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/activityaddpatient_linearLayout13">
+            app:layout_constraintTop_toBottomOf="@+id/activityaddpatient_linearLayout4b">
 
             <TextView
                 android:id="@+id/activityaddpatient_textView_foodplanprototype"
@@ -345,7 +345,7 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/activityaddpatient_linearLayout14"
+            android:id="@+id/activityaddpatient_linearLayout5b"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
@@ -413,7 +413,7 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/activityaddpatient_linearLayout15"
+            android:id="@+id/activityaddpatient_linearLayout6b"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginStart="24dp"
@@ -423,7 +423,7 @@
             android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/activityaddpatient_linearLayout14">
+            app:layout_constraintTop_toBottomOf="@id/activityaddpatient_linearLayout5b">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -482,7 +482,7 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/activityaddpatient_linearLayout16"
+            android:id="@+id/activityaddpatient_linearLayout7b"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginStart="24dp"
@@ -492,7 +492,7 @@
             android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/activityaddpatient_linearLayout15">
+            app:layout_constraintTop_toBottomOf="@id/activityaddpatient_linearLayout6b">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -534,7 +534,7 @@
             android:orientation="vertical"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/activityaddpatient_linearLayout16">
+            app:layout_constraintTop_toBottomOf="@id/activityaddpatient_linearLayout7b">
 
             <LinearLayout
                 android:layout_width="wrap_content"

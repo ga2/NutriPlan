@@ -33,19 +33,18 @@
     </style>
 
     <style name="style_mainactivity_card" parent="CardView">
-        <item name="android:layout_width">200dp</item>
+        <item name="android:layout_width">@dimen/activitymenu_cardView_card</item>
         <item name="android:layout_height">200dp</item>
         <item name="elevation">4dp</item>
     </style>
 
-    <style name="style_mainactivity_card_lower" parent="style_mainactivity_card">
-        <item name="android:layout_marginTop">24dp</item>
-        <item name="elevation">4dp</item>
+    <style name="style_mainactivity_card_imageView">
+        <item name="android:layout_width">@dimen/activitymenu_imageView_card</item>
+        <item name="android:layout_height">@dimen/activitymenu_imageView_card</item>
     </style>
 
-    <style name="style_mainactivity_card_imageView">
-        <item name="android:layout_width">128dp</item>
-        <item name="android:layout_height">128dp</item>
+    <style name="style_mainactivity_card_textView">
+        <item name="android:gravity">center_horizontal</item>
     </style>
 
     <style name="style_activitycalc_tabs">
@@ -101,7 +100,7 @@
     </style>
 
     <style name="style_row_text">
-        <item name="android:textSize">22sp</item>
+        <item name="android:textSize">@dimen/row_text_size</item>
     </style>
 
     <style name="style_text_report_label">
@@ -115,6 +114,13 @@
         <item name="color">@color/dark_grey</item>
     </style>
 
+    <!-- START MAIN ACTIVITY -->
+    <style name="style_mainactivity_logo">
+        <item name="android:layout_width">@dimen/mainactivity_imageView_logo_width</item>
+        <item name="android:layout_height">@dimen/mainactivity_imageView_logo_height</item>
+    </style>
+
+    <!-- END MAIN ACTIVITY -->
 
 
 </resources>

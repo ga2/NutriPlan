@@ -10,6 +10,7 @@ import android.Manifest;
 import android.app.KeyguardManager;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
@@ -28,9 +29,9 @@ public class MainActivity extends AppCompatActivity
     private Executor executor;
     private BiometricPrompt biometricPrompt;
     private BiometricPrompt.PromptInfo promptInfo;
+    private boolean access_granted = false;
 
-
-    //todo fingerprint 6
+    
     //todo responsiveness 7
     //todo casetta 8
 
@@ -46,11 +47,19 @@ public class MainActivity extends AppCompatActivity
 
         setUiComponents();
         setListeners();
-        biometricAuthentication();
+        //biometricAuthentication();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+        //biometricAuthentication();
     }
 
     public void biometricAuthentication() {
         if(checkBiometricSupport()) {
+
         //if(true) {
             executor = ContextCompat.getMainExecutor(this);
             biometricPrompt = new BiometricPrompt(MainActivity.this, executor, new BiometricPrompt.AuthenticationCallback()

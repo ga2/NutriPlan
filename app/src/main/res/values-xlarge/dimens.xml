@@ -26,22 +26,21 @@
     <dimen name="dim_margin_highest">32dp</dimen>
 
     <!-- START NO DATA FRAME -->
-    <dimen name="dim_textView_nodata_textSize">32sp</dimen>
-    <dimen name="dim_textView_nodatadetails_textSize">16sp</dimen>
+    <dimen name="dim_textView_nodata_textSize">64sp</dimen>
+    <dimen name="dim_textView_nodatadetails_textSize">32sp</dimen>
     <!-- END NO DATA FRAME -->
 
     <!-- START MAIN ACTIVITY -->
-    <dimen name="mainactivity_imageView_logo_width">100dp</dimen>
-    <dimen name="mainactivity_imageView_logo_height">80dp</dimen>
+    <dimen name="mainactivity_imageView_logo_width">220dp</dimen>
+    <dimen name="mainactivity_imageView_logo_height">200dp</dimen>
     <!-- END MAIN ACTIVITY -->
 
     <!-- START MENU ACTIVITY -->
-    <dimen name="activitymenu_imageView_card">72dp</dimen>
-    <dimen name="activitymenu_cardView_card">144dp</dimen>
-    <dimen name="activitymenu_cardView_card_ems">6</dimen>
+    <dimen name="activitymenu_imageView_card">128dp</dimen>
+    <dimen name="activitymenu_cardView_card">200dp</dimen>
     <!-- END MENU ACTIVITY -->
 
     <!-- START ADD PATIENT ACTIVITY -->
-    <dimen name="row_text_size">16sp</dimen>
+    <dimen name="row_text_size">22sp</dimen>
     <!-- END ADD PATIENT ACTIVITY -->
 </resources>

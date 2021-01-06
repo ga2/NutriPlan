@@ -45,8 +45,7 @@
             android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/activityaddpatient_textView_survey"
-            >
+            app:layout_constraintTop_toBottomOf="@+id/activityaddpatient_textView_survey">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -102,10 +101,11 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/activityaddpatient_linearLayout3"
+            android:id="@+id/activityaddpatient_linearLayout4"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
+            android:layout_marginTop="16dp"
             android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -126,25 +126,16 @@
 
                 <com.cafape.nutriplan.ui.CustomDatePicker
                     android:id="@+id/activityaddpatient_datepicker_bdate"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/dim_margin_highest"
-                    android:layout_marginEnd="@dimen/dim_margin_highest"
                     android:datePickerMode="calendar" />
 
             </LinearLayout>
-        </LinearLayout>
 
-        <LinearLayout
-            android:id="@+id/activityaddpatient_linearLayout4"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
-            android:layout_marginTop="16dp"
-            android:orientation="horizontal"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/activityaddpatient_linearLayout3">
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1.5" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -236,6 +227,11 @@
                     </RadioGroup>
                 </LinearLayout>
             </LinearLayout>
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1.5" />
 
         </LinearLayout>
 
