@@ -89,7 +89,7 @@ tools:context=".fragments.Fragment_Calc_IdealWeight">
 
         <ImageView
             android:id="@+id/fragment_calc_pi_constraintLayout_imageView"
-            android:layout_width="wrap_content"
+            style="@style/style_activitycalc_imageView_scale"
             android:layout_height="wrap_content"
             android:src="@drawable/balance"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -101,13 +101,12 @@ tools:context=".fragments.Fragment_Calc_IdealWeight">
 
         <TextView
             android:id="@+id/fragment_calc_pi_constraintLayout_textView_label"
+            style="@style/style_activitycalc_textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="58dp"
             android:gravity="center"
             android:text="@string/pi_short"
             android:textColor="@color/dark_grey"
-            android:textSize="36sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />

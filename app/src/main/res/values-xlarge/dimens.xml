@@ -43,4 +43,9 @@
     <!-- START ADD PATIENT ACTIVITY -->
     <dimen name="row_text_size">22sp</dimen>
     <!-- END ADD PATIENT ACTIVITY -->
+
+    <!-- START INDICES CALCULATORS ACTIVITY -->
+    <dimen name="activitycalc_textView_marginTop">58dp</dimen>
+    <dimen name="activitycalc_textView_textSize">36dp</dimen>
+    <!-- END INDICES CALCULATORS ACTIVITY -->
 </resources>

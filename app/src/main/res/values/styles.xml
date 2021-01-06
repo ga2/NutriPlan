@@ -122,5 +122,15 @@
 
     <!-- END MAIN ACTIVITY -->
 
+    <!-- START INDICES CALCULATORS ACTIVITY -->
+    <style name="style_activitycalc_imageView_scale">
+        <item name="android:layout_width">@dimen/activitycalc_imageView_scale</item>
+        <item name="android:layout_height">@dimen/activitycalc_imageView_scale</item>
+    </style>
+    <style name="style_activitycalc_textView">
+        <item name="android:layout_marginTop">@dimen/activitycalc_textView_marginTop</item>
+        <item name="android:textSize">@dimen/activitycalc_textView_textSize</item>
+    </style>
+    <!-- END INDICES CALCULATORS ACTIVITY -->
 
 </resources>

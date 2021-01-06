@@ -72,7 +72,7 @@
 
             <ImageView
                 android:id="@+id/fragment_calc_bmi_constraintLayout_imageView"
-                android:layout_width="wrap_content"
+                style="@style/style_activitycalc_imageView_scale"
                 android:layout_height="wrap_content"
                 android:src="@drawable/balance"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -84,13 +84,12 @@
 
             <TextView
                 android:id="@+id/fragment_calc_bmi_constraintLayout_textView_label"
+                style="@style/style_activitycalc_textView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="58dp"
                 android:gravity="center"
                 android:text="@string/bmi_short"
                 android:textColor="@color/dark_grey"
-                android:textSize="36sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
