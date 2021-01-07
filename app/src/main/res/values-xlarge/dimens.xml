@@ -37,7 +37,8 @@
 
     <!-- START MENU ACTIVITY -->
     <dimen name="activitymenu_imageView_card">128dp</dimen>
-    <dimen name="activitymenu_cardView_card">200dp</dimen>
+    <dimen name="activitymenu_cardView_card_height">200dp</dimen>
+    <dimen name="activitymenu_cardView_card_width">200dp</dimen>
     <!-- END MENU ACTIVITY -->
 
     <!-- START ADD PATIENT ACTIVITY -->
@@ -47,9 +48,15 @@
     <!-- START INDICES CALCULATORS ACTIVITY -->
     <dimen name="activitycalc_textView_marginTop">58dp</dimen>
     <dimen name="activitycalc_textView_textSize">36dp</dimen>
+    <dimen name="activitycalc_textView_textSize_result">52sp</dimen>
     <!-- END INDICES CALCULATORS ACTIVITY -->
 
     <!-- START APPOINTMENT ACTIVITY -->
     <dimen name="activityappointments_calendarView_height">400dp</dimen>
     <!-- END APPOINTMENT ACTIVITY -->
+
+    <!-- START REPORT ACTIVITY -->
+    <dimen name="activitypatient_reportchart_width">512dp</dimen>
+    <dimen name="activitypatient_reportchart_height">320dp</dimen>
+    <!-- END REPORT ACTIVITY -->
 </resources>

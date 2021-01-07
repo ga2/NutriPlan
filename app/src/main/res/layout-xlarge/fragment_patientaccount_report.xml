@@ -44,12 +44,12 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="vertical">
+                android:orientation="horizontal">
 
                 <com.github.mikephil.charting.charts.BarChart
                     android:id="@+id/fragmentpatientaccount_report_chart_weight"
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/activityappointments_calendarView_height"
+                    android:layout_width="@dimen/activitypatient_reportchart_width"
+                    android:layout_height="@dimen/activitypatient_reportchart_height"
                     android:layout_gravity="center_horizontal"
                     android:layout_marginTop="@dimen/dim_margin_normal"
                     android:layout_marginBottom="@dimen/dim_margin_normal"
@@ -155,11 +155,14 @@
                             app:layout_constraintTop_toTopOf="parent" />
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
+                    <Space
+                        android:layout_width="match_parent"
+                        android:layout_height="64dp" />
+
                     <TextView
                         android:id="@+id/fragmentpatientaccount_report_weightobjective"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/dim_margin_high"
                         android:text="TextView"
                         android:textColor="@color/primaryColor"
                         android:textSize="22sp"
@@ -201,12 +204,12 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="vertical">
+                android:orientation="horizontal">
 
                 <com.github.mikephil.charting.charts.BarChart
                     android:id="@+id/fragmentpatientaccount_report_chart_weist"
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/activitypatient_reportchart_height"
+                    android:layout_width="512dp"
+                    android:layout_height="320dp"
                     android:layout_gravity="center_horizontal"
                     android:layout_marginTop="@dimen/dim_margin_normal"
                     android:layout_marginBottom="@dimen/dim_margin_normal"
@@ -342,7 +345,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="vertical">
+                android:orientation="horizontal">
 
                 <com.github.mikephil.charting.charts.BarChart
                     android:id="@+id/fragmentpatientaccount_report_chart_hips"
@@ -479,7 +482,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="vertical">
+                android:orientation="horizontal">
 
                 <com.github.mikephil.charting.charts.BarChart
                     android:id="@+id/fragmentpatientaccount_report_chart_arm"
@@ -616,7 +619,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="vertical">
+                android:orientation="horizontal">
 
                 <com.github.mikephil.charting.charts.BarChart
                     android:id="@+id/fragmentpatientaccount_report_chart_belly"
@@ -753,7 +756,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="vertical">
+                android:orientation="horizontal">
 
                 <com.github.mikephil.charting.charts.BarChart
                     android:id="@+id/fragmentpatientaccount_report_chart_leg"

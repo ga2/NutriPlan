@@ -16,9 +16,8 @@
             android:id="@+id/activityeditpatientnotes_linearLayout1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
+            android:layout_marginStart="24dp"
             android:layout_marginTop="16dp"
-            android:layout_marginEnd="8dp"
             android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -46,17 +45,21 @@
                     android:hint="@string/longdash" />
             </LinearLayout>
 
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="0.67" />
+
         </LinearLayout>
 
         <LinearLayout
             android:id="@+id/activityeditpatientnotes_linearLayout2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
+            android:layout_marginStart="24dp"
             android:layout_marginTop="16dp"
-            android:layout_marginEnd="8dp"
             android:baselineAligned="false"
-            android:orientation="vertical"
+            android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/activityeditpatientnotes_linearLayout1">
@@ -83,10 +86,14 @@
                     android:hint="@string/longdash" />
             </LinearLayout>
 
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1.5" />
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginTop="@dimen/dim_margin_high"
                 android:layout_weight="1"
                 android:orientation="vertical">
 
@@ -106,15 +113,19 @@
                     android:hint="@string/longdash" />
             </LinearLayout>
 
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1.5" />
+
         </LinearLayout>
 
         <LinearLayout
             android:id="@+id/activityeditpatientnotes_linearLayout3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
+            android:layout_marginStart="24dp"
             android:layout_marginTop="16dp"
-            android:layout_marginEnd="8dp"
             android:baselineAligned="false"
             android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="parent"
@@ -130,7 +141,7 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical">
+                    android:orientation="horizontal">
 
                     <CheckBox
                         android:id="@+id/activityeditpatientnotes_checkbox_hypercolesterolemia"
@@ -160,7 +171,8 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical">
+                    android:layout_marginTop="@dimen/dim_margin_higher"
+                    android:orientation="horizontal">
 
                     <CheckBox
                         android:id="@+id/activityeditpatientnotes_checkbox_kidneylaziness"
@@ -195,11 +207,10 @@
             android:id="@+id/activityeditpatientnotes_linearLayout4"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
+            android:layout_marginStart="24dp"
             android:layout_marginTop="16dp"
-            android:layout_marginEnd="8dp"
             android:baselineAligned="false"
-            android:orientation="vertical"
+            android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/activityeditpatientnotes_linearLayout3">
@@ -227,10 +238,14 @@
                     android:hint="@string/longdash" />
             </LinearLayout>
 
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1.5" />
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginTop="@dimen/dim_margin_high"
                 android:layout_weight="1"
                 android:orientation="vertical">
 
@@ -250,15 +265,19 @@
                     android:hint="@string/longdash" />
             </LinearLayout>
 
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1.5" />
+
         </LinearLayout>
 
         <LinearLayout
             android:id="@+id/activityeditpatientnotes_linearLayout5"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
+            android:layout_marginStart="24dp"
             android:layout_marginTop="16dp"
-            android:layout_marginEnd="8dp"
             android:baselineAligned="false"
             android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="parent"
@@ -382,11 +401,10 @@
             android:id="@+id/activityeditpatientnotes_linearLayout6"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
+            android:layout_marginStart="24dp"
             android:layout_marginTop="16dp"
-            android:layout_marginEnd="8dp"
             android:baselineAligned="false"
-            android:orientation="vertical"
+            android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/activityeditpatientnotes_linearLayout5">
@@ -413,10 +431,14 @@
                     android:hint="@string/longdash" />
             </LinearLayout>
 
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1.5" />
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginTop="@dimen/dim_margin_high"
                 android:layout_weight="1"
                 android:orientation="vertical">
 
@@ -436,18 +458,22 @@
                     android:hint="@string/longdash" />
             </LinearLayout>
 
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1.5" />
+
         </LinearLayout>
 
         <LinearLayout
             android:id="@+id/activityeditpatientnotes_linearLayout7"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
+            android:layout_marginStart="24dp"
             android:layout_marginTop="16dp"
-            android:layout_marginEnd="8dp"
             android:layout_weight="1"
             android:baselineAligned="false"
-            android:orientation="vertical"
+            android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/activityeditpatientnotes_linearLayout6">
@@ -474,10 +500,14 @@
                     android:hint="@string/longdash" />
             </LinearLayout>
 
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1.5" />
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginTop="@dimen/dim_margin_high"
                 android:layout_weight="1"
                 android:orientation="vertical">
 
@@ -497,15 +527,19 @@
                     android:hint="@string/longdash" />
             </LinearLayout>
 
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1.5" />
+
         </LinearLayout>
 
         <LinearLayout
             android:id="@+id/activityeditpatientnotes_linearLayout_foodsuggestions"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
+            android:layout_marginStart="24dp"
             android:layout_marginTop="16dp"
-            android:layout_marginEnd="8dp"
             android:layout_weight="1"
             android:baselineAligned="false"
             android:orientation="vertical"
@@ -514,9 +548,9 @@
             app:layout_constraintTop_toBottomOf="@id/activityeditpatientnotes_linearLayout7">
 
             <LinearLayout
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:orientation="horizontal">
 
                 <TextView
                     android:id="@+id/activityeditpatientnotes_textView_yesfood_label"
@@ -544,8 +578,8 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/dim_margin_high"
-                android:orientation="vertical">
+                android:layout_marginTop="@dimen/dim_margin_normal"
+                android:orientation="horizontal">
 
                 <TextView
                     android:id="@+id/activityeditpatientnotes_textView_nofood_label"

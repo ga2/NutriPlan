@@ -36,7 +36,8 @@ public class MainActivity extends AppCompatActivity
     //todo casetta 8
 
 
-    ////backup fixing
+    ////Graphics
+        //Main, menu, add patients, appointments, health indices, backuprestore, notes, show visit
     ///fixed fingerprint access
 
     @Override
@@ -53,7 +54,6 @@ public class MainActivity extends AppCompatActivity
     @Override
     protected void onResume() {
         super.onResume();
-        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
         //biometricAuthentication();
     }
 

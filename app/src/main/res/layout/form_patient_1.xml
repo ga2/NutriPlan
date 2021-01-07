@@ -40,13 +40,13 @@
             android:id="@+id/activityaddpatient_linearLayout2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
+            android:layout_marginStart="8dp"
             android:layout_marginTop="16dp"
-            android:orientation="horizontal"
+            android:layout_marginEnd="8dp"
+            android:orientation="vertical"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/activityaddpatient_textView_survey"
-            >
+            app:layout_constraintTop_toBottomOf="@+id/activityaddpatient_textView_survey">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -69,14 +69,10 @@
                     android:inputType="textPersonName" />
             </LinearLayout>
 
-            <Space
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1.5" />
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/dim_margin_higher"
                 android:layout_weight="1"
                 android:orientation="vertical">
 
@@ -95,17 +91,15 @@
                     android:inputType="textPersonName" />
             </LinearLayout>
 
-            <Space
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1.5" />
         </LinearLayout>
 
         <LinearLayout
             android:id="@+id/activityaddpatient_linearLayout3"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginStart="24dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="8dp"
             android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -129,6 +123,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/dim_margin_highest"
+                    android:layout_marginTop="@dimen/dim_margin_small"
                     android:layout_marginEnd="@dimen/dim_margin_highest"
                     android:datePickerMode="calendar" />
 
@@ -139,8 +134,9 @@
             android:id="@+id/activityaddpatient_linearLayout4"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
+            android:layout_marginStart="8dp"
             android:layout_marginTop="16dp"
+            android:layout_marginEnd="8dp"
             android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -178,6 +174,7 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:layout_marginTop="@dimen/dim_margin_higher"
                     android:layout_weight="1"
                     android:orientation="vertical">
 
@@ -199,6 +196,7 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:layout_marginTop="@dimen/dim_margin_higher"
                     android:layout_weight="1"
                     android:orientation="vertical">
 
@@ -220,8 +218,9 @@
                         <RadioButton
                             android:id="@+id/activityaddpatient_radio_female"
                             style="@style/style_textView_form_options"
-                            android:layout_width="150dp"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_weight="1"
                             android:checked="true"
                             android:tag="@string/female_short"
                             android:text="@string/female_long" />
@@ -229,8 +228,9 @@
                         <RadioButton
                             android:id="@+id/activityaddpatient_radio_male"
                             style="@style/style_textView_form_options"
-                            android:layout_width="150dp"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_weight="1"
                             android:tag="@string/male_short"
                             android:text="@string/male_long" />
                     </RadioGroup>
@@ -243,8 +243,9 @@
             android:id="@+id/activityaddpatient_linearLayout5"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
+            android:layout_marginStart="8dp"
             android:layout_marginTop="16dp"
+            android:layout_marginEnd="8dp"
             android:baselineAligned="false"
             android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="parent"
@@ -274,21 +275,17 @@
                     android:minLines="4" />
             </LinearLayout>
 
-            <Space
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1.5" />
-
         </LinearLayout>
 
         <LinearLayout
             android:id="@+id/activityaddpatient_linearLayout6"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
+            android:layout_marginStart="8dp"
             android:layout_marginTop="16dp"
+            android:layout_marginEnd="8dp"
             android:baselineAligned="false"
-            android:orientation="horizontal"
+            android:orientation="vertical"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/activityaddpatient_linearLayout5">
@@ -315,14 +312,10 @@
                     android:inputType="textMultiLine|textLongMessage" />
             </LinearLayout>
 
-            <Space
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1.5" />
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/dim_margin_higher"
                 android:layout_weight="1"
                 android:orientation="vertical">
 
@@ -342,21 +335,17 @@
                     android:inputType="textMultiLine|textLongMessage" />
             </LinearLayout>
 
-            <Space
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1.5" />
-
         </LinearLayout>
 
         <LinearLayout
             android:id="@+id/activityaddpatient_linearLayout7"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
+            android:layout_marginStart="8dp"
             android:layout_marginTop="16dp"
+            android:layout_marginEnd="8dp"
             android:baselineAligned="false"
-            android:orientation="horizontal"
+            android:orientation="vertical"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/activityaddpatient_linearLayout6">
@@ -383,14 +372,10 @@
                     android:inputType="textLongMessage" />
             </LinearLayout>
 
-            <Space
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1.5" />
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/dim_margin_higher"
                 android:layout_weight="1"
                 android:orientation="vertical">
 
@@ -410,19 +395,15 @@
                     android:inputType="textLongMessage" />
             </LinearLayout>
 
-            <Space
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1.5" />
-
         </LinearLayout>
 
         <LinearLayout
             android:id="@+id/activityaddpatient_linearLayout8"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
+            android:layout_marginStart="8dp"
             android:layout_marginTop="16dp"
+            android:layout_marginEnd="8dp"
             android:baselineAligned="false"
             android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="parent"
@@ -438,7 +419,7 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+                    android:orientation="vertical">
 
                     <CheckBox
                         android:id="@+id/activityaddpatient_checkbox_hypercolesterolemia"
@@ -468,8 +449,7 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/dim_margin_higher"
-                    android:orientation="horizontal">
+                    android:orientation="vertical">
 
                     <CheckBox
                         android:id="@+id/activityaddpatient_checkbox_kidneylaziness"
@@ -504,10 +484,11 @@
             android:id="@+id/activityaddpatient_linearLayout9"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
+            android:layout_marginStart="8dp"
             android:layout_marginTop="16dp"
+            android:layout_marginEnd="8dp"
             android:baselineAligned="false"
-            android:orientation="horizontal"
+            android:orientation="vertical"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/activityaddpatient_linearLayout8">
@@ -534,14 +515,10 @@
                     android:inputType="textLongMessage" />
             </LinearLayout>
 
-            <Space
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1.5" />
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/dim_margin_higher"
                 android:layout_weight="1"
                 android:orientation="vertical">
 
@@ -561,19 +538,15 @@
                     android:inputType="textLongMessage" />
             </LinearLayout>
 
-            <Space
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1.5" />
-
         </LinearLayout>
 
         <LinearLayout
             android:id="@+id/activityaddpatient_linearLayout10"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
+            android:layout_marginStart="8dp"
             android:layout_marginTop="16dp"
+            android:layout_marginEnd="8dp"
             android:baselineAligned="true"
             android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="parent"
@@ -699,10 +672,11 @@
             android:id="@+id/activityaddpatient_linearLayout11"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
+            android:layout_marginStart="8dp"
             android:layout_marginTop="16dp"
+            android:layout_marginEnd="8dp"
             android:baselineAligned="true"
-            android:orientation="horizontal"
+            android:orientation="vertical"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/activityaddpatient_linearLayout10">
@@ -729,14 +703,10 @@
                     android:inputType="textLongMessage" />
             </LinearLayout>
 
-            <Space
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1.5" />
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/dim_margin_higher"
                 android:layout_weight="1"
                 android:orientation="vertical">
 
@@ -767,6 +737,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginTop="24dp"
+            android:layout_marginBottom="32dp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/activityaddpatient_linearLayout11">

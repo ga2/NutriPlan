@@ -9,17 +9,16 @@
     <LinearLayout
         android:id="@+id/dialogimportexport_linearLayout1"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
-        android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="2"
             android:orientation="vertical">
@@ -44,7 +43,6 @@
             android:id="@+id/dialogimportexport_imageButton_export"
             android:layout_width="196dp"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
             android:adjustViewBounds="true"
             android:scaleType="fitCenter"
             app:srcCompat="@drawable/export_nutr" />
@@ -81,14 +79,13 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
-        android:orientation="vertical"
         android:paddingBottom="@dimen/dim_margin_highest"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/dialogimportexport_linearLayout2">
 
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="2"
             android:orientation="vertical">
@@ -113,7 +110,6 @@
             android:id="@+id/dialogimportexport_imageButton_import"
             android:layout_width="196dp"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
             android:adjustViewBounds="true"
             android:scaleType="fitCenter"
             app:srcCompat="@drawable/import_nutr" />

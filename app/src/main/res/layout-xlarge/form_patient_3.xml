@@ -434,6 +434,38 @@
                 android:inputType="numberDecimal" />
         </LinearLayout>
 
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1.5" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/activityaddpatient_textView_umbilicale"
+                style="@style/style_textView_form_options"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/activityaddpatient_string_umbilicale" />
+
+            <EditText
+                android:id="@+id/activityaddpatient_editText_umbilicale"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="@string/hint_perc"
+                android:inputType="numberDecimal" />
+        </LinearLayout>
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1.5" />
+
     </LinearLayout>
 
     <LinearLayout
@@ -474,29 +506,7 @@
         <Space
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="1.5" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:orientation="vertical">
-
-            <TextView
-                android:id="@+id/activityaddpatient_textView_umbilicale"
-                style="@style/style_textView_form_options"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/activityaddpatient_string_umbilicale" />
-
-            <EditText
-                android:id="@+id/activityaddpatient_editText_umbilicale"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint="@string/hint_perc"
-                android:inputType="numberDecimal" />
-        </LinearLayout>
+            android:layout_weight="0.67" />
 
     </LinearLayout>
 

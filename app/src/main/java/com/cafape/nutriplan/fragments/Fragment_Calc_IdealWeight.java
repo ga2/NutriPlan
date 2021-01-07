@@ -1,5 +1,6 @@
 package com.cafape.nutriplan.fragments;
 
+import android.content.res.Configuration;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -134,7 +135,12 @@ public class Fragment_Calc_IdealWeight extends Fragment
         float result = height_float - 100 - (height_float - 150) / divisor;
         if(result > 0 && result < 1000) {
             fragment_calc_pi_constraintLayout_textView_result.setLines(2);
-            return String.valueOf(result) + "\nkg";
+            if ((getResources().getConfiguration().screenLayout &
+                    Configuration.SCREENLAYOUT_SIZE_MASK) ==
+                    Configuration.SCREENLAYOUT_SIZE_XLARGE) {
+                return String.valueOf(result) + "\nkg";
+            }
+            return String.valueOf(result) + " kg";
         } else {
             fragment_calc_pi_constraintLayout_textView_result.setLines(1);
             return LONG_DASH;

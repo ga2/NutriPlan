@@ -18,39 +18,31 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.NutriPlan">
         <activity android:name=".ActivityEditPatientNotes"
-            android:screenOrientation="landscape"
             android:label="@string/title_activity_patient_editnotes"></activity>
         <activity android:name=".ActivityAddVisit" />
         <activity
             android:name=".ActivityVisitShow"
-            android:screenOrientation="landscape"
             android:label="@string/title_activity_patientaccount_visit" />
         <activity
             android:name=".ActivityPatientAccount"
             android:label="@string/title_activity_patientaccount"
-            android:screenOrientation="landscape"
             android:theme="@style/Theme.NutriPlan.NoActionBar" />
         <activity
             android:name=".ActivityAddPatient2"
-            android:screenOrientation="landscape"
             android:label="@string/title_activity_addpatient" />
         <activity
             android:name=".ActivityAddAppointment"
-            android:screenOrientation="landscape"
             android:label="@string/title_activity_appointments" />
         <activity
             android:name=".ActivityAppointments"
-            android:screenOrientation="landscape"
             android:label="@string/title_activity_appointments" />
         <activity
             android:name=".ActivityPatients"
-            android:screenOrientation="landscape"
             android:label="@string/title_activity_patients" />
 
         <activity
             android:name=".ActivityCalc"
             android:label="@string/title_activity_calc"
-            android:screenOrientation="landscape"
             android:theme="@style/Theme.NutriPlan.NoActionBar" />
         <!--
                Set to true if your app is Standalone, that is, it does not require the handheld
@@ -58,11 +50,9 @@
         -->
         <activity
             android:name=".ActivityMenu"
-            android:screenOrientation="landscape"
             android:label="@string/title_activity_menu" />
 
-        <activity android:name=".MainActivity"
-            android:screenOrientation="landscape">
+        <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
