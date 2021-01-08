@@ -69,6 +69,7 @@ public class ActivityPatientAccount extends AppCompatActivity
         setUiComponents();
         setListeners();
         initPatient(0);
+        getPatientFiles(0);
     }
 
     @Override
@@ -79,7 +80,8 @@ public class ActivityPatientAccount extends AppCompatActivity
                 PatientAntropometryEntity patientAntropometryEntity = (PatientAntropometryEntity) data.getSerializableExtra("newVisitEntity");
                 patientAntropometryEntities.add(patientAntropometryEntity);
 
-                initPatient(1);
+                getAllPatientAntropometry(1);
+                //initPatient(1);
             }
         } else if((requestCode == REQCODE_EDITPATIENTNOTES)) {
             if (resultCode == RESULT_OK) {
@@ -178,7 +180,7 @@ public class ActivityPatientAccount extends AppCompatActivity
             @Override
             protected void onPostExecute(Void aVoid) {
                 super.onPostExecute(aVoid);
-                getPatientFiles(framePageToShow);
+                //getPatientFiles(framePageToShow);
             }
         }
 
@@ -213,6 +215,9 @@ public class ActivityPatientAccount extends AppCompatActivity
         GetPatientFiles getPatientFiles = new GetPatientFiles();
         getPatientFiles.execute();
     }
+
+
+
 
     public void importFile(Uri uri) {
         class AsyncTaskImportFile extends AsyncTask<Void, Void, FileEntity>
@@ -258,9 +263,7 @@ public class ActivityPatientAccount extends AppCompatActivity
                 if(fileEntity != null) {
                     filesRecyclerViewAdapter.addToRetrievedData(fileEntity);
                     filesRecyclerViewAdapter.notifyDataSetChanged();
-                    initPatient(2);
                 }
-                //initPatient(2);
             }
         }
 
@@ -357,12 +360,15 @@ public class ActivityPatientAccount extends AppCompatActivity
             protected void onPostExecute(Integer deletingResult)
             {
                 super.onPostExecute(deletingResult);
-                if ((deletingResult != 0)) {
+                if ((deletingResult != 0))
+                {
                     Toast.makeText(context, R.string.deleted, Toast.LENGTH_SHORT).show();
-                    filesRecyclerViewAdapter.deleteFromRetrievedData(fileEntity);
-                    filesRecyclerViewAdapter.notifyDataSetChanged();
                 }
-                initPatient(2);
+                filesRecyclerViewAdapter.deleteFromRetrievedData(fileEntity);
+                filesRecyclerViewAdapter.notifyDataSetChanged();
+                //Fragment_PatientAccount_File fragment_patientAccount_file = (Fragment_PatientAccount_File)sectionsPagerAdapter.getItem(2);
+                //fragment_patientAccount_file.hideShowNoData();
+                //initPatient(2);
             }
         }
 

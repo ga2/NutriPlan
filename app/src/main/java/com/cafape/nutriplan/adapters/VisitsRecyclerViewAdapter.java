@@ -76,7 +76,6 @@ public class VisitsRecyclerViewAdapter extends RecyclerView.Adapter<VisitsRecycl
 
     public void addToRetrievedData(PatientAntropometryEntity patientAntropometryEntity) {
         retrievedData.clear();
-        retrievedData.add(patientAntropometryEntity);
         retrievedData_copy.add(patientAntropometryEntity);
         retrievedData.addAll(retrievedData_copy);
     }

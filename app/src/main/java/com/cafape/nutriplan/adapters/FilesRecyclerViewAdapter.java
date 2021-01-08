@@ -85,15 +85,16 @@ public class FilesRecyclerViewAdapter extends RecyclerView.Adapter<FilesRecycler
 
     public void addToRetrievedData(FileEntity fileEntity) {
         retrievedData.clear();
-        retrievedData.add(fileEntity);
+        //retrievedData.add(fileEntity);
         retrievedData_copy.add(fileEntity);
         retrievedData.addAll(retrievedData_copy);
     }
 
     public void deleteFromRetrievedData(FileEntity fileEntity) {
+        //if(retrievedData.contains(fileEntity))
         retrievedData_copy.clear();
         retrievedData.remove(fileEntity);
-        retrievedData.addAll(retrievedData_copy);
+        retrievedData_copy.addAll(retrievedData);
     }
 
     //Declarative interface

@@ -95,7 +95,7 @@ public class ActivityAppointments extends AppCompatActivity
                 hashMap_calendarDecordatorReference.put(Utils.convertDateFormat(appointmentEntity.getAppointmentTime(), DATEFORMAT), eventDecoratorMonth);
                 getAppointmentsOfTheDay();
             }
-        } else if (requestCode == REQCODE_EDITAPPOINTMENT){
+        } else if (requestCode == REQCODE_EDITAPPOINTMENT) {
             if (resultCode == RESULT_OK) {
                 AppointmentEntity appointmentEntity = (AppointmentEntity) data.getSerializableExtra("newAppointmentEntity");
                 String patient_info = (String) data.getSerializableExtra("patient_info");
@@ -106,8 +106,6 @@ public class ActivityAppointments extends AppCompatActivity
             }
         }
     }
-
-    //todo non elimina decorator se elimina appointment
 
     public void setUiComponents() {
         activityappointments_calendarView = findViewById(R.id.activityappointments_calendarView);

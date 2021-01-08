@@ -7,6 +7,8 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -86,21 +88,10 @@ public class Fragment_PatientAccount_File extends Fragment
         activitypatientaccount_recycleView_files.setLayoutManager(new LinearLayoutManager(activityPatientAccount.getApplicationContext()));
         activitypatientaccount_recycleView_files.setAdapter(filesRecyclerViewAdapter);
         activityPatientAccount.setFilesRecyclerViewAdapter(filesRecyclerViewAdapter);
+        activitypatientaccount_textView_nodata_details = layout.findViewById(R.id.textView_nodata_details);
+        activitypatientaccount_constraintLayout_nodata = layout.findViewById(R.id.constraintLayout_nodata);
 
-        if(filesRecyclerViewAdapter.getItemCount() == 0) {
-            activitypatientaccount_textView_nodata_details = layout.findViewById(R.id.textView_nodata_details);
-            activitypatientaccount_constraintLayout_nodata = layout.findViewById(R.id.constraintLayout_nodata);
-            activitypatientaccount_textView_nodata_details.setText(getString(R.string.activitypatientaccount_string_nodata_details));
-            activitypatientaccount_textView_nodata_details.setVisibility(View.VISIBLE);
-            activitypatientaccount_constraintLayout_nodata.setVisibility(View.VISIBLE);
-        } else {
-            if(activitypatientaccount_textView_nodata_details == null) {
-                activitypatientaccount_textView_nodata_details = layout.findViewById(R.id.textView_nodata_details);
-                activitypatientaccount_constraintLayout_nodata = layout.findViewById(R.id.constraintLayout_nodata);
-            }
-            activitypatientaccount_textView_nodata_details.setText("");
-            activitypatientaccount_constraintLayout_nodata.setVisibility(View.GONE);
-        }
+        hideShowNoData();
 
         FloatingActionButton activitypatientaccount_fab_file_add = layout.findViewById(R.id.activitypatientaccount_fab_file_add);
         activitypatientaccount_fab_file_add.setOnClickListener(new View.OnClickListener()
@@ -110,6 +101,17 @@ public class Fragment_PatientAccount_File extends Fragment
                 ((ActivityPatientAccount)getActivity()).performFileSearch();
             }
         });
+    }
+
+    public void hideShowNoData() {
+        if(filesRecyclerViewAdapter.getItemCount() == 0) {
+            activitypatientaccount_textView_nodata_details.setText(getString(R.string.activitypatientaccount_string_nodata_details));
+            activitypatientaccount_textView_nodata_details.setVisibility(View.VISIBLE);
+            activitypatientaccount_constraintLayout_nodata.setVisibility(View.VISIBLE);
+        } else {
+            activitypatientaccount_textView_nodata_details.setText("");
+            activitypatientaccount_constraintLayout_nodata.setVisibility(View.GONE);
+        }
     }
 
     public String getStringFromEditText(EditText editText) {
