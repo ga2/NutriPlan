@@ -1,8 +1,12 @@
 package com.cafape.nutriplan.fragments;
 
+import android.app.AlertDialog;
+import android.content.Context;
 import android.os.Bundle;
 
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
 
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -12,6 +16,8 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.cafape.nutriplan.ActivityCalc;
+import com.cafape.nutriplan.ActivityPatientAccount;
 import com.cafape.nutriplan.R;
 import com.cafape.nutriplan.support.Utils;
 
@@ -36,6 +42,9 @@ public class Fragment_Calc_BodyMassIndex extends Fragment
     private EditText fragment_calc_bmi_form_editText_height;
     private EditText fragment_calc_bmi_form_editText_weight;
     private TextView fragment_calc_bmi_constraintLayout_textView_result;
+    private ConstraintLayout fragment_calc_bmi_constraintLayout_scale;
+
+    protected FragmentActivity mActivity;
 
     public Fragment_Calc_BodyMassIndex() {
         // Required empty public constructor
@@ -76,10 +85,25 @@ public class Fragment_Calc_BodyMassIndex extends Fragment
         return layout;
     }
 
+    /*
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(activity);
+        mContext = context;
+    }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        mContext = null;
+    }
+    */
+
     public void setUiComponent(View layout) {
         fragment_calc_bmi_form_editText_height = layout.findViewById(R.id.fragment_calc_bmi_form_editText_height);
         fragment_calc_bmi_form_editText_weight = layout.findViewById(R.id.fragment_calc_bmi_form_editText_weight);
         fragment_calc_bmi_constraintLayout_textView_result = layout.findViewById(R.id.fragment_calc_bmi_constraintLayout_textView_result);
+        fragment_calc_bmi_constraintLayout_scale = layout.findViewById(R.id.fragment_calc_bmi_constraintLayout_scale);
     }
 
     public void setListeners() {
@@ -119,6 +143,11 @@ public class Fragment_Calc_BodyMassIndex extends Fragment
                 String weight_string = editable.toString();
                 setBMIResult(fragment_calc_bmi_form_editText_height.getText().toString(), weight_string);
             }
+        });
+
+        fragment_calc_bmi_constraintLayout_scale.setOnClickListener(view -> {
+            ActivityCalc activityCalc = ((ActivityCalc)getActivity());
+            activityCalc.showBMITable();
         });
     }
 

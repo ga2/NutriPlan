@@ -88,6 +88,17 @@ tools:context=".fragments.Fragment_Calc_IdealWeight">
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
+            android:id="@+id/fragment_calc_pi_imageView_info"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_weight="1.5"
+            android:visibility="invisible"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/fragment_calc_pi_constraintLayout_imageView"
+            app:srcCompat="@drawable/ic_baseline_info_24" />
+
+        <ImageView
             android:id="@+id/fragment_calc_pi_constraintLayout_imageView"
             style="@style/style_activitycalc_imageView_scale"
             android:layout_height="wrap_content"

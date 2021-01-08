@@ -1,7 +1,9 @@
 package com.cafape.nutriplan.fragments;
 
+import android.app.AlertDialog;
 import android.os.Bundle;
 
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 
 import android.text.Editable;
@@ -12,6 +14,7 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.cafape.nutriplan.ActivityCalc;
 import com.cafape.nutriplan.R;
 import com.cafape.nutriplan.support.Utils;
 
@@ -37,6 +40,7 @@ public class Fragment_Calc_BodyAdiposityIndex extends Fragment
     private EditText fragment_calc_bai_form_editText_height;
     private EditText fragment_calc_bai_form_editText_hipscirc;
     private TextView fragment_calc_bai_constraintLayout_textView_result;
+    private ConstraintLayout fragment_calc_bai_constraintLayout_scale;
 
     public Fragment_Calc_BodyAdiposityIndex() {
         // Required empty public constructor
@@ -81,6 +85,7 @@ public class Fragment_Calc_BodyAdiposityIndex extends Fragment
         fragment_calc_bai_form_editText_height = layout.findViewById(R.id.fragment_calc_bai_form_editText_height);
         fragment_calc_bai_form_editText_hipscirc = layout.findViewById(R.id.fragment_calc_bai_form_editText_hipscirc);
         fragment_calc_bai_constraintLayout_textView_result = layout.findViewById(R.id.fragment_calc_bai_constraintLayout_textView_result);
+        fragment_calc_bai_constraintLayout_scale = layout.findViewById(R.id.fragment_calc_bai_constraintLayout_scale);
     }
 
     public void setListeners() {
@@ -120,6 +125,11 @@ public class Fragment_Calc_BodyAdiposityIndex extends Fragment
                 String weight_string = editable.toString();
                 setBAIResult(fragment_calc_bai_form_editText_height.getText().toString(), weight_string);
             }
+        });
+
+        fragment_calc_bai_constraintLayout_scale.setOnClickListener(view -> {
+            ActivityCalc activityCalc = ((ActivityCalc)getActivity());
+            activityCalc.showBAITable();
         });
     }
 
