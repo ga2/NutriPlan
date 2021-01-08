@@ -14,6 +14,7 @@ import com.cafape.nutriplan.database.entities.FileEntity;
 import com.cafape.nutriplan.database.entities.PatientAnamnesisEntity;
 import com.cafape.nutriplan.database.entities.PatientAntropometryEntity;
 import com.cafape.nutriplan.database.entities.PatientEntity;
+import com.cafape.nutriplan.fragments.Fragment_PatientAccount_File;
 import com.cafape.nutriplan.objects.SimplePatientWithAppointment;
 import com.cafape.nutriplan.support.AlertBuilderUtils;
 import com.cafape.nutriplan.support.Globals;
@@ -21,6 +22,9 @@ import com.cafape.nutriplan.support.Utils;
 import com.google.android.material.tabs.TabLayout;
 
 import androidx.core.content.FileProvider;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.viewpager.widget.ViewPager;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -211,10 +215,10 @@ public class ActivityPatientAccount extends AppCompatActivity
     }
 
     public void importFile(Uri uri) {
-        class AsyncTaskImportFile extends AsyncTask<Void, Void, Void>
+        class AsyncTaskImportFile extends AsyncTask<Void, Void, FileEntity>
         {
             @Override
-            protected Void doInBackground(Void... voids)
+            protected FileEntity doInBackground(Void... voids)
             {
                 String originalFileName = Utils.getFileUriName(context, uri);
                 String pseudoName = Utils.generateRandomAlphanumericString() + "." + Utils.getFileExtension(originalFileName);
@@ -237,6 +241,9 @@ public class ActivityPatientAccount extends AppCompatActivity
                             .fileDao()
                             .insert(fileEntity);
                     fileEntities.add(fileEntity);
+                    return fileEntity;
+                    //Fragment_PatientAccount_File fragment_file = (Fragment_PatientAccount_File)sectionsPagerAdapter.getItem(2).getActivity();
+
                 }
                 catch (IOException e) {
                     e.printStackTrace();
@@ -245,10 +252,15 @@ public class ActivityPatientAccount extends AppCompatActivity
             }
 
             @Override
-            protected void onPostExecute(Void aVoid)
+            protected void onPostExecute(FileEntity fileEntity)
             {
-                super.onPostExecute(aVoid);
-                initPatient(2);
+                super.onPostExecute(fileEntity);
+                if(fileEntity != null) {
+                    filesRecyclerViewAdapter.addToRetrievedData(fileEntity);
+                    filesRecyclerViewAdapter.notifyDataSetChanged();
+                    initPatient(2);
+                }
+                //initPatient(2);
             }
         }
 
@@ -347,6 +359,8 @@ public class ActivityPatientAccount extends AppCompatActivity
                 super.onPostExecute(deletingResult);
                 if ((deletingResult != 0)) {
                     Toast.makeText(context, R.string.deleted, Toast.LENGTH_SHORT).show();
+                    filesRecyclerViewAdapter.deleteFromRetrievedData(fileEntity);
+                    filesRecyclerViewAdapter.notifyDataSetChanged();
                 }
                 initPatient(2);
             }

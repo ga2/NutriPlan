@@ -16,7 +16,10 @@ import com.cafape.nutriplan.ActivityPatientAccount;
 import com.cafape.nutriplan.R;
 import com.cafape.nutriplan.adapters.FilesRecyclerViewAdapter;
 import com.cafape.nutriplan.adapters.VisitsRecyclerViewAdapter;
+import com.cafape.nutriplan.database.entities.FileEntity;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
+import static com.cafape.nutriplan.support.Utils.myprint;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -37,6 +40,7 @@ public class Fragment_PatientAccount_File extends Fragment
 
     private TextView activitypatientaccount_textView_nodata_details;
     private ConstraintLayout activitypatientaccount_constraintLayout_nodata;
+    private RecyclerView activitypatientaccount_recycleView_files;
 
     public Fragment_PatientAccount_File() {
         // Required empty public constructor
@@ -77,7 +81,7 @@ public class Fragment_PatientAccount_File extends Fragment
 
     public void setUiComponents(View layout) {
         ActivityPatientAccount activityPatientAccount = ((ActivityPatientAccount)getActivity());
-        RecyclerView activitypatientaccount_recycleView_files = layout.findViewById(R.id.activitypatientaccount_recycleView_files);
+        activitypatientaccount_recycleView_files = layout.findViewById(R.id.activitypatientaccount_recycleView_files);
         filesRecyclerViewAdapter = new FilesRecyclerViewAdapter(getContext(), activityPatientAccount.getPatientFilesEntities());
         activitypatientaccount_recycleView_files.setLayoutManager(new LinearLayoutManager(activityPatientAccount.getApplicationContext()));
         activitypatientaccount_recycleView_files.setAdapter(filesRecyclerViewAdapter);

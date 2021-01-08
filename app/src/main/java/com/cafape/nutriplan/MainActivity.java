@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity
 
 
     ////Graphics
-        //Main, menu, add patients, appointments, health indices, backuprestore, notes, show visit
+
     ///fixed fingerprint access
 
     @Override
@@ -48,7 +48,7 @@ public class MainActivity extends AppCompatActivity
 
         setUiComponents();
         setListeners();
-        //biometricAuthentication();
+        biometricAuthentication();
     }
 
     @Override
